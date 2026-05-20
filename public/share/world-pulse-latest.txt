@@ -1,6 +1,6 @@
-World Pulse | Data date: 2026-05-18
-Latest Weirdness Score: 20
-This data date is in the 20th percentile of the last 30 observed days.
-Top signal: M5.4 earthquake near West Chile Rise
+World Pulse | Data date: 2026-05-20
+Latest Weirdness Score: 72
+This data date is in the 72nd percentile of the last 30 observed days.
+Top signal: M5.9 earthquake near 10 km NNW of China, Japan
 Not a forecast, alert, or recommendation.
 #WorldPulse

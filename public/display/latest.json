@@ -1,48 +1,48 @@
 {
-  "display_date": "2026-05-18",
+  "display_date": "2026-05-20",
   "page_payload": {
-    "date": "2026-05-18",
+    "date": "2026-05-20",
     "headline": "Latest Weirdness Score",
-    "data_date": "2026-05-18",
+    "data_date": "2026-05-20",
     "top_cards": [
       {
-        "title": "M5.4 earthquake near West Chile Rise",
+        "title": "M5.9 earthquake near 10 km NNW of China, Japan",
         "category": "geophysical",
-        "event_time": "2026-05-18T02:10:41Z",
+        "event_time": "2026-05-20T02:46:25Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
-        "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.690794919365558,
-        "signal_status": "context_only",
-        "magnitude_value": 5.4,
-        "effective_anomaly": 0,
-        "score_contribution": 0
+        "display_note": "Above the recent baseline.",
+        "anomaly_score": 0.672616105698064,
+        "signal_status": "score_contributor",
+        "magnitude_value": 5.9,
+        "effective_anomaly": 0.672616105698064,
+        "score_contribution": 13.45232211396128
       },
       {
-        "title": "M5.3 earthquake near Bouvet Island region",
+        "title": "M5.9 earthquake near 10 km NNW of China, Japan",
         "category": "geophysical",
-        "event_time": "2026-05-18T18:50:00Z",
+        "event_time": "2026-05-20T02:46:25Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
-        "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.963477124378284,
-        "signal_status": "context_only",
-        "magnitude_value": 5.3,
-        "effective_anomaly": 0,
-        "score_contribution": 0
+        "display_note": "Above the recent baseline.",
+        "anomaly_score": 0.672616105698064,
+        "signal_status": "score_contributor",
+        "magnitude_value": 5.9,
+        "effective_anomaly": 0.672616105698064,
+        "score_contribution": 6.72616105698064
       },
       {
-        "title": "M5.2 earthquake near Mid-Indian Ridge",
+        "title": "M5.9 earthquake near 10 km NNW of China, Japan",
         "category": "geophysical",
-        "event_time": "2026-05-18T07:34:30Z",
+        "event_time": "2026-05-20T02:46:25Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
-        "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.23615932939101,
-        "signal_status": "context_only",
-        "magnitude_value": 5.2,
-        "effective_anomaly": 0,
-        "score_contribution": 0
+        "display_note": "Above the recent baseline.",
+        "anomaly_score": 0.672616105698064,
+        "signal_status": "score_contributor",
+        "magnitude_value": 5.9,
+        "effective_anomaly": 0.672616105698064,
+        "score_contribution": 3.36308052849032
       }
     ],
     "principles": {
@@ -50,19 +50,19 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-05-20T07:08:41Z",
+    "updated_at": "2026-05-20T07:49:57Z",
     "quiet_signal": {
       "note": "No quiet signal available for this data date.",
       "available": false
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "This data date is in the 20th percentile of the last 30 observed days.",
+      "This data date is in the 72nd percentile of the last 30 observed days.",
       "The score is based on public earthquake and Wikipedia attention data.",
       "This is not a forecast, alert, or recommendation."
     ],
-    "percentile_line": "This data date is in the 20th percentile of the last 30 observed days.",
+    "percentile_line": "This data date is in the 72nd percentile of the last 30 observed days.",
     "top_signal_note": null,
-    "weirdness_score": 20
+    "weirdness_score": 72
   }
 }
