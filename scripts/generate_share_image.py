@@ -274,11 +274,19 @@ def generate_image(display_date, page_payload):
 
 def save_images(image, display_date):
     os.makedirs(OUTPUT_DIR, exist_ok=True)
-    dated_path = os.path.join(OUTPUT_DIR, f"world-pulse-{display_date.isoformat()}.png")
-    latest_path = os.path.join(OUTPUT_DIR, "world-pulse-latest.png")
-    image.save(dated_path, "PNG")
-    image.save(latest_path, "PNG")
-    return dated_path, latest_path
+    dated_png_path = os.path.join(OUTPUT_DIR, f"world-pulse-{display_date.isoformat()}.png")
+    latest_png_path = os.path.join(OUTPUT_DIR, "world-pulse-latest.png")
+    dated_jpg_path = os.path.join(OUTPUT_DIR, f"world-pulse-{display_date.isoformat()}.jpg")
+    latest_jpg_path = os.path.join(OUTPUT_DIR, "world-pulse-latest.jpg")
+
+    image.save(dated_png_path, "PNG")
+    image.save(latest_png_path, "PNG")
+
+    jpg_image = image.convert("RGB")
+    jpg_image.save(dated_jpg_path, "JPEG", quality=92, optimize=True)
+    jpg_image.save(latest_jpg_path, "JPEG", quality=92, optimize=True)
+
+    return dated_png_path, latest_png_path, dated_jpg_path, latest_jpg_path
 
 
 def main():
@@ -307,7 +315,7 @@ def main():
             display_date = args.date or latest_display_date(conn)
             display_date, page_payload = fetch_display_payload(conn, display_date)
         image = generate_image(display_date, page_payload)
-        dated_path, latest_path = save_images(image, display_date)
+        dated_png_path, latest_png_path, dated_jpg_path, latest_jpg_path = save_images(image, display_date)
     except Exception as exc:
         print(f"Share image generation failed: {exc}", file=sys.stderr)
         return 1
@@ -315,8 +323,10 @@ def main():
     print(
         "Generated share image: "
         f"display_date={display_date.isoformat()} "
-        f"output={os.path.relpath(dated_path, ROOT_DIR)} "
-        f"latest={os.path.relpath(latest_path, ROOT_DIR)}"
+        f"png={os.path.relpath(dated_png_path, ROOT_DIR)} "
+        f"latest_png={os.path.relpath(latest_png_path, ROOT_DIR)} "
+        f"jpg={os.path.relpath(dated_jpg_path, ROOT_DIR)} "
+        f"latest_jpg={os.path.relpath(latest_jpg_path, ROOT_DIR)}"
     )
     return 0
 

@@ -318,7 +318,8 @@ def main():
         "\nWorld Pulse daily build completed.\n\n"
         f"target_date: {target_date_text}\n"
         "display_json: public/display/latest.json\n"
-        "share_image: public/share/world-pulse-latest.png\n"
+        "share_image_png: public/share/world-pulse-latest.png\n"
+        "share_image_jpg: public/share/world-pulse-latest.jpg\n"
         "x_post_text: public/share/world-pulse-latest.txt\n"
         "local_preview: http://localhost:8080/"
     )

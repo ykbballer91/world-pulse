@@ -130,6 +130,13 @@ python scripts/export_display_payload_json.py --date 2026-05-17
 
 Generate share images:
 
+The share image generator outputs both PNG and JPG files:
+
+- `public/share/world-pulse-latest.png`
+- `public/share/world-pulse-latest.jpg`
+- `public/share/world-pulse-YYYY-MM-DD.png`
+- `public/share/world-pulse-YYYY-MM-DD.jpg`
+
 ```sh
 python scripts/generate_share_image.py
 python scripts/generate_share_image.py --date 2026-05-17
