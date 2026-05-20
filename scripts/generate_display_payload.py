@@ -2,7 +2,7 @@
 import argparse
 import os
 import sys
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 import psycopg
 from dotenv import load_dotenv
@@ -18,6 +18,11 @@ PAYLOAD_COLUMNS = [
 CURRENT_SCORE_VERSION = "weirdness_v0_2"
 EXCLUDED_TOP_SIGNAL_EVENT_TYPES = {
     "wikipedia_attention_snapshot",
+}
+QUIET_SIGNAL_CATEGORIES = {
+    "geophysical",
+    "space_weather",
+    "internet",
 }
 
 
@@ -85,6 +90,76 @@ def fetch_weirdness_score(conn, display_date):
         return row
 
 
+def utc_day_start(value):
+    return datetime(value.year, value.month, value.day, tzinfo=timezone.utc)
+
+
+def fetch_quiet_signal(conn, display_date):
+    window_start = utc_day_start(display_date) - timedelta(hours=48)
+    data_end = utc_day_start(display_date) + timedelta(days=1)
+    window_end = data_end - timedelta(hours=6)
+
+    with conn.cursor() as cur:
+        cur.execute(
+            """
+            SELECT
+                id,
+                event_type,
+                category,
+                title,
+                event_time,
+                magnitude_value,
+                anomaly_score
+            FROM normalized_events
+            WHERE event_time >= %s
+              AND event_time <= %s
+              AND event_time IS NOT NULL
+              AND anomaly_score > 1.0
+              AND event_type <> ALL(%s::text[])
+              AND category = ANY(%s::text[])
+            ORDER BY anomaly_score DESC, event_time DESC
+            LIMIT 1
+            """,
+            (
+                window_start,
+                window_end,
+                list(EXCLUDED_TOP_SIGNAL_EVENT_TYPES),
+                list(QUIET_SIGNAL_CATEGORIES),
+            ),
+        )
+        row = cur.fetchone()
+
+    if row is None:
+        return {
+            "available": False,
+            "note": "No quiet signal available for this data date.",
+        }
+
+    event_time = row[4]
+    if event_time.tzinfo is None:
+        event_time = event_time.replace(tzinfo=timezone.utc)
+    event_time = event_time.astimezone(timezone.utc)
+    hours_ago = round((data_end - event_time).total_seconds() / 3600, 1)
+    hours_label = round(hours_ago)
+
+    return {
+        "available": True,
+        "id": str(row[0]),
+        "title": row[3],
+        "event_type": row[1],
+        "category": row[2],
+        "event_time": isoformat_z(event_time),
+        "hours_ago_from_data_end": hours_ago,
+        "anomaly_score": float(row[6]),
+        "magnitude_value": float(row[5]) if row[5] is not None else None,
+        "summary": (
+            f"{row[3]}, observed about {hours_label} hours before the end of the data date."
+        ),
+        "note": "This signal sits above the recent baseline within the current data window.",
+        "safety_note": "Not a forecast, alert, or recommendation.",
+    }
+
+
 def summary_line_for_score(score_value):
     if score_value <= 20:
         return "Observed public signals were near or below the recent baseline."
@@ -149,7 +224,7 @@ def build_top_cards(top_events):
     return cards
 
 
-def build_page_payload(score_row):
+def build_page_payload(score_row, quiet_signal):
     score_date, score_value, score_version, explanation_payload = score_row
     top_events = explanation_payload.get("top_events", [])
     now = datetime.now(timezone.utc)
@@ -174,12 +249,12 @@ def build_page_payload(score_row):
             "This is not a forecast, alert, or recommendation.",
         ],
         "top_cards": top_cards,
+        "quiet_signal": quiet_signal,
         "top_signal_note": (
             None
             if top_cards
             else "No individual top signal available for this data date."
         ),
-        "underreacted_watch": None,
         "principles": {
             "no_prediction": True,
             "no_fear_amplification": True,
@@ -228,6 +303,7 @@ def build_display_values(columns, display_date, page_payload):
     assign_if_column(values, columns, "weirdness_score", page_payload["weirdness_score"])
     assign_if_column(values, columns, "score_value", page_payload["weirdness_score"])
     assign_if_column(values, columns, "score_version", page_payload["score_version"])
+    assign_if_column(values, columns, "quiet_signal", Jsonb(page_payload["quiet_signal"]))
     assign_if_column(values, columns, "generated_at", now)
     assign_if_column(values, columns, "created_at", now)
     assign_if_column(values, columns, "updated_at", now)
@@ -311,7 +387,8 @@ def main():
 
             display_date = args.date or latest_score_date(conn)
             score_row = fetch_weirdness_score(conn, display_date)
-            page_payload = build_page_payload(score_row)
+            quiet_signal = fetch_quiet_signal(conn, display_date)
+            page_payload = build_page_payload(score_row, quiet_signal)
             status = save_display_payload(conn, columns, display_date, page_payload)
             if status == "inserted":
                 inserted = 1

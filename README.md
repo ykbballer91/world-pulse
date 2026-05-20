@@ -30,6 +30,7 @@ psql "$DATABASE_URL" -f sql/002_create_baseline_distributions.sql
 psql "$DATABASE_URL" -f sql/003_create_normalized_events.sql
 psql "$DATABASE_URL" -f sql/004_create_score_versions_and_weirdness_scores.sql
 psql "$DATABASE_URL" -f sql/005_create_display_log.sql
+psql "$DATABASE_URL" -f sql/006_add_quiet_signal_to_display_log.sql
 ```
 
 Run USGS ingestion for the last 24 hours:
@@ -102,6 +103,8 @@ Score versions:
 - Current display uses `weirdness_v0_2`.
 
 Daily aggregation events such as `wikipedia_attention_snapshot` may contribute to scoring context. They are excluded from the displayed Top signal to keep the UI focused on individual observed signals.
+
+Quiet Signal is an optional display-only field. It highlights one individual observed signal above the recent baseline within the current data window. It is not a forecast, alert, warning, or recommendation. It may be absent on many data dates.
 
 ```sh
 python scripts/calculate_weirdness_score.py

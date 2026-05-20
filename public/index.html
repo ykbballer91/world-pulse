@@ -144,6 +144,40 @@
         line-height: 1.4;
       }
 
+      .quiet-signal {
+        margin-top: 24px;
+        border: 1px solid #dddddd;
+        border-radius: 8px;
+        padding: 20px;
+        background: #fbfbfa;
+        color: #333333;
+      }
+
+      .quiet-signal[hidden] {
+        display: none;
+      }
+
+      .quiet-signal h2 {
+        margin: 0 0 10px;
+        color: #171717;
+        font-size: 18px;
+        line-height: 1.25;
+        letter-spacing: 0;
+      }
+
+      .quiet-signal p {
+        margin: 0;
+        font-size: 15px;
+        line-height: 1.45;
+      }
+
+      .quiet-signal .quiet-note,
+      .quiet-signal .quiet-safety {
+        margin-top: 8px;
+        color: #666666;
+        font-size: 14px;
+      }
+
       footer {
         margin-top: 40px;
         border-top: 1px solid #e5e5e5;
@@ -221,6 +255,13 @@
 
       <section class="cards" id="top-cards" aria-label="Top signals"></section>
 
+      <section class="quiet-signal" id="quiet-signal" aria-labelledby="quiet-signal-heading" hidden>
+        <h2 id="quiet-signal-heading">Quiet Signal</h2>
+        <p id="quiet-signal-summary"></p>
+        <p class="quiet-note" id="quiet-signal-note"></p>
+        <p class="quiet-safety" id="quiet-signal-safety"></p>
+      </section>
+
       <footer>
         <div>This is not a forecast, alert, or recommendation.</div>
         <div>No trading, medical, political, or personal safety advice.</div>
@@ -295,6 +336,22 @@
         container.replaceChildren(...nodes);
       }
 
+      function renderQuietSignal(quietSignal) {
+        const section = document.getElementById("quiet-signal");
+        if (!quietSignal || quietSignal.available !== true) {
+          section.hidden = true;
+          return;
+        }
+        document.getElementById("quiet-signal-summary").textContent = text(quietSignal.summary);
+        document.getElementById("quiet-signal-note").textContent = text(
+          quietSignal.note || "This signal sits above the recent baseline within the current data window."
+        );
+        document.getElementById("quiet-signal-safety").textContent = text(
+          quietSignal.safety_note || "Not a forecast, alert, or recommendation."
+        );
+        section.hidden = false;
+      }
+
       async function loadPayload() {
         const response = await fetch("./display/latest.json", { cache: "no-store" });
         if (!response.ok) {
@@ -315,6 +372,7 @@
             : "";
           renderSummary(page_payload.summary_lines || []);
           renderCards(page_payload.top_cards || []);
+          renderQuietSignal(page_payload.quiet_signal);
         })
         .catch((error) => {
           const main = document.querySelector("main");
