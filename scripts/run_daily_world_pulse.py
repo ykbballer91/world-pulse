@@ -58,7 +58,7 @@ def validate_database_url(database_url):
         raise ValueError("DATABASE_URL points to a local database host")
 
 
-def run_step(name, command):
+def run_step(name, command, critical=True, warnings=None):
     started = time.monotonic()
     print(f"Step started: name={name} command={command_text(command)}")
     child_env = os.environ.copy()
@@ -75,10 +75,17 @@ def run_step(name, command):
         env=child_env,
     )
     elapsed = time.monotonic() - started
-    status = "success" if result.returncode == 0 else "failed"
+    status = "success" if result.returncode == 0 else ("failed" if critical else "warning")
     print(f"Step finished: name={name} status={status} elapsed_seconds={elapsed:.2f}")
     if result.returncode != 0:
+        if not critical:
+            warning = f"{name} failed"
+            print(f"{warning} but daily build will continue.")
+            if warnings is not None:
+                warnings.append(warning)
+            return False
         raise RuntimeError(f"step failed: {name}")
+    return True
 
 
 def latest_anomaly_date(database_url):
@@ -146,6 +153,8 @@ def main():
         print("--days must be greater than zero.", file=sys.stderr)
         return 2
 
+    warnings = []
+
     try:
         if not args.skip_ingest:
             run_step(
@@ -189,6 +198,8 @@ def main():
                     "all",
                     *db_args,
                 ],
+                critical=False,
+                warnings=warnings,
             )
 
         if not args.skip_backfill:
@@ -311,6 +322,10 @@ def main():
         "x_post_text: public/share/world-pulse-latest.txt\n"
         "local_preview: http://localhost:8080/"
     )
+    if warnings:
+        print("\nwarnings:")
+        for warning in warnings:
+            print(f"- {warning}")
     return 0
 
 

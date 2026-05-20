@@ -4,6 +4,7 @@ import hashlib
 import json
 import os
 import sys
+import time
 from datetime import datetime, timezone
 
 import psycopg
@@ -82,10 +83,31 @@ def finish_ingestion_run(conn, run_id, status, seen, inserted, error_message=Non
         )
 
 
-def fetch_payload(endpoint_url):
-    response = requests.get(endpoint_url, timeout=30)
-    response.raise_for_status()
-    return response.json(), response.status_code, dict(response.headers)
+def fetch_payload(endpoint_url, max_attempts=2, timeout=20):
+    last_error = None
+    for attempt in range(1, max_attempts + 1):
+        try:
+            response = requests.get(endpoint_url, timeout=timeout)
+            response.raise_for_status()
+            return response.json(), response.status_code, dict(response.headers)
+        except requests.RequestException as exc:
+            last_error = exc
+            if attempt < max_attempts:
+                print(
+                    "Open Notify fetch retry: "
+                    f"endpoint_url={endpoint_url} "
+                    f"attempt={attempt} "
+                    f"max_attempts={max_attempts}",
+                    file=sys.stderr,
+                )
+                time.sleep(2)
+
+    raise RuntimeError(
+        "Open Notify fetch failed after retries: "
+        f"endpoint_url={endpoint_url} "
+        f"attempts={max_attempts} "
+        f"error={last_error}"
+    )
 
 
 def observed_at_for_payload(raw_payload):
