@@ -16,6 +16,22 @@ FORMULA_TEXT = (
     "within the recent baseline window."
 )
 TOP_WEIGHTS = [20, 10, 5]
+NON_TOPIC_PAGE_PREFIXES = (
+    "Special:",
+    "Wikipedia:",
+    "Help:",
+    "File:",
+    "Category:",
+    "Portal:",
+    "Template:",
+    "Talk:",
+    "MediaWiki:",
+    "Module:",
+    "User:",
+    "User_talk:",
+    "Draft:",
+    "TimedText:",
+)
 DEFAULT_WINDOW_DAYS = 30
 VERSION_PARAMETERS = {
     "window_days": DEFAULT_WINDOW_DAYS,
@@ -73,6 +89,35 @@ def parse_date(value):
 
 def isoformat_z(value):
     return value.astimezone(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+
+
+def article_views(article):
+    if not isinstance(article, dict):
+        return 0
+    value = article.get("views", 0)
+    return int(value or 0)
+
+
+def is_topic_page(title):
+    if title is None:
+        return False
+    text = str(title).strip()
+    if text == "" or text == "-" or text.lower() == "null":
+        return False
+    if text == "Main_Page":
+        return False
+    if "Talk:" in text:
+        return False
+    return not text.startswith(NON_TOPIC_PAGE_PREFIXES)
+
+
+def topic_page_total_views(normalized_payload):
+    top_articles = normalized_payload.get("top_articles") or []
+    return sum(
+        article_views(article)
+        for article in top_articles
+        if is_topic_page(article.get("article"))
+    )
 
 
 def table_columns(conn, table_name):
@@ -216,6 +261,7 @@ def fetch_events_for_window(conn, window_start_date, window_end_date):
             excluding_main_value,
             wikipedia_excluding_main_baseline,
         )
+        topic_total_views = topic_page_total_views(normalized_payload)
         events.append(
             {
                 "id": row[0],
@@ -234,6 +280,9 @@ def fetch_events_for_window(conn, window_start_date, window_end_date):
                     if excluding_main_anomaly is not None
                     else None
                 ),
+                "attention_topic_page_total_views": topic_total_views,
+                "attention_topic_page_anomaly_score": None,
+                "attention_topic_page_effective_anomaly": None,
             }
         )
     return events
@@ -293,6 +342,28 @@ def calculate_daily_attention_excluding_main_raw_score(events):
     return raw_score, top_events, scored_events
 
 
+def calculate_daily_attention_topic_pages_raw_score(events):
+    scored_events = sorted(
+        [
+            event
+            for event in events
+            if event.get("attention_topic_page_effective_anomaly") is not None
+        ],
+        key=lambda event: (
+            event["attention_topic_page_effective_anomaly"],
+            float(event["attention_topic_page_anomaly_score"]),
+            event["event_time"],
+        ),
+        reverse=True,
+    )
+    top_events = scored_events[:3]
+    raw_score = sum(
+        weight * event["attention_topic_page_effective_anomaly"]
+        for weight, event in zip(TOP_WEIGHTS, top_events)
+    )
+    return raw_score, top_events, scored_events
+
+
 def percentile_rank(values, target_value):
     if not values:
         return None, 0, 0, 0
@@ -306,6 +377,38 @@ def rounded_position(percentile):
     if percentile is None:
         return None
     return round(max(0, min(percentile, 100)))
+
+
+def population_stddev(values):
+    if not values:
+        return None
+    mean = sum(values) / len(values)
+    variance = sum((value - mean) ** 2 for value in values) / len(values)
+    return variance ** 0.5
+
+
+def assign_topic_page_anomalies(events):
+    topic_values = [
+        float(event["attention_topic_page_total_views"])
+        for event in events
+        if event.get("layer") == "attention"
+        and event.get("attention_topic_page_total_views") is not None
+    ]
+    if len(topic_values) < 3:
+        return
+    mean = sum(topic_values) / len(topic_values)
+    stddev = population_stddev(topic_values)
+    if stddev in (None, 0):
+        return
+    for event in events:
+        if event.get("layer") != "attention":
+            continue
+        value = event.get("attention_topic_page_total_views")
+        if value is None:
+            continue
+        anomaly = (float(value) - mean) / stddev
+        event["attention_topic_page_anomaly_score"] = anomaly
+        event["attention_topic_page_effective_anomaly"] = max(anomaly, 0)
 
 
 def display_top_events(events):
@@ -347,6 +450,7 @@ def display_top_events(events):
 
 def calculate_window_scores(events, target_date, window_days):
     window_start_date = target_date - timedelta(days=window_days - 1)
+    assign_topic_page_anomalies(events)
     events_by_date = {}
     for event in events:
         events_by_date.setdefault(event["event_time"].date(), []).append(event)
@@ -359,6 +463,9 @@ def calculate_window_scores(events, target_date, window_days):
     layer_daily_raw_scores_excluding_main_page = {
         "attention": [],
     }
+    layer_daily_raw_scores_topic_pages = {
+        "attention": [],
+    }
     target_scoring_top_events = []
     target_display_top_events = []
     target_scored_events = []
@@ -367,6 +474,9 @@ def calculate_window_scores(events, target_date, window_days):
         "attention": 0,
     }
     target_layer_raw_scores_excluding_main_page = {
+        "attention": 0,
+    }
+    target_layer_raw_scores_topic_pages = {
         "attention": 0,
     }
     context_event_count = 0
@@ -414,6 +524,22 @@ def calculate_window_scores(events, target_date, window_days):
                 "event_count": len(attention_events),
                 "has_layer_events": any(
                     event.get("attention_excluding_main_page_anomaly_score") is not None
+                    for event in attention_events
+                ),
+            }
+        )
+        attention_topic_pages_raw_score, _, _ = calculate_daily_attention_topic_pages_raw_score(
+            attention_events
+        )
+        if day == target_date:
+            target_layer_raw_scores_topic_pages["attention"] = attention_topic_pages_raw_score
+        layer_daily_raw_scores_topic_pages["attention"].append(
+            {
+                "date": day.isoformat(),
+                "raw_score": attention_topic_pages_raw_score,
+                "event_count": len(attention_events),
+                "has_layer_events": any(
+                    event.get("attention_topic_page_anomaly_score") is not None
                     for event in attention_events
                 ),
             }
@@ -478,6 +604,26 @@ def calculate_window_scores(events, target_date, window_days):
         if reality_position is not None and attention_position_excluding_main_page is not None
         else None
     )
+    attention_topic_page_values = [
+        item["raw_score"]
+        for item in layer_daily_raw_scores_topic_pages["attention"]
+        if item["has_layer_events"]
+    ]
+    attention_topic_page_sample_count = len(attention_topic_page_values)
+    if attention_topic_page_sample_count >= MINIMUM_LAYER_SAMPLE_COUNT:
+        attention_topic_page_percentile, _, _, _ = percentile_rank(
+            attention_topic_page_values,
+            target_layer_raw_scores_topic_pages["attention"],
+        )
+        attention_position_topic_pages = rounded_position(attention_topic_page_percentile)
+    else:
+        attention_topic_page_percentile = None
+        attention_position_topic_pages = None
+    reality_attention_gap_topic_pages = (
+        reality_position - attention_position_topic_pages
+        if reality_position is not None and attention_position_topic_pages is not None
+        else None
+    )
 
     return {
         "score_value": score_value,
@@ -509,6 +655,20 @@ def calculate_window_scores(events, target_date, window_days):
         },
         "layer_gaps_excluding_main_page": {
             "reality_attention_gap": reality_attention_gap_excluding_main_page,
+        },
+        "layer_daily_raw_scores_topic_pages": layer_daily_raw_scores_topic_pages,
+        "layer_raw_scores_topic_pages": target_layer_raw_scores_topic_pages,
+        "layer_positions_topic_pages": {
+            "attention": attention_position_topic_pages,
+        },
+        "layer_percentile_ranks_topic_pages": {
+            "attention": attention_topic_page_percentile,
+        },
+        "layer_sample_counts_topic_pages": {
+            "attention": attention_topic_page_sample_count,
+        },
+        "layer_gaps_topic_pages": {
+            "reality_attention_gap": reality_attention_gap_topic_pages,
         },
         "layer_gaps": {
             "reality_attention_gap": reality_attention_gap,
@@ -575,6 +735,16 @@ def build_component_scores(score_result, window_days):
         "layer_daily_raw_scores_excluding_main_page": (
             score_result["layer_daily_raw_scores_excluding_main_page"]
         ),
+        "layer_raw_scores_topic_pages": score_result["layer_raw_scores_topic_pages"],
+        "layer_positions_topic_pages": score_result["layer_positions_topic_pages"],
+        "layer_percentile_ranks_topic_pages": (
+            score_result["layer_percentile_ranks_topic_pages"]
+        ),
+        "layer_sample_counts_topic_pages": score_result["layer_sample_counts_topic_pages"],
+        "layer_gaps_topic_pages": score_result["layer_gaps_topic_pages"],
+        "layer_daily_raw_scores_topic_pages": (
+            score_result["layer_daily_raw_scores_topic_pages"]
+        ),
         "context_event_count": score_result["context_event_count"],
         "scoring_top_events": [
             json_ready_event(event) for event in score_result["scoring_top_events"]
@@ -613,6 +783,14 @@ def build_explanation_payload(score_date, score_result, window_days):
         "layer_raw_scores_excluding_main_page": (
             score_result["layer_raw_scores_excluding_main_page"]
         ),
+        "layer_positions_topic_pages": score_result["layer_positions_topic_pages"],
+        "layer_gaps_topic_pages": score_result["layer_gaps_topic_pages"],
+        "layer_raw_scores_topic_pages": score_result["layer_raw_scores_topic_pages"],
+        "topic_page_filtering_policy": {
+            "excluded_titles": ["Main_Page"],
+            "excluded_namespace_prefixes": list(NON_TOPIC_PAGE_PREFIXES),
+            "empty_or_null_titles_excluded": True,
+        },
         "top_events": [json_ready_event(event) for event in score_result["top_events"]],
         "scoring_top_events": [
             json_ready_event(event) for event in score_result["scoring_top_events"]

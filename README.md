@@ -70,6 +70,7 @@ Source layers:
 World Pulse internally classifies sources into `reality`, `attention`, and `context` layers. These layers are internal only. The public UI remains Signal Position, and gap scores are not exposed publicly.
 Internal layer positions and layer gaps are stored for research and validation. Layer gaps are not forecasts, alerts, warnings, or recommendations.
 Wikipedia `Main_Page` is also excluded from topic-level attention inspection where available. The original attention layer values are preserved, while additional internal `excluding_main_page` fields are stored for validation.
+Topic-level attention also excludes non-topic Wikipedia namespace pages such as `Special:`, `Wikipedia:`, `Help:`, `File:`, and `Category:`. Additional internal `topic_pages` fields are stored for validation.
 
 Export internal layer difference examples:
 

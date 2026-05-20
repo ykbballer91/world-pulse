@@ -12,6 +12,22 @@ from dotenv import load_dotenv
 DEFAULT_DAYS = 30
 DEFAULT_LIMIT = 10
 SCORE_VERSION = "weirdness_v0_2"
+NON_TOPIC_PAGE_PREFIXES = (
+    "Special:",
+    "Wikipedia:",
+    "Help:",
+    "File:",
+    "Category:",
+    "Portal:",
+    "Template:",
+    "Talk:",
+    "MediaWiki:",
+    "Module:",
+    "User:",
+    "User_talk:",
+    "Draft:",
+    "TimedText:",
+)
 
 
 def parse_date(value):
@@ -53,6 +69,25 @@ def int_or_none(value):
     return int(value)
 
 
+def article_views(article):
+    if not isinstance(article, dict):
+        return 0
+    return int(article.get("views") or 0)
+
+
+def is_topic_page(title):
+    if title is None:
+        return False
+    text = str(title).strip()
+    if text == "" or text == "-" or text.lower() == "null":
+        return False
+    if text == "Main_Page":
+        return False
+    if "Talk:" in text:
+        return False
+    return not text.startswith(NON_TOPIC_PAGE_PREFIXES)
+
+
 def fetch_scores(conn, start_date, end_date):
     with conn.cursor() as cur:
         cur.execute(
@@ -84,6 +119,9 @@ def fetch_scores(conn, start_date, end_date):
             component_scores.get("layer_positions_excluding_main_page") or {}
         )
         gaps_excluding_main = component_scores.get("layer_gaps_excluding_main_page") or {}
+        raw_scores_topic_pages = component_scores.get("layer_raw_scores_topic_pages") or {}
+        positions_topic_pages = component_scores.get("layer_positions_topic_pages") or {}
+        gaps_topic_pages = component_scores.get("layer_gaps_topic_pages") or {}
         reality_position = int_or_none(positions.get("reality"))
         attention_position = int_or_none(positions.get("attention"))
         difference = (
@@ -104,6 +142,9 @@ def fetch_scores(conn, start_date, end_date):
                 "layer_raw_scores_excluding_main_page": raw_scores_excluding_main,
                 "layer_positions_excluding_main_page": positions_excluding_main,
                 "layer_gaps_excluding_main_page": gaps_excluding_main,
+                "layer_raw_scores_topic_pages": raw_scores_topic_pages,
+                "layer_positions_topic_pages": positions_topic_pages,
+                "layer_gaps_topic_pages": gaps_topic_pages,
                 "reality_position": reality_position,
                 "attention_position": attention_position,
                 "difference": difference,
@@ -189,24 +230,18 @@ def attention_details(event):
 
     details = []
     top_articles = payload.get("top_articles") or []
-    topic_articles = [
-        article
-        for article in top_articles
-        if article.get("article") != "Main_Page"
-    ]
+    topic_articles = [article for article in top_articles if is_topic_page(article.get("article"))]
     if topic_articles:
         top_page = topic_articles[0].get("article")
         if top_page:
-            details.append(f"  - Top page: {top_page}")
-    if payload.get("top10_total_views_excluding_main_page") is not None:
+            details.append(f"  - Top topic page: {top_page}")
         details.append(
-            "  - Total views excluding Main Page: "
-            f"{format_number(payload.get('top10_total_views_excluding_main_page'))}"
+            f"  - Total topic views: {format_number(sum(article_views(article) for article in topic_articles))}"
         )
+    else:
+        details.append("  - No topic-level attention observations available for this date.")
     if payload.get("date"):
         details.append(f"  - Date: {payload.get('date')}")
-    if not details:
-        details.append("  - Details unavailable in current normalized event payload.")
     return details
 
 
@@ -229,6 +264,9 @@ def append_record(lines, record):
     raw_scores_excluding_main = record["layer_raw_scores_excluding_main_page"]
     positions_excluding_main = record["layer_positions_excluding_main_page"]
     gaps_excluding_main = record["layer_gaps_excluding_main_page"]
+    raw_scores_topic_pages = record["layer_raw_scores_topic_pages"]
+    positions_topic_pages = record["layer_positions_topic_pages"]
+    gaps_topic_pages = record["layer_gaps_topic_pages"]
     sample_counts = record["layer_sample_counts"]
     lines.extend(
         [
@@ -251,6 +289,18 @@ def append_record(lines, record):
             (
                 "- Reality-Attention difference excluding Main Page: "
                 f"{format_number(gaps_excluding_main.get('reality_attention_gap'))}"
+            ),
+            (
+                "- Attention raw score topic pages: "
+                f"{format_number(raw_scores_topic_pages.get('attention'))}"
+            ),
+            (
+                "- Attention Position topic pages: "
+                f"{format_number(positions_topic_pages.get('attention'))}"
+            ),
+            (
+                "- Reality-Attention difference topic pages: "
+                f"{format_number(gaps_topic_pages.get('reality_attention_gap'))}"
             ),
             (
                 "- Layer sample counts: "
@@ -374,6 +424,10 @@ def build_markdown(records, generated_at, start_date, end_date, limit):
                 "represent total public awareness."
             ),
             "- Main_Page is excluded from topic-level attention inspection where available.",
+            (
+                "- Topic-level attention excludes Main_Page and non-topic Wikipedia "
+                "namespace pages such as Special:, Wikipedia:, Help:, File:, and Category:."
+            ),
             "- Wikipedia Pageviews remains a rough public attention proxy.",
             "",
         ]

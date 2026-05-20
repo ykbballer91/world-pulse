@@ -1,6 +1,6 @@
 # World Pulse Gap Examples
 
-Generated at: 2026-05-20T12:40:43Z
+Generated at: 2026-05-20T12:45:42Z
 
 ## Scope
 
@@ -24,6 +24,9 @@ Rows evaluated: 30
 - Attention raw score excluding Main Page: 0
 - Attention Position excluding Main Page: 28
 - Reality-Attention difference excluding Main Page: 66
+- Attention raw score topic pages: 0
+- Attention Position topic pages: 28
+- Reality-Attention difference topic pages: 66
 - Layer sample counts: reality=25, attention=20
 
 Top reality observations:
@@ -33,8 +36,8 @@ Top reality observations:
 
 Top attention observations:
 - Wikipedia attention snapshot for 2026-05-14 — 2026-05-14 00:00 UTC — attention / wikipedia_attention_snapshot
-  - Top page: Special:Search
-  - Total views excluding Main Page: 1748875
+  - Top topic page: Wes_Streeting
+  - Total topic views: 1185691
   - Date: 2026-05-14
 
 ### 2026-05-15
@@ -48,6 +51,9 @@ Top attention observations:
 - Attention raw score excluding Main Page: 0
 - Attention Position excluding Main Page: 29
 - Reality-Attention difference excluding Main Page: 65
+- Attention raw score topic pages: 0
+- Attention Position topic pages: 29
+- Reality-Attention difference topic pages: 65
 - Layer sample counts: reality=26, attention=21
 
 Top reality observations:
@@ -57,8 +63,8 @@ Top reality observations:
 
 Top attention observations:
 - Wikipedia attention snapshot for 2026-05-15 — 2026-05-15 00:00 UTC — attention / wikipedia_attention_snapshot
-  - Top page: Special:Search
-  - Total views excluding Main Page: 1848150
+  - Top topic page: Iceman_(Drake_album)
+  - Total topic views: 1270488
   - Date: 2026-05-15
 
 ### 2026-05-20
@@ -72,6 +78,9 @@ Top attention observations:
 - Attention raw score excluding Main Page: 0
 - Attention Position excluding Main Page: 29
 - Reality-Attention difference excluding Main Page: 56
+- Attention raw score topic pages: 0
+- Attention Position topic pages: 29
+- Reality-Attention difference topic pages: 56
 - Layer sample counts: reality=30, attention=24
 
 Top reality observations:
@@ -93,6 +102,9 @@ Top attention observations:
 - Attention raw score excluding Main Page: 0
 - Attention Position excluding Main Page: 29
 - Reality-Attention difference excluding Main Page: 43
+- Attention raw score topic pages: 0
+- Attention Position topic pages: 29
+- Reality-Attention difference topic pages: 43
 - Layer sample counts: reality=30, attention=24
 
 Top reality observations:
@@ -116,6 +128,9 @@ Top attention observations:
 - Attention raw score excluding Main Page: 11.21
 - Attention Position excluding Main Page: 91
 - Reality-Attention difference excluding Main Page: -70
+- Attention raw score topic pages: 3.79
+- Attention Position topic pages: 78
+- Reality-Attention difference topic pages: -57
 - Layer sample counts: reality=21, attention=16
 
 Top reality observations:
@@ -125,8 +140,8 @@ Top reality observations:
 
 Top attention observations:
 - Wikipedia attention snapshot for 2026-05-10 — 2026-05-10 00:00 UTC — attention / wikipedia_attention_snapshot
-  - Top page: Special:Search
-  - Total views excluding Main Page: 3071888
+  - Top topic page: Vijay_(actor)
+  - Total topic views: 2344711
   - Date: 2026-05-10
 
 ### 2026-05-17
@@ -140,6 +155,9 @@ Top attention observations:
 - Attention raw score excluding Main Page: 21.26
 - Attention Position excluding Main Page: 93
 - Reality-Attention difference excluding Main Page: -72
+- Attention raw score topic pages: 20.97
+- Attention Position topic pages: 93
+- Reality-Attention difference topic pages: -72
 - Layer sample counts: reality=28, attention=23
 
 Top reality observations:
@@ -149,8 +167,8 @@ Top reality observations:
 
 Top attention observations:
 - Wikipedia attention snapshot for 2026-05-17 — 2026-05-17 00:00 UTC — attention / wikipedia_attention_snapshot
-  - Top page: Special:Search
-  - Total views excluding Main Page: 3470349
+  - Top topic page: Aaron_Rai
+  - Total topic views: 2812598
   - Date: 2026-05-17
 
 ## 3. Largest absolute layer differences
@@ -166,6 +184,9 @@ Top attention observations:
 - Attention raw score excluding Main Page: 11.21
 - Attention Position excluding Main Page: 91
 - Reality-Attention difference excluding Main Page: -70
+- Attention raw score topic pages: 3.79
+- Attention Position topic pages: 78
+- Reality-Attention difference topic pages: -57
 - Layer sample counts: reality=21, attention=16
 
 Top reality observations:
@@ -175,8 +196,8 @@ Top reality observations:
 
 Top attention observations:
 - Wikipedia attention snapshot for 2026-05-10 — 2026-05-10 00:00 UTC — attention / wikipedia_attention_snapshot
-  - Top page: Special:Search
-  - Total views excluding Main Page: 3071888
+  - Top topic page: Vijay_(actor)
+  - Total topic views: 2344711
   - Date: 2026-05-10
 
 ### 2026-05-17
@@ -190,6 +211,9 @@ Top attention observations:
 - Attention raw score excluding Main Page: 21.26
 - Attention Position excluding Main Page: 93
 - Reality-Attention difference excluding Main Page: -72
+- Attention raw score topic pages: 20.97
+- Attention Position topic pages: 93
+- Reality-Attention difference topic pages: -72
 - Layer sample counts: reality=28, attention=23
 
 Top reality observations:
@@ -199,8 +223,8 @@ Top reality observations:
 
 Top attention observations:
 - Wikipedia attention snapshot for 2026-05-17 — 2026-05-17 00:00 UTC — attention / wikipedia_attention_snapshot
-  - Top page: Special:Search
-  - Total views excluding Main Page: 3470349
+  - Top topic page: Aaron_Rai
+  - Total topic views: 2812598
   - Date: 2026-05-17
 
 ### 2026-05-14
@@ -214,6 +238,9 @@ Top attention observations:
 - Attention raw score excluding Main Page: 0
 - Attention Position excluding Main Page: 28
 - Reality-Attention difference excluding Main Page: 66
+- Attention raw score topic pages: 0
+- Attention Position topic pages: 28
+- Reality-Attention difference topic pages: 66
 - Layer sample counts: reality=25, attention=20
 
 Top reality observations:
@@ -223,8 +250,8 @@ Top reality observations:
 
 Top attention observations:
 - Wikipedia attention snapshot for 2026-05-14 — 2026-05-14 00:00 UTC — attention / wikipedia_attention_snapshot
-  - Top page: Special:Search
-  - Total views excluding Main Page: 1748875
+  - Top topic page: Wes_Streeting
+  - Total topic views: 1185691
   - Date: 2026-05-14
 
 ### 2026-05-15
@@ -238,6 +265,9 @@ Top attention observations:
 - Attention raw score excluding Main Page: 0
 - Attention Position excluding Main Page: 29
 - Reality-Attention difference excluding Main Page: 65
+- Attention raw score topic pages: 0
+- Attention Position topic pages: 29
+- Reality-Attention difference topic pages: 65
 - Layer sample counts: reality=26, attention=21
 
 Top reality observations:
@@ -247,8 +277,8 @@ Top reality observations:
 
 Top attention observations:
 - Wikipedia attention snapshot for 2026-05-15 — 2026-05-15 00:00 UTC — attention / wikipedia_attention_snapshot
-  - Top page: Special:Search
-  - Total views excluding Main Page: 1848150
+  - Top topic page: Iceman_(Drake_album)
+  - Total topic views: 1270488
   - Date: 2026-05-15
 
 ### 2026-05-20
@@ -262,6 +292,9 @@ Top attention observations:
 - Attention raw score excluding Main Page: 0
 - Attention Position excluding Main Page: 29
 - Reality-Attention difference excluding Main Page: 56
+- Attention raw score topic pages: 0
+- Attention Position topic pages: 29
+- Reality-Attention difference topic pages: 56
 - Layer sample counts: reality=30, attention=24
 
 Top reality observations:
@@ -283,6 +316,9 @@ Top attention observations:
 - Attention raw score excluding Main Page: 0
 - Attention Position excluding Main Page: 29
 - Reality-Attention difference excluding Main Page: 43
+- Attention raw score topic pages: 0
+- Attention Position topic pages: 29
+- Reality-Attention difference topic pages: 43
 - Layer sample counts: reality=30, attention=24
 
 Top reality observations:
@@ -304,6 +340,9 @@ Top attention observations:
 - Attention raw score excluding Main Page: 0
 - Attention Position excluding Main Page: 23
 - Reality-Attention difference excluding Main Page: 69
+- Attention raw score topic pages: 0
+- Attention Position topic pages: 27
+- Reality-Attention difference topic pages: 65
 - Layer sample counts: reality=20, attention=15
 
 Top reality observations:
@@ -313,8 +352,8 @@ Top reality observations:
 
 Top attention observations:
 - Wikipedia attention snapshot for 2026-05-09 — 2026-05-09 00:00 UTC — attention / wikipedia_attention_snapshot
-  - Top page: Special:Search
-  - Total views excluding Main Page: 2346318
+  - Top topic page: David_Attenborough
+  - Total topic views: 1701329
   - Date: 2026-05-09
 
 ### 2026-05-12
@@ -328,6 +367,9 @@ Top attention observations:
 - Attention raw score excluding Main Page: 0
 - Attention Position excluding Main Page: 25
 - Reality-Attention difference excluding Main Page: 29
+- Attention raw score topic pages: 0
+- Attention Position topic pages: 28
+- Reality-Attention difference topic pages: 26
 - Layer sample counts: reality=23, attention=18
 
 Top reality observations:
@@ -337,8 +379,8 @@ Top reality observations:
 
 Top attention observations:
 - Wikipedia attention snapshot for 2026-05-12 — 2026-05-12 00:00 UTC — attention / wikipedia_attention_snapshot
-  - Top page: Special:Search
-  - Total views excluding Main Page: 2016697
+  - Top topic page: Brandon_Clarke
+  - Total topic views: 1457380
   - Date: 2026-05-12
 
 ### 2026-05-18
@@ -352,6 +394,9 @@ Top attention observations:
 - Attention raw score excluding Main Page: 0
 - Attention Position excluding Main Page: 29
 - Reality-Attention difference excluding Main Page: -7
+- Attention raw score topic pages: 0
+- Attention Position topic pages: 29
+- Reality-Attention difference topic pages: -7
 - Layer sample counts: reality=29, attention=24
 
 Top reality observations:
@@ -361,8 +406,8 @@ Top reality observations:
 
 Top attention observations:
 - Wikipedia attention snapshot for 2026-05-18 — 2026-05-18 00:00 UTC — attention / wikipedia_attention_snapshot
-  - Top page: Special:Search
-  - Total views excluding Main Page: 2088196
+  - Top topic page: Aaron_Rai
+  - Total topic views: 1516402
   - Date: 2026-05-18
 
 ### 2026-05-13
@@ -376,6 +421,9 @@ Top attention observations:
 - Attention raw score excluding Main Page: 0
 - Attention Position excluding Main Page: 26
 - Reality-Attention difference excluding Main Page: -3
+- Attention raw score topic pages: 0
+- Attention Position topic pages: 26
+- Reality-Attention difference topic pages: -3
 - Layer sample counts: reality=24, attention=19
 
 Top reality observations:
@@ -385,8 +433,8 @@ Top reality observations:
 
 Top attention observations:
 - Wikipedia attention snapshot for 2026-05-13 — 2026-05-13 00:00 UTC — attention / wikipedia_attention_snapshot
-  - Top page: Special:Search
-  - Total views excluding Main Page: 2178756
+  - Top topic page: Brandon_Clarke
+  - Total topic views: 1584976
   - Date: 2026-05-13
 
 ## 4. Notes for interpretation
@@ -398,4 +446,5 @@ Top attention observations:
 - Current attention layer is limited mainly to Wikipedia Pageviews, so conclusions must be treated as provisional.
 - Current attention layer is limited. In this beta, Wikipedia Pageviews is only a rough public attention proxy and does not represent total public awareness.
 - Main_Page is excluded from topic-level attention inspection where available.
+- Topic-level attention excludes Main_Page and non-topic Wikipedia namespace pages such as Special:, Wikipedia:, Help:, File:, and Category:.
 - Wikipedia Pageviews remains a rough public attention proxy.
