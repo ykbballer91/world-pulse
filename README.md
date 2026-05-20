@@ -95,6 +95,12 @@ python scripts/generate_normalized_events.py --source all
 
 Calculate initial Weirdness Score:
 
+Score versions:
+
+- `weirdness_v0_1`: raw positive anomaly weighted score.
+- `weirdness_v0_2`: percentile rank of the daily raw score within the recent baseline window.
+- Current display uses `weirdness_v0_2`.
+
 ```sh
 python scripts/calculate_weirdness_score.py
 python scripts/calculate_weirdness_score.py --date 2026-05-18

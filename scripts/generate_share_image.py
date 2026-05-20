@@ -170,6 +170,19 @@ def format_plain(value):
     return f"{float(value):.2f}".replace(". ", ".").replace(" .", ".")
 
 
+def compact_percentile_line(page_payload):
+    line = page_payload.get("percentile_line")
+    if not line:
+        summary_lines = page_payload.get("summary_lines", [])
+        line = summary_lines[0] if summary_lines else None
+    if not line:
+        return None
+    line = line.replace("This data date is in the ", "")
+    line = line.replace("of the last ", "of last ")
+    line = line.rstrip(".")
+    return line
+
+
 def generate_image(display_date, page_payload):
     image = Image.new("RGB", (WIDTH, HEIGHT), "#F7F7F4")
     draw = ImageDraw.Draw(image)
@@ -206,9 +219,9 @@ def generate_image(display_date, page_payload):
     draw.text((68, 248), str(score), font=font_score, fill=ink)
     draw.text((78, 452), score_band_label(score), font=font_band, fill=ink)
 
-    summary_lines = page_payload.get("summary_lines", [])
-    if summary_lines:
-        draw_wrapped(draw, (78, 500), summary_lines[0], font_small, muted, 430, line_spacing=6, max_lines=1)
+    percentile_line = compact_percentile_line(page_payload)
+    if percentile_line:
+        draw_wrapped(draw, (78, 500), percentile_line, font_small, muted, 470, line_spacing=6, max_lines=1)
 
     card_left = 610
     card_top = 238

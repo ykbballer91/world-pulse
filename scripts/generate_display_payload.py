@@ -15,6 +15,7 @@ PAYLOAD_COLUMNS = [
     "payload",
     "metadata",
 ]
+CURRENT_SCORE_VERSION = "weirdness_v0_2"
 
 
 def parse_date(value):
@@ -48,9 +49,12 @@ def latest_score_date(conn):
             """
             SELECT score_date
             FROM weirdness_scores
-            ORDER BY score_date DESC
+            ORDER BY
+              CASE WHEN score_version = %s THEN 0 ELSE 1 END,
+              score_date DESC
             LIMIT 1
-            """
+            """,
+            (CURRENT_SCORE_VERSION,),
         )
         row = cur.fetchone()
         if row is None:
@@ -65,10 +69,12 @@ def fetch_weirdness_score(conn, display_date):
             SELECT score_date, score_value, score_version, explanation_payload
             FROM weirdness_scores
             WHERE score_date = %s
-            ORDER BY calculated_at DESC
+            ORDER BY
+              CASE WHEN score_version = %s THEN 0 ELSE 1 END,
+              calculated_at DESC
             LIMIT 1
             """,
-            (display_date,),
+            (display_date, CURRENT_SCORE_VERSION),
         )
         row = cur.fetchone()
         if row is None:
@@ -84,6 +90,24 @@ def summary_line_for_score(score_value):
     if score_value <= 80:
         return "Observed public signals were clearly above the recent baseline."
     return "Observed public signals were unusually elevated relative to the recent baseline."
+
+
+def ordinal(value):
+    number = int(round(value))
+    if 10 <= number % 100 <= 20:
+        suffix = "th"
+    else:
+        suffix = {1: "st", 2: "nd", 3: "rd"}.get(number % 10, "th")
+    return f"{number}{suffix}"
+
+
+def percentile_line(score_value, explanation_payload):
+    percentile = explanation_payload.get("percentile_rank", score_value)
+    window_days = int(explanation_payload.get("window_days", 30))
+    return (
+        f"This data date is in the {ordinal(percentile)} percentile "
+        f"of the last {window_days} observed days."
+    )
 
 
 def build_top_cards(top_events):
@@ -121,14 +145,22 @@ def build_page_payload(score_row):
     score_date, score_value, score_version, explanation_payload = score_row
     top_events = explanation_payload.get("top_events", [])
     now = datetime.now(timezone.utc)
+    data_date = explanation_payload.get("data_date", score_date.isoformat())
+    line = (
+        percentile_line(score_value, explanation_payload)
+        if score_version == CURRENT_SCORE_VERSION
+        else summary_line_for_score(score_value)
+    )
 
     return {
         "date": score_date.isoformat(),
+        "data_date": data_date,
         "weirdness_score": score_value,
         "score_version": score_version,
-        "headline": "Today's Weirdness Score",
+        "headline": "Latest Weirdness Score",
+        "percentile_line": line,
         "summary_lines": [
-            summary_line_for_score(score_value),
+            line,
             "The score is based on public earthquake and Wikipedia attention data.",
             "This is not a forecast, alert, or recommendation.",
         ],

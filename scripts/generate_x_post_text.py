@@ -101,22 +101,42 @@ def summary_line_for_score(score):
     return "Observed public signals were unusually elevated relative to the recent baseline."
 
 
+def percentile_line_for_payload(score, page_payload):
+    return page_payload.get("percentile_line") or summary_line_for_score(score)
+
+
+def truncate_text(value, max_chars):
+    text = str(value)
+    if len(text) <= max_chars:
+        return text
+    if max_chars <= 3:
+        return text[:max_chars]
+    return text[: max_chars - 3].rstrip() + "..."
+
+
 def build_post_text(display_date, page_payload, url=None):
     score = int(page_payload.get("weirdness_score", 0))
     card = top_contributor(page_payload.get("top_cards", []))
     top_signal = card.get("title") if card else "No top signal available"
+    score_line = percentile_line_for_payload(score, page_payload)
 
     lines = [
         f"World Pulse | Data date: {display_date.isoformat()}",
         f"Latest Weirdness Score: {score}",
+        score_line,
         f"Top signal: {top_signal}",
-        summary_line_for_score(score),
         "Not a forecast, alert, or recommendation.",
     ]
     if url:
         lines.append(url)
     lines.append("#WorldPulse")
     post_text = "\n".join(lines)
+
+    if len(post_text) > MAX_POST_CHARS:
+        overflow = len(post_text) - MAX_POST_CHARS
+        top_signal = truncate_text(top_signal, max(24, len(top_signal) - overflow - 1))
+        lines[3] = f"Top signal: {top_signal}"
+        post_text = "\n".join(lines)
 
     if len(post_text) > MAX_POST_CHARS:
         raise ValueError(f"generated post is {len(post_text)} characters, above {MAX_POST_CHARS}")
