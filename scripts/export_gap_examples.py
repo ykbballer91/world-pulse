@@ -29,33 +29,44 @@ NON_TOPIC_PAGE_PREFIXES = (
     "TimedText:",
 )
 TARGETED_ATTENTION_PAGES = {
-    "geophysical": [
-        "Earthquake",
-        "Tsunami",
-        "Seismic_wave",
-        "Seismology",
-        "Japan",
-        "Turkey",
-        "Indonesia",
-        "Chile",
-        "Peru",
-        "Tonga",
-        "Papua_New_Guinea",
-    ],
-    "space_weather": [
-        "Solar_flare",
-        "Geomagnetic_storm",
-        "Aurora",
-        "Space_weather",
-        "Sunspot",
-    ],
-    "internet": [
-        "Internet_outage",
-        "Cloudflare",
-        "Border_Gateway_Protocol",
-        "Domain_Name_System",
-        "Internet",
-    ],
+    "geophysical": {
+        "core": [
+            "Earthquake",
+            "Tsunami",
+            "Seismology",
+            "Seismic_wave",
+        ],
+        "context": [
+            "Japan",
+            "Turkey",
+            "Indonesia",
+            "Chile",
+            "Peru",
+            "Tonga",
+            "Papua_New_Guinea",
+        ],
+    },
+    "space_weather": {
+        "core": [
+            "Solar_flare",
+            "Geomagnetic_storm",
+            "Aurora",
+            "Space_weather",
+            "Sunspot",
+        ],
+        "context": [],
+    },
+    "internet": {
+        "core": [
+            "Internet_outage",
+            "Cloudflare",
+            "Border_Gateway_Protocol",
+            "Domain_Name_System",
+        ],
+        "context": [
+            "Internet",
+        ],
+    },
 }
 
 
@@ -123,12 +134,14 @@ def normalize_page_title(title):
 
 def targeted_attention_lookup():
     lookup = {}
-    for category, pages in TARGETED_ATTENTION_PAGES.items():
-        for page in pages:
-            lookup[normalize_page_title(page)] = {
-                "category": category,
-                "page": page,
-            }
+    for category, groups in TARGETED_ATTENTION_PAGES.items():
+        for target_kind, pages in groups.items():
+            for page in pages:
+                lookup[normalize_page_title(page)] = {
+                    "category": category,
+                    "page": page,
+                    "target_kind": target_kind,
+                }
     return lookup
 
 
@@ -150,6 +163,7 @@ def targeted_attention_matches(top_articles):
                 "page": target["page"],
                 "matched_title": title,
                 "category": target["category"],
+                "target_kind": target["target_kind"],
                 "views": article_views(article),
             }
         )
@@ -193,6 +207,20 @@ def fetch_scores(conn, start_date, end_date):
         raw_scores_targeted = component_scores.get("layer_raw_scores_targeted") or {}
         positions_targeted = component_scores.get("layer_positions_targeted") or {}
         gaps_targeted = component_scores.get("layer_gaps_targeted") or {}
+        raw_scores_targeted_core = (
+            component_scores.get("layer_raw_scores_targeted_core") or {}
+        )
+        positions_targeted_core = (
+            component_scores.get("layer_positions_targeted_core") or {}
+        )
+        gaps_targeted_core = component_scores.get("layer_gaps_targeted_core") or {}
+        raw_scores_targeted_context = (
+            component_scores.get("layer_raw_scores_targeted_context") or {}
+        )
+        positions_targeted_context = (
+            component_scores.get("layer_positions_targeted_context") or {}
+        )
+        gaps_targeted_context = component_scores.get("layer_gaps_targeted_context") or {}
         attention_streams = component_scores.get("attention_streams") or {}
         reality_position = int_or_none(positions.get("reality"))
         attention_position = int_or_none(positions.get("attention"))
@@ -220,6 +248,12 @@ def fetch_scores(conn, start_date, end_date):
                 "layer_raw_scores_targeted": raw_scores_targeted,
                 "layer_positions_targeted": positions_targeted,
                 "layer_gaps_targeted": gaps_targeted,
+                "layer_raw_scores_targeted_core": raw_scores_targeted_core,
+                "layer_positions_targeted_core": positions_targeted_core,
+                "layer_gaps_targeted_core": gaps_targeted_core,
+                "layer_raw_scores_targeted_context": raw_scores_targeted_context,
+                "layer_positions_targeted_context": positions_targeted_context,
+                "layer_gaps_targeted_context": gaps_targeted_context,
                 "attention_streams": attention_streams,
                 "reality_position": reality_position,
                 "attention_position": attention_position,
@@ -325,30 +359,69 @@ def global_topic_attention_details(event):
 
 def targeted_attention_details(record, event):
     streams = record.get("attention_streams") or {}
-    targeted = streams.get("targeted") or {}
-    matches = targeted.get("matched_pages")
-    if matches is None:
+    targeted_core = streams.get("targeted_core") or {}
+    targeted_context = streams.get("targeted_context") or {}
+    core_matches = targeted_core.get("matched_pages")
+    context_matches = targeted_context.get("matched_pages")
+    if core_matches is None or context_matches is None:
         payload = event.get("normalized_payload") or {}
-        matches = targeted_attention_matches(payload.get("top_articles") or [])
+        matches = targeted_attention_matches(payload.get("top_articles") or payload.get("records") or [])
+        if core_matches is None:
+            core_matches = [
+                match for match in matches if match.get("target_kind") == "core"
+            ]
+        if context_matches is None:
+            context_matches = [
+                match for match in matches if match.get("target_kind") == "context"
+            ]
 
     details = ["Targeted attention:"]
-    if matches:
-        details.append("- Matched pages:")
-        for match in matches:
+    if core_matches:
+        details.append("Core matched pages:")
+        for match in core_matches:
             details.append(
-                f"  - {match.get('page')} — views: {format_number(match.get('views'))}"
+                f"- {match.get('page')} — views: {format_number(match.get('views'))}"
             )
     else:
-        details.append("- No targeted attention pages found in stored Wikipedia top pages for this date.")
+        details.append("Core matched pages:")
+        details.append("- No core targeted attention pages found in stored Wikipedia top pages for this date.")
+    if context_matches:
+        details.append("")
+        details.append("Context matched pages:")
+        for match in context_matches:
+            details.append(
+                f"- {match.get('page')} — views: {format_number(match.get('views'))}"
+            )
+    else:
+        details.append("")
+        details.append("Context matched pages:")
+        details.append("- No context targeted attention pages found in stored Wikipedia top pages for this date.")
     details.append(
-        f"- Total targeted views: {format_number((record.get('layer_raw_scores_targeted') or {}).get('attention'))}"
+        ""
     )
     details.append(
-        f"- Targeted Attention Position: {format_number((record.get('layer_positions_targeted') or {}).get('attention'))}"
+        "- Total core targeted views: "
+        f"{format_number((record.get('layer_raw_scores_targeted_core') or {}).get('attention'))}"
     )
     details.append(
-        "- Reality-Targeted Attention difference: "
-        f"{format_number((record.get('layer_gaps_targeted') or {}).get('reality_attention_gap'))}"
+        "- Core Targeted Attention Position: "
+        f"{format_number((record.get('layer_positions_targeted_core') or {}).get('attention'))}"
+    )
+    details.append(
+        "- Reality-Core Targeted Attention difference: "
+        f"{format_number((record.get('layer_gaps_targeted_core') or {}).get('reality_attention_gap'))}"
+    )
+    details.append(
+        "- Total context targeted views: "
+        f"{format_number((record.get('layer_raw_scores_targeted_context') or {}).get('attention'))}"
+    )
+    details.append(
+        "- Context Targeted Attention Position: "
+        f"{format_number((record.get('layer_positions_targeted_context') or {}).get('attention'))}"
+    )
+    details.append(
+        "- Reality-Context Targeted Attention difference: "
+        f"{format_number((record.get('layer_gaps_targeted_context') or {}).get('reality_attention_gap'))}"
     )
     return details
 
@@ -380,9 +453,12 @@ def append_record(lines, record):
     raw_scores_topic_pages = record["layer_raw_scores_topic_pages"]
     positions_topic_pages = record["layer_positions_topic_pages"]
     gaps_topic_pages = record["layer_gaps_topic_pages"]
-    raw_scores_targeted = record["layer_raw_scores_targeted"]
-    positions_targeted = record["layer_positions_targeted"]
-    gaps_targeted = record["layer_gaps_targeted"]
+    raw_scores_targeted_core = record["layer_raw_scores_targeted_core"]
+    positions_targeted_core = record["layer_positions_targeted_core"]
+    gaps_targeted_core = record["layer_gaps_targeted_core"]
+    raw_scores_targeted_context = record["layer_raw_scores_targeted_context"]
+    positions_targeted_context = record["layer_positions_targeted_context"]
+    gaps_targeted_context = record["layer_gaps_targeted_context"]
     sample_counts = record["layer_sample_counts"]
     lines.extend(
         [
@@ -419,16 +495,28 @@ def append_record(lines, record):
                 f"{format_number(gaps_topic_pages.get('reality_attention_gap'))}"
             ),
             (
-                "- Attention raw score targeted: "
-                f"{format_number(raw_scores_targeted.get('attention'))}"
+                "- Attention raw score targeted core: "
+                f"{format_number(raw_scores_targeted_core.get('attention'))}"
             ),
             (
-                "- Attention Position targeted: "
-                f"{format_number(positions_targeted.get('attention'))}"
+                "- Attention Position targeted core: "
+                f"{format_number(positions_targeted_core.get('attention'))}"
             ),
             (
-                "- Reality-Attention difference targeted: "
-                f"{format_number(gaps_targeted.get('reality_attention_gap'))}"
+                "- Reality-Attention difference targeted core: "
+                f"{format_number(gaps_targeted_core.get('reality_attention_gap'))}"
+            ),
+            (
+                "- Attention raw score targeted context: "
+                f"{format_number(raw_scores_targeted_context.get('attention'))}"
+            ),
+            (
+                "- Attention Position targeted context: "
+                f"{format_number(positions_targeted_context.get('attention'))}"
+            ),
+            (
+                "- Reality-Attention difference targeted context: "
+                f"{format_number(gaps_targeted_context.get('reality_attention_gap'))}"
             ),
             (
                 "- Layer sample counts: "
@@ -558,6 +646,18 @@ def build_markdown(records, generated_at, start_date, end_date, limit):
             (
                 "- Targeted attention only checks whether predefined topic pages "
                 "appear in stored Wikipedia top pages."
+            ),
+            (
+                "- Core targeted pages are topic pages directly related to the "
+                "observed category."
+            ),
+            (
+                "- Context targeted pages are broader location or infrastructure "
+                "context pages."
+            ),
+            (
+                "- Context matches must not be interpreted as direct attention to "
+                "a specific event."
             ),
             (
                 "- Absence from targeted attention does not imply absence of public "

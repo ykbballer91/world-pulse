@@ -1,6 +1,6 @@
 # World Pulse Gap Examples
 
-Generated at: 2026-05-20T12:58:59Z
+Generated at: 2026-05-20T13:12:05Z
 
 ## Scope
 
@@ -27,9 +27,12 @@ Rows evaluated: 30
 - Attention raw score topic pages: 0
 - Attention Position topic pages: 32
 - Reality-Attention difference topic pages: 62
-- Attention raw score targeted: 21584
-- Attention Position targeted: 58
-- Reality-Attention difference targeted: 36
+- Attention raw score targeted core: 0
+- Attention Position targeted core: 50
+- Reality-Attention difference targeted core: 44
+- Attention raw score targeted context: 21584
+- Attention Position targeted context: 58
+- Reality-Attention difference targeted context: 36
 - Layer sample counts: reality=25, attention=20
 
 Top reality observations:
@@ -43,12 +46,19 @@ Global topic attention:
   - Total topic views: 17636657
   - Date: 2026-05-14
 Targeted attention:
-- Matched pages:
-  - Japan — views: 12454
-  - Turkey — views: 9130
-- Total targeted views: 21584
-- Targeted Attention Position: 58
-- Reality-Targeted Attention difference: 36
+Core matched pages:
+- No core targeted attention pages found in stored Wikipedia top pages for this date.
+
+Context matched pages:
+- Japan — views: 12454
+- Turkey — views: 9130
+
+- Total core targeted views: 0
+- Core Targeted Attention Position: 50
+- Reality-Core Targeted Attention difference: 44
+- Total context targeted views: 21584
+- Context Targeted Attention Position: 58
+- Reality-Context Targeted Attention difference: 36
 
 ### 2026-05-15
 
@@ -64,9 +74,12 @@ Targeted attention:
 - Attention raw score topic pages: 0
 - Attention Position topic pages: 33
 - Reality-Attention difference topic pages: 61
-- Attention raw score targeted: 21390
-- Attention Position targeted: 50
-- Reality-Attention difference targeted: 44
+- Attention raw score targeted core: 0
+- Attention Position targeted core: 50
+- Reality-Attention difference targeted core: 44
+- Attention raw score targeted context: 21390
+- Attention Position targeted context: 50
+- Reality-Attention difference targeted context: 44
 - Layer sample counts: reality=26, attention=21
 
 Top reality observations:
@@ -80,12 +93,19 @@ Global topic attention:
   - Total topic views: 17737360
   - Date: 2026-05-15
 Targeted attention:
-- Matched pages:
-  - Japan — views: 12394
-  - Turkey — views: 8996
-- Total targeted views: 21390
-- Targeted Attention Position: 50
-- Reality-Targeted Attention difference: 44
+Core matched pages:
+- No core targeted attention pages found in stored Wikipedia top pages for this date.
+
+Context matched pages:
+- Japan — views: 12394
+- Turkey — views: 8996
+
+- Total core targeted views: 0
+- Core Targeted Attention Position: 50
+- Reality-Core Targeted Attention difference: 44
+- Total context targeted views: 21390
+- Context Targeted Attention Position: 50
+- Reality-Context Targeted Attention difference: 44
 
 ### 2026-05-20
 
@@ -101,9 +121,12 @@ Targeted attention:
 - Attention raw score topic pages: 0
 - Attention Position topic pages: 31
 - Reality-Attention difference topic pages: 54
-- Attention raw score targeted: 0
-- Attention Position targeted: 0
-- Reality-Attention difference targeted: 85
+- Attention raw score targeted core: 0
+- Attention Position targeted core: 50
+- Reality-Attention difference targeted core: 35
+- Attention raw score targeted context: 0
+- Attention Position targeted context: 0
+- Reality-Attention difference targeted context: 85
 - Layer sample counts: reality=30, attention=24
 
 Top reality observations:
@@ -114,10 +137,18 @@ Top reality observations:
 Top attention observations:
 - No observations available for this layer in stored events.
 Targeted attention:
-- No targeted attention pages found in stored Wikipedia top pages for this date.
-- Total targeted views: 0
-- Targeted Attention Position: 0
-- Reality-Targeted Attention difference: 85
+Core matched pages:
+- No core targeted attention pages found in stored Wikipedia top pages for this date.
+
+Context matched pages:
+- No context targeted attention pages found in stored Wikipedia top pages for this date.
+
+- Total core targeted views: 0
+- Core Targeted Attention Position: 50
+- Reality-Core Targeted Attention difference: 35
+- Total context targeted views: 0
+- Context Targeted Attention Position: 0
+- Reality-Context Targeted Attention difference: 85
 
 ### 2026-05-19
 
@@ -133,9 +164,12 @@ Targeted attention:
 - Attention raw score topic pages: 0
 - Attention Position topic pages: 31
 - Reality-Attention difference topic pages: 41
-- Attention raw score targeted: 0
-- Attention Position targeted: 0
-- Reality-Attention difference targeted: 72
+- Attention raw score targeted core: 0
+- Attention Position targeted core: 50
+- Reality-Attention difference targeted core: 22
+- Attention raw score targeted context: 0
+- Attention Position targeted context: 0
+- Reality-Attention difference targeted context: 72
 - Layer sample counts: reality=30, attention=24
 
 Top reality observations:
@@ -146,10 +180,18 @@ Top reality observations:
 Top attention observations:
 - No observations available for this layer in stored events.
 Targeted attention:
-- No targeted attention pages found in stored Wikipedia top pages for this date.
-- Total targeted views: 0
-- Targeted Attention Position: 0
-- Reality-Targeted Attention difference: 72
+Core matched pages:
+- No core targeted attention pages found in stored Wikipedia top pages for this date.
+
+Context matched pages:
+- No context targeted attention pages found in stored Wikipedia top pages for this date.
+
+- Total core targeted views: 0
+- Core Targeted Attention Position: 50
+- Reality-Core Targeted Attention difference: 22
+- Total context targeted views: 0
+- Context Targeted Attention Position: 0
+- Reality-Context Targeted Attention difference: 72
 
 ## 2. Higher attention position than reality position
 
@@ -167,9 +209,12 @@ Targeted attention:
 - Attention raw score topic pages: 22.32
 - Attention Position topic pages: 91
 - Reality-Attention difference topic pages: -70
-- Attention raw score targeted: 10137
-- Attention Position targeted: 9
-- Reality-Attention difference targeted: 12
+- Attention raw score targeted core: 0
+- Attention Position targeted core: 50
+- Reality-Attention difference targeted core: -29
+- Attention raw score targeted context: 10137
+- Attention Position targeted context: 9
+- Reality-Attention difference targeted context: 12
 - Layer sample counts: reality=21, attention=16
 
 Top reality observations:
@@ -183,11 +228,18 @@ Global topic attention:
   - Total topic views: 23208767
   - Date: 2026-05-10
 Targeted attention:
-- Matched pages:
-  - Japan — views: 10137
-- Total targeted views: 10137
-- Targeted Attention Position: 9
-- Reality-Targeted Attention difference: 12
+Core matched pages:
+- No core targeted attention pages found in stored Wikipedia top pages for this date.
+
+Context matched pages:
+- Japan — views: 10137
+
+- Total core targeted views: 0
+- Core Targeted Attention Position: 50
+- Reality-Core Targeted Attention difference: -29
+- Total context targeted views: 10137
+- Context Targeted Attention Position: 9
+- Reality-Context Targeted Attention difference: 12
 
 ### 2026-05-17
 
@@ -203,9 +255,12 @@ Targeted attention:
 - Attention raw score topic pages: 25.39
 - Attention Position topic pages: 89
 - Reality-Attention difference topic pages: -68
-- Attention raw score targeted: 10586
-- Attention Position targeted: 15
-- Reality-Attention difference targeted: 6
+- Attention raw score targeted core: 0
+- Attention Position targeted core: 50
+- Reality-Attention difference targeted core: -29
+- Attention raw score targeted context: 10586
+- Attention Position targeted context: 15
+- Reality-Attention difference targeted context: 6
 - Layer sample counts: reality=28, attention=23
 
 Top reality observations:
@@ -219,11 +274,18 @@ Global topic attention:
   - Total topic views: 23099434
   - Date: 2026-05-17
 Targeted attention:
-- Matched pages:
-  - Japan — views: 10586
-- Total targeted views: 10586
-- Targeted Attention Position: 15
-- Reality-Targeted Attention difference: 6
+Core matched pages:
+- No core targeted attention pages found in stored Wikipedia top pages for this date.
+
+Context matched pages:
+- Japan — views: 10586
+
+- Total core targeted views: 0
+- Core Targeted Attention Position: 50
+- Reality-Core Targeted Attention difference: -29
+- Total context targeted views: 10586
+- Context Targeted Attention Position: 15
+- Reality-Context Targeted Attention difference: 6
 
 ## 3. Largest absolute layer differences
 
@@ -241,9 +303,12 @@ Targeted attention:
 - Attention raw score topic pages: 22.32
 - Attention Position topic pages: 91
 - Reality-Attention difference topic pages: -70
-- Attention raw score targeted: 10137
-- Attention Position targeted: 9
-- Reality-Attention difference targeted: 12
+- Attention raw score targeted core: 0
+- Attention Position targeted core: 50
+- Reality-Attention difference targeted core: -29
+- Attention raw score targeted context: 10137
+- Attention Position targeted context: 9
+- Reality-Attention difference targeted context: 12
 - Layer sample counts: reality=21, attention=16
 
 Top reality observations:
@@ -257,11 +322,18 @@ Global topic attention:
   - Total topic views: 23208767
   - Date: 2026-05-10
 Targeted attention:
-- Matched pages:
-  - Japan — views: 10137
-- Total targeted views: 10137
-- Targeted Attention Position: 9
-- Reality-Targeted Attention difference: 12
+Core matched pages:
+- No core targeted attention pages found in stored Wikipedia top pages for this date.
+
+Context matched pages:
+- Japan — views: 10137
+
+- Total core targeted views: 0
+- Core Targeted Attention Position: 50
+- Reality-Core Targeted Attention difference: -29
+- Total context targeted views: 10137
+- Context Targeted Attention Position: 9
+- Reality-Context Targeted Attention difference: 12
 
 ### 2026-05-17
 
@@ -277,9 +349,12 @@ Targeted attention:
 - Attention raw score topic pages: 25.39
 - Attention Position topic pages: 89
 - Reality-Attention difference topic pages: -68
-- Attention raw score targeted: 10586
-- Attention Position targeted: 15
-- Reality-Attention difference targeted: 6
+- Attention raw score targeted core: 0
+- Attention Position targeted core: 50
+- Reality-Attention difference targeted core: -29
+- Attention raw score targeted context: 10586
+- Attention Position targeted context: 15
+- Reality-Attention difference targeted context: 6
 - Layer sample counts: reality=28, attention=23
 
 Top reality observations:
@@ -293,11 +368,18 @@ Global topic attention:
   - Total topic views: 23099434
   - Date: 2026-05-17
 Targeted attention:
-- Matched pages:
-  - Japan — views: 10586
-- Total targeted views: 10586
-- Targeted Attention Position: 15
-- Reality-Targeted Attention difference: 6
+Core matched pages:
+- No core targeted attention pages found in stored Wikipedia top pages for this date.
+
+Context matched pages:
+- Japan — views: 10586
+
+- Total core targeted views: 0
+- Core Targeted Attention Position: 50
+- Reality-Core Targeted Attention difference: -29
+- Total context targeted views: 10586
+- Context Targeted Attention Position: 15
+- Reality-Context Targeted Attention difference: 6
 
 ### 2026-05-14
 
@@ -313,9 +395,12 @@ Targeted attention:
 - Attention raw score topic pages: 0
 - Attention Position topic pages: 32
 - Reality-Attention difference topic pages: 62
-- Attention raw score targeted: 21584
-- Attention Position targeted: 58
-- Reality-Attention difference targeted: 36
+- Attention raw score targeted core: 0
+- Attention Position targeted core: 50
+- Reality-Attention difference targeted core: 44
+- Attention raw score targeted context: 21584
+- Attention Position targeted context: 58
+- Reality-Attention difference targeted context: 36
 - Layer sample counts: reality=25, attention=20
 
 Top reality observations:
@@ -329,12 +414,19 @@ Global topic attention:
   - Total topic views: 17636657
   - Date: 2026-05-14
 Targeted attention:
-- Matched pages:
-  - Japan — views: 12454
-  - Turkey — views: 9130
-- Total targeted views: 21584
-- Targeted Attention Position: 58
-- Reality-Targeted Attention difference: 36
+Core matched pages:
+- No core targeted attention pages found in stored Wikipedia top pages for this date.
+
+Context matched pages:
+- Japan — views: 12454
+- Turkey — views: 9130
+
+- Total core targeted views: 0
+- Core Targeted Attention Position: 50
+- Reality-Core Targeted Attention difference: 44
+- Total context targeted views: 21584
+- Context Targeted Attention Position: 58
+- Reality-Context Targeted Attention difference: 36
 
 ### 2026-05-15
 
@@ -350,9 +442,12 @@ Targeted attention:
 - Attention raw score topic pages: 0
 - Attention Position topic pages: 33
 - Reality-Attention difference topic pages: 61
-- Attention raw score targeted: 21390
-- Attention Position targeted: 50
-- Reality-Attention difference targeted: 44
+- Attention raw score targeted core: 0
+- Attention Position targeted core: 50
+- Reality-Attention difference targeted core: 44
+- Attention raw score targeted context: 21390
+- Attention Position targeted context: 50
+- Reality-Attention difference targeted context: 44
 - Layer sample counts: reality=26, attention=21
 
 Top reality observations:
@@ -366,12 +461,19 @@ Global topic attention:
   - Total topic views: 17737360
   - Date: 2026-05-15
 Targeted attention:
-- Matched pages:
-  - Japan — views: 12394
-  - Turkey — views: 8996
-- Total targeted views: 21390
-- Targeted Attention Position: 50
-- Reality-Targeted Attention difference: 44
+Core matched pages:
+- No core targeted attention pages found in stored Wikipedia top pages for this date.
+
+Context matched pages:
+- Japan — views: 12394
+- Turkey — views: 8996
+
+- Total core targeted views: 0
+- Core Targeted Attention Position: 50
+- Reality-Core Targeted Attention difference: 44
+- Total context targeted views: 21390
+- Context Targeted Attention Position: 50
+- Reality-Context Targeted Attention difference: 44
 
 ### 2026-05-20
 
@@ -387,9 +489,12 @@ Targeted attention:
 - Attention raw score topic pages: 0
 - Attention Position topic pages: 31
 - Reality-Attention difference topic pages: 54
-- Attention raw score targeted: 0
-- Attention Position targeted: 0
-- Reality-Attention difference targeted: 85
+- Attention raw score targeted core: 0
+- Attention Position targeted core: 50
+- Reality-Attention difference targeted core: 35
+- Attention raw score targeted context: 0
+- Attention Position targeted context: 0
+- Reality-Attention difference targeted context: 85
 - Layer sample counts: reality=30, attention=24
 
 Top reality observations:
@@ -400,10 +505,18 @@ Top reality observations:
 Top attention observations:
 - No observations available for this layer in stored events.
 Targeted attention:
-- No targeted attention pages found in stored Wikipedia top pages for this date.
-- Total targeted views: 0
-- Targeted Attention Position: 0
-- Reality-Targeted Attention difference: 85
+Core matched pages:
+- No core targeted attention pages found in stored Wikipedia top pages for this date.
+
+Context matched pages:
+- No context targeted attention pages found in stored Wikipedia top pages for this date.
+
+- Total core targeted views: 0
+- Core Targeted Attention Position: 50
+- Reality-Core Targeted Attention difference: 35
+- Total context targeted views: 0
+- Context Targeted Attention Position: 0
+- Reality-Context Targeted Attention difference: 85
 
 ### 2026-05-19
 
@@ -419,9 +532,12 @@ Targeted attention:
 - Attention raw score topic pages: 0
 - Attention Position topic pages: 31
 - Reality-Attention difference topic pages: 41
-- Attention raw score targeted: 0
-- Attention Position targeted: 0
-- Reality-Attention difference targeted: 72
+- Attention raw score targeted core: 0
+- Attention Position targeted core: 50
+- Reality-Attention difference targeted core: 22
+- Attention raw score targeted context: 0
+- Attention Position targeted context: 0
+- Reality-Attention difference targeted context: 72
 - Layer sample counts: reality=30, attention=24
 
 Top reality observations:
@@ -432,10 +548,18 @@ Top reality observations:
 Top attention observations:
 - No observations available for this layer in stored events.
 Targeted attention:
-- No targeted attention pages found in stored Wikipedia top pages for this date.
-- Total targeted views: 0
-- Targeted Attention Position: 0
-- Reality-Targeted Attention difference: 72
+Core matched pages:
+- No core targeted attention pages found in stored Wikipedia top pages for this date.
+
+Context matched pages:
+- No context targeted attention pages found in stored Wikipedia top pages for this date.
+
+- Total core targeted views: 0
+- Core Targeted Attention Position: 50
+- Reality-Core Targeted Attention difference: 22
+- Total context targeted views: 0
+- Context Targeted Attention Position: 0
+- Reality-Context Targeted Attention difference: 72
 
 ### 2026-05-09
 
@@ -451,9 +575,12 @@ Targeted attention:
 - Attention raw score topic pages: 3.50
 - Attention Position topic pages: 63
 - Reality-Attention difference topic pages: 29
-- Attention raw score targeted: 9755
-- Attention Position targeted: 3
-- Reality-Attention difference targeted: 89
+- Attention raw score targeted core: 0
+- Attention Position targeted core: 50
+- Reality-Attention difference targeted core: 42
+- Attention raw score targeted context: 9755
+- Attention Position targeted context: 3
+- Reality-Attention difference targeted context: 89
 - Layer sample counts: reality=20, attention=15
 
 Top reality observations:
@@ -467,11 +594,18 @@ Global topic attention:
   - Total topic views: 20697137
   - Date: 2026-05-09
 Targeted attention:
-- Matched pages:
-  - Japan — views: 9755
-- Total targeted views: 9755
-- Targeted Attention Position: 3
-- Reality-Targeted Attention difference: 89
+Core matched pages:
+- No core targeted attention pages found in stored Wikipedia top pages for this date.
+
+Context matched pages:
+- Japan — views: 9755
+
+- Total core targeted views: 0
+- Core Targeted Attention Position: 50
+- Reality-Core Targeted Attention difference: 42
+- Total context targeted views: 9755
+- Context Targeted Attention Position: 3
+- Reality-Context Targeted Attention difference: 89
 
 ### 2026-05-12
 
@@ -487,9 +621,12 @@ Targeted attention:
 - Attention raw score topic pages: 0
 - Attention Position topic pages: 31
 - Reality-Attention difference topic pages: 23
-- Attention raw score targeted: 21351
-- Attention Position targeted: 53
-- Reality-Attention difference targeted: 1
+- Attention raw score targeted core: 0
+- Attention Position targeted core: 50
+- Reality-Attention difference targeted core: 4
+- Attention raw score targeted context: 21351
+- Attention Position targeted context: 53
+- Reality-Attention difference targeted context: 1
 - Layer sample counts: reality=23, attention=18
 
 Top reality observations:
@@ -503,12 +640,19 @@ Global topic attention:
   - Total topic views: 18128346
   - Date: 2026-05-12
 Targeted attention:
-- Matched pages:
-  - Japan — views: 12258
-  - Turkey — views: 9093
-- Total targeted views: 21351
-- Targeted Attention Position: 53
-- Reality-Targeted Attention difference: 1
+Core matched pages:
+- No core targeted attention pages found in stored Wikipedia top pages for this date.
+
+Context matched pages:
+- Japan — views: 12258
+- Turkey — views: 9093
+
+- Total core targeted views: 0
+- Core Targeted Attention Position: 50
+- Reality-Core Targeted Attention difference: 4
+- Total context targeted views: 21351
+- Context Targeted Attention Position: 53
+- Reality-Context Targeted Attention difference: 1
 
 ### 2026-05-18
 
@@ -524,9 +668,12 @@ Targeted attention:
 - Attention raw score topic pages: 0
 - Attention Position topic pages: 31
 - Reality-Attention difference topic pages: -9
-- Attention raw score targeted: 21804
-- Attention Position targeted: 69
-- Reality-Attention difference targeted: -47
+- Attention raw score targeted core: 0
+- Attention Position targeted core: 50
+- Reality-Attention difference targeted core: -28
+- Attention raw score targeted context: 21804
+- Attention Position targeted context: 69
+- Reality-Attention difference targeted context: -47
 - Layer sample counts: reality=29, attention=24
 
 Top reality observations:
@@ -540,12 +687,19 @@ Global topic attention:
   - Total topic views: 18583459
   - Date: 2026-05-18
 Targeted attention:
-- Matched pages:
-  - Japan — views: 12275
-  - Turkey — views: 9529
-- Total targeted views: 21804
-- Targeted Attention Position: 69
-- Reality-Targeted Attention difference: -47
+Core matched pages:
+- No core targeted attention pages found in stored Wikipedia top pages for this date.
+
+Context matched pages:
+- Japan — views: 12275
+- Turkey — views: 9529
+
+- Total core targeted views: 0
+- Core Targeted Attention Position: 50
+- Reality-Core Targeted Attention difference: -28
+- Total context targeted views: 21804
+- Context Targeted Attention Position: 69
+- Reality-Context Targeted Attention difference: -47
 
 ### 2026-05-13
 
@@ -561,9 +715,12 @@ Targeted attention:
 - Attention raw score topic pages: 0
 - Attention Position topic pages: 32
 - Reality-Attention difference topic pages: -9
-- Attention raw score targeted: 30479
-- Attention Position targeted: 82
-- Reality-Attention difference targeted: -59
+- Attention raw score targeted core: 0
+- Attention Position targeted core: 50
+- Reality-Attention difference targeted core: -27
+- Attention raw score targeted context: 30479
+- Attention Position targeted context: 82
+- Reality-Attention difference targeted context: -59
 - Layer sample counts: reality=24, attention=19
 
 Top reality observations:
@@ -577,13 +734,20 @@ Global topic attention:
   - Total topic views: 17836621
   - Date: 2026-05-13
 Targeted attention:
-- Matched pages:
-  - Japan — views: 12481
-  - Turkey — views: 9213
-  - Papua_New_Guinea — views: 8785
-- Total targeted views: 30479
-- Targeted Attention Position: 82
-- Reality-Targeted Attention difference: -59
+Core matched pages:
+- No core targeted attention pages found in stored Wikipedia top pages for this date.
+
+Context matched pages:
+- Japan — views: 12481
+- Turkey — views: 9213
+- Papua_New_Guinea — views: 8785
+
+- Total core targeted views: 0
+- Core Targeted Attention Position: 50
+- Reality-Core Targeted Attention difference: -27
+- Total context targeted views: 30479
+- Context Targeted Attention Position: 82
+- Reality-Context Targeted Attention difference: -59
 
 ## 4. Notes for interpretation
 
@@ -595,6 +759,9 @@ Targeted attention:
 - Current attention layer is limited. In this beta, Wikipedia Pageviews is only a rough public attention proxy and does not represent total public awareness.
 - Global topic attention reflects broad Wikipedia topic traffic and may not correspond to the selected reality observations.
 - Targeted attention only checks whether predefined topic pages appear in stored Wikipedia top pages.
+- Core targeted pages are topic pages directly related to the observed category.
+- Context targeted pages are broader location or infrastructure context pages.
+- Context matches must not be interpreted as direct attention to a specific event.
 - Absence from targeted attention does not imply absence of public awareness.
 - Main_Page is excluded from topic-level attention inspection where available.
 - Topic-level attention excludes Main_Page and non-topic Wikipedia namespace pages such as Special:, Wikipedia:, Help:, File:, and Category:.
