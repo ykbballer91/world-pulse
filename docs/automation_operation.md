@@ -15,6 +15,8 @@ World Pulse can run as a daily GitHub Actions workflow. The workflow generates t
 
 The beta uses a 30-day baseline calculation. Wikipedia 30-day backfill is reserved for initial setup and manual correction. The scheduled daily build uses a short, non-critical Wikipedia backfill window to avoid Wikimedia API rate limits; if a `429 Too Many Requests` response occurs, the build continues using existing data and records a warning.
 
+Sources are also classified internally into `reality`, `attention`, and `context` layers for future Reality-Attention Gap analysis. These layers are not exposed in the public UI; the public label remains Signal Position, and gap scores are not published.
+
 ## Schedule
 
 The workflow runs every day at 7:00 JST.

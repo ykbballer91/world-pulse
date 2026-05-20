@@ -119,6 +119,8 @@ psql "$DATABASE_URL" -f sql/002_create_baseline_distributions.sql
 psql "$DATABASE_URL" -f sql/003_create_normalized_events.sql
 psql "$DATABASE_URL" -f sql/004_create_score_versions_and_weirdness_scores.sql
 psql "$DATABASE_URL" -f sql/005_create_display_log.sql
+psql "$DATABASE_URL" -f sql/006_add_quiet_signal_to_display_log.sql
+psql "$DATABASE_URL" -f sql/007_add_layer_to_sources.sql
 ```
 
 Run ingestion scripts:
@@ -142,6 +144,15 @@ Verify source lineage coverage:
 ```sh
 psql "$DATABASE_URL" -c "SELECT COUNT(*) AS raw_observations_without_lineage FROM raw_observations ro LEFT JOIN source_lineage sl ON sl.raw_observation_id = ro.id WHERE sl.id IS NULL;"
 ```
+
+Verify internal source layers:
+
+```sh
+psql "$DATABASE_URL" -c "SELECT name, source_type, layer FROM sources ORDER BY name;"
+psql "$DATABASE_URL" -c "SELECT name FROM sources WHERE layer IS NULL;"
+```
+
+Source layers are internal only. World Pulse classifies sources into `reality`, `attention`, and `context` for future Reality-Attention Gap analysis. The public UI remains Signal Position, and gap scores are not exposed publicly.
 
 Run Python syntax checks:
 
