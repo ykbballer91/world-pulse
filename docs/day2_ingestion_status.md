@@ -170,4 +170,4 @@ python3 -m py_compile scripts/ingest_cloudflare_radar.py
 
 ## Notes
 
-Day 2 ingestion stores raw observations and source lineage only. It does not generate alerts, forecasts, risk judgments, advice, ranking interpretations, or LLM summaries.
+Day 2 ingestion stores raw observations and source lineage only. It does not generate notifications, forecasts, risk judgments, advice, ranking interpretations, or LLM summaries.

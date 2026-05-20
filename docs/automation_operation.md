@@ -87,9 +87,9 @@ Start with:
 - X API auto-posting
 - login
 - payments
-- alerts
+- notifications
 - maps
 - complex charts
 - LLM summaries
 
-World Pulse automation generates observation-based output only. It does not generate forecasts, alerts, recommendations, or advice.
+World Pulse automation generates observation-based output only. It does not generate forecasts, notifications, recommendations, or advice.

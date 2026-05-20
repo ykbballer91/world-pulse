@@ -195,14 +195,14 @@ World Pulse | Data date: 2026-05-18
 Latest Weirdness Score: 20
 This data date is in the 20th percentile of the last 30 observed days.
 Top signal: M5.4 earthquake near West Chile Rise
-Not a forecast, alert, or recommendation.
+Not a forecast, notification, or recommendation.
 #WorldPulse
 ```
 
 Safety-language check:
 
 - No new Cloudflare Radar warning-style wording was found in the X post text.
-- The only matched term was the existing safety sentence: `Not a forecast, alert, or recommendation.`
+- The only matched term was the existing safety sentence: `Not a forecast, notification, or recommendation.`
 
 Generated display payload summary:
 

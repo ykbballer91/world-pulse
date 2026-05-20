@@ -10,7 +10,7 @@ World Pulse stores raw public observations with source lineage for transparent, 
 
 ## Included Scope
 
-This repository currently includes USGS earthquake ingestion, NOAA SWPC solar activity ingestion, Open Notify ingestion, Wikipedia Pageviews ingestion, and optional Cloudflare Radar ingestion. It does not include login, payment, alerts, forecasting, market data, political data, health advice, or SNS raw content.
+This repository currently includes USGS earthquake ingestion, NOAA SWPC solar activity ingestion, Open Notify ingestion, Wikipedia Pageviews ingestion, and optional Cloudflare Radar ingestion. It does not include login, payment, notifications, forecasting, market data, political data, health advice, or SNS raw content.
 
 ## Conceptual Layers
 
@@ -35,7 +35,7 @@ Future layers are not yet implemented:
 - Interpretation Layer
 - Action Layer
 
-World Pulse does not measure whether people are aware of an event. It does not issue forecasts, alerts, warnings, or recommendations.
+World Pulse does not measure whether people are aware of an event. It does not issue forecasts, notifications, warnings, or recommendations.
 
 ## Setup
 
@@ -152,12 +152,12 @@ Score versions:
 - `weirdness_v0_2`: percentile rank of the daily raw score within the recent baseline window.
 - Public UI label: Signal Position.
 - Internal score version: `weirdness_v0_2`.
-- The public label avoids presenting the value as a risk, alert, or danger score.
+- The public label avoids presenting the value as a risk, notification or danger score.
 - Current public display uses Signal Position backed by `weirdness_v0_2`.
 
 Daily aggregation events such as `wikipedia_attention_snapshot` may contribute to scoring context. They are excluded from the displayed Top signal to keep the UI focused on individual observed signals.
 
-Quiet Signal is an optional display-only field. It highlights one individual observed signal above the recent baseline within the current data window. It is not a forecast, alert, warning, or recommendation. It may be absent on many data dates.
+Quiet Signal is an optional display-only field. It highlights one individual observed signal above the recent baseline within the current data window. It is not a forecast, warning, or recommendation. It may be absent on many data dates.
 
 ```sh
 python scripts/calculate_weirdness_score.py
