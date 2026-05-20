@@ -71,6 +71,8 @@ Run Day 2 backfill helpers:
 python scripts/backfill_day2_sources.py --source usgs --days 7
 python scripts/backfill_day2_sources.py --source wikipedia --days 7
 python scripts/backfill_day2_sources.py --source all --days 7
+python scripts/backfill_day2_sources.py --source all --days 30
+python scripts/backfill_day2_sources.py --source all --days 30 --database-url "$DATABASE_URL"
 ```
 
 Calculate initial Day 3 baseline distributions:
@@ -131,8 +133,11 @@ python scripts/generate_x_post_text.py --date 2026-05-17
 
 Run the daily World Pulse build:
 
+World Pulse beta uses a 30-day baseline for initial operation. Wikipedia sample counts may be lower than 30 when daily top pageviews are not yet available for every date in the lookback window.
+
 ```sh
 python scripts/run_daily_world_pulse.py
+python scripts/run_daily_world_pulse.py --days 30
 python scripts/run_daily_world_pulse.py --date 2026-05-17
 python scripts/run_daily_world_pulse.py --skip-ingest --skip-backfill --date 2026-05-17
 ```

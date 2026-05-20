@@ -37,7 +37,7 @@ jobs:
       - name: Run daily build
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
-        run: python scripts/run_daily_world_pulse.py
+        run: python scripts/run_daily_world_pulse.py --days 30
 
       - name: Verify generated outputs
         run: |

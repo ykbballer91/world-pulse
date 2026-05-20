@@ -117,7 +117,7 @@ def main():
         default=None,
         help="Target date in YYYY-MM-DD format.",
     )
-    parser.add_argument("--days", type=int, default=7, help="Backfill and baseline lookback days.")
+    parser.add_argument("--days", type=int, default=30, help="Backfill and baseline lookback days.")
     parser.add_argument("--skip-ingest", action="store_true", help="Skip external API ingestion.")
     parser.add_argument("--skip-backfill", action="store_true", help="Skip backfill steps.")
     parser.add_argument("--skip-image", action="store_true", help="Skip share image generation.")
