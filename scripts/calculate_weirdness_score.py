@@ -93,6 +93,49 @@ INTERNAL_LAYER_PARAMETERS = {
     "gap_public_exposure": "internal_only",
     "minimum_layer_sample_count": 14,
 }
+REFLECTION_CONCEPT_VERSION_KEY = "weirdness_v0_4_reflection_concept"
+REFLECTION_CONCEPT_FORMULA_TEXT = (
+    "Conceptual clarification: Wikipedia pageviews are treated as a delayed "
+    "reflection / knowledge-encoding proxy rather than immediate public attention. "
+    "DB schema and scoring algorithm are unchanged for backward compatibility. "
+    "Public display remains Signal Position."
+)
+REFLECTION_CONCEPT_PARAMETERS = {
+    "calculation_compatible_with": "weirdness_v0_3_internal_layers",
+    "public_label": "Signal Position",
+    "conceptual_layers": {
+        "reality": [
+            "USGS Earthquake Hazards Program",
+            "NOAA SWPC",
+            "Cloudflare Radar",
+        ],
+        "reflection": [
+            "Wikipedia Pageviews",
+        ],
+        "context": [
+            "Open Notify",
+        ],
+        "immediate_attention": "not_implemented",
+        "interpretation": "not_implemented",
+        "action": "not_implemented",
+    },
+    "backward_compatibility": {
+        "database_layer_label_retained": "attention",
+        "component_score_attention_keys_retained": True,
+        "db_schema_changed": False,
+    },
+    "public_exposure": {
+        "public_ui_changed": False,
+        "x_post_changed": False,
+        "share_image_changed": False,
+    },
+    "commercial_distribution": {
+        "sales_motion": "pull_only",
+        "brief": "planned",
+        "contact_form": "planned",
+        "push_sales_materials": False,
+    },
+}
 MINIMUM_LAYER_SAMPLE_COUNT = 14
 LAYER_METHODOLOGY = {
     "public_exposure": "internal_only",
@@ -284,6 +327,16 @@ def ensure_score_version(conn, columns, window_days):
         INTERNAL_LAYER_VERSION_KEY,
         INTERNAL_LAYER_FORMULA_TEXT,
         internal_parameters,
+    )
+
+    reflection_parameters = dict(REFLECTION_CONCEPT_PARAMETERS)
+    reflection_parameters["window_days"] = window_days
+    upsert_score_version(
+        conn,
+        columns,
+        REFLECTION_CONCEPT_VERSION_KEY,
+        REFLECTION_CONCEPT_FORMULA_TEXT,
+        reflection_parameters,
     )
 
 
