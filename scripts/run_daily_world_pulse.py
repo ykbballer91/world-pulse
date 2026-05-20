@@ -31,11 +31,17 @@ def command_text(command):
 def run_step(name, command):
     started = time.monotonic()
     print(f"Step started: name={name} command={command_text(command)}")
+    child_env = os.environ.copy()
+    print(
+        "DATABASE_URL will be passed to subprocess: "
+        f"{'yes' if child_env.get('DATABASE_URL') else 'no'}"
+    )
     result = subprocess.run(
         command,
         cwd=ROOT_DIR,
         check=False,
         text=True,
+        env=child_env,
     )
     elapsed = time.monotonic() - started
     status = "success" if result.returncode == 0 else "failed"
@@ -88,6 +94,13 @@ def main():
     if not args.database_url:
         print("DATABASE_URL is required.", file=sys.stderr)
         return 2
+
+    os.environ["DATABASE_URL"] = args.database_url
+    if os.environ.get("DATABASE_URL"):
+        print("DATABASE_URL available for daily build")
+    else:
+        print("DATABASE_URL is not available for daily build")
+        return 1
 
     if args.days <= 0:
         print("--days must be greater than zero.", file=sys.stderr)
