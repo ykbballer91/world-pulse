@@ -193,6 +193,17 @@
         color: #777777;
       }
 
+      .top-link {
+        color: #333333;
+        font-size: 14px;
+        text-decoration: none;
+        border-bottom: 1px solid #cfcfcf;
+      }
+
+      .top-link:hover {
+        border-bottom-color: #171717;
+      }
+
       .error {
         margin-top: 48px;
         padding: 18px;
@@ -242,7 +253,10 @@
           <p class="brand">World Pulse</p>
           <p class="date" id="display-date">Data date: Loading</p>
         </div>
-        <p class="updated" id="updated-at"></p>
+        <div>
+          <a class="top-link" href="/about.html">About</a>
+          <p class="updated" id="updated-at"></p>
+        </div>
       </header>
 
       <section class="score-section" aria-labelledby="headline">

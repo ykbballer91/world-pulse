@@ -161,6 +161,8 @@ python3 -m http.server 8080 -d public
 
 Open `http://localhost:8080/`.
 
+`public/about.html` explains methodology, data window, sources, and safety principles. It is static and deployed by Cloudflare Pages with the rest of `public/`.
+
 Automation operation:
 
 ```text

@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>About World Pulse</title>
+    <style>
+      :root {
+        color: #171717;
+        background: #ffffff;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: #ffffff;
+        color: #171717;
+      }
+
+      main {
+        width: min(860px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 48px 0 36px;
+      }
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        gap: 24px;
+        align-items: flex-start;
+        border-bottom: 1px solid #e5e5e5;
+        padding-bottom: 24px;
+        margin-bottom: 42px;
+      }
+
+      .brand {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: 0;
+      }
+
+      .subtle {
+        margin: 2px 0 0;
+        color: #666666;
+        font-size: 14px;
+      }
+
+      nav a,
+      footer a,
+      .source-list a {
+        color: #333333;
+        text-decoration: none;
+        border-bottom: 1px solid #cfcfcf;
+      }
+
+      nav a:hover,
+      footer a:hover,
+      .source-list a:hover {
+        border-bottom-color: #171717;
+      }
+
+      h1 {
+        margin: 0 0 16px;
+        font-size: 44px;
+        line-height: 1.05;
+        letter-spacing: 0;
+      }
+
+      .intro {
+        margin: 0 0 38px;
+        color: #333333;
+        font-size: 18px;
+        line-height: 1.55;
+      }
+
+      section {
+        border-top: 1px solid #e5e5e5;
+        padding: 28px 0;
+      }
+
+      h2 {
+        margin: 0 0 14px;
+        font-size: 22px;
+        line-height: 1.25;
+        letter-spacing: 0;
+      }
+
+      p {
+        margin: 0 0 14px;
+        color: #333333;
+        font-size: 16px;
+        line-height: 1.6;
+      }
+
+      p:last-child {
+        margin-bottom: 0;
+      }
+
+      ul {
+        margin: 0 0 16px;
+        padding-left: 20px;
+        color: #333333;
+        font-size: 16px;
+        line-height: 1.65;
+      }
+
+      .source-list {
+        display: grid;
+        gap: 8px;
+        list-style: none;
+        padding: 0;
+      }
+
+      .callout {
+        border: 1px solid #dddddd;
+        border-radius: 8px;
+        padding: 18px;
+        background: #fbfbfa;
+      }
+
+      footer {
+        margin-top: 12px;
+        border-top: 1px solid #e5e5e5;
+        padding-top: 22px;
+        color: #555555;
+        display: grid;
+        gap: 8px;
+        font-size: 14px;
+        line-height: 1.45;
+      }
+
+      @media (max-width: 680px) {
+        main {
+          width: min(100% - 24px, 680px);
+          padding-top: 28px;
+        }
+
+        header {
+          display: block;
+          margin-bottom: 32px;
+        }
+
+        nav {
+          margin-top: 16px;
+        }
+
+        h1 {
+          font-size: 34px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <div>
+          <p class="brand">World Pulse</p>
+          <p class="subtle">Beta version. Observation only.</p>
+        </div>
+        <nav aria-label="Primary">
+          <a href="/">Back to latest score</a>
+        </nav>
+      </header>
+
+      <h1>About World Pulse</h1>
+      <p class="intro">
+        World Pulse is a daily observation layer for public anomaly and attention signals.
+      </p>
+
+      <section>
+        <h2>What Is World Pulse</h2>
+        <p>
+          World Pulse collects selected public datasets, normalizes them into observed events, and summarizes how unusual the selected data date appears relative to a recent baseline. It is designed for observation, not prediction.
+        </p>
+      </section>
+
+      <section>
+        <h2>Three Principles</h2>
+        <ul>
+          <li>No predictions.</li>
+          <li>No panic.</li>
+          <li>No financial, medical, political, or emergency-response advice.</li>
+        </ul>
+        <p>World Pulse does not issue alerts, forecasts, warnings, or recommendations.</p>
+      </section>
+
+      <section>
+        <h2>Data Window</h2>
+        <p>
+          World Pulse uses a data date rather than claiming to represent the exact current moment.
+        </p>
+        <p>
+          Some public datasets, especially daily aggregated sources such as Wikipedia Pageviews, may become available with a delay. For this reason, the displayed data date can lag behind the calendar date.
+        </p>
+        <p>
+          The interface uses "Latest Weirdness Score" and "Data date" to avoid implying real-time coverage.
+        </p>
+      </section>
+
+      <section>
+        <h2>Sources</h2>
+        <ul class="source-list">
+          <li><a href="https://earthquake.usgs.gov/">USGS Earthquake Hazards Program</a></li>
+          <li><a href="https://www.swpc.noaa.gov/">NOAA Space Weather Prediction Center</a></li>
+          <li><a href="https://wikitech.wikimedia.org/wiki/Analytics/AQS/Pageviews">Wikipedia Pageviews</a></li>
+          <li><a href="http://open-notify.org/">Open Notify</a></li>
+          <li><a href="https://developers.cloudflare.com/radar/">Cloudflare Radar planned</a></li>
+        </ul>
+        <p>Sources are stored as raw observations with source lineage where possible.</p>
+      </section>
+
+      <section>
+        <h2>Methodology</h2>
+        <p>
+          World Pulse stores raw public observations, records source lineage, normalizes them into events, and compares selected signals against a recent baseline.
+        </p>
+        <p>
+          The current displayed score uses <code>weirdness_v0_2</code>.
+        </p>
+        <p>
+          <code>weirdness_v0_2</code> computes a daily raw score from positive anomaly scores and converts the selected data date into a percentile rank within the recent observed window.
+        </p>
+        <p>
+          The current beta uses a 30-day baseline window where available. Some sources may have fewer observations due to API availability or collection start date.
+        </p>
+      </section>
+
+      <section>
+        <h2>Top Signal and Quiet Signal</h2>
+        <p>
+          Top Signal highlights an individual observed event from the selected data date. Daily aggregation events, such as Wikipedia attention snapshots, may contribute to scoring context but are excluded from the displayed Top Signal.
+        </p>
+        <p>
+          Quiet Signal is an optional display-only field. It may show one individual observed signal above the recent baseline within the current data window. It is not a forecast, alert, warning, or recommendation, and it may be absent on many data dates.
+        </p>
+      </section>
+
+      <section>
+        <h2>License & Attribution</h2>
+        <div class="callout">
+          <p>
+            World Pulse uses public data sources and preserves source lineage for auditability. The beta interface is experimental and may change.
+          </p>
+        </div>
+      </section>
+
+      <footer>
+        <div><a href="/">Back to World Pulse</a></div>
+        <div>worldpulse.today</div>
+        <div>Beta version. Observation only.</div>
+      </footer>
+    </main>
+  </body>
+</html>
