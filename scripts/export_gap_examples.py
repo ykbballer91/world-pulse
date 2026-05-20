@@ -77,6 +77,13 @@ def fetch_scores(conn, start_date, end_date):
         gaps = component_scores.get("layer_gaps") or {}
         raw_scores = component_scores.get("layer_raw_scores") or {}
         sample_counts = component_scores.get("layer_sample_counts") or {}
+        raw_scores_excluding_main = (
+            component_scores.get("layer_raw_scores_excluding_main_page") or {}
+        )
+        positions_excluding_main = (
+            component_scores.get("layer_positions_excluding_main_page") or {}
+        )
+        gaps_excluding_main = component_scores.get("layer_gaps_excluding_main_page") or {}
         reality_position = int_or_none(positions.get("reality"))
         attention_position = int_or_none(positions.get("attention"))
         difference = (
@@ -94,6 +101,9 @@ def fetch_scores(conn, start_date, end_date):
                 "layer_gaps": gaps,
                 "layer_raw_scores": raw_scores,
                 "layer_sample_counts": sample_counts,
+                "layer_raw_scores_excluding_main_page": raw_scores_excluding_main,
+                "layer_positions_excluding_main_page": positions_excluding_main,
+                "layer_gaps_excluding_main_page": gaps_excluding_main,
                 "reality_position": reality_position,
                 "attention_position": attention_position,
                 "difference": difference,
@@ -179,12 +189,20 @@ def attention_details(event):
 
     details = []
     top_articles = payload.get("top_articles") or []
-    if top_articles:
-        top_page = top_articles[0].get("article")
+    topic_articles = [
+        article
+        for article in top_articles
+        if article.get("article") != "Main_Page"
+    ]
+    if topic_articles:
+        top_page = topic_articles[0].get("article")
         if top_page:
             details.append(f"  - Top page: {top_page}")
-    if payload.get("top1000_total_views") is not None:
-        details.append(f"  - Total views: {format_number(payload.get('top1000_total_views'))}")
+    if payload.get("top10_total_views_excluding_main_page") is not None:
+        details.append(
+            "  - Total views excluding Main Page: "
+            f"{format_number(payload.get('top10_total_views_excluding_main_page'))}"
+        )
     if payload.get("date"):
         details.append(f"  - Date: {payload.get('date')}")
     if not details:
@@ -208,6 +226,9 @@ def append_layer_observations(lines, title, observations, layer):
 
 def append_record(lines, record):
     raw_scores = record["layer_raw_scores"]
+    raw_scores_excluding_main = record["layer_raw_scores_excluding_main_page"]
+    positions_excluding_main = record["layer_positions_excluding_main_page"]
+    gaps_excluding_main = record["layer_gaps_excluding_main_page"]
     sample_counts = record["layer_sample_counts"]
     lines.extend(
         [
@@ -219,6 +240,18 @@ def append_record(lines, record):
             f"- Reality-Attention difference: {format_number(record['difference'])}",
             f"- Reality raw score: {format_number(raw_scores.get('reality'))}",
             f"- Attention raw score: {format_number(raw_scores.get('attention'))}",
+            (
+                "- Attention raw score excluding Main Page: "
+                f"{format_number(raw_scores_excluding_main.get('attention'))}"
+            ),
+            (
+                "- Attention Position excluding Main Page: "
+                f"{format_number(positions_excluding_main.get('attention'))}"
+            ),
+            (
+                "- Reality-Attention difference excluding Main Page: "
+                f"{format_number(gaps_excluding_main.get('reality_attention_gap'))}"
+            ),
             (
                 "- Layer sample counts: "
                 f"reality={format_number(sample_counts.get('reality'))}, "
@@ -340,6 +373,8 @@ def build_markdown(records, generated_at, start_date, end_date, limit):
                 "Pageviews is only a rough public attention proxy and does not "
                 "represent total public awareness."
             ),
+            "- Main_Page is excluded from topic-level attention inspection where available.",
+            "- Wikipedia Pageviews remains a rough public attention proxy.",
             "",
         ]
     )

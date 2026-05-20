@@ -175,6 +175,18 @@ def fetch_events_for_window(conn, window_start_date, window_end_date):
     with conn.cursor() as cur:
         cur.execute(
             """
+            SELECT bd.sample_count, bd.mean_value, bd.stddev_value
+            FROM baseline_distributions bd
+            JOIN sources s ON s.id = bd.source_id
+            WHERE s.name = 'Wikipedia Pageviews'
+              AND bd.metric_key = 'wikipedia_daily_top10_total_views_excluding_main_page'
+            ORDER BY bd.window_end DESC
+            LIMIT 1
+            """
+        )
+        wikipedia_excluding_main_baseline = cur.fetchone()
+        cur.execute(
+            """
             SELECT
                 ne.id,
                 ne.event_type,
@@ -183,7 +195,8 @@ def fetch_events_for_window(conn, window_start_date, window_end_date):
                 ne.event_time,
                 ne.magnitude_value,
                 ne.anomaly_score,
-                s.layer
+                s.layer,
+                ne.normalized_payload
             FROM normalized_events ne
             LEFT JOIN sources s ON s.id = ne.source_id
             WHERE ne.event_time >= %s
@@ -195,20 +208,46 @@ def fetch_events_for_window(conn, window_start_date, window_end_date):
         )
         rows = cur.fetchall()
 
-    return [
-        {
-            "id": row[0],
-            "event_type": row[1],
-            "category": row[2],
-            "title": row[3],
-            "event_time": row[4],
-            "magnitude_value": row[5],
-            "anomaly_score": row[6],
-            "effective_anomaly": max(float(row[6]), 0),
-            "layer": row[7],
-        }
-        for row in rows
-    ]
+    events = []
+    for row in rows:
+        normalized_payload = row[8] or {}
+        excluding_main_value = normalized_payload.get("top10_total_views_excluding_main_page")
+        excluding_main_anomaly = anomaly_from_baseline(
+            excluding_main_value,
+            wikipedia_excluding_main_baseline,
+        )
+        events.append(
+            {
+                "id": row[0],
+                "event_type": row[1],
+                "category": row[2],
+                "title": row[3],
+                "event_time": row[4],
+                "magnitude_value": row[5],
+                "anomaly_score": row[6],
+                "effective_anomaly": max(float(row[6]), 0),
+                "layer": row[7],
+                "normalized_payload": normalized_payload,
+                "attention_excluding_main_page_anomaly_score": excluding_main_anomaly,
+                "attention_excluding_main_page_effective_anomaly": (
+                    max(float(excluding_main_anomaly), 0)
+                    if excluding_main_anomaly is not None
+                    else None
+                ),
+            }
+        )
+    return events
+
+
+def anomaly_from_baseline(value, baseline):
+    if value is None or baseline is None:
+        return None
+    sample_count, mean_value, stddev_value = baseline
+    if sample_count is None or sample_count < 3:
+        return None
+    if stddev_value in (None, 0):
+        return None
+    return (float(value) - float(mean_value)) / float(stddev_value)
 
 
 def sort_events_for_score(events):
@@ -228,6 +267,28 @@ def calculate_daily_raw_score(events):
     top_events = scored_events[:3]
     raw_score = sum(
         weight * event["effective_anomaly"] for weight, event in zip(TOP_WEIGHTS, top_events)
+    )
+    return raw_score, top_events, scored_events
+
+
+def calculate_daily_attention_excluding_main_raw_score(events):
+    scored_events = sorted(
+        [
+            event
+            for event in events
+            if event.get("attention_excluding_main_page_effective_anomaly") is not None
+        ],
+        key=lambda event: (
+            event["attention_excluding_main_page_effective_anomaly"],
+            float(event["attention_excluding_main_page_anomaly_score"]),
+            event["event_time"],
+        ),
+        reverse=True,
+    )
+    top_events = scored_events[:3]
+    raw_score = sum(
+        weight * event["attention_excluding_main_page_effective_anomaly"]
+        for weight, event in zip(TOP_WEIGHTS, top_events)
     )
     return raw_score, top_events, scored_events
 
@@ -295,11 +356,17 @@ def calculate_window_scores(events, target_date, window_days):
         "reality": [],
         "attention": [],
     }
+    layer_daily_raw_scores_excluding_main_page = {
+        "attention": [],
+    }
     target_scoring_top_events = []
     target_display_top_events = []
     target_scored_events = []
     target_layer_raw_scores = {
         "reality": 0,
+        "attention": 0,
+    }
+    target_layer_raw_scores_excluding_main_page = {
         "attention": 0,
     }
     context_event_count = 0
@@ -332,6 +399,25 @@ def calculate_window_scores(events, target_date, window_days):
                     "has_layer_events": bool(layer_events),
                 }
             )
+        attention_events = [event for event in day_events if event.get("layer") == "attention"]
+        attention_excluding_main_raw_score, _, _ = calculate_daily_attention_excluding_main_raw_score(
+            attention_events
+        )
+        if day == target_date:
+            target_layer_raw_scores_excluding_main_page["attention"] = (
+                attention_excluding_main_raw_score
+            )
+        layer_daily_raw_scores_excluding_main_page["attention"].append(
+            {
+                "date": day.isoformat(),
+                "raw_score": attention_excluding_main_raw_score,
+                "event_count": len(attention_events),
+                "has_layer_events": any(
+                    event.get("attention_excluding_main_page_anomaly_score") is not None
+                    for event in attention_events
+                ),
+            }
+        )
 
     target_raw_score = next(
         item["raw_score"] for item in daily_raw_scores if item["date"] == target_date.isoformat()
@@ -370,6 +456,28 @@ def calculate_window_scores(events, target_date, window_days):
         if reality_position is not None and attention_position is not None
         else None
     )
+    attention_excluding_main_values = [
+        item["raw_score"]
+        for item in layer_daily_raw_scores_excluding_main_page["attention"]
+        if item["has_layer_events"]
+    ]
+    attention_excluding_main_sample_count = len(attention_excluding_main_values)
+    if attention_excluding_main_sample_count >= MINIMUM_LAYER_SAMPLE_COUNT:
+        attention_excluding_main_percentile, _, _, _ = percentile_rank(
+            attention_excluding_main_values,
+            target_layer_raw_scores_excluding_main_page["attention"],
+        )
+        attention_position_excluding_main_page = rounded_position(
+            attention_excluding_main_percentile
+        )
+    else:
+        attention_excluding_main_percentile = None
+        attention_position_excluding_main_page = None
+    reality_attention_gap_excluding_main_page = (
+        reality_position - attention_position_excluding_main_page
+        if reality_position is not None and attention_position_excluding_main_page is not None
+        else None
+    )
 
     return {
         "score_value": score_value,
@@ -384,6 +492,24 @@ def calculate_window_scores(events, target_date, window_days):
         "layer_positions": layer_positions,
         "layer_percentile_ranks": layer_percentile_ranks,
         "layer_sample_counts": layer_sample_counts,
+        "layer_daily_raw_scores_excluding_main_page": (
+            layer_daily_raw_scores_excluding_main_page
+        ),
+        "layer_raw_scores_excluding_main_page": (
+            target_layer_raw_scores_excluding_main_page
+        ),
+        "layer_positions_excluding_main_page": {
+            "attention": attention_position_excluding_main_page,
+        },
+        "layer_percentile_ranks_excluding_main_page": {
+            "attention": attention_excluding_main_percentile,
+        },
+        "layer_sample_counts_excluding_main_page": {
+            "attention": attention_excluding_main_sample_count,
+        },
+        "layer_gaps_excluding_main_page": {
+            "reality_attention_gap": reality_attention_gap_excluding_main_page,
+        },
         "layer_gaps": {
             "reality_attention_gap": reality_attention_gap,
             "attention_overhang": attention_overhang,
@@ -431,6 +557,24 @@ def build_component_scores(score_result, window_days):
         "layer_sample_counts": score_result["layer_sample_counts"],
         "layer_gaps": score_result["layer_gaps"],
         "layer_daily_raw_scores": score_result["layer_daily_raw_scores"],
+        "layer_raw_scores_excluding_main_page": (
+            score_result["layer_raw_scores_excluding_main_page"]
+        ),
+        "layer_positions_excluding_main_page": (
+            score_result["layer_positions_excluding_main_page"]
+        ),
+        "layer_percentile_ranks_excluding_main_page": (
+            score_result["layer_percentile_ranks_excluding_main_page"]
+        ),
+        "layer_sample_counts_excluding_main_page": (
+            score_result["layer_sample_counts_excluding_main_page"]
+        ),
+        "layer_gaps_excluding_main_page": (
+            score_result["layer_gaps_excluding_main_page"]
+        ),
+        "layer_daily_raw_scores_excluding_main_page": (
+            score_result["layer_daily_raw_scores_excluding_main_page"]
+        ),
         "context_event_count": score_result["context_event_count"],
         "scoring_top_events": [
             json_ready_event(event) for event in score_result["scoring_top_events"]
@@ -460,6 +604,15 @@ def build_explanation_payload(score_date, score_result, window_days):
         "layer_gaps": score_result["layer_gaps"],
         "layer_raw_scores": score_result["layer_raw_scores"],
         "layer_sample_counts": score_result["layer_sample_counts"],
+        "layer_positions_excluding_main_page": (
+            score_result["layer_positions_excluding_main_page"]
+        ),
+        "layer_gaps_excluding_main_page": (
+            score_result["layer_gaps_excluding_main_page"]
+        ),
+        "layer_raw_scores_excluding_main_page": (
+            score_result["layer_raw_scores_excluding_main_page"]
+        ),
         "top_events": [json_ready_event(event) for event in score_result["top_events"]],
         "scoring_top_events": [
             json_ready_event(event) for event in score_result["scoring_top_events"]

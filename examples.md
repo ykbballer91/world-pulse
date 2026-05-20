@@ -1,6 +1,6 @@
 # World Pulse Gap Examples
 
-Generated at: 2026-05-20T12:33:28Z
+Generated at: 2026-05-20T12:40:43Z
 
 ## Scope
 
@@ -21,6 +21,9 @@ Rows evaluated: 30
 - Reality-Attention difference: 62
 - Reality raw score: 29.81
 - Attention raw score: 0
+- Attention raw score excluding Main Page: 0
+- Attention Position excluding Main Page: 28
+- Reality-Attention difference excluding Main Page: 66
 - Layer sample counts: reality=25, attention=20
 
 Top reality observations:
@@ -30,8 +33,8 @@ Top reality observations:
 
 Top attention observations:
 - Wikipedia attention snapshot for 2026-05-14 — 2026-05-14 00:00 UTC — attention / wikipedia_attention_snapshot
-  - Top page: Main_Page
-  - Total views: 26369648
+  - Top page: Special:Search
+  - Total views excluding Main Page: 1748875
   - Date: 2026-05-14
 
 ### 2026-05-15
@@ -42,6 +45,9 @@ Top attention observations:
 - Reality-Attention difference: 61
 - Reality raw score: 57.08
 - Attention raw score: 0
+- Attention raw score excluding Main Page: 0
+- Attention Position excluding Main Page: 29
+- Reality-Attention difference excluding Main Page: 65
 - Layer sample counts: reality=26, attention=21
 
 Top reality observations:
@@ -51,8 +57,8 @@ Top reality observations:
 
 Top attention observations:
 - Wikipedia attention snapshot for 2026-05-15 — 2026-05-15 00:00 UTC — attention / wikipedia_attention_snapshot
-  - Top page: Main_Page
-  - Total views: 26401251
+  - Top page: Special:Search
+  - Total views excluding Main Page: 1848150
   - Date: 2026-05-15
 
 ### 2026-05-20
@@ -63,6 +69,9 @@ Top attention observations:
 - Reality-Attention difference: 54
 - Reality raw score: 23.54
 - Attention raw score: 0
+- Attention raw score excluding Main Page: 0
+- Attention Position excluding Main Page: 29
+- Reality-Attention difference excluding Main Page: 56
 - Layer sample counts: reality=30, attention=24
 
 Top reality observations:
@@ -81,6 +90,9 @@ Top attention observations:
 - Reality-Attention difference: 41
 - Reality raw score: 12.63
 - Attention raw score: 0
+- Attention raw score excluding Main Page: 0
+- Attention Position excluding Main Page: 29
+- Reality-Attention difference excluding Main Page: 43
 - Layer sample counts: reality=30, attention=24
 
 Top reality observations:
@@ -101,6 +113,9 @@ Top attention observations:
 - Reality-Attention difference: -70
 - Reality raw score: 0
 - Attention raw score: 26.49
+- Attention raw score excluding Main Page: 11.21
+- Attention Position excluding Main Page: 91
+- Reality-Attention difference excluding Main Page: -70
 - Layer sample counts: reality=21, attention=16
 
 Top reality observations:
@@ -110,8 +125,8 @@ Top reality observations:
 
 Top attention observations:
 - Wikipedia attention snapshot for 2026-05-10 — 2026-05-10 00:00 UTC — attention / wikipedia_attention_snapshot
-  - Top page: Main_Page
-  - Total views: 31681999
+  - Top page: Special:Search
+  - Total views excluding Main Page: 3071888
   - Date: 2026-05-10
 
 ### 2026-05-17
@@ -122,6 +137,9 @@ Top attention observations:
 - Reality-Attention difference: -68
 - Reality raw score: 0
 - Attention raw score: 26.46
+- Attention raw score excluding Main Page: 21.26
+- Attention Position excluding Main Page: 93
+- Reality-Attention difference excluding Main Page: -72
 - Layer sample counts: reality=28, attention=23
 
 Top reality observations:
@@ -131,8 +149,8 @@ Top reality observations:
 
 Top attention observations:
 - Wikipedia attention snapshot for 2026-05-17 — 2026-05-17 00:00 UTC — attention / wikipedia_attention_snapshot
-  - Top page: Main_Page
-  - Total views: 31677828
+  - Top page: Special:Search
+  - Total views excluding Main Page: 3470349
   - Date: 2026-05-17
 
 ## 3. Largest absolute layer differences
@@ -145,6 +163,9 @@ Top attention observations:
 - Reality-Attention difference: -70
 - Reality raw score: 0
 - Attention raw score: 26.49
+- Attention raw score excluding Main Page: 11.21
+- Attention Position excluding Main Page: 91
+- Reality-Attention difference excluding Main Page: -70
 - Layer sample counts: reality=21, attention=16
 
 Top reality observations:
@@ -154,8 +175,8 @@ Top reality observations:
 
 Top attention observations:
 - Wikipedia attention snapshot for 2026-05-10 — 2026-05-10 00:00 UTC — attention / wikipedia_attention_snapshot
-  - Top page: Main_Page
-  - Total views: 31681999
+  - Top page: Special:Search
+  - Total views excluding Main Page: 3071888
   - Date: 2026-05-10
 
 ### 2026-05-17
@@ -166,6 +187,9 @@ Top attention observations:
 - Reality-Attention difference: -68
 - Reality raw score: 0
 - Attention raw score: 26.46
+- Attention raw score excluding Main Page: 21.26
+- Attention Position excluding Main Page: 93
+- Reality-Attention difference excluding Main Page: -72
 - Layer sample counts: reality=28, attention=23
 
 Top reality observations:
@@ -175,8 +199,8 @@ Top reality observations:
 
 Top attention observations:
 - Wikipedia attention snapshot for 2026-05-17 — 2026-05-17 00:00 UTC — attention / wikipedia_attention_snapshot
-  - Top page: Main_Page
-  - Total views: 31677828
+  - Top page: Special:Search
+  - Total views excluding Main Page: 3470349
   - Date: 2026-05-17
 
 ### 2026-05-14
@@ -187,6 +211,9 @@ Top attention observations:
 - Reality-Attention difference: 62
 - Reality raw score: 29.81
 - Attention raw score: 0
+- Attention raw score excluding Main Page: 0
+- Attention Position excluding Main Page: 28
+- Reality-Attention difference excluding Main Page: 66
 - Layer sample counts: reality=25, attention=20
 
 Top reality observations:
@@ -196,8 +223,8 @@ Top reality observations:
 
 Top attention observations:
 - Wikipedia attention snapshot for 2026-05-14 — 2026-05-14 00:00 UTC — attention / wikipedia_attention_snapshot
-  - Top page: Main_Page
-  - Total views: 26369648
+  - Top page: Special:Search
+  - Total views excluding Main Page: 1748875
   - Date: 2026-05-14
 
 ### 2026-05-15
@@ -208,6 +235,9 @@ Top attention observations:
 - Reality-Attention difference: 61
 - Reality raw score: 57.08
 - Attention raw score: 0
+- Attention raw score excluding Main Page: 0
+- Attention Position excluding Main Page: 29
+- Reality-Attention difference excluding Main Page: 65
 - Layer sample counts: reality=26, attention=21
 
 Top reality observations:
@@ -217,8 +247,8 @@ Top reality observations:
 
 Top attention observations:
 - Wikipedia attention snapshot for 2026-05-15 — 2026-05-15 00:00 UTC — attention / wikipedia_attention_snapshot
-  - Top page: Main_Page
-  - Total views: 26401251
+  - Top page: Special:Search
+  - Total views excluding Main Page: 1848150
   - Date: 2026-05-15
 
 ### 2026-05-20
@@ -229,6 +259,9 @@ Top attention observations:
 - Reality-Attention difference: 54
 - Reality raw score: 23.54
 - Attention raw score: 0
+- Attention raw score excluding Main Page: 0
+- Attention Position excluding Main Page: 29
+- Reality-Attention difference excluding Main Page: 56
 - Layer sample counts: reality=30, attention=24
 
 Top reality observations:
@@ -247,6 +280,9 @@ Top attention observations:
 - Reality-Attention difference: 41
 - Reality raw score: 12.63
 - Attention raw score: 0
+- Attention raw score excluding Main Page: 0
+- Attention Position excluding Main Page: 29
+- Reality-Attention difference excluding Main Page: 43
 - Layer sample counts: reality=30, attention=24
 
 Top reality observations:
@@ -265,6 +301,9 @@ Top attention observations:
 - Reality-Attention difference: 29
 - Reality raw score: 28.36
 - Attention raw score: 3.69
+- Attention raw score excluding Main Page: 0
+- Attention Position excluding Main Page: 23
+- Reality-Attention difference excluding Main Page: 69
 - Layer sample counts: reality=20, attention=15
 
 Top reality observations:
@@ -274,8 +313,8 @@ Top reality observations:
 
 Top attention observations:
 - Wikipedia attention snapshot for 2026-05-09 — 2026-05-09 00:00 UTC — attention / wikipedia_attention_snapshot
-  - Top page: Main_Page
-  - Total views: 29013686
+  - Top page: Special:Search
+  - Total views excluding Main Page: 2346318
   - Date: 2026-05-09
 
 ### 2026-05-12
@@ -286,6 +325,9 @@ Top attention observations:
 - Reality-Attention difference: 23
 - Reality raw score: 2.55
 - Attention raw score: 0
+- Attention raw score excluding Main Page: 0
+- Attention Position excluding Main Page: 25
+- Reality-Attention difference excluding Main Page: 29
 - Layer sample counts: reality=23, attention=18
 
 Top reality observations:
@@ -295,8 +337,8 @@ Top reality observations:
 
 Top attention observations:
 - Wikipedia attention snapshot for 2026-05-12 — 2026-05-12 00:00 UTC — attention / wikipedia_attention_snapshot
-  - Top page: Main_Page
-  - Total views: 26730299
+  - Top page: Special:Search
+  - Total views excluding Main Page: 2016697
   - Date: 2026-05-12
 
 ### 2026-05-18
@@ -307,6 +349,9 @@ Top attention observations:
 - Reality-Attention difference: -9
 - Reality raw score: 0
 - Attention raw score: 0
+- Attention raw score excluding Main Page: 0
+- Attention Position excluding Main Page: 29
+- Reality-Attention difference excluding Main Page: -7
 - Layer sample counts: reality=29, attention=24
 
 Top reality observations:
@@ -316,8 +361,8 @@ Top reality observations:
 
 Top attention observations:
 - Wikipedia attention snapshot for 2026-05-18 — 2026-05-18 00:00 UTC — attention / wikipedia_attention_snapshot
-  - Top page: Main_Page
-  - Total views: 27549842
+  - Top page: Special:Search
+  - Total views excluding Main Page: 2088196
   - Date: 2026-05-18
 
 ### 2026-05-13
@@ -328,6 +373,9 @@ Top attention observations:
 - Reality-Attention difference: -9
 - Reality raw score: 0
 - Attention raw score: 0
+- Attention raw score excluding Main Page: 0
+- Attention Position excluding Main Page: 26
+- Reality-Attention difference excluding Main Page: -3
 - Layer sample counts: reality=24, attention=19
 
 Top reality observations:
@@ -337,8 +385,8 @@ Top reality observations:
 
 Top attention observations:
 - Wikipedia attention snapshot for 2026-05-13 — 2026-05-13 00:00 UTC — attention / wikipedia_attention_snapshot
-  - Top page: Main_Page
-  - Total views: 26522332
+  - Top page: Special:Search
+  - Total views excluding Main Page: 2178756
   - Date: 2026-05-13
 
 ## 4. Notes for interpretation
@@ -349,3 +397,5 @@ Top attention observations:
 - These values only compare relative positions of currently tracked public source layers.
 - Current attention layer is limited mainly to Wikipedia Pageviews, so conclusions must be treated as provisional.
 - Current attention layer is limited. In this beta, Wikipedia Pageviews is only a rough public attention proxy and does not represent total public awareness.
+- Main_Page is excluded from topic-level attention inspection where available.
+- Wikipedia Pageviews remains a rough public attention proxy.
