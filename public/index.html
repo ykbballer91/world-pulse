@@ -294,19 +294,35 @@
 
     <script>
       const statusLabels = {
-        score_contributor: "Above baseline",
-        context_only: "Context only"
+        score_contributor: "Observed signal",
+        context_only: "Context signal"
       };
-
-      function formatNumber(value) {
-        if (value === null || value === undefined || Number.isNaN(Number(value))) {
-          return "n/a";
-        }
-        return Number(value).toFixed(2);
-      }
 
       function text(value) {
         return value === null || value === undefined || value === "" ? "n/a" : String(value);
+      }
+
+      function formatObservedTime(value) {
+        if (!value) {
+          return null;
+        }
+        const date = new Date(value);
+        if (Number.isNaN(date.getTime())) {
+          return null;
+        }
+        const year = date.getUTCFullYear();
+        const month = String(date.getUTCMonth() + 1).padStart(2, "0");
+        const day = String(date.getUTCDate()).padStart(2, "0");
+        const hour = String(date.getUTCHours()).padStart(2, "0");
+        const minute = String(date.getUTCMinutes()).padStart(2, "0");
+        return `${year}-${month}-${day} ${hour}:${minute} UTC`;
+      }
+
+      function cardNote(card) {
+        if (card.signal_status === "context_only") {
+          return "Contextual public observation.";
+        }
+        return "Public observation signal.";
       }
 
       function renderSummary(lines) {
@@ -334,11 +350,10 @@
           const meta = document.createElement("div");
           meta.className = "meta";
           const rows = [
+            ["Observed time", formatObservedTime(card.event_time)],
             ["Category", card.category],
-            ["Type", card.event_type],
-            ["Anomaly", formatNumber(card.anomaly_score)],
-            ["Contribution", formatNumber(card.score_contribution)]
-          ];
+            ["Type", card.event_type]
+          ].filter(([, value]) => value);
           meta.replaceChildren(...rows.map(([label, value]) => {
             const row = document.createElement("div");
             const key = document.createElement("span");
@@ -351,7 +366,7 @@
 
           const note = document.createElement("p");
           note.className = "note";
-          note.textContent = text(card.display_note);
+          note.textContent = cardNote(card);
 
           article.append(status, title, meta, note);
           return article;
