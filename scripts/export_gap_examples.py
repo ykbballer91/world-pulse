@@ -104,11 +104,64 @@ def fetch_scores(conn, start_date, end_date):
     return records
 
 
-def top_public_observations(record):
-    explanation_payload = record["explanation_payload"]
-    component_scores = record["component_scores"]
-    events = explanation_payload.get("top_events") or component_scores.get("scoring_top_events") or []
-    return events[:5]
+def fetch_layer_observations(conn, start_date, end_date):
+    window_start = datetime(start_date.year, start_date.month, start_date.day, tzinfo=timezone.utc)
+    window_end = datetime(end_date.year, end_date.month, end_date.day, tzinfo=timezone.utc) + timedelta(days=1)
+    with conn.cursor() as cur:
+        cur.execute(
+            """
+            SELECT
+                ne.event_time::date AS event_date,
+                s.layer,
+                ne.title,
+                ne.event_time,
+                ne.category,
+                ne.event_type,
+                ne.anomaly_score,
+                ne.normalized_payload
+            FROM normalized_events ne
+            JOIN sources s ON s.id = ne.source_id
+            WHERE ne.event_time >= %s
+              AND ne.event_time < %s
+              AND s.layer IN ('reality', 'attention')
+            ORDER BY
+                event_date ASC,
+                s.layer ASC,
+                GREATEST(COALESCE(ne.anomaly_score, 0), 0) DESC,
+                COALESCE(ne.anomaly_score, 0) DESC,
+                ne.event_time DESC
+            """,
+            (window_start, window_end),
+        )
+        rows = cur.fetchall()
+
+    observations = {}
+    seen_keys = {}
+    for row in rows:
+        event_date, layer, title, event_time, category, event_type, anomaly_score, payload = row
+        by_date = observations.setdefault(event_date, {"reality": [], "attention": []})
+        by_date_seen = seen_keys.setdefault(event_date, {"reality": set(), "attention": set()})
+        event_key = (
+            str(title),
+            event_time.isoformat() if hasattr(event_time, "isoformat") else str(event_time),
+            str(event_type),
+        )
+        if event_key in by_date_seen[layer]:
+            continue
+        if len(by_date[layer]) >= 3:
+            continue
+        by_date_seen[layer].add(event_key)
+        by_date[layer].append(
+            {
+                "title": title,
+                "event_time": event_time,
+                "category": category,
+                "event_type": event_type,
+                "anomaly_score": anomaly_score,
+                "normalized_payload": payload or {},
+            }
+        )
+    return observations
 
 
 def observation_line(event):
@@ -117,6 +170,40 @@ def observation_line(event):
     category = event.get("category") or "category unavailable"
     event_type = event.get("event_type") or "type unavailable"
     return f"- {title} — {event_time} — {category} / {event_type}"
+
+
+def attention_details(event):
+    payload = event.get("normalized_payload") or {}
+    if event.get("event_type") != "wikipedia_attention_snapshot":
+        return []
+
+    details = []
+    top_articles = payload.get("top_articles") or []
+    if top_articles:
+        top_page = top_articles[0].get("article")
+        if top_page:
+            details.append(f"  - Top page: {top_page}")
+    if payload.get("top1000_total_views") is not None:
+        details.append(f"  - Total views: {format_number(payload.get('top1000_total_views'))}")
+    if payload.get("date"):
+        details.append(f"  - Date: {payload.get('date')}")
+    if not details:
+        details.append("  - Details unavailable in current normalized event payload.")
+    return details
+
+
+def append_layer_observations(lines, title, observations, layer):
+    lines.append(title)
+    events = observations.get(layer, [])
+    if not events:
+        lines.append("- No observations available for this layer in stored events.")
+        lines.append("")
+        return
+    for event in events:
+        lines.append(observation_line(event))
+        if layer == "attention":
+            lines.extend(attention_details(event))
+    lines.append("")
 
 
 def append_record(lines, record):
@@ -138,15 +225,11 @@ def append_record(lines, record):
                 f"attention={format_number(sample_counts.get('attention'))}"
             ),
             "",
-            "Top public observations:",
         ]
     )
-    events = top_public_observations(record)
-    if events:
-        lines.extend(observation_line(event) for event in events)
-    else:
-        lines.append("- No top public observations available in stored payloads.")
-    lines.append("")
+    observations = record.get("layer_observations") or {}
+    append_layer_observations(lines, "Top reality observations:", observations, "reality")
+    append_layer_observations(lines, "Top attention observations:", observations, "attention")
 
 
 def section_higher_reality(records, limit):
@@ -305,6 +388,12 @@ def main():
         start_date, end_date = resolve_date_range(args)
         with psycopg.connect(args.database_url) as conn:
             records = fetch_scores(conn, start_date, end_date)
+            layer_observations = fetch_layer_observations(conn, start_date, end_date)
+        for record in records:
+            record["layer_observations"] = layer_observations.get(
+                record["score_date"],
+                {"reality": [], "attention": []},
+            )
         markdown = build_markdown(records, datetime.now(timezone.utc), start_date, end_date, args.limit)
         output_path = Path(args.output)
         output_path.write_text(markdown, encoding="utf-8")
