@@ -12,6 +12,31 @@ World Pulse stores raw public observations with source lineage for transparent, 
 
 This repository currently includes USGS earthquake ingestion, NOAA SWPC solar activity ingestion, Open Notify ingestion, Wikipedia Pageviews ingestion, and optional Cloudflare Radar ingestion. It does not include login, payment, alerts, forecasting, market data, political data, health advice, or SNS raw content.
 
+## Conceptual Layers
+
+World Pulse observes the delay between public reality signals and their incorporation into structured reference sources.
+
+Layers:
+
+- Reality Layer: physical and infrastructure events  
+  Examples: USGS earthquakes, NOAA space weather, Cloudflare Radar.
+
+- Reflection Layer: reference-encoding behavior  
+  Example: Wikipedia pageviews on event-relevant or topic-relevant pages.
+
+- Context Layer: ambient context  
+  Example: Open Notify.
+
+The internal database label `attention` is retained for backward compatibility. Based on empirical observation, Wikipedia Pageviews are better interpreted as a reflection / reference-encoding signal rather than immediate human attention.
+
+Future layers are not yet implemented:
+
+- Immediate Attention Layer
+- Interpretation Layer
+- Action Layer
+
+World Pulse does not measure whether people are aware of an event. It does not issue forecasts, alerts, warnings, or recommendations.
+
 ## Setup
 
 Install dependencies:
@@ -69,7 +94,7 @@ Source layers:
 
 World Pulse internally classifies sources into `reality`, `attention`, and `context` layers. These layers are internal only. The public UI remains Signal Position, and gap scores are not exposed publicly.
 Internal layer positions and layer gaps are stored for research and validation. Layer gaps are internal only and are not recommendations.
-Current `attention` layer naming is provisional. Wikipedia Pageviews should be interpreted as a delayed reflection / knowledge-interest proxy, not immediate attention. An immediate attention layer is not implemented yet.
+Current `attention` layer naming is provisional. Wikipedia Pageviews should be interpreted as a delayed reflection / reference-interest proxy, not immediate attention. An immediate attention layer is not implemented yet.
 Wikipedia `Main_Page` is also excluded from topic-level reflection inspection where available. The original stored `attention` layer values are preserved for compatibility, while additional internal `excluding_main_page` fields are stored for validation.
 Topic-level reflection also excludes non-topic Wikipedia namespace pages such as `Special:`, `Wikipedia:`, `Help:`, `File:`, and `Category:`. Additional internal `topic_pages` fields are stored for validation.
 Internal reflection validation is split into `global_topic` and `targeted` streams. `targeted` only checks whether predefined category-related pages appear in stored Wikipedia top pages; it is not exposed publicly. Targeted reflection is further separated into `core` topic pages and broader `context` pages, so location or infrastructure context is not treated as direct attention to a specific event.
