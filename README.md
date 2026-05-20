@@ -31,7 +31,7 @@ The internal database label `attention` is retained for backward compatibility. 
 
 Future layers are not yet implemented:
 
-- Immediate Attention Layer
+- Immediate human-attention stream
 - Interpretation Layer
 - Action Layer
 
@@ -94,7 +94,7 @@ Source layers:
 
 World Pulse internally classifies sources into `reality`, `attention`, and `context` layers. These layers are internal only. The public UI remains Signal Position, and gap scores are not exposed publicly.
 Internal layer positions and layer gaps are stored for research and validation. Layer gaps are internal only and are not recommendations.
-Current `attention` layer naming is provisional. Wikipedia Pageviews should be interpreted as a delayed reflection / reference-interest proxy, not immediate attention. An immediate attention layer is not implemented yet.
+Current stored database label `attention` is provisional. Wikipedia Pageviews should be interpreted as a delayed reflection / reference-interest proxy, not immediate human attention. An immediate human-attention stream is not implemented yet.
 Wikipedia `Main_Page` is also excluded from topic-level reflection inspection where available. The original stored `attention` layer values are preserved for compatibility, while additional internal `excluding_main_page` fields are stored for validation.
 Topic-level reflection also excludes non-topic Wikipedia namespace pages such as `Special:`, `Wikipedia:`, `Help:`, `File:`, and `Category:`. Additional internal `topic_pages` fields are stored for validation.
 Internal reflection validation is split into `global_topic` and `targeted` streams. `targeted` only checks whether predefined category-related pages appear in stored Wikipedia top pages; it is not exposed publicly. Targeted reflection is further separated into `core` topic pages and broader `context` pages, so location or infrastructure context is not treated as direct attention to a specific event.

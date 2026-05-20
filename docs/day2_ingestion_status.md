@@ -152,7 +152,7 @@ psql "$DATABASE_URL" -c "SELECT name, source_type, layer FROM sources ORDER BY n
 psql "$DATABASE_URL" -c "SELECT name FROM sources WHERE layer IS NULL;"
 ```
 
-Source layers are internal only. World Pulse classifies sources into `reality`, `attention`, and `context` for future Reality-Attention Gap analysis. The public UI remains Signal Position, and gap scores are not exposed publicly. The current stored `attention` layer is provisional: Wikipedia Pageviews is treated as delayed reflection / interpretation proxy, not immediate attention. An immediate attention layer is not implemented yet.
+Source layers are internal only. World Pulse classifies sources into `reality`, `attention`, and `context` for future Reality-Reflection Gap analysis. The public UI remains Signal Position, and gap scores are not exposed publicly. The stored database label `attention` is retained for backward compatibility: Wikipedia Pageviews is treated as a delayed reflection / interpretation proxy, not immediate human attention. An immediate human-attention stream is not implemented yet.
 
 Run Python syntax checks:
 
