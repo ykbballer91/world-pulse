@@ -24,6 +24,9 @@ VERSION_PARAMETERS = {
     "negative_anomaly_policy": "effective_anomaly = max(anomaly_score, 0)",
     "score_range": [0, 100],
 }
+EXCLUDED_TOP_SIGNAL_EVENT_TYPES = {
+    "wikipedia_attention_snapshot",
+}
 
 JSON_COLUMNS = [
     "explanation_payload",
@@ -184,6 +187,14 @@ def calculate_daily_raw_score(events):
     return raw_score, top_events, scored_events
 
 
+def display_top_events(events):
+    return [
+        event
+        for event in sort_events_for_score(events)
+        if event["event_type"] not in EXCLUDED_TOP_SIGNAL_EVENT_TYPES
+    ][:3]
+
+
 def calculate_window_scores(events, target_date, window_days):
     window_start_date = target_date - timedelta(days=window_days - 1)
     events_by_date = {}
@@ -191,14 +202,16 @@ def calculate_window_scores(events, target_date, window_days):
         events_by_date.setdefault(event["event_time"].date(), []).append(event)
 
     daily_raw_scores = []
-    target_top_events = []
+    target_scoring_top_events = []
+    target_display_top_events = []
     target_scored_events = []
     for offset in range(window_days):
         day = window_start_date + timedelta(days=offset)
         day_events = events_by_date.get(day, [])
         raw_score, top_events, scored_events = calculate_daily_raw_score(day_events)
         if day == target_date:
-            target_top_events = top_events
+            target_scoring_top_events = top_events
+            target_display_top_events = display_top_events(day_events)
             target_scored_events = scored_events
         daily_raw_scores.append(
             {
@@ -226,7 +239,8 @@ def calculate_window_scores(events, target_date, window_days):
         "less_count": less_count,
         "equal_count": equal_count,
         "daily_raw_scores": daily_raw_scores,
-        "top_events": target_top_events,
+        "top_events": target_display_top_events,
+        "scoring_top_events": target_scoring_top_events,
         "scored_events": target_scored_events,
         "positive_events": [
             event for event in events_by_date.get(target_date, []) if event["effective_anomaly"] > 0
@@ -260,6 +274,12 @@ def build_component_scores(score_result, window_days):
         "equal_count": score_result["equal_count"],
         "top_weights": TOP_WEIGHTS,
         "daily_raw_scores": score_result["daily_raw_scores"],
+        "scoring_top_events": [
+            json_ready_event(event) for event in score_result["scoring_top_events"]
+        ],
+        "excluded_top_signal_event_types": sorted(EXCLUDED_TOP_SIGNAL_EVENT_TYPES),
+        "display_top_event_count": len(score_result["top_events"]),
+        "scoring_top_event_count": len(score_result["scoring_top_events"]),
     }
 
 
@@ -276,6 +296,10 @@ def build_explanation_payload(score_date, score_result, window_days):
         "formula": FORMULA_TEXT,
         "score_value": score_result["score_value"],
         "top_events": [json_ready_event(event) for event in score_result["top_events"]],
+        "scoring_top_events": [
+            json_ready_event(event) for event in score_result["scoring_top_events"]
+        ],
+        "excluded_top_signal_event_types": sorted(EXCLUDED_TOP_SIGNAL_EVENT_TYPES),
         "principles": {
             "no_prediction": True,
             "no_fear_amplification": True,
@@ -465,6 +489,7 @@ def main():
         f"scored_events={len(score_result['scored_events'])} "
         f"positive_events={len(score_result['positive_events'])} "
         f"top_events={len(score_result['top_events'])} "
+        f"scoring_top_events={len(score_result['scoring_top_events'])} "
         f"raw_score={score_result['raw_score']:.4f} "
         f"percentile_rank={score_result['percentile_rank']:.2f} "
         f"score_value={score_result['score_value']} "

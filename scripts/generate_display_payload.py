@@ -16,6 +16,9 @@ PAYLOAD_COLUMNS = [
     "metadata",
 ]
 CURRENT_SCORE_VERSION = "weirdness_v0_2"
+EXCLUDED_TOP_SIGNAL_EVENT_TYPES = {
+    "wikipedia_attention_snapshot",
+}
 
 
 def parse_date(value):
@@ -113,7 +116,12 @@ def percentile_line(score_value, explanation_payload):
 def build_top_cards(top_events):
     cards = []
     weights = [20, 10, 5]
-    for index, event in enumerate(top_events):
+    display_events = [
+        event
+        for event in top_events
+        if event.get("event_type") not in EXCLUDED_TOP_SIGNAL_EVENT_TYPES
+    ]
+    for index, event in enumerate(display_events):
         anomaly_score = event.get("anomaly_score")
         effective_anomaly = max(float(anomaly_score), 0) if anomaly_score is not None else 0
         score_contribution = weights[index] * effective_anomaly if index < len(weights) else 0
@@ -151,6 +159,7 @@ def build_page_payload(score_row):
         if score_version == CURRENT_SCORE_VERSION
         else summary_line_for_score(score_value)
     )
+    top_cards = build_top_cards(top_events)
 
     return {
         "date": score_date.isoformat(),
@@ -164,7 +173,12 @@ def build_page_payload(score_row):
             "The score is based on public earthquake and Wikipedia attention data.",
             "This is not a forecast, alert, or recommendation.",
         ],
-        "top_cards": build_top_cards(top_events),
+        "top_cards": top_cards,
+        "top_signal_note": (
+            None
+            if top_cards
+            else "No individual top signal available for this data date."
+        ),
         "underreacted_watch": None,
         "principles": {
             "no_prediction": True,

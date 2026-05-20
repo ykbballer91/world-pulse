@@ -101,6 +101,8 @@ Score versions:
 - `weirdness_v0_2`: percentile rank of the daily raw score within the recent baseline window.
 - Current display uses `weirdness_v0_2`.
 
+Daily aggregation events such as `wikipedia_attention_snapshot` may contribute to scoring context. They are excluded from the displayed Top signal to keep the UI focused on individual observed signals.
+
 ```sh
 python scripts/calculate_weirdness_score.py
 python scripts/calculate_weirdness_score.py --date 2026-05-18

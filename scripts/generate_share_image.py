@@ -14,6 +14,9 @@ OUTPUT_DIR = os.path.join(ROOT_DIR, "public", "share")
 WIDTH = 1200
 HEIGHT = 630
 PAYLOAD_COLUMNS = ["page_payload", "display_payload", "payload", "metadata"]
+EXCLUDED_TOP_SIGNAL_EVENT_TYPES = {
+    "wikipedia_attention_snapshot",
+}
 
 
 def parse_date(value):
@@ -134,6 +137,11 @@ def draw_wrapped(draw, xy, text, font, fill, max_width, line_spacing=8, max_line
 
 
 def top_contributor(top_cards):
+    top_cards = [
+        card
+        for card in top_cards
+        if card.get("event_type") not in EXCLUDED_TOP_SIGNAL_EVENT_TYPES
+    ]
     contributors = [
         card for card in top_cards if card.get("signal_status") == "score_contributor"
     ]
@@ -206,7 +214,7 @@ def generate_image(display_date, page_payload):
 
     score = int(page_payload.get("weirdness_score", 0))
     card = top_contributor(page_payload.get("top_cards", []))
-    signal_title = card.get("title") if card else "No top signal available"
+    signal_title = card.get("title") if card else "No individual top signal for this data date"
     anomaly = card.get("anomaly_score") if card else None
     contribution = card.get("score_contribution") if card else None
     anomaly_text = f"Anomaly {format_signed(anomaly)}σ".replace(". ", ".").replace(" .", ".")
@@ -236,6 +244,7 @@ def generate_image(display_date, page_payload):
         fill="#ffffff",
     )
     draw.text((content_left, card_top + 30), "Top signal", font=font_label, fill=muted)
+    title_lines = 3 if card else 2
     draw_wrapped(
         draw,
         (content_left, card_top + 70),
@@ -244,18 +253,19 @@ def generate_image(display_date, page_payload):
         ink,
         420,
         line_spacing=10,
-        max_lines=3,
+        max_lines=title_lines,
     )
 
-    pill_left = content_left
-    pill_top = card_top + 174
-    pill_right = pill_left + 176
-    pill_bottom = pill_top + 42
-    draw.rounded_rectangle((pill_left, pill_top, pill_right, pill_bottom), radius=21, fill=softer)
-    draw.text((pill_left + 20, pill_top + 10), status_label(card), font=font_small, fill=ink)
+    if card:
+        pill_left = content_left
+        pill_top = card_top + 174
+        pill_right = pill_left + 176
+        pill_bottom = pill_top + 42
+        draw.rounded_rectangle((pill_left, pill_top, pill_right, pill_bottom), radius=21, fill=softer)
+        draw.text((pill_left + 20, pill_top + 10), status_label(card), font=font_small, fill=ink)
 
-    draw.text((content_left, card_top + 236), anomaly_text, font=font_body, fill=ink)
-    draw.text((content_left, card_top + 274), contribution_text, font=font_body, fill=ink)
+        draw.text((content_left, card_top + 236), anomaly_text, font=font_body, fill=ink)
+        draw.text((content_left, card_top + 274), contribution_text, font=font_body, fill=ink)
 
     draw.text((72, 552), "Not a forecast, alert, or recommendation.", font=font_footer, fill=footer)
     draw.text((72, 578), "Public observation and attention data.", font=font_footer, fill=footer)

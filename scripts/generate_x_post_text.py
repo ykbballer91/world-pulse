@@ -12,6 +12,9 @@ ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUTPUT_DIR = os.path.join(ROOT_DIR, "public", "share")
 PAYLOAD_COLUMNS = ["page_payload", "display_payload", "payload", "metadata"]
 MAX_POST_CHARS = 280
+EXCLUDED_TOP_SIGNAL_EVENT_TYPES = {
+    "wikipedia_attention_snapshot",
+}
 
 
 def parse_date(value):
@@ -83,6 +86,11 @@ def fetch_display_payload(conn, display_date):
 
 
 def top_contributor(top_cards):
+    top_cards = [
+        card
+        for card in top_cards
+        if card.get("event_type") not in EXCLUDED_TOP_SIGNAL_EVENT_TYPES
+    ]
     contributors = [
         card for card in top_cards if card.get("signal_status") == "score_contributor"
     ]
@@ -117,16 +125,17 @@ def truncate_text(value, max_chars):
 def build_post_text(display_date, page_payload, url=None):
     score = int(page_payload.get("weirdness_score", 0))
     card = top_contributor(page_payload.get("top_cards", []))
-    top_signal = card.get("title") if card else "No top signal available"
+    top_signal = card.get("title") if card else None
     score_line = percentile_line_for_payload(score, page_payload)
 
     lines = [
         f"World Pulse | Data date: {display_date.isoformat()}",
         f"Latest Weirdness Score: {score}",
         score_line,
-        f"Top signal: {top_signal}",
         "Not a forecast, alert, or recommendation.",
     ]
+    if top_signal:
+        lines.insert(3, f"Top signal: {top_signal}")
     if url:
         lines.append(url)
     lines.append("#WorldPulse")
@@ -134,9 +143,10 @@ def build_post_text(display_date, page_payload, url=None):
 
     if len(post_text) > MAX_POST_CHARS:
         overflow = len(post_text) - MAX_POST_CHARS
-        top_signal = truncate_text(top_signal, max(24, len(top_signal) - overflow - 1))
-        lines[3] = f"Top signal: {top_signal}"
-        post_text = "\n".join(lines)
+        if top_signal:
+            top_signal = truncate_text(top_signal, max(24, len(top_signal) - overflow - 1))
+            lines[3] = f"Top signal: {top_signal}"
+            post_text = "\n".join(lines)
 
     if len(post_text) > MAX_POST_CHARS:
         raise ValueError(f"generated post is {len(post_text)} characters, above {MAX_POST_CHARS}")
