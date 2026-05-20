@@ -351,7 +351,7 @@ def global_topic_attention_details(event):
             f"  - Total topic views: {format_number(sum(article_views(article) for article in topic_articles))}"
         )
     else:
-        details.append("  - No topic-level attention observations available for this date.")
+        details.append("  - No topic-level reflection observations available for this date.")
     if payload.get("date"):
         details.append(f"  - Date: {payload.get('date')}")
     return details
@@ -375,7 +375,7 @@ def targeted_attention_details(record, event):
                 match for match in matches if match.get("target_kind") == "context"
             ]
 
-    details = ["Targeted attention:"]
+    details = ["Targeted reflection:"]
     if core_matches:
         details.append("Core matched pages:")
         for match in core_matches:
@@ -384,7 +384,7 @@ def targeted_attention_details(record, event):
             )
     else:
         details.append("Core matched pages:")
-        details.append("- No core targeted attention pages found in stored Wikipedia top pages for this date.")
+        details.append("- No core targeted reflection pages found in stored Wikipedia top pages for this date.")
     if context_matches:
         details.append("")
         details.append("Context matched pages:")
@@ -395,7 +395,7 @@ def targeted_attention_details(record, event):
     else:
         details.append("")
         details.append("Context matched pages:")
-        details.append("- No context targeted attention pages found in stored Wikipedia top pages for this date.")
+        details.append("- No context targeted reflection pages found in stored Wikipedia top pages for this date.")
     details.append(
         ""
     )
@@ -437,7 +437,7 @@ def append_layer_observations(lines, title, observations, layer, record=None):
         return
     for event in events:
         if layer == "attention":
-            lines.append("Global topic attention:")
+            lines.append("Global topic reflection:")
             lines.extend(global_topic_attention_details(event))
             lines.extend(targeted_attention_details(record or {}, event))
         else:
@@ -528,7 +528,7 @@ def append_record(lines, record):
     )
     observations = record.get("layer_observations") or {}
     append_layer_observations(lines, "Top reality observations:", observations, "reality")
-    append_layer_observations(lines, "Top attention observations:", observations, "attention", record=record)
+    append_layer_observations(lines, "Top reflection observations:", observations, "attention", record=record)
 
 
 def section_higher_reality(records, limit):
@@ -594,7 +594,7 @@ def build_markdown(records, generated_at, start_date, end_date, limit):
         "## Scope",
         "",
         "This file is for internal validation.",
-        "Layer gaps are not forecasts, alerts, warnings, or recommendations.",
+        "Layer gaps are internal validation fields and are not recommendations.",
         (
             "They are internal research fields comparing relative positions between "
             "source layers."
@@ -606,12 +606,12 @@ def build_markdown(records, generated_at, start_date, end_date, limit):
     ]
     append_section(
         lines,
-        "1. Higher reality position than attention position",
+        "1. Higher reality position than reflection position",
         section_higher_reality(records, limit),
     )
     append_section(
         lines,
-        "2. Higher attention position than reality position",
+        "2. Higher reflection position than reality position",
         section_higher_attention(records, limit),
     )
     append_section(
@@ -624,27 +624,32 @@ def build_markdown(records, generated_at, start_date, end_date, limit):
             "## 4. Notes for interpretation",
             "",
             "- Layer differences are internal validation fields.",
-            "- A higher reality position does not mean danger.",
-            "- A higher attention position does not mean overreaction.",
+            "- A higher reality position does not measure safety.",
+            "- A higher reflection position does not mean overreaction.",
             (
                 "- These values only compare relative positions of currently tracked "
                 "public source layers."
             ),
             (
-                "- Current attention layer is limited mainly to Wikipedia Pageviews, "
-                "so conclusions must be treated as provisional."
+                "- Current stored attention layer is provisional and is limited mainly "
+                "to Wikipedia Pageviews."
             ),
             (
-                "- Current attention layer is limited. In this beta, Wikipedia "
-                "Pageviews is only a rough public attention proxy and does not "
-                "represent total public awareness."
+                "- Wikipedia Pageviews does not represent immediate public attention."
             ),
             (
-                "- Global topic attention reflects broad Wikipedia topic traffic and "
+                "- For earthquake-like events, immediate attention would likely appear "
+                "in search, emergency information channels, news, or social platforms."
+            ),
+            (
+                "- Wikipedia is better treated as delayed reflection or interpretation."
+            ),
+            (
+                "- Global topic reflection reflects broad Wikipedia topic traffic and "
                 "may not correspond to the selected reality observations."
             ),
             (
-                "- Targeted attention only checks whether predefined topic pages "
+                "- Targeted reflection only checks whether predefined topic pages "
                 "appear in stored Wikipedia top pages."
             ),
             (
@@ -660,15 +665,15 @@ def build_markdown(records, generated_at, start_date, end_date, limit):
                 "a specific event."
             ),
             (
-                "- Absence from targeted attention does not imply absence of public "
-                "awareness."
+                "- Absence from targeted reflection does not imply absence of public "
+                "awareness or interest."
             ),
-            "- Main_Page is excluded from topic-level attention inspection where available.",
+            "- Main_Page is excluded from topic-level reflection inspection where available.",
             (
-                "- Topic-level attention excludes Main_Page and non-topic Wikipedia "
+                "- Topic-level reflection excludes Main_Page and non-topic Wikipedia "
                 "namespace pages such as Special:, Wikipedia:, Help:, File:, and Category:."
             ),
-            "- Wikipedia Pageviews remains a rough public attention proxy.",
+            "- Wikipedia Pageviews remains a rough delayed reflection and knowledge-interest proxy.",
             "",
         ]
     )

@@ -1,17 +1,17 @@
 # World Pulse Gap Examples
 
-Generated at: 2026-05-20T13:12:05Z
+Generated at: 2026-05-20T13:16:14Z
 
 ## Scope
 
 This file is for internal validation.
-Layer gaps are not forecasts, alerts, warnings, or recommendations.
+Layer gaps are internal validation fields and are not recommendations.
 They are internal research fields comparing relative positions between source layers.
 
 Date range: 2026-04-21 to 2026-05-20
 Rows evaluated: 30
 
-## 1. Higher reality position than attention position
+## 1. Higher reality position than reflection position
 
 ### 2026-05-14
 
@@ -40,14 +40,14 @@ Top reality observations:
 - M5.3 earthquake near 32 km WNW of Darien, Colombia — 2026-05-14 12:48 UTC — geophysical / earthquake
 - M5.2 earthquake near Volcano Islands, Japan region — 2026-05-14 15:34 UTC — geophysical / earthquake
 
-Top attention observations:
-Global topic attention:
+Top reflection observations:
+Global topic reflection:
   - Top topic page: Wes_Streeting
   - Total topic views: 17636657
   - Date: 2026-05-14
-Targeted attention:
+Targeted reflection:
 Core matched pages:
-- No core targeted attention pages found in stored Wikipedia top pages for this date.
+- No core targeted reflection pages found in stored Wikipedia top pages for this date.
 
 Context matched pages:
 - Japan — views: 12454
@@ -87,14 +87,14 @@ Top reality observations:
 - M5.4 earthquake near 119 km SSE of Lorengau, Papua New Guinea — 2026-05-15 01:13 UTC — geophysical / earthquake
 - M4.9 earthquake near 11 km WNW of Palca, Peru — 2026-05-15 15:45 UTC — geophysical / earthquake
 
-Top attention observations:
-Global topic attention:
+Top reflection observations:
+Global topic reflection:
   - Top topic page: Iceman_(Drake_album)
   - Total topic views: 17737360
   - Date: 2026-05-15
-Targeted attention:
+Targeted reflection:
 Core matched pages:
-- No core targeted attention pages found in stored Wikipedia top pages for this date.
+- No core targeted reflection pages found in stored Wikipedia top pages for this date.
 
 Context matched pages:
 - Japan — views: 12394
@@ -134,14 +134,14 @@ Top reality observations:
 - M5.9 earthquake near 8 km E of Wadomari, Japan — 2026-05-20 02:46 UTC — geophysical / earthquake
 - M5.4 earthquake near 19 km N of Sincik, Turkey — 2026-05-20 06:00 UTC — geophysical / earthquake
 
-Top attention observations:
+Top reflection observations:
 - No observations available for this layer in stored events.
-Targeted attention:
+Targeted reflection:
 Core matched pages:
-- No core targeted attention pages found in stored Wikipedia top pages for this date.
+- No core targeted reflection pages found in stored Wikipedia top pages for this date.
 
 Context matched pages:
-- No context targeted attention pages found in stored Wikipedia top pages for this date.
+- No context targeted reflection pages found in stored Wikipedia top pages for this date.
 
 - Total core targeted views: 0
 - Core Targeted Attention Position: 50
@@ -177,14 +177,14 @@ Top reality observations:
 - M5.7 earthquake near 51 km SSW of Port-Vila, Vanuatu — 2026-05-19 02:29 UTC — geophysical / earthquake
 - M5 earthquake near 35 km WNW of Gazli, Uzbekistan — 2026-05-19 20:40 UTC — geophysical / earthquake
 
-Top attention observations:
+Top reflection observations:
 - No observations available for this layer in stored events.
-Targeted attention:
+Targeted reflection:
 Core matched pages:
-- No core targeted attention pages found in stored Wikipedia top pages for this date.
+- No core targeted reflection pages found in stored Wikipedia top pages for this date.
 
 Context matched pages:
-- No context targeted attention pages found in stored Wikipedia top pages for this date.
+- No context targeted reflection pages found in stored Wikipedia top pages for this date.
 
 - Total core targeted views: 0
 - Core Targeted Attention Position: 50
@@ -193,7 +193,7 @@ Context matched pages:
 - Context Targeted Attention Position: 0
 - Reality-Context Targeted Attention difference: 72
 
-## 2. Higher attention position than reality position
+## 2. Higher reflection position than reality position
 
 ### 2026-05-10
 
@@ -222,14 +222,14 @@ Top reality observations:
 - M5.3 earthquake near 101 km SSE of Hihifo, Tonga — 2026-05-10 16:41 UTC — geophysical / earthquake
 - M5.2 earthquake near 27 km WSW of Madang, Papua New Guinea — 2026-05-10 16:34 UTC — geophysical / earthquake
 
-Top attention observations:
-Global topic attention:
+Top reflection observations:
+Global topic reflection:
   - Top topic page: Vijay_(actor)
   - Total topic views: 23208767
   - Date: 2026-05-10
-Targeted attention:
+Targeted reflection:
 Core matched pages:
-- No core targeted attention pages found in stored Wikipedia top pages for this date.
+- No core targeted reflection pages found in stored Wikipedia top pages for this date.
 
 Context matched pages:
 - Japan — views: 10137
@@ -268,14 +268,14 @@ Top reality observations:
 - M5.1 earthquake near 109 km SSE of Lorengau, Papua New Guinea — 2026-05-17 07:51 UTC — geophysical / earthquake
 - M5 earthquake near 31 km WNW of Finschhafen, Papua New Guinea — 2026-05-17 22:58 UTC — geophysical / earthquake
 
-Top attention observations:
-Global topic attention:
+Top reflection observations:
+Global topic reflection:
   - Top topic page: Aaron_Rai
   - Total topic views: 23099434
   - Date: 2026-05-17
-Targeted attention:
+Targeted reflection:
 Core matched pages:
-- No core targeted attention pages found in stored Wikipedia top pages for this date.
+- No core targeted reflection pages found in stored Wikipedia top pages for this date.
 
 Context matched pages:
 - Japan — views: 10586
@@ -316,14 +316,14 @@ Top reality observations:
 - M5.3 earthquake near 101 km SSE of Hihifo, Tonga — 2026-05-10 16:41 UTC — geophysical / earthquake
 - M5.2 earthquake near 27 km WSW of Madang, Papua New Guinea — 2026-05-10 16:34 UTC — geophysical / earthquake
 
-Top attention observations:
-Global topic attention:
+Top reflection observations:
+Global topic reflection:
   - Top topic page: Vijay_(actor)
   - Total topic views: 23208767
   - Date: 2026-05-10
-Targeted attention:
+Targeted reflection:
 Core matched pages:
-- No core targeted attention pages found in stored Wikipedia top pages for this date.
+- No core targeted reflection pages found in stored Wikipedia top pages for this date.
 
 Context matched pages:
 - Japan — views: 10137
@@ -362,14 +362,14 @@ Top reality observations:
 - M5.1 earthquake near 109 km SSE of Lorengau, Papua New Guinea — 2026-05-17 07:51 UTC — geophysical / earthquake
 - M5 earthquake near 31 km WNW of Finschhafen, Papua New Guinea — 2026-05-17 22:58 UTC — geophysical / earthquake
 
-Top attention observations:
-Global topic attention:
+Top reflection observations:
+Global topic reflection:
   - Top topic page: Aaron_Rai
   - Total topic views: 23099434
   - Date: 2026-05-17
-Targeted attention:
+Targeted reflection:
 Core matched pages:
-- No core targeted attention pages found in stored Wikipedia top pages for this date.
+- No core targeted reflection pages found in stored Wikipedia top pages for this date.
 
 Context matched pages:
 - Japan — views: 10586
@@ -408,14 +408,14 @@ Top reality observations:
 - M5.3 earthquake near 32 km WNW of Darien, Colombia — 2026-05-14 12:48 UTC — geophysical / earthquake
 - M5.2 earthquake near Volcano Islands, Japan region — 2026-05-14 15:34 UTC — geophysical / earthquake
 
-Top attention observations:
-Global topic attention:
+Top reflection observations:
+Global topic reflection:
   - Top topic page: Wes_Streeting
   - Total topic views: 17636657
   - Date: 2026-05-14
-Targeted attention:
+Targeted reflection:
 Core matched pages:
-- No core targeted attention pages found in stored Wikipedia top pages for this date.
+- No core targeted reflection pages found in stored Wikipedia top pages for this date.
 
 Context matched pages:
 - Japan — views: 12454
@@ -455,14 +455,14 @@ Top reality observations:
 - M5.4 earthquake near 119 km SSE of Lorengau, Papua New Guinea — 2026-05-15 01:13 UTC — geophysical / earthquake
 - M4.9 earthquake near 11 km WNW of Palca, Peru — 2026-05-15 15:45 UTC — geophysical / earthquake
 
-Top attention observations:
-Global topic attention:
+Top reflection observations:
+Global topic reflection:
   - Top topic page: Iceman_(Drake_album)
   - Total topic views: 17737360
   - Date: 2026-05-15
-Targeted attention:
+Targeted reflection:
 Core matched pages:
-- No core targeted attention pages found in stored Wikipedia top pages for this date.
+- No core targeted reflection pages found in stored Wikipedia top pages for this date.
 
 Context matched pages:
 - Japan — views: 12394
@@ -502,14 +502,14 @@ Top reality observations:
 - M5.9 earthquake near 8 km E of Wadomari, Japan — 2026-05-20 02:46 UTC — geophysical / earthquake
 - M5.4 earthquake near 19 km N of Sincik, Turkey — 2026-05-20 06:00 UTC — geophysical / earthquake
 
-Top attention observations:
+Top reflection observations:
 - No observations available for this layer in stored events.
-Targeted attention:
+Targeted reflection:
 Core matched pages:
-- No core targeted attention pages found in stored Wikipedia top pages for this date.
+- No core targeted reflection pages found in stored Wikipedia top pages for this date.
 
 Context matched pages:
-- No context targeted attention pages found in stored Wikipedia top pages for this date.
+- No context targeted reflection pages found in stored Wikipedia top pages for this date.
 
 - Total core targeted views: 0
 - Core Targeted Attention Position: 50
@@ -545,14 +545,14 @@ Top reality observations:
 - M5.7 earthquake near 51 km SSW of Port-Vila, Vanuatu — 2026-05-19 02:29 UTC — geophysical / earthquake
 - M5 earthquake near 35 km WNW of Gazli, Uzbekistan — 2026-05-19 20:40 UTC — geophysical / earthquake
 
-Top attention observations:
+Top reflection observations:
 - No observations available for this layer in stored events.
-Targeted attention:
+Targeted reflection:
 Core matched pages:
-- No core targeted attention pages found in stored Wikipedia top pages for this date.
+- No core targeted reflection pages found in stored Wikipedia top pages for this date.
 
 Context matched pages:
-- No context targeted attention pages found in stored Wikipedia top pages for this date.
+- No context targeted reflection pages found in stored Wikipedia top pages for this date.
 
 - Total core targeted views: 0
 - Core Targeted Attention Position: 50
@@ -588,14 +588,14 @@ Top reality observations:
 - M5.8 earthquake near 292 km WSW of Adak, Alaska — 2026-05-09 04:42 UTC — geophysical / earthquake
 - M5.3 earthquake near south of the Fiji Islands — 2026-05-09 20:39 UTC — geophysical / earthquake
 
-Top attention observations:
-Global topic attention:
+Top reflection observations:
+Global topic reflection:
   - Top topic page: David_Attenborough
   - Total topic views: 20697137
   - Date: 2026-05-09
-Targeted attention:
+Targeted reflection:
 Core matched pages:
-- No core targeted attention pages found in stored Wikipedia top pages for this date.
+- No core targeted reflection pages found in stored Wikipedia top pages for this date.
 
 Context matched pages:
 - Japan — views: 9755
@@ -634,14 +634,14 @@ Top reality observations:
 - M5.6 earthquake near 88 km W of Lata, Solomon Islands — 2026-05-12 15:39 UTC — geophysical / earthquake
 - M5.1 earthquake near 55 km ENE of ‘Ohonua, Tonga — 2026-05-12 21:53 UTC — geophysical / earthquake
 
-Top attention observations:
-Global topic attention:
+Top reflection observations:
+Global topic reflection:
   - Top topic page: Brandon_Clarke
   - Total topic views: 18128346
   - Date: 2026-05-12
-Targeted attention:
+Targeted reflection:
 Core matched pages:
-- No core targeted attention pages found in stored Wikipedia top pages for this date.
+- No core targeted reflection pages found in stored Wikipedia top pages for this date.
 
 Context matched pages:
 - Japan — views: 12258
@@ -681,14 +681,14 @@ Top reality observations:
 - M5.3 earthquake near Bouvet Island region — 2026-05-18 18:50 UTC — geophysical / earthquake
 - M5.2 earthquake near Mid-Indian Ridge — 2026-05-18 07:34 UTC — geophysical / earthquake
 
-Top attention observations:
-Global topic attention:
+Top reflection observations:
+Global topic reflection:
   - Top topic page: Aaron_Rai
   - Total topic views: 18583459
   - Date: 2026-05-18
-Targeted attention:
+Targeted reflection:
 Core matched pages:
-- No core targeted attention pages found in stored Wikipedia top pages for this date.
+- No core targeted reflection pages found in stored Wikipedia top pages for this date.
 
 Context matched pages:
 - Japan — views: 12275
@@ -728,14 +728,14 @@ Top reality observations:
 - M5.1 earthquake near South Sandwich Islands region — 2026-05-13 08:12 UTC — geophysical / earthquake
 - M5.1 earthquake near Izu Islands, Japan region — 2026-05-13 03:08 UTC — geophysical / earthquake
 
-Top attention observations:
-Global topic attention:
+Top reflection observations:
+Global topic reflection:
   - Top topic page: Brandon_Clarke
   - Total topic views: 17836621
   - Date: 2026-05-13
-Targeted attention:
+Targeted reflection:
 Core matched pages:
-- No core targeted attention pages found in stored Wikipedia top pages for this date.
+- No core targeted reflection pages found in stored Wikipedia top pages for this date.
 
 Context matched pages:
 - Japan — views: 12481
@@ -752,17 +752,19 @@ Context matched pages:
 ## 4. Notes for interpretation
 
 - Layer differences are internal validation fields.
-- A higher reality position does not mean danger.
-- A higher attention position does not mean overreaction.
+- A higher reality position does not measure safety.
+- A higher reflection position does not mean overreaction.
 - These values only compare relative positions of currently tracked public source layers.
-- Current attention layer is limited mainly to Wikipedia Pageviews, so conclusions must be treated as provisional.
-- Current attention layer is limited. In this beta, Wikipedia Pageviews is only a rough public attention proxy and does not represent total public awareness.
-- Global topic attention reflects broad Wikipedia topic traffic and may not correspond to the selected reality observations.
-- Targeted attention only checks whether predefined topic pages appear in stored Wikipedia top pages.
+- Current stored attention layer is provisional and is limited mainly to Wikipedia Pageviews.
+- Wikipedia Pageviews does not represent immediate public attention.
+- For earthquake-like events, immediate attention would likely appear in search, emergency information channels, news, or social platforms.
+- Wikipedia is better treated as delayed reflection or interpretation.
+- Global topic reflection reflects broad Wikipedia topic traffic and may not correspond to the selected reality observations.
+- Targeted reflection only checks whether predefined topic pages appear in stored Wikipedia top pages.
 - Core targeted pages are topic pages directly related to the observed category.
 - Context targeted pages are broader location or infrastructure context pages.
 - Context matches must not be interpreted as direct attention to a specific event.
-- Absence from targeted attention does not imply absence of public awareness.
-- Main_Page is excluded from topic-level attention inspection where available.
-- Topic-level attention excludes Main_Page and non-topic Wikipedia namespace pages such as Special:, Wikipedia:, Help:, File:, and Category:.
-- Wikipedia Pageviews remains a rough public attention proxy.
+- Absence from targeted reflection does not imply absence of public awareness or interest.
+- Main_Page is excluded from topic-level reflection inspection where available.
+- Topic-level reflection excludes Main_Page and non-topic Wikipedia namespace pages such as Special:, Wikipedia:, Help:, File:, and Category:.
+- Wikipedia Pageviews remains a rough delayed reflection and knowledge-interest proxy.
