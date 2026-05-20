@@ -206,14 +206,14 @@
       <header>
         <div>
           <p class="brand">World Pulse</p>
-          <p class="date" id="display-date">Loading</p>
+          <p class="date" id="display-date">Data date: Loading</p>
         </div>
         <p class="updated" id="updated-at"></p>
       </header>
 
       <section class="score-section" aria-labelledby="headline">
         <div>
-          <h1 id="headline">Today's Weirdness Score</h1>
+          <h1 id="headline">Latest Weirdness Score</h1>
           <div class="score" id="score">--</div>
         </div>
         <ul class="summary" id="summary-lines"></ul>
@@ -306,8 +306,9 @@
       loadPayload()
         .then(({ display_date, page_payload }) => {
           document.title = "World Pulse";
-          document.getElementById("display-date").textContent = display_date || page_payload.date;
-          document.getElementById("headline").textContent = page_payload.headline || "Today's Weirdness Score";
+          const dataDate = display_date || page_payload.date;
+          document.getElementById("display-date").textContent = `Data date: ${dataDate}`;
+          document.getElementById("headline").textContent = "Latest Weirdness Score";
           document.getElementById("score").textContent = text(page_payload.weirdness_score);
           document.getElementById("updated-at").textContent = page_payload.updated_at
             ? `Updated ${page_payload.updated_at}`

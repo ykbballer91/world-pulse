@@ -107,8 +107,8 @@ def build_post_text(display_date, page_payload, url=None):
     top_signal = card.get("title") if card else "No top signal available"
 
     lines = [
-        f"World Pulse | {display_date.isoformat()}",
-        f"Today's Weirdness Score: {score}",
+        f"World Pulse | Data date: {display_date.isoformat()}",
+        f"Latest Weirdness Score: {score}",
         f"Top signal: {top_signal}",
         summary_line_for_score(score),
         "Not a forecast, alert, or recommendation.",

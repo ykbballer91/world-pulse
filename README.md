@@ -101,6 +101,7 @@ python scripts/calculate_weirdness_score.py --date 2026-05-18
 Generate one-day display payload:
 
 Display `top_cards` may include both `score_contributor` and `context_only` signals.
+The beta page and share outputs label the value as the latest score and show the data date, because Wikipedia top pageviews can lag daily availability.
 
 ```sh
 python scripts/generate_display_payload.py

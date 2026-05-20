@@ -200,9 +200,9 @@ def generate_image(display_date, page_payload):
     contribution_text = f"Contribution {format_plain(contribution)}".replace(". ", ".").replace(" .", ".")
 
     draw.text((72, 58), "World Pulse", font=font_brand, fill=ink)
-    draw.text((72, 102), display_date.isoformat(), font=font_date, fill=muted)
+    draw.text((72, 102), f"Data date: {display_date.isoformat()}", font=font_date, fill=muted)
 
-    draw.text((72, 196), "Today's Weirdness Score", font=font_headline, fill=ink)
+    draw.text((72, 196), "Latest Weirdness Score", font=font_headline, fill=ink)
     draw.text((68, 248), str(score), font=font_score, fill=ink)
     draw.text((78, 452), score_band_label(score), font=font_band, fill=ink)
 
