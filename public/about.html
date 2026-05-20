@@ -163,7 +163,7 @@
           <p class="subtle">Beta version. Observation only.</p>
         </div>
         <nav aria-label="Primary">
-          <a href="/">Back to latest score</a>
+          <a href="/">Back to latest position</a>
         </nav>
       </header>
 
@@ -198,8 +198,20 @@
           Some public datasets, especially daily aggregated sources such as Wikipedia Pageviews, may become available with a delay. For this reason, the displayed data date can lag behind the calendar date.
         </p>
         <p>
-          The interface uses "Latest Weirdness Score" and "Data date" to avoid implying real-time coverage.
+          The interface uses "Signal Position" and "Data date" to avoid implying real-time coverage.
         </p>
+      </section>
+
+      <section>
+        <h2>What "Signal Position" Is NOT</h2>
+        <ul>
+          <li>Not a risk level. World Pulse does not measure danger.</li>
+          <li>Not an alert. World Pulse does not issue warnings.</li>
+          <li>Not a forecast. World Pulse does not predict.</li>
+          <li>Not a recommendation. Do not use it for trading, medical, political, or personal safety decisions.</li>
+          <li>A high Signal Position does not mean something bad will happen.</li>
+          <li>A low Signal Position does not mean the world is safe.</li>
+        </ul>
       </section>
 
       <section>
@@ -209,7 +221,7 @@
           <li><a href="https://www.swpc.noaa.gov/">NOAA Space Weather Prediction Center</a></li>
           <li><a href="https://wikitech.wikimedia.org/wiki/Analytics/AQS/Pageviews">Wikipedia Pageviews</a></li>
           <li><a href="http://open-notify.org/">Open Notify</a></li>
-          <li><a href="https://developers.cloudflare.com/radar/">Cloudflare Radar planned</a></li>
+          <li><a href="https://developers.cloudflare.com/radar/">Cloudflare Radar internet outage/anomaly observations</a></li>
         </ul>
         <p>Sources are stored as raw observations with source lineage where possible.</p>
       </section>
@@ -220,7 +232,7 @@
           World Pulse stores raw public observations, records source lineage, normalizes them into events, and compares selected signals against a recent baseline.
         </p>
         <p>
-          The current displayed score uses <code>weirdness_v0_2</code>.
+          The current displayed Signal Position uses internal score version <code>weirdness_v0_2</code>.
         </p>
         <p>
           <code>weirdness_v0_2</code> computes a daily raw score from positive anomaly scores and converts the selected data date into a percentile rank within the recent observed window.

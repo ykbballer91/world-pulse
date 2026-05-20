@@ -52,28 +52,37 @@
       .score-section {
         padding: 56px 0 40px;
         display: grid;
-        grid-template-columns: minmax(220px, 340px) 1fr;
-        gap: 48px;
-        align-items: center;
+        gap: 22px;
+        align-items: start;
       }
 
       h1 {
-        margin: 0 0 14px;
-        font-size: 40px;
-        line-height: 1.05;
+        margin: 0 0 22px;
+        font-size: 38px;
+        line-height: 1.15;
         letter-spacing: 0;
       }
 
-      .score {
-        font-size: 112px;
-        line-height: 0.95;
-        font-weight: 800;
+      .position-label {
+        max-width: 860px;
+        margin: 0;
+        font-size: 36px;
+        line-height: 1.16;
+        font-weight: 760;
         letter-spacing: 0;
+      }
+
+      .position-note {
+        max-width: 760px;
+        margin: 18px 0 0;
+        color: #444444;
+        font-size: 18px;
+        line-height: 1.45;
       }
 
       .summary {
         display: grid;
-        gap: 10px;
+        gap: 8px;
         margin: 0;
         padding: 0;
         list-style: none;
@@ -231,9 +240,8 @@
           font-size: 32px;
         }
 
-        .score {
-          font-size: 88px;
-          margin-bottom: 28px;
+        .position-label {
+          font-size: 28px;
         }
 
         .cards {
@@ -261,8 +269,9 @@
 
       <section class="score-section" aria-labelledby="headline">
         <div>
-          <h1 id="headline">Latest Weirdness Score</h1>
-          <div class="score" id="score">--</div>
+          <h1 id="headline">Signal Position</h1>
+          <p class="position-label" id="signal-position-label">Loading public signal position.</p>
+          <p class="position-note" id="signal-position-note"></p>
         </div>
         <ul class="summary" id="summary-lines"></ul>
       </section>
@@ -378,13 +387,18 @@
         .then(({ display_date, page_payload }) => {
           document.title = "World Pulse";
           const dataDate = display_date || page_payload.date;
+          const positionLabel = page_payload.signal_position_label || page_payload.summary_lines?.[0];
+          const positionNote = page_payload.signal_position_note || "Positional measure within recent observations. Not a risk, alert, or warning level.";
           document.getElementById("display-date").textContent = `Data date: ${dataDate}`;
-          document.getElementById("headline").textContent = "Latest Weirdness Score";
-          document.getElementById("score").textContent = text(page_payload.weirdness_score);
+          document.getElementById("headline").textContent = `${page_payload.headline || "Signal Position"} — Data date: ${dataDate}`;
+          document.getElementById("signal-position-label").textContent = text(positionLabel);
+          document.getElementById("signal-position-note").textContent = text(positionNote);
           document.getElementById("updated-at").textContent = page_payload.updated_at
             ? `Updated ${page_payload.updated_at}`
             : "";
-          renderSummary(page_payload.summary_lines || []);
+          renderSummary((page_payload.summary_lines || []).filter((line) => {
+            return line !== positionLabel && line !== positionNote;
+          }));
           renderCards(page_payload.top_cards || []);
           renderQuietSignal(page_payload.quiet_signal);
         })

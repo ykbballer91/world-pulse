@@ -12,7 +12,7 @@ from psycopg.types.json import Jsonb
 VERSION_KEY = "weirdness_v0_2"
 FORMULA_TEXT = (
     "Daily raw score is computed from the top positive anomaly scores for each observed day. "
-    "The displayed Weirdness Score is the percentile rank of the selected data date's raw score "
+    "The displayed Signal Position is the percentile rank of the selected data date's raw score "
     "within the recent baseline window."
 )
 TOP_WEIGHTS = [20, 10, 5]
@@ -188,11 +188,40 @@ def calculate_daily_raw_score(events):
 
 
 def display_top_events(events):
-    return [
-        event
-        for event in sort_events_for_score(events)
-        if event["event_type"] not in EXCLUDED_TOP_SIGNAL_EVENT_TYPES
-    ][:3]
+    display_events = []
+    seen_keys = set()
+    for event in sort_events_for_score(events):
+        if event["event_type"] in EXCLUDED_TOP_SIGNAL_EVENT_TYPES:
+            continue
+        for key in [
+            ("id", str(event["id"])),
+            (
+                "type_time_title",
+                event["event_type"],
+                isoformat_z(event["event_time"]),
+                event["title"],
+            ),
+            ("title", event["title"]),
+        ]:
+            if key in seen_keys:
+                break
+        else:
+            display_events.append(event)
+            seen_keys.update(
+                [
+                    ("id", str(event["id"])),
+                    (
+                        "type_time_title",
+                        event["event_type"],
+                        isoformat_z(event["event_time"]),
+                        event["title"],
+                    ),
+                    ("title", event["title"]),
+                ]
+            )
+        if len(display_events) >= 3:
+            break
+    return display_events
 
 
 def calculate_window_scores(events, target_date, window_days):
@@ -410,7 +439,7 @@ def save_weirdness_score(conn, columns, score_date, score_result, explanation_pa
 def main():
     load_dotenv()
 
-    parser = argparse.ArgumentParser(description="Calculate World Pulse Weirdness Score.")
+    parser = argparse.ArgumentParser(description="Calculate World Pulse internal signal position score.")
     parser.add_argument(
         "--date",
         type=parse_date,
@@ -479,11 +508,11 @@ def main():
             conn.rollback()
         errors = 1
         score_date_text = args.date.isoformat() if args.date else "latest_observed"
-        print(f"Weirdness Score calculation failed: score_date={score_date_text} error={exc}", file=sys.stderr)
+        print(f"Signal Position calculation failed: score_date={score_date_text} error={exc}", file=sys.stderr)
         return 1
 
     print(
-        "Weirdness Score calculation completed: "
+        "Signal Position calculation completed: "
         f"score_date={score_date.isoformat()} "
         f"candidate_events={len(candidate_events)} "
         f"scored_events={len(score_result['scored_events'])} "

@@ -152,18 +152,12 @@ def top_contributor(top_cards):
 
 def score_band_label(score):
     if score <= 20:
-        return "Near baseline"
+        return "Lower-range position"
     if score <= 50:
-        return "Moderately above baseline"
+        return "Mid-range position"
     if score <= 80:
-        return "Clearly above baseline"
-    return "Unusually elevated"
-
-
-def status_label(card):
-    if not card:
-        return "Context only"
-    return "Above baseline" if card.get("signal_status") == "score_contributor" else "Context only"
+        return "Upper-range position"
+    return "High-range position"
 
 
 def format_signed(value):
@@ -178,17 +172,11 @@ def format_plain(value):
     return f"{float(value):.2f}".replace(". ", ".").replace(" .", ".")
 
 
-def compact_percentile_line(page_payload):
-    line = page_payload.get("percentile_line")
-    if not line:
-        summary_lines = page_payload.get("summary_lines", [])
-        line = summary_lines[0] if summary_lines else None
-    if not line:
-        return None
-    line = line.replace("This data date is in the ", "")
-    line = line.replace("of the last ", "of last ")
-    line = line.rstrip(".")
-    return line
+def signal_position_label(page_payload, score):
+    return (
+        page_payload.get("signal_position_label")
+        or f"Higher than {int(round(score))}% of the last 30 observed days."
+    )
 
 
 def generate_image(display_date, page_payload):
@@ -196,79 +184,56 @@ def generate_image(display_date, page_payload):
     draw = ImageDraw.Draw(image)
 
     font_brand = load_font(30, bold=True)
-    font_date = load_font(24)
-    font_headline = load_font(44, bold=True)
-    font_score = load_font(190, bold=True)
-    font_band = load_font(30, bold=True)
-    font_body = load_font(27)
-    font_small = load_font(21)
-    font_footer = load_font(18)
-    font_label = load_font(24, bold=True)
-    font_card_title = load_font(34, bold=True)
+    font_headline = load_font(54, bold=True)
+    font_hero = load_font(58, bold=True)
+    font_body = load_font(26)
+    font_small = load_font(20)
+    font_footer = load_font(20)
+    font_label = load_font(21, bold=True)
+    font_card_title = load_font(25, bold=True)
 
     ink = "#171717"
     muted = "#5f5f5f"
     light = "#d8d8d5"
     softer = "#efefec"
-    footer = "#74746f"
+    footer = "#62625d"
 
-    score = int(page_payload.get("weirdness_score", 0))
+    score = int(page_payload.get("signal_position", page_payload.get("weirdness_score", 0)))
     card = top_contributor(page_payload.get("top_cards", []))
     signal_title = card.get("title") if card else "No individual top signal for this data date"
-    anomaly = card.get("anomaly_score") if card else None
-    contribution = card.get("score_contribution") if card else None
-    anomaly_text = f"Anomaly {format_signed(anomaly)}σ".replace(". ", ".").replace(" .", ".")
-    contribution_text = f"Contribution {format_plain(contribution)}".replace(". ", ".").replace(" .", ".")
+    # Keep the share image intentionally low-detail to avoid risk-level misinterpretation.
+    position_line = signal_position_label(page_payload, score)
 
-    draw.text((72, 58), "World Pulse", font=font_brand, fill=ink)
-    draw.text((72, 102), f"Data date: {display_date.isoformat()}", font=font_date, fill=muted)
+    draw.text((72, 58), f"World Pulse — {display_date.isoformat()}", font=font_brand, fill=ink)
+    draw.text((72, 150), "Signal Position", font=font_headline, fill=ink)
+    draw_wrapped(draw, (72, 228), position_line, font_hero, ink, 840, line_spacing=10, max_lines=2)
+    draw.text((72, 398), "Positional measure. Not a risk, alert, or forecast.", font=font_body, fill=muted)
+    draw.text((72, 445), score_band_label(score), font=font_body, fill=ink)
 
-    draw.text((72, 196), "Latest Weirdness Score", font=font_headline, fill=ink)
-    draw.text((68, 248), str(score), font=font_score, fill=ink)
-    draw.text((78, 452), score_band_label(score), font=font_band, fill=ink)
-
-    percentile_line = compact_percentile_line(page_payload)
-    if percentile_line:
-        draw_wrapped(draw, (78, 500), percentile_line, font_small, muted, 470, line_spacing=6, max_lines=1)
-
-    card_left = 610
-    card_top = 238
+    card_left = 744
+    card_top = 360
     card_right = 1128
-    card_bottom = 548
-    content_left = 650
+    card_bottom = 552
+    content_left = 770
     draw.rounded_rectangle(
         (card_left, card_top, card_right, card_bottom),
-        radius=18,
+        radius=16,
         outline=light,
         width=2,
         fill="#ffffff",
     )
-    draw.text((content_left, card_top + 30), "Top signal", font=font_label, fill=muted)
-    title_lines = 3 if card else 2
-    draw_wrapped(
-        draw,
-        (content_left, card_top + 70),
-        signal_title,
-        font_card_title,
-        ink,
-        420,
-        line_spacing=10,
-        max_lines=title_lines,
-    )
+    draw.text((content_left, card_top + 24), "Top signal", font=font_label, fill=muted)
+    draw_wrapped(draw, (content_left, card_top + 58), signal_title, font_card_title, ink, 320, line_spacing=8, max_lines=2)
 
     if card:
         pill_left = content_left
-        pill_top = card_top + 174
-        pill_right = pill_left + 176
-        pill_bottom = pill_top + 42
+        pill_top = card_top + 124
+        pill_right = pill_left + 166
+        pill_bottom = pill_top + 34
         draw.rounded_rectangle((pill_left, pill_top, pill_right, pill_bottom), radius=21, fill=softer)
-        draw.text((pill_left + 20, pill_top + 10), status_label(card), font=font_small, fill=ink)
+        draw.text((pill_left + 16, pill_top + 7), "Observed signal", font=font_small, fill=ink)
 
-        draw.text((content_left, card_top + 236), anomaly_text, font=font_body, fill=ink)
-        draw.text((content_left, card_top + 274), contribution_text, font=font_body, fill=ink)
-
-    draw.text((72, 552), "Not a forecast, alert, or recommendation.", font=font_footer, fill=footer)
-    draw.text((72, 578), "Public observation and attention data.", font=font_footer, fill=footer)
+    draw.text((72, 568), "worldpulse.today", font=font_footer, fill=footer)
     return image
 
 

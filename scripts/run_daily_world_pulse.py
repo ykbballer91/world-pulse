@@ -271,7 +271,7 @@ def main():
         print(f"Daily build target_date={target_date_text}")
 
         run_step(
-            "Weirdness score",
+            "Signal position score",
             [
                 sys.executable,
                 script_path("calculate_weirdness_score.py"),

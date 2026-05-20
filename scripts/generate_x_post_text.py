@@ -15,6 +15,7 @@ MAX_POST_CHARS = 280
 EXCLUDED_TOP_SIGNAL_EVENT_TYPES = {
     "wikipedia_attention_snapshot",
 }
+DEFAULT_POST_URL = "https://worldpulse.today/"
 
 
 def parse_date(value):
@@ -85,68 +86,32 @@ def fetch_display_payload(conn, display_date):
         return row
 
 
-def top_contributor(top_cards):
-    top_cards = [
-        card
-        for card in top_cards
-        if card.get("event_type") not in EXCLUDED_TOP_SIGNAL_EVENT_TYPES
-    ]
-    contributors = [
-        card for card in top_cards if card.get("signal_status") == "score_contributor"
-    ]
-    if contributors:
-        return contributors[0]
-    return top_cards[0] if top_cards else None
-
-
-def summary_line_for_score(score):
-    if score <= 20:
-        return "Observed public signals were near or below the recent baseline."
-    if score <= 50:
-        return "Observed public signals were moderately above the recent baseline."
-    if score <= 80:
-        return "Observed public signals were clearly above the recent baseline."
-    return "Observed public signals were unusually elevated relative to the recent baseline."
-
-
-def percentile_line_for_payload(score, page_payload):
-    return page_payload.get("percentile_line") or summary_line_for_score(score)
-
-
-def truncate_text(value, max_chars):
-    text = str(value)
-    if len(text) <= max_chars:
-        return text
-    if max_chars <= 3:
-        return text[:max_chars]
-    return text[: max_chars - 3].rstrip() + "..."
+def window_days_for_payload(page_payload):
+    line = page_payload.get("signal_position_label") or ""
+    marker = "of the last "
+    if marker in line:
+        try:
+            return int(line.split(marker, 1)[1].split(" observed days", 1)[0])
+        except (ValueError, IndexError):
+            pass
+    return 30
 
 
 def build_post_text(display_date, page_payload, url=None):
-    score = int(page_payload.get("weirdness_score", 0))
-    card = top_contributor(page_payload.get("top_cards", []))
-    top_signal = card.get("title") if card else None
-    score_line = percentile_line_for_payload(score, page_payload)
+    position = int(page_payload.get("signal_position", page_payload.get("weirdness_score", 0)))
+    window_days = window_days_for_payload(page_payload)
+    post_url = url if url is not None else DEFAULT_POST_URL
 
     lines = [
-        f"World Pulse | Data date: {display_date.isoformat()}",
-        f"Latest Weirdness Score: {score}",
-        score_line,
-        "Not a forecast, alert, or recommendation.",
+        f"World Pulse — {display_date.isoformat()}",
+        "",
+        f"Today's public signals sit higher than {position}% of",
+        f"the last {window_days} observed days.",
+        "Positional measure. Not a forecast or alert.",
+        "",
+        "#WorldPulse" + (f" {post_url}" if post_url else ""),
     ]
-    if top_signal:
-        lines.insert(3, f"Top signal: {top_signal}")
-    if url:
-        lines.append(url)
-    lines.append("#WorldPulse")
     post_text = "\n".join(lines)
-
-    if len(post_text) > MAX_POST_CHARS:
-        overflow = len(post_text) - MAX_POST_CHARS
-        if top_signal:
-            top_signal = truncate_text(top_signal, max(24, len(top_signal) - overflow - 1))
-            lines[3] = f"Top signal: {top_signal}"
-            post_text = "\n".join(lines)
 
     if len(post_text) > MAX_POST_CHARS:
         raise ValueError(f"generated post is {len(post_text)} characters, above {MAX_POST_CHARS}")
@@ -176,7 +141,7 @@ def main():
     )
     parser.add_argument(
         "--url",
-        default=None,
+        default=DEFAULT_POST_URL,
         help="Optional URL to append to the post text.",
     )
     parser.add_argument(

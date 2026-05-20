@@ -103,13 +103,16 @@ python scripts/generate_normalized_events.py --source wikipedia
 python scripts/generate_normalized_events.py --source all
 ```
 
-Calculate initial Weirdness Score:
+Calculate the internal Signal Position score:
 
 Score versions:
 
 - `weirdness_v0_1`: raw positive anomaly weighted score.
 - `weirdness_v0_2`: percentile rank of the daily raw score within the recent baseline window.
-- Current display uses `weirdness_v0_2`.
+- Public UI label: Signal Position.
+- Internal score version: `weirdness_v0_2`.
+- The public label avoids presenting the value as a risk, alert, or danger score.
+- Current public display uses Signal Position backed by `weirdness_v0_2`.
 
 Daily aggregation events such as `wikipedia_attention_snapshot` may contribute to scoring context. They are excluded from the displayed Top signal to keep the UI focused on individual observed signals.
 
@@ -123,7 +126,7 @@ python scripts/calculate_weirdness_score.py --date 2026-05-18
 Generate one-day display payload:
 
 Display `top_cards` may include both `score_contributor` and `context_only` signals.
-The beta page and share outputs label the value as the latest score and show the data date, because Wikipedia top pageviews can lag daily availability.
+The beta page and share outputs label the value as Signal Position and show the data date, because Wikipedia top pageviews can lag daily availability.
 
 ```sh
 python scripts/generate_display_payload.py

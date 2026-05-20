@@ -188,6 +188,15 @@ def percentile_line(score_value, explanation_payload):
     )
 
 
+def signal_position_label(score_value, explanation_payload):
+    window_days = int(explanation_payload.get("window_days", 30))
+    return f"Higher than {int(round(score_value))}% of the last {window_days} observed days."
+
+
+def signal_position_note():
+    return "Positional measure within recent observations. Not a risk, alert, or warning level."
+
+
 def build_top_cards(top_events):
     cards = []
     weights = [20, 10, 5]
@@ -196,7 +205,38 @@ def build_top_cards(top_events):
         for event in top_events
         if event.get("event_type") not in EXCLUDED_TOP_SIGNAL_EVENT_TYPES
     ]
-    for index, event in enumerate(display_events):
+    deduped_events = []
+    seen_keys = set()
+    for event in display_events:
+        for key in [
+            ("id", str(event.get("id"))),
+            (
+                "type_time_title",
+                event.get("event_type"),
+                event.get("event_time"),
+                event.get("title"),
+            ),
+            ("title", event.get("title")),
+        ]:
+            if key in seen_keys:
+                break
+        else:
+            deduped_events.append(event)
+            seen_keys.update(
+                [
+                    ("id", str(event.get("id"))),
+                    (
+                        "type_time_title",
+                        event.get("event_type"),
+                        event.get("event_time"),
+                        event.get("title"),
+                    ),
+                    ("title", event.get("title")),
+                ]
+            )
+        if len(deduped_events) >= 3:
+            break
+    for index, event in enumerate(deduped_events):
         anomaly_score = event.get("anomaly_score")
         effective_anomaly = max(float(anomaly_score), 0) if anomaly_score is not None else 0
         score_contribution = weights[index] * effective_anomaly if index < len(weights) else 0
@@ -229,24 +269,29 @@ def build_page_payload(score_row, quiet_signal):
     top_events = explanation_payload.get("top_events", [])
     now = datetime.now(timezone.utc)
     data_date = explanation_payload.get("data_date", score_date.isoformat())
-    line = (
+    legacy_line = (
         percentile_line(score_value, explanation_payload)
         if score_version == CURRENT_SCORE_VERSION
         else summary_line_for_score(score_value)
     )
+    position_label = signal_position_label(score_value, explanation_payload)
+    position_note = signal_position_note()
     top_cards = build_top_cards(top_events)
 
     return {
         "date": score_date.isoformat(),
         "data_date": data_date,
         "weirdness_score": score_value,
+        "signal_position": score_value,
+        "signal_position_label": position_label,
+        "signal_position_note": position_note,
         "score_version": score_version,
-        "headline": "Latest Weirdness Score",
-        "percentile_line": line,
+        "headline": "Signal Position",
+        "percentile_line": legacy_line,
         "summary_lines": [
-            line,
-            "The score is based on public earthquake and Wikipedia attention data.",
-            "This is not a forecast, alert, or recommendation.",
+            position_label,
+            position_note,
+            "Based on public earthquake, space weather, internet, and Wikipedia attention data.",
         ],
         "top_cards": top_cards,
         "quiet_signal": quiet_signal,
@@ -360,7 +405,7 @@ def main():
         "--date",
         type=parse_date,
         default=None,
-        help="Display date in YYYY-MM-DD format. Defaults to latest weirdness score date.",
+        help="Display date in YYYY-MM-DD format. Defaults to latest internal score date.",
     )
     parser.add_argument(
         "--database-url",
