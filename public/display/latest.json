@@ -2,7 +2,7 @@
   "display_date": "2026-05-20",
   "page_payload": {
     "date": "2026-05-20",
-    "headline": "Latest Weirdness Score",
+    "headline": "Signal Position",
     "data_date": "2026-05-20",
     "top_cards": [
       {
@@ -19,9 +19,9 @@
         "score_contribution": 13.45232211396128
       },
       {
-        "title": "M5.9 earthquake near 10 km NNW of China, Japan",
+        "title": "M5.9 earthquake near 8 km E of Wadomari, Japan",
         "category": "geophysical",
-        "event_time": "2026-05-20T02:46:25Z",
+        "event_time": "2026-05-20T02:46:24Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Above the recent baseline.",
@@ -32,17 +32,17 @@
         "score_contribution": 6.72616105698064
       },
       {
-        "title": "M5.9 earthquake near 10 km NNW of China, Japan",
+        "title": "M5.4 earthquake near 19 km N of Sincik, Turkey",
         "category": "geophysical",
-        "event_time": "2026-05-20T02:46:25Z",
+        "event_time": "2026-05-20T06:00:16Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
-        "display_note": "Above the recent baseline.",
-        "anomaly_score": 0.672616105698064,
-        "signal_status": "score_contributor",
-        "magnitude_value": 5.9,
-        "effective_anomaly": 0.672616105698064,
-        "score_contribution": 3.36308052849032
+        "display_note": "Observed signal, but not above the recent baseline.",
+        "anomaly_score": -0.690794919365558,
+        "signal_status": "context_only",
+        "magnitude_value": 5.4,
+        "effective_anomaly": 0,
+        "score_contribution": 0
       }
     ],
     "principles": {
@@ -50,19 +50,22 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-05-20T07:49:57Z",
+    "updated_at": "2026-05-20T08:48:33Z",
     "quiet_signal": {
       "note": "No quiet signal available for this data date.",
       "available": false
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "This data date is in the 72nd percentile of the last 30 observed days.",
-      "The score is based on public earthquake and Wikipedia attention data.",
-      "This is not a forecast, alert, or recommendation."
+      "Higher than 72% of the last 30 observed days.",
+      "Positional measure within recent observations. Not a risk, alert, or warning level.",
+      "Based on public earthquake, space weather, internet, and Wikipedia attention data."
     ],
     "percentile_line": "This data date is in the 72nd percentile of the last 30 observed days.",
+    "signal_position": 72,
     "top_signal_note": null,
-    "weirdness_score": 72
+    "weirdness_score": 72,
+    "signal_position_note": "Positional measure within recent observations. Not a risk, alert, or warning level.",
+    "signal_position_label": "Higher than 72% of the last 30 observed days."
   }
 }
