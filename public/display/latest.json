@@ -6,19 +6,6 @@
     "data_date": "2026-05-18",
     "top_cards": [
       {
-        "title": "Wikipedia attention snapshot for 2026-05-18",
-        "category": "attention",
-        "event_time": "2026-05-18T00:00:00Z",
-        "event_type": "wikipedia_attention_snapshot",
-        "source_note": "Public observation data",
-        "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.441295271070525,
-        "signal_status": "context_only",
-        "magnitude_value": 27549842.0,
-        "effective_anomaly": 0,
-        "score_contribution": 0
-      },
-      {
         "title": "M5.4 earthquake near West Chile Rise",
         "category": "geophysical",
         "event_time": "2026-05-18T02:10:41Z",
@@ -43,6 +30,19 @@
         "magnitude_value": 5.3,
         "effective_anomaly": 0,
         "score_contribution": 0
+      },
+      {
+        "title": "M5.2 earthquake near Mid-Indian Ridge",
+        "category": "geophysical",
+        "event_time": "2026-05-18T07:34:30Z",
+        "event_type": "earthquake",
+        "source_note": "Public observation data",
+        "display_note": "Observed signal, but not above the recent baseline.",
+        "anomaly_score": -1.23615932939101,
+        "signal_status": "context_only",
+        "magnitude_value": 5.2,
+        "effective_anomaly": 0,
+        "score_contribution": 0
       }
     ],
     "principles": {
@@ -50,7 +50,7 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-05-20T06:07:26Z",
+    "updated_at": "2026-05-20T06:15:57Z",
     "score_version": "weirdness_v0_2",
     "summary_lines": [
       "This data date is in the 20th percentile of the last 30 observed days.",
@@ -58,6 +58,7 @@
       "This is not a forecast, alert, or recommendation."
     ],
     "percentile_line": "This data date is in the 20th percentile of the last 30 observed days.",
+    "top_signal_note": null,
     "weirdness_score": 20,
     "underreacted_watch": null
   }
