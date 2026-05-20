@@ -24,6 +24,35 @@ VERSION_PARAMETERS = {
     "negative_anomaly_policy": "effective_anomaly = max(anomaly_score, 0)",
     "score_range": [0, 100],
 }
+INTERNAL_LAYER_VERSION_KEY = "weirdness_v0_3_internal_layers"
+INTERNAL_LAYER_FORMULA_TEXT = (
+    "Same public Signal Position calculation as weirdness_v0_2. Adds internal reality "
+    "and attention layer positions and internal reality_attention_gap fields. Not exposed "
+    "in public UI."
+)
+INTERNAL_LAYER_PARAMETERS = {
+    "calculation_compatible_with": "weirdness_v0_2",
+    "public_label": "Signal Position",
+    "internal_layers": ["reality", "attention", "context"],
+    "gap_public_exposure": "internal_only",
+    "minimum_layer_sample_count": 14,
+}
+MINIMUM_LAYER_SAMPLE_COUNT = 14
+LAYER_METHODOLOGY = {
+    "public_exposure": "internal_only",
+    "gap_interpretation_policy": (
+        "Layer positions are internal research fields and are not exposed in public displays."
+    ),
+    "layers": {
+        "reality": [
+            "USGS Earthquake Hazards Program",
+            "NOAA SWPC",
+            "Cloudflare Radar",
+        ],
+        "attention": ["Wikipedia Pageviews"],
+        "context": ["Open Notify"],
+    },
+}
 EXCLUDED_TOP_SIGNAL_EVENT_TYPES = {
     "wikipedia_attention_snapshot",
 }
@@ -78,19 +107,16 @@ def latest_observation_date(conn):
         return row[0]
 
 
-def ensure_score_version(conn, columns, window_days):
+def upsert_score_version(conn, columns, version_key, formula_text, parameters):
     required = {"version_key"}
     if not required.issubset(columns):
         raise ValueError("score_versions must include version_key")
 
-    parameters = dict(VERSION_PARAMETERS)
-    parameters["window_days"] = window_days
-
-    values = {"version_key": VERSION_KEY}
+    values = {"version_key": version_key}
     if "formula_text" in columns:
-        values["formula_text"] = FORMULA_TEXT
+        values["formula_text"] = formula_text
     elif "formula" in columns:
-        values["formula"] = FORMULA_TEXT
+        values["formula"] = formula_text
     if "parameters" in columns:
         values["parameters"] = Jsonb(parameters)
     if "updated_at" in columns:
@@ -117,6 +143,22 @@ def ensure_score_version(conn, columns, window_days):
         )
 
 
+def ensure_score_version(conn, columns, window_days):
+    parameters = dict(VERSION_PARAMETERS)
+    parameters["window_days"] = window_days
+    upsert_score_version(conn, columns, VERSION_KEY, FORMULA_TEXT, parameters)
+
+    internal_parameters = dict(INTERNAL_LAYER_PARAMETERS)
+    internal_parameters["window_days"] = window_days
+    upsert_score_version(
+        conn,
+        columns,
+        INTERNAL_LAYER_VERSION_KEY,
+        INTERNAL_LAYER_FORMULA_TEXT,
+        internal_parameters,
+    )
+
+
 def fetch_events_for_window(conn, window_start_date, window_end_date):
     window_start = datetime(
         window_start_date.year,
@@ -134,18 +176,20 @@ def fetch_events_for_window(conn, window_start_date, window_end_date):
         cur.execute(
             """
             SELECT
-                id,
-                event_type,
-                category,
-                title,
-                event_time,
-                magnitude_value,
-                anomaly_score
-            FROM normalized_events
-            WHERE event_time >= %s
-              AND event_time < %s
-              AND anomaly_score IS NOT NULL
-            ORDER BY event_time ASC
+                ne.id,
+                ne.event_type,
+                ne.category,
+                ne.title,
+                ne.event_time,
+                ne.magnitude_value,
+                ne.anomaly_score,
+                s.layer
+            FROM normalized_events ne
+            LEFT JOIN sources s ON s.id = ne.source_id
+            WHERE ne.event_time >= %s
+              AND ne.event_time < %s
+              AND ne.anomaly_score IS NOT NULL
+            ORDER BY ne.event_time ASC
             """,
             (window_start, window_end),
         )
@@ -161,6 +205,7 @@ def fetch_events_for_window(conn, window_start_date, window_end_date):
             "magnitude_value": row[5],
             "anomaly_score": row[6],
             "effective_anomaly": max(float(row[6]), 0),
+            "layer": row[7],
         }
         for row in rows
     ]
@@ -185,6 +230,21 @@ def calculate_daily_raw_score(events):
         weight * event["effective_anomaly"] for weight, event in zip(TOP_WEIGHTS, top_events)
     )
     return raw_score, top_events, scored_events
+
+
+def percentile_rank(values, target_value):
+    if not values:
+        return None, 0, 0, 0
+    less_count = sum(1 for value in values if value < target_value)
+    equal_count = sum(1 for value in values if value == target_value)
+    percentile = 100 * (less_count + 0.5 * equal_count) / len(values)
+    return percentile, less_count, equal_count, len(values)
+
+
+def rounded_position(percentile):
+    if percentile is None:
+        return None
+    return round(max(0, min(percentile, 100)))
 
 
 def display_top_events(events):
@@ -231,9 +291,18 @@ def calculate_window_scores(events, target_date, window_days):
         events_by_date.setdefault(event["event_time"].date(), []).append(event)
 
     daily_raw_scores = []
+    layer_daily_raw_scores = {
+        "reality": [],
+        "attention": [],
+    }
     target_scoring_top_events = []
     target_display_top_events = []
     target_scored_events = []
+    target_layer_raw_scores = {
+        "reality": 0,
+        "attention": 0,
+    }
+    context_event_count = 0
     for offset in range(window_days):
         day = window_start_date + timedelta(days=offset)
         day_events = events_by_date.get(day, [])
@@ -242,6 +311,7 @@ def calculate_window_scores(events, target_date, window_days):
             target_scoring_top_events = top_events
             target_display_top_events = display_top_events(day_events)
             target_scored_events = scored_events
+            context_event_count = sum(1 for event in day_events if event.get("layer") == "context")
         daily_raw_scores.append(
             {
                 "date": day.isoformat(),
@@ -249,25 +319,76 @@ def calculate_window_scores(events, target_date, window_days):
                 "event_count": len(day_events),
             }
         )
+        for layer in ["reality", "attention"]:
+            layer_events = [event for event in day_events if event.get("layer") == layer]
+            layer_raw_score, _, _ = calculate_daily_raw_score(layer_events)
+            if day == target_date:
+                target_layer_raw_scores[layer] = layer_raw_score
+            layer_daily_raw_scores[layer].append(
+                {
+                    "date": day.isoformat(),
+                    "raw_score": layer_raw_score,
+                    "event_count": len(layer_events),
+                    "has_layer_events": bool(layer_events),
+                }
+            )
 
     target_raw_score = next(
         item["raw_score"] for item in daily_raw_scores if item["date"] == target_date.isoformat()
     )
     raw_values = [item["raw_score"] for item in daily_raw_scores]
-    less_count = sum(1 for value in raw_values if value < target_raw_score)
-    equal_count = sum(1 for value in raw_values if value == target_raw_score)
-    sample_count = len(raw_values)
-    percentile_rank = 100 * (less_count + 0.5 * equal_count) / sample_count
-    score_value = round(max(0, min(percentile_rank, 100)))
+    percentile_value, less_count, equal_count, sample_count = percentile_rank(raw_values, target_raw_score)
+    score_value = rounded_position(percentile_value)
+
+    layer_positions = {}
+    layer_sample_counts = {}
+    layer_percentile_ranks = {}
+    for layer, daily_scores in layer_daily_raw_scores.items():
+        layer_values = [
+            item["raw_score"] for item in daily_scores if item["has_layer_events"]
+        ]
+        target_layer_value = target_layer_raw_scores[layer]
+        layer_sample_count = len(layer_values)
+        layer_sample_counts[layer] = layer_sample_count
+        if layer_sample_count >= MINIMUM_LAYER_SAMPLE_COUNT:
+            layer_percentile, _, _, _ = percentile_rank(layer_values, target_layer_value)
+            layer_percentile_ranks[layer] = layer_percentile
+            layer_positions[layer] = rounded_position(layer_percentile)
+        else:
+            layer_percentile_ranks[layer] = None
+            layer_positions[layer] = None
+
+    reality_position = layer_positions.get("reality")
+    attention_position = layer_positions.get("attention")
+    reality_attention_gap = (
+        reality_position - attention_position
+        if reality_position is not None and attention_position is not None
+        else None
+    )
+    attention_overhang = (
+        attention_position - reality_position
+        if reality_position is not None and attention_position is not None
+        else None
+    )
 
     return {
         "score_value": score_value,
         "raw_score": target_raw_score,
-        "percentile_rank": percentile_rank,
+        "percentile_rank": percentile_value,
         "history_sample_count": sample_count,
         "less_count": less_count,
         "equal_count": equal_count,
         "daily_raw_scores": daily_raw_scores,
+        "layer_daily_raw_scores": layer_daily_raw_scores,
+        "layer_raw_scores": target_layer_raw_scores,
+        "layer_positions": layer_positions,
+        "layer_percentile_ranks": layer_percentile_ranks,
+        "layer_sample_counts": layer_sample_counts,
+        "layer_gaps": {
+            "reality_attention_gap": reality_attention_gap,
+            "attention_overhang": attention_overhang,
+        },
+        "context_event_count": context_event_count,
         "top_events": target_display_top_events,
         "scoring_top_events": target_scoring_top_events,
         "scored_events": target_scored_events,
@@ -289,6 +410,7 @@ def json_ready_event(event):
         "magnitude_value": float(event["magnitude_value"]) if event["magnitude_value"] is not None else None,
         "anomaly_score": float(event["anomaly_score"]),
         "effective_anomaly": event["effective_anomaly"],
+        "layer": event.get("layer"),
     }
 
 
@@ -303,12 +425,21 @@ def build_component_scores(score_result, window_days):
         "equal_count": score_result["equal_count"],
         "top_weights": TOP_WEIGHTS,
         "daily_raw_scores": score_result["daily_raw_scores"],
+        "layer_raw_scores": score_result["layer_raw_scores"],
+        "layer_positions": score_result["layer_positions"],
+        "layer_percentile_ranks": score_result["layer_percentile_ranks"],
+        "layer_sample_counts": score_result["layer_sample_counts"],
+        "layer_gaps": score_result["layer_gaps"],
+        "layer_daily_raw_scores": score_result["layer_daily_raw_scores"],
+        "context_event_count": score_result["context_event_count"],
         "scoring_top_events": [
             json_ready_event(event) for event in score_result["scoring_top_events"]
         ],
         "excluded_top_signal_event_types": sorted(EXCLUDED_TOP_SIGNAL_EVENT_TYPES),
         "display_top_event_count": len(score_result["top_events"]),
         "scoring_top_event_count": len(score_result["scoring_top_events"]),
+        "internal_layer_version_key": INTERNAL_LAYER_VERSION_KEY,
+        "minimum_layer_sample_count": MINIMUM_LAYER_SAMPLE_COUNT,
     }
 
 
@@ -324,6 +455,11 @@ def build_explanation_payload(score_date, score_result, window_days):
         "low_sample_count": score_result["history_sample_count"] < 3,
         "formula": FORMULA_TEXT,
         "score_value": score_result["score_value"],
+        "layer_methodology": LAYER_METHODOLOGY,
+        "layer_positions": score_result["layer_positions"],
+        "layer_gaps": score_result["layer_gaps"],
+        "layer_raw_scores": score_result["layer_raw_scores"],
+        "layer_sample_counts": score_result["layer_sample_counts"],
         "top_events": [json_ready_event(event) for event in score_result["top_events"]],
         "scoring_top_events": [
             json_ready_event(event) for event in score_result["scoring_top_events"]

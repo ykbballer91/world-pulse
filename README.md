@@ -68,6 +68,7 @@ python scripts/ingest_cloudflare_radar.py --dataset outages --database-url "$DAT
 Source layers:
 
 World Pulse internally classifies sources into `reality`, `attention`, and `context` layers. These layers are internal only. The public UI remains Signal Position, and gap scores are not exposed publicly.
+Internal layer positions and layer gaps are stored for research and validation. Layer gaps are not forecasts, alerts, warnings, or recommendations.
 
 Run Wikipedia Pageviews ingestion for daily top articles:
 
