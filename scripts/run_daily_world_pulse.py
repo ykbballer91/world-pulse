@@ -5,6 +5,7 @@ import subprocess
 import sys
 import time
 from datetime import datetime
+from urllib.parse import urlparse
 
 import psycopg
 from dotenv import load_dotenv
@@ -25,7 +26,36 @@ def script_path(name):
 
 
 def command_text(command):
-    return " ".join(command)
+    masked = []
+    mask_next = False
+    for part in command:
+        if mask_next:
+            masked.append("***")
+            mask_next = False
+            continue
+        masked.append(part)
+        if part == "--database-url":
+            mask_next = True
+    return " ".join(masked)
+
+
+def database_url_args(database_url):
+    return ["--database-url", database_url]
+
+
+def database_url_host(database_url):
+    parsed = urlparse(database_url)
+    return parsed.hostname
+
+
+def validate_database_url(database_url):
+    host = database_url_host(database_url)
+    if not host:
+        raise ValueError("DATABASE_URL host could not be determined")
+
+    print(f"DATABASE_URL host: {host}")
+    if host in {"localhost", "127.0.0.1", "::1"}:
+        raise ValueError("DATABASE_URL points to a local database host")
 
 
 def run_step(name, command):
@@ -36,6 +66,7 @@ def run_step(name, command):
         "DATABASE_URL will be passed to subprocess: "
         f"{'yes' if child_env.get('DATABASE_URL') else 'no'}"
     )
+    print(f"DATABASE_URL passed via CLI: {'yes' if '--database-url' in command else 'no'}")
     result = subprocess.run(
         command,
         cwd=ROOT_DIR,
@@ -86,21 +117,30 @@ def main():
     parser.add_argument("--skip-x-text", action="store_true", help="Skip X post text generation.")
     parser.add_argument(
         "--database-url",
-        default=os.environ.get("DATABASE_URL"),
+        default=None,
         help="PostgreSQL connection URL. Defaults to DATABASE_URL.",
     )
     args = parser.parse_args()
 
-    if not args.database_url:
+    resolved_database_url = args.database_url or os.environ.get("DATABASE_URL")
+    if not resolved_database_url:
         print("DATABASE_URL is required.", file=sys.stderr)
         return 2
 
-    os.environ["DATABASE_URL"] = args.database_url
+    os.environ["DATABASE_URL"] = resolved_database_url
     if os.environ.get("DATABASE_URL"):
         print("DATABASE_URL available for daily build")
     else:
         print("DATABASE_URL is not available for daily build")
         return 1
+
+    try:
+        validate_database_url(resolved_database_url)
+    except ValueError as exc:
+        print(str(exc), file=sys.stderr)
+        return 2
+
+    db_args = database_url_args(resolved_database_url)
 
     if args.days <= 0:
         print("--days must be greater than zero.", file=sys.stderr)
@@ -117,19 +157,38 @@ def main():
                     "168",
                     "--min-magnitude",
                     "4",
+                    *db_args,
                 ],
             )
             run_step(
                 "NOAA SWPC Kp ingest",
-                [sys.executable, script_path("ingest_noaa_swpc.py"), "--dataset", "kp"],
+                [
+                    sys.executable,
+                    script_path("ingest_noaa_swpc.py"),
+                    "--dataset",
+                    "kp",
+                    *db_args,
+                ],
             )
             run_step(
                 "NOAA SWPC X-ray ingest",
-                [sys.executable, script_path("ingest_noaa_swpc.py"), "--dataset", "xray"],
+                [
+                    sys.executable,
+                    script_path("ingest_noaa_swpc.py"),
+                    "--dataset",
+                    "xray",
+                    *db_args,
+                ],
             )
             run_step(
                 "Open Notify ingest",
-                [sys.executable, script_path("ingest_open_notify.py"), "--dataset", "all"],
+                [
+                    sys.executable,
+                    script_path("ingest_open_notify.py"),
+                    "--dataset",
+                    "all",
+                    *db_args,
+                ],
             )
 
         if not args.skip_backfill:
@@ -142,6 +201,7 @@ def main():
                     "wikipedia",
                     "--days",
                     str(args.days),
+                    *db_args,
                 ],
             )
             run_step(
@@ -153,6 +213,7 @@ def main():
                     "usgs",
                     "--days",
                     str(args.days),
+                    *db_args,
                 ],
             )
 
@@ -165,14 +226,21 @@ def main():
                 "all",
                 "--days",
                 str(args.days),
+                *db_args,
             ],
         )
         run_step(
             "Normalized events",
-            [sys.executable, script_path("generate_normalized_events.py"), "--source", "all"],
+            [
+                sys.executable,
+                script_path("generate_normalized_events.py"),
+                "--source",
+                "all",
+                *db_args,
+            ],
         )
 
-        target_date = args.date or latest_anomaly_date(args.database_url)
+        target_date = args.date or latest_anomaly_date(resolved_database_url)
         target_date_text = target_date.isoformat()
         print(f"Daily build target_date={target_date_text}")
 
@@ -183,6 +251,7 @@ def main():
                 script_path("calculate_weirdness_score.py"),
                 "--date",
                 target_date_text,
+                *db_args,
             ],
         )
         run_step(
@@ -192,6 +261,7 @@ def main():
                 script_path("generate_display_payload.py"),
                 "--date",
                 target_date_text,
+                *db_args,
             ],
         )
         run_step(
@@ -201,6 +271,7 @@ def main():
                 script_path("export_display_payload_json.py"),
                 "--date",
                 target_date_text,
+                *db_args,
             ],
         )
 
@@ -212,6 +283,7 @@ def main():
                     script_path("generate_share_image.py"),
                     "--date",
                     target_date_text,
+                    *db_args,
                 ],
             )
 
@@ -223,6 +295,7 @@ def main():
                     script_path("generate_x_post_text.py"),
                     "--date",
                     target_date_text,
+                    *db_args,
                 ],
             )
 

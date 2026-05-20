@@ -35,7 +35,7 @@ def default_wikipedia_start_date():
     return datetime.now(timezone.utc).date() - timedelta(days=2)
 
 
-def run_usgs_backfill(days, min_magnitude):
+def run_usgs_backfill(days, min_magnitude, database_url):
     hours = days * 24
     target_window = f"last_{days}_days"
     result = run_command(
@@ -46,6 +46,8 @@ def run_usgs_backfill(days, min_magnitude):
             str(hours),
             "--min-magnitude",
             str(min_magnitude),
+            "--database-url",
+            database_url,
         ]
     )
     output = f"{result.stdout}\n{result.stderr}"
@@ -68,7 +70,7 @@ def run_usgs_backfill(days, min_magnitude):
     return inserted, skipped_duplicates, errors
 
 
-def run_wikipedia_for_date(target_date):
+def run_wikipedia_for_date(target_date, database_url):
     date_text = target_date.isoformat()
     result = run_command(
         [
@@ -76,6 +78,8 @@ def run_wikipedia_for_date(target_date):
             WIKIPEDIA_SCRIPT,
             "--date",
             date_text,
+            "--database-url",
+            database_url,
         ]
     )
     output = f"{result.stdout}\n{result.stderr}"
@@ -96,7 +100,7 @@ def run_wikipedia_for_date(target_date):
     return inserted, skipped_duplicates, errors
 
 
-def run_wikipedia_backfill(days):
+def run_wikipedia_backfill(days, database_url):
     inserted = 0
     skipped_duplicates = 0
     errors = 0
@@ -104,7 +108,7 @@ def run_wikipedia_backfill(days):
 
     for offset in range(days):
         target_date = start_date - timedelta(days=offset)
-        day_inserted, day_skipped, day_errors = run_wikipedia_for_date(target_date)
+        day_inserted, day_skipped, day_errors = run_wikipedia_for_date(target_date, database_url)
         inserted += day_inserted
         skipped_duplicates += day_skipped
         errors += day_errors
@@ -129,28 +133,39 @@ def main():
         default=4.0,
         help="Minimum USGS earthquake magnitude.",
     )
+    parser.add_argument(
+        "--database-url",
+        default=os.environ.get("DATABASE_URL"),
+        help="PostgreSQL connection URL. Defaults to DATABASE_URL.",
+    )
     args = parser.parse_args()
 
     if args.days <= 0:
         print("--days must be greater than zero.", file=sys.stderr)
         return 2
 
-    if not os.environ.get("DATABASE_URL"):
+    if not args.database_url:
         print("DATABASE_URL is required.", file=sys.stderr)
         return 2
+
+    os.environ["DATABASE_URL"] = args.database_url
 
     total_inserted = 0
     total_skipped_duplicates = 0
     total_errors = 0
 
     if args.source in {"usgs", "all"}:
-        inserted, skipped_duplicates, errors = run_usgs_backfill(args.days, args.min_magnitude)
+        inserted, skipped_duplicates, errors = run_usgs_backfill(
+            args.days,
+            args.min_magnitude,
+            args.database_url,
+        )
         total_inserted += inserted
         total_skipped_duplicates += skipped_duplicates
         total_errors += errors
 
     if args.source in {"wikipedia", "all"}:
-        inserted, skipped_duplicates, errors = run_wikipedia_backfill(args.days)
+        inserted, skipped_duplicates, errors = run_wikipedia_backfill(args.days, args.database_url)
         total_inserted += inserted
         total_skipped_duplicates += skipped_duplicates
         total_errors += errors
