@@ -1,6 +1,6 @@
-World Pulse | 2026-05-17
-Today's Weirdness Score: 42
-Top signal: Wikipedia attention snapshot for 2026-05-17
-Observed public signals were moderately above the recent baseline.
+World Pulse | 2026-05-20
+Today's Weirdness Score: 0
+Top signal: M5.9 earthquake near 10 km NNW of China, Japan
+Observed public signals were near or below the recent baseline.
 Not a forecast, alert, or recommendation.
 #WorldPulse

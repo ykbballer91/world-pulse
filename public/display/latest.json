@@ -1,45 +1,45 @@
 {
-  "display_date": "2026-05-17",
+  "display_date": "2026-05-20",
   "page_payload": {
-    "date": "2026-05-17",
+    "date": "2026-05-20",
     "headline": "Today's Weirdness Score",
     "top_cards": [
       {
-        "title": "Wikipedia attention snapshot for 2026-05-17",
-        "category": "attention",
-        "event_time": "2026-05-17T00:00:00Z",
-        "event_type": "wikipedia_attention_snapshot",
-        "source_note": "Public observation data",
-        "display_note": "Above the recent baseline.",
-        "anomaly_score": 2.08437325524123,
-        "signal_status": "score_contributor",
-        "magnitude_value": 31677828.0,
-        "effective_anomaly": 2.08437325524123,
-        "score_contribution": 41.687465104824604
-      },
-      {
-        "title": "M5.4 earthquake near 84 km ENE of Severo-Kuril’sk, Russia",
+        "title": "M5.9 earthquake near 10 km NNW of China, Japan",
         "category": "geophysical",
-        "event_time": "2026-05-17T08:04:17Z",
+        "event_time": "2026-05-20T02:46:25Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.404722329258183,
+        "anomaly_score": -0.0338255045745763,
         "signal_status": "context_only",
-        "magnitude_value": 5.4,
+        "magnitude_value": 5.9,
         "effective_anomaly": 0,
         "score_contribution": 0
       },
       {
-        "title": "M5.1 earthquake near 109 km SSE of Lorengau, Papua New Guinea",
+        "title": "M5.9 earthquake near 10 km NNW of China, Japan",
         "category": "geophysical",
-        "event_time": "2026-05-17T07:51:56Z",
+        "event_time": "2026-05-20T02:46:25Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.829680774979269,
+        "anomaly_score": -0.0338255045745763,
         "signal_status": "context_only",
-        "magnitude_value": 5.1,
+        "magnitude_value": 5.9,
+        "effective_anomaly": 0,
+        "score_contribution": 0
+      },
+      {
+        "title": "M4.3 earthquake near 75 km SSW of Hualien City, Taiwan",
+        "category": "geophysical",
+        "event_time": "2026-05-20T01:11:57Z",
+        "event_type": "earthquake",
+        "source_note": "Public observation data",
+        "display_note": "Observed signal, but not above the recent baseline.",
+        "anomaly_score": -3.82228201692831,
+        "signal_status": "context_only",
+        "magnitude_value": 4.3,
         "effective_anomaly": 0,
         "score_contribution": 0
       }
@@ -49,14 +49,14 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-05-20T02:22:59Z",
+    "updated_at": "2026-05-20T03:26:33Z",
     "score_version": "weirdness_v0_1",
     "summary_lines": [
-      "Observed public signals were moderately above the recent baseline.",
+      "Observed public signals were near or below the recent baseline.",
       "The score is based on public earthquake and Wikipedia attention data.",
       "This is not a forecast, alert, or recommendation."
     ],
-    "weirdness_score": 42,
+    "weirdness_score": 0,
     "underreacted_watch": null
   }
 }
