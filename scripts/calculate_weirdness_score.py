@@ -32,6 +32,35 @@ NON_TOPIC_PAGE_PREFIXES = (
     "Draft:",
     "TimedText:",
 )
+TARGETED_ATTENTION_PAGES = {
+    "geophysical": [
+        "Earthquake",
+        "Tsunami",
+        "Seismic_wave",
+        "Seismology",
+        "Japan",
+        "Turkey",
+        "Indonesia",
+        "Chile",
+        "Peru",
+        "Tonga",
+        "Papua_New_Guinea",
+    ],
+    "space_weather": [
+        "Solar_flare",
+        "Geomagnetic_storm",
+        "Aurora",
+        "Space_weather",
+        "Sunspot",
+    ],
+    "internet": [
+        "Internet_outage",
+        "Cloudflare",
+        "Border_Gateway_Protocol",
+        "Domain_Name_System",
+        "Internet",
+    ],
+}
 DEFAULT_WINDOW_DAYS = 30
 VERSION_PARAMETERS = {
     "window_days": DEFAULT_WINDOW_DAYS,
@@ -111,13 +140,53 @@ def is_topic_page(title):
     return not text.startswith(NON_TOPIC_PAGE_PREFIXES)
 
 
+def normalize_page_title(title):
+    return str(title or "").strip().replace(" ", "_").lower()
+
+
+def targeted_attention_lookup():
+    lookup = {}
+    for category, pages in TARGETED_ATTENTION_PAGES.items():
+        for page in pages:
+            lookup[normalize_page_title(page)] = {
+                "category": category,
+                "page": page,
+            }
+    return lookup
+
+
+TARGETED_ATTENTION_LOOKUP = targeted_attention_lookup()
+
+
 def topic_page_total_views(normalized_payload):
-    top_articles = normalized_payload.get("top_articles") or []
+    top_articles = normalized_payload.get("top_articles") or normalized_payload.get("records") or []
     return sum(
         article_views(article)
         for article in top_articles
         if is_topic_page(article.get("article"))
     )
+
+
+def targeted_attention_matches(normalized_payload):
+    top_articles = normalized_payload.get("top_articles") or normalized_payload.get("records") or []
+    matches = []
+    seen = set()
+    for article in top_articles:
+        title = article.get("article") if isinstance(article, dict) else None
+        key = normalize_page_title(title)
+        target = TARGETED_ATTENTION_LOOKUP.get(key)
+        if not target or key in seen:
+            continue
+        seen.add(key)
+        matches.append(
+            {
+                "page": target["page"],
+                "matched_title": title,
+                "category": target["category"],
+                "views": article_views(article),
+            }
+        )
+    return matches
 
 
 def table_columns(conn, table_name):
@@ -241,9 +310,11 @@ def fetch_events_for_window(conn, window_start_date, window_end_date):
                 ne.magnitude_value,
                 ne.anomaly_score,
                 s.layer,
-                ne.normalized_payload
+                ne.normalized_payload,
+                ro.raw_payload
             FROM normalized_events ne
             LEFT JOIN sources s ON s.id = ne.source_id
+            LEFT JOIN raw_observations ro ON ro.id = ne.raw_observation_id
             WHERE ne.event_time >= %s
               AND ne.event_time < %s
               AND ne.anomaly_score IS NOT NULL
@@ -256,12 +327,16 @@ def fetch_events_for_window(conn, window_start_date, window_end_date):
     events = []
     for row in rows:
         normalized_payload = row[8] or {}
+        raw_payload = row[9] or {}
+        attention_payload = raw_payload if raw_payload.get("records") else normalized_payload
         excluding_main_value = normalized_payload.get("top10_total_views_excluding_main_page")
         excluding_main_anomaly = anomaly_from_baseline(
             excluding_main_value,
             wikipedia_excluding_main_baseline,
         )
-        topic_total_views = topic_page_total_views(normalized_payload)
+        topic_total_views = topic_page_total_views(attention_payload)
+        targeted_matches = targeted_attention_matches(attention_payload)
+        targeted_total_views = sum(match["views"] for match in targeted_matches)
         events.append(
             {
                 "id": row[0],
@@ -274,6 +349,7 @@ def fetch_events_for_window(conn, window_start_date, window_end_date):
                 "effective_anomaly": max(float(row[6]), 0),
                 "layer": row[7],
                 "normalized_payload": normalized_payload,
+                "attention_payload": attention_payload,
                 "attention_excluding_main_page_anomaly_score": excluding_main_anomaly,
                 "attention_excluding_main_page_effective_anomaly": (
                     max(float(excluding_main_anomaly), 0)
@@ -283,6 +359,8 @@ def fetch_events_for_window(conn, window_start_date, window_end_date):
                 "attention_topic_page_total_views": topic_total_views,
                 "attention_topic_page_anomaly_score": None,
                 "attention_topic_page_effective_anomaly": None,
+                "attention_targeted_total_views": targeted_total_views,
+                "attention_targeted_matched_pages": targeted_matches,
             }
         )
     return events
@@ -466,6 +544,9 @@ def calculate_window_scores(events, target_date, window_days):
     layer_daily_raw_scores_topic_pages = {
         "attention": [],
     }
+    layer_daily_raw_scores_targeted = {
+        "attention": [],
+    }
     target_scoring_top_events = []
     target_display_top_events = []
     target_scored_events = []
@@ -479,6 +560,10 @@ def calculate_window_scores(events, target_date, window_days):
     target_layer_raw_scores_topic_pages = {
         "attention": 0,
     }
+    target_layer_raw_scores_targeted = {
+        "attention": 0,
+    }
+    target_targeted_matches = []
     context_event_count = 0
     for offset in range(window_days):
         day = window_start_date + timedelta(days=offset)
@@ -542,6 +627,36 @@ def calculate_window_scores(events, target_date, window_days):
                     event.get("attention_topic_page_anomaly_score") is not None
                     for event in attention_events
                 ),
+            }
+        )
+        attention_targeted_raw_score = sum(
+            float(event.get("attention_targeted_total_views") or 0)
+            for event in attention_events
+        )
+        attention_targeted_matches = []
+        seen_targeted_pages = set()
+        for event in attention_events:
+            for match in event.get("attention_targeted_matched_pages") or []:
+                key = normalize_page_title(match.get("page"))
+                if key in seen_targeted_pages:
+                    continue
+                seen_targeted_pages.add(key)
+                attention_targeted_matches.append(match)
+        attention_targeted_matches = sorted(
+            attention_targeted_matches,
+            key=lambda match: match.get("views") or 0,
+            reverse=True,
+        )
+        if day == target_date:
+            target_layer_raw_scores_targeted["attention"] = attention_targeted_raw_score
+            target_targeted_matches = attention_targeted_matches
+        layer_daily_raw_scores_targeted["attention"].append(
+            {
+                "date": day.isoformat(),
+                "raw_score": attention_targeted_raw_score,
+                "event_count": len(attention_events),
+                "matched_page_count": len(attention_targeted_matches),
+                "has_layer_events": bool(attention_events),
             }
         )
 
@@ -624,6 +739,26 @@ def calculate_window_scores(events, target_date, window_days):
         if reality_position is not None and attention_position_topic_pages is not None
         else None
     )
+    attention_targeted_values = [
+        item["raw_score"]
+        for item in layer_daily_raw_scores_targeted["attention"]
+        if item["has_layer_events"]
+    ]
+    attention_targeted_sample_count = len(attention_targeted_values)
+    if attention_targeted_sample_count >= MINIMUM_LAYER_SAMPLE_COUNT:
+        attention_targeted_percentile, _, _, _ = percentile_rank(
+            attention_targeted_values,
+            target_layer_raw_scores_targeted["attention"],
+        )
+        attention_position_targeted = rounded_position(attention_targeted_percentile)
+    else:
+        attention_targeted_percentile = None
+        attention_position_targeted = None
+    reality_attention_gap_targeted = (
+        reality_position - attention_position_targeted
+        if reality_position is not None and attention_position_targeted is not None
+        else None
+    )
 
     return {
         "score_value": score_value,
@@ -669,6 +804,31 @@ def calculate_window_scores(events, target_date, window_days):
         },
         "layer_gaps_topic_pages": {
             "reality_attention_gap": reality_attention_gap_topic_pages,
+        },
+        "layer_daily_raw_scores_targeted": layer_daily_raw_scores_targeted,
+        "layer_raw_scores_targeted": target_layer_raw_scores_targeted,
+        "layer_positions_targeted": {
+            "attention": attention_position_targeted,
+        },
+        "layer_percentile_ranks_targeted": {
+            "attention": attention_targeted_percentile,
+        },
+        "layer_sample_counts_targeted": {
+            "attention": attention_targeted_sample_count,
+        },
+        "layer_gaps_targeted": {
+            "reality_attention_gap": reality_attention_gap_targeted,
+        },
+        "attention_streams": {
+            "global_topic": {
+                "raw_score": target_layer_raw_scores_topic_pages["attention"],
+                "position": attention_position_topic_pages,
+            },
+            "targeted": {
+                "raw_score": target_layer_raw_scores_targeted["attention"],
+                "position": attention_position_targeted,
+                "matched_pages": target_targeted_matches,
+            },
         },
         "layer_gaps": {
             "reality_attention_gap": reality_attention_gap,
@@ -745,6 +905,17 @@ def build_component_scores(score_result, window_days):
         "layer_daily_raw_scores_topic_pages": (
             score_result["layer_daily_raw_scores_topic_pages"]
         ),
+        "layer_raw_scores_targeted": score_result["layer_raw_scores_targeted"],
+        "layer_positions_targeted": score_result["layer_positions_targeted"],
+        "layer_percentile_ranks_targeted": (
+            score_result["layer_percentile_ranks_targeted"]
+        ),
+        "layer_sample_counts_targeted": score_result["layer_sample_counts_targeted"],
+        "layer_gaps_targeted": score_result["layer_gaps_targeted"],
+        "layer_daily_raw_scores_targeted": (
+            score_result["layer_daily_raw_scores_targeted"]
+        ),
+        "attention_streams": score_result["attention_streams"],
         "context_event_count": score_result["context_event_count"],
         "scoring_top_events": [
             json_ready_event(event) for event in score_result["scoring_top_events"]
@@ -786,10 +957,18 @@ def build_explanation_payload(score_date, score_result, window_days):
         "layer_positions_topic_pages": score_result["layer_positions_topic_pages"],
         "layer_gaps_topic_pages": score_result["layer_gaps_topic_pages"],
         "layer_raw_scores_topic_pages": score_result["layer_raw_scores_topic_pages"],
+        "layer_positions_targeted": score_result["layer_positions_targeted"],
+        "layer_gaps_targeted": score_result["layer_gaps_targeted"],
+        "layer_raw_scores_targeted": score_result["layer_raw_scores_targeted"],
+        "attention_streams": score_result["attention_streams"],
         "topic_page_filtering_policy": {
             "excluded_titles": ["Main_Page"],
             "excluded_namespace_prefixes": list(NON_TOPIC_PAGE_PREFIXES),
             "empty_or_null_titles_excluded": True,
+        },
+        "targeted_attention_policy": {
+            "match_policy": "normalized exact page title match",
+            "targeted_attention_pages": TARGETED_ATTENTION_PAGES,
         },
         "top_events": [json_ready_event(event) for event in score_result["top_events"]],
         "scoring_top_events": [

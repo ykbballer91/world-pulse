@@ -28,6 +28,35 @@ NON_TOPIC_PAGE_PREFIXES = (
     "Draft:",
     "TimedText:",
 )
+TARGETED_ATTENTION_PAGES = {
+    "geophysical": [
+        "Earthquake",
+        "Tsunami",
+        "Seismic_wave",
+        "Seismology",
+        "Japan",
+        "Turkey",
+        "Indonesia",
+        "Chile",
+        "Peru",
+        "Tonga",
+        "Papua_New_Guinea",
+    ],
+    "space_weather": [
+        "Solar_flare",
+        "Geomagnetic_storm",
+        "Aurora",
+        "Space_weather",
+        "Sunspot",
+    ],
+    "internet": [
+        "Internet_outage",
+        "Cloudflare",
+        "Border_Gateway_Protocol",
+        "Domain_Name_System",
+        "Internet",
+    ],
+}
 
 
 def parse_date(value):
@@ -88,6 +117,45 @@ def is_topic_page(title):
     return not text.startswith(NON_TOPIC_PAGE_PREFIXES)
 
 
+def normalize_page_title(title):
+    return str(title or "").strip().replace(" ", "_").lower()
+
+
+def targeted_attention_lookup():
+    lookup = {}
+    for category, pages in TARGETED_ATTENTION_PAGES.items():
+        for page in pages:
+            lookup[normalize_page_title(page)] = {
+                "category": category,
+                "page": page,
+            }
+    return lookup
+
+
+TARGETED_ATTENTION_LOOKUP = targeted_attention_lookup()
+
+
+def targeted_attention_matches(top_articles):
+    matches = []
+    seen = set()
+    for article in top_articles:
+        title = article.get("article") if isinstance(article, dict) else None
+        key = normalize_page_title(title)
+        target = TARGETED_ATTENTION_LOOKUP.get(key)
+        if not target or key in seen:
+            continue
+        seen.add(key)
+        matches.append(
+            {
+                "page": target["page"],
+                "matched_title": title,
+                "category": target["category"],
+                "views": article_views(article),
+            }
+        )
+    return matches
+
+
 def fetch_scores(conn, start_date, end_date):
     with conn.cursor() as cur:
         cur.execute(
@@ -122,6 +190,10 @@ def fetch_scores(conn, start_date, end_date):
         raw_scores_topic_pages = component_scores.get("layer_raw_scores_topic_pages") or {}
         positions_topic_pages = component_scores.get("layer_positions_topic_pages") or {}
         gaps_topic_pages = component_scores.get("layer_gaps_topic_pages") or {}
+        raw_scores_targeted = component_scores.get("layer_raw_scores_targeted") or {}
+        positions_targeted = component_scores.get("layer_positions_targeted") or {}
+        gaps_targeted = component_scores.get("layer_gaps_targeted") or {}
+        attention_streams = component_scores.get("attention_streams") or {}
         reality_position = int_or_none(positions.get("reality"))
         attention_position = int_or_none(positions.get("attention"))
         difference = (
@@ -145,6 +217,10 @@ def fetch_scores(conn, start_date, end_date):
                 "layer_raw_scores_topic_pages": raw_scores_topic_pages,
                 "layer_positions_topic_pages": positions_topic_pages,
                 "layer_gaps_topic_pages": gaps_topic_pages,
+                "layer_raw_scores_targeted": raw_scores_targeted,
+                "layer_positions_targeted": positions_targeted,
+                "layer_gaps_targeted": gaps_targeted,
+                "attention_streams": attention_streams,
                 "reality_position": reality_position,
                 "attention_position": attention_position,
                 "difference": difference,
@@ -169,9 +245,11 @@ def fetch_layer_observations(conn, start_date, end_date):
                 ne.category,
                 ne.event_type,
                 ne.anomaly_score,
-                ne.normalized_payload
+                ne.normalized_payload,
+                ro.raw_payload
             FROM normalized_events ne
             JOIN sources s ON s.id = ne.source_id
+            LEFT JOIN raw_observations ro ON ro.id = ne.raw_observation_id
             WHERE ne.event_time >= %s
               AND ne.event_time < %s
               AND s.layer IN ('reality', 'attention')
@@ -189,7 +267,7 @@ def fetch_layer_observations(conn, start_date, end_date):
     observations = {}
     seen_keys = {}
     for row in rows:
-        event_date, layer, title, event_time, category, event_type, anomaly_score, payload = row
+        event_date, layer, title, event_time, category, event_type, anomaly_score, payload, raw_payload = row
         by_date = observations.setdefault(event_date, {"reality": [], "attention": []})
         by_date_seen = seen_keys.setdefault(event_date, {"reality": set(), "attention": set()})
         event_key = (
@@ -209,7 +287,7 @@ def fetch_layer_observations(conn, start_date, end_date):
                 "category": category,
                 "event_type": event_type,
                 "anomaly_score": anomaly_score,
-                "normalized_payload": payload or {},
+                "normalized_payload": raw_payload if (raw_payload or {}).get("records") else (payload or {}),
             }
         )
     return observations
@@ -223,13 +301,13 @@ def observation_line(event):
     return f"- {title} — {event_time} — {category} / {event_type}"
 
 
-def attention_details(event):
+def global_topic_attention_details(event):
     payload = event.get("normalized_payload") or {}
     if event.get("event_type") != "wikipedia_attention_snapshot":
         return []
 
     details = []
-    top_articles = payload.get("top_articles") or []
+    top_articles = payload.get("top_articles") or payload.get("records") or []
     topic_articles = [article for article in top_articles if is_topic_page(article.get("article"))]
     if topic_articles:
         top_page = topic_articles[0].get("article")
@@ -245,17 +323,52 @@ def attention_details(event):
     return details
 
 
-def append_layer_observations(lines, title, observations, layer):
+def targeted_attention_details(record, event):
+    streams = record.get("attention_streams") or {}
+    targeted = streams.get("targeted") or {}
+    matches = targeted.get("matched_pages")
+    if matches is None:
+        payload = event.get("normalized_payload") or {}
+        matches = targeted_attention_matches(payload.get("top_articles") or [])
+
+    details = ["Targeted attention:"]
+    if matches:
+        details.append("- Matched pages:")
+        for match in matches:
+            details.append(
+                f"  - {match.get('page')} — views: {format_number(match.get('views'))}"
+            )
+    else:
+        details.append("- No targeted attention pages found in stored Wikipedia top pages for this date.")
+    details.append(
+        f"- Total targeted views: {format_number((record.get('layer_raw_scores_targeted') or {}).get('attention'))}"
+    )
+    details.append(
+        f"- Targeted Attention Position: {format_number((record.get('layer_positions_targeted') or {}).get('attention'))}"
+    )
+    details.append(
+        "- Reality-Targeted Attention difference: "
+        f"{format_number((record.get('layer_gaps_targeted') or {}).get('reality_attention_gap'))}"
+    )
+    return details
+
+
+def append_layer_observations(lines, title, observations, layer, record=None):
     lines.append(title)
     events = observations.get(layer, [])
     if not events:
         lines.append("- No observations available for this layer in stored events.")
+        if layer == "attention" and record is not None:
+            lines.extend(targeted_attention_details(record, {}))
         lines.append("")
         return
     for event in events:
-        lines.append(observation_line(event))
         if layer == "attention":
-            lines.extend(attention_details(event))
+            lines.append("Global topic attention:")
+            lines.extend(global_topic_attention_details(event))
+            lines.extend(targeted_attention_details(record or {}, event))
+        else:
+            lines.append(observation_line(event))
     lines.append("")
 
 
@@ -267,6 +380,9 @@ def append_record(lines, record):
     raw_scores_topic_pages = record["layer_raw_scores_topic_pages"]
     positions_topic_pages = record["layer_positions_topic_pages"]
     gaps_topic_pages = record["layer_gaps_topic_pages"]
+    raw_scores_targeted = record["layer_raw_scores_targeted"]
+    positions_targeted = record["layer_positions_targeted"]
+    gaps_targeted = record["layer_gaps_targeted"]
     sample_counts = record["layer_sample_counts"]
     lines.extend(
         [
@@ -303,6 +419,18 @@ def append_record(lines, record):
                 f"{format_number(gaps_topic_pages.get('reality_attention_gap'))}"
             ),
             (
+                "- Attention raw score targeted: "
+                f"{format_number(raw_scores_targeted.get('attention'))}"
+            ),
+            (
+                "- Attention Position targeted: "
+                f"{format_number(positions_targeted.get('attention'))}"
+            ),
+            (
+                "- Reality-Attention difference targeted: "
+                f"{format_number(gaps_targeted.get('reality_attention_gap'))}"
+            ),
+            (
                 "- Layer sample counts: "
                 f"reality={format_number(sample_counts.get('reality'))}, "
                 f"attention={format_number(sample_counts.get('attention'))}"
@@ -312,7 +440,7 @@ def append_record(lines, record):
     )
     observations = record.get("layer_observations") or {}
     append_layer_observations(lines, "Top reality observations:", observations, "reality")
-    append_layer_observations(lines, "Top attention observations:", observations, "attention")
+    append_layer_observations(lines, "Top attention observations:", observations, "attention", record=record)
 
 
 def section_higher_reality(records, limit):
@@ -422,6 +550,18 @@ def build_markdown(records, generated_at, start_date, end_date, limit):
                 "- Current attention layer is limited. In this beta, Wikipedia "
                 "Pageviews is only a rough public attention proxy and does not "
                 "represent total public awareness."
+            ),
+            (
+                "- Global topic attention reflects broad Wikipedia topic traffic and "
+                "may not correspond to the selected reality observations."
+            ),
+            (
+                "- Targeted attention only checks whether predefined topic pages "
+                "appear in stored Wikipedia top pages."
+            ),
+            (
+                "- Absence from targeted attention does not imply absence of public "
+                "awareness."
             ),
             "- Main_Page is excluded from topic-level attention inspection where available.",
             (
