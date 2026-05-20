@@ -25,13 +25,21 @@ cron: "0 22 * * *"
 
 ## GitHub Secret
 
-Add this GitHub repository secret:
+Add this required GitHub repository secret:
 
 ```text
 DATABASE_URL
 ```
 
 Use the Supabase connection string for `DATABASE_URL`.
+
+Optionally add this GitHub repository secret for Cloudflare Radar ingestion:
+
+```text
+CLOUDFLARE_API_TOKEN
+```
+
+`CLOUDFLARE_API_TOKEN` is optional initially. If it is not set, Cloudflare Radar ingestion is skipped without stopping the daily build.
 
 Setup path:
 
@@ -41,6 +49,7 @@ Setup path:
 4. Open Actions.
 5. Add a new repository secret named `DATABASE_URL`.
 6. Paste the Supabase connection string.
+7. Optionally add `CLOUDFLARE_API_TOKEN`.
 
 ## Manual Run
 

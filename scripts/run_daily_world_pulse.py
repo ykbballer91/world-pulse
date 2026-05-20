@@ -201,6 +201,18 @@ def main():
                 critical=False,
                 warnings=warnings,
             )
+            run_step(
+                "Cloudflare Radar ingest",
+                [
+                    sys.executable,
+                    script_path("ingest_cloudflare_radar.py"),
+                    "--dataset",
+                    "outages",
+                    *db_args,
+                ],
+                critical=False,
+                warnings=warnings,
+            )
 
         if not args.skip_backfill:
             run_step(

@@ -37,6 +37,7 @@ jobs:
       - name: Run daily build
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         run: python scripts/run_daily_world_pulse.py --days 30
 
       - name: Verify generated outputs

@@ -71,6 +71,19 @@ python scripts/ingest_wikipedia_pageviews.py --date 2026-05-19
 python scripts/ingest_wikipedia_pageviews.py --project en.wikipedia --access all-access --date 2026-05-19
 ```
 
+### Cloudflare Radar
+
+- Scope: optional public Internet outage/anomaly observations
+- Storage granularity: one `raw_observations` row per API response
+- Requires: `CLOUDFLARE_API_TOKEN`
+- Daily build behavior: non-critical; skipped when token is absent
+
+Run example:
+
+```sh
+python scripts/ingest_cloudflare_radar.py --dataset outages
+```
+
 ## Current DB Verification Result
 
 Source counts:
@@ -115,6 +128,7 @@ python scripts/ingest_usgs_earthquakes.py --hours 24 --min-magnitude 4
 python scripts/ingest_noaa_swpc.py --dataset all
 python scripts/ingest_open_notify.py --dataset all
 python scripts/ingest_wikipedia_pageviews.py
+python scripts/ingest_cloudflare_radar.py --dataset outages
 ```
 
 Verify counts by source:
@@ -136,11 +150,12 @@ python3 -m py_compile scripts/ingest_usgs_earthquakes.py
 python3 -m py_compile scripts/ingest_noaa_swpc.py
 python3 -m py_compile scripts/ingest_open_notify.py
 python3 -m py_compile scripts/ingest_wikipedia_pageviews.py
+python3 -m py_compile scripts/ingest_cloudflare_radar.py
 ```
 
 ## Remaining Day 2 API
 
-- Cloudflare Radar is still not implemented.
+- No additional Day 2 API is required for the beta ingestion set.
 
 ## Notes
 

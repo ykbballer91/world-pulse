@@ -12,6 +12,7 @@ from psycopg.types.json import Jsonb
 
 USGS_SOURCE_NAME = "USGS Earthquake Hazards Program"
 WIKIPEDIA_SOURCE_NAME = "Wikipedia Pageviews"
+CLOUDFLARE_SOURCE_NAME = "Cloudflare Radar"
 
 PAYLOAD_COLUMNS = [
     "normalized_payload",
@@ -42,6 +43,13 @@ def get_source_id(conn, source_name):
         if row is None:
             raise ValueError(f"source not found: {source_name}")
         return row[0]
+
+
+def find_source_id(conn, source_name):
+    with conn.cursor() as cur:
+        cur.execute("SELECT id FROM sources WHERE name = %s", (source_name,))
+        row = cur.fetchone()
+        return row[0] if row is not None else None
 
 
 def choose_payload_column(columns):
@@ -254,6 +262,21 @@ def fetch_wikipedia_raw_observations(conn, source_id):
         return cur.fetchall()
 
 
+def fetch_cloudflare_raw_observations(conn, source_id):
+    with conn.cursor() as cur:
+        cur.execute(
+            """
+            SELECT id, observed_at, raw_payload
+            FROM raw_observations
+            WHERE source_id = %s
+              AND raw_payload->>'dataset' = 'cloudflare_radar_outages'
+            ORDER BY observed_at
+            """,
+            (source_id,),
+        )
+        return cur.fetchall()
+
+
 def build_wikipedia_event(source_id, row, baseline):
     raw_observation_id, observed_at, raw_payload = row
     records = raw_payload.get("records") or []
@@ -288,6 +311,149 @@ def build_wikipedia_event(source_id, row, baseline):
     }
 
 
+def parse_record_time(record):
+    if not isinstance(record, dict):
+        return None
+    for key in [
+        "startTime",
+        "startDate",
+        "start_time",
+        "start",
+        "detectedAt",
+        "detected_at",
+        "date",
+        "timestamp",
+    ]:
+        value = record.get(key)
+        if value is None:
+            continue
+        if isinstance(value, (int, float)):
+            try:
+                return datetime.fromtimestamp(value, tz=timezone.utc)
+            except (OSError, ValueError):
+                continue
+        if not isinstance(value, str):
+            continue
+        normalized = value.strip()
+        if normalized.endswith("Z"):
+            normalized = normalized[:-1] + "+00:00"
+        try:
+            parsed = datetime.fromisoformat(normalized)
+        except ValueError:
+            continue
+        if parsed.tzinfo is None:
+            return parsed.replace(tzinfo=timezone.utc)
+        return parsed.astimezone(timezone.utc)
+    return None
+
+
+def first_text(record, keys):
+    if not isinstance(record, dict):
+        return None
+    for key in keys:
+        value = record.get(key)
+        if value:
+            return str(value)
+    return None
+
+
+def first_location(record):
+    value = first_text(
+        record,
+        [
+            "location",
+            "locationName",
+            "countryName",
+            "country",
+            "asnName",
+            "asn",
+            "scope",
+        ],
+    )
+    if value:
+        return value
+    for key in ["locationsDetails", "locations", "originsDetails", "origins"]:
+        items = record.get(key) if isinstance(record, dict) else None
+        if isinstance(items, list) and items:
+            first = items[0]
+            if isinstance(first, dict):
+                return str(first.get("name") or first.get("code") or first.get("origin") or "reported scope")
+            return str(first)
+    return "reported scope"
+
+
+def first_number(record, keys):
+    if not isinstance(record, dict):
+        return None
+    for key in keys:
+        value = record.get(key)
+        if value is None:
+            continue
+        if isinstance(value, list):
+            return float(len(value))
+        try:
+            return float(value)
+        except (TypeError, ValueError):
+            continue
+    return None
+
+
+def cloudflare_records(raw_payload):
+    records = raw_payload.get("records")
+    return records if isinstance(records, list) else []
+
+
+def build_cloudflare_event(source_id, row):
+    raw_observation_id, observed_at, raw_payload = row
+    records = cloudflare_records(raw_payload)
+    record = records[0] if records else {}
+
+    location = first_location(record)
+
+    event_time = parse_record_time(record) or observed_at
+    magnitude_value = first_number(
+        record,
+        [
+            "magnitude",
+            "impact",
+            "duration",
+            "durationMinutes",
+            "affectedNetworks",
+            "affected_networks",
+            "affectedLocations",
+            "affected_locations",
+        ],
+    )
+
+    event_type = "internet_outage_observation"
+    annotation_type = first_text(record, ["annotationType", "type", "outageType"])
+    if annotation_type and "anomal" in annotation_type.lower():
+        event_type = "internet_anomaly_observation"
+
+    title_kind = "Internet anomaly observation" if event_type == "internet_anomaly_observation" else "Internet outage observation"
+
+    return {
+        "raw_observation_id": raw_observation_id,
+        "source_id": source_id,
+        "event_type": event_type,
+        "category": "internet",
+        "title": f"{title_kind} for {location}",
+        "event_time": event_time,
+        "magnitude_value": magnitude_value,
+        "location_label": location,
+        "latitude": None,
+        "longitude": None,
+        "anomaly_score": None,
+        "normalized_payload": {
+            "provider": "Cloudflare Radar",
+            "dataset": raw_payload.get("dataset"),
+            "endpoint_url": raw_payload.get("endpoint_url"),
+            "record_count": raw_payload.get("record_count"),
+            "record": record,
+        },
+    }
+
+
 def generate_for_source(conn, columns, source):
     if source == "usgs":
         source_id = get_source_id(conn, USGS_SOURCE_NAME)
@@ -299,6 +465,16 @@ def generate_for_source(conn, columns, source):
         rows = fetch_wikipedia_raw_observations(conn, source_id)
         baseline = fetch_baseline(conn, source_id, "wikipedia_daily_top1000_total_views")
         events = [build_wikipedia_event(source_id, row, baseline) for row in rows]
+    elif source == "cloudflare":
+        source_id = find_source_id(conn, CLOUDFLARE_SOURCE_NAME)
+        if source_id is None:
+            print(
+                "Normalized events generation: source=cloudflare seen=0 inserted=0 "
+                "updated=0 skipped=0 errors=0"
+            )
+            return {"seen": 0, "inserted": 0, "updated": 0, "skipped": 0, "errors": 0}
+        rows = fetch_cloudflare_raw_observations(conn, source_id)
+        events = [build_cloudflare_event(source_id, row) for row in rows]
     else:
         raise ValueError(f"unsupported source: {source}")
 
@@ -333,7 +509,7 @@ def main():
     parser = argparse.ArgumentParser(description="Generate World Pulse normalized events.")
     parser.add_argument(
         "--source",
-        choices=["usgs", "wikipedia", "all"],
+        choices=["usgs", "wikipedia", "cloudflare", "all"],
         default="all",
         help="Source to normalize.",
     )
@@ -348,7 +524,7 @@ def main():
         print("DATABASE_URL is required.", file=sys.stderr)
         return 2
 
-    sources = ["usgs", "wikipedia"] if args.source == "all" else [args.source]
+    sources = ["usgs", "wikipedia", "cloudflare"] if args.source == "all" else [args.source]
     totals = {"seen": 0, "inserted": 0, "updated": 0, "skipped": 0, "errors": 0}
 
     with psycopg.connect(args.database_url) as conn:

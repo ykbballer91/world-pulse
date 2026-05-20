@@ -10,7 +10,7 @@ World Pulse stores raw public observations with source lineage for transparent, 
 
 ## Included Scope
 
-This repository currently includes USGS earthquake ingestion, NOAA SWPC solar activity ingestion, Open Notify ingestion, and Wikipedia Pageviews ingestion. It does not include login, payment, alerts, forecasting, market data, political data, health advice, or SNS raw content.
+This repository currently includes USGS earthquake ingestion, NOAA SWPC solar activity ingestion, Open Notify ingestion, Wikipedia Pageviews ingestion, and optional Cloudflare Radar ingestion. It does not include login, payment, alerts, forecasting, market data, political data, health advice, or SNS raw content.
 
 ## Setup
 
@@ -53,6 +53,15 @@ Run Open Notify ingestion for ISS position and people in space:
 python scripts/ingest_open_notify.py --dataset iss
 python scripts/ingest_open_notify.py --dataset astros
 python scripts/ingest_open_notify.py --dataset all
+```
+
+Run Cloudflare Radar ingestion for public Internet outage/anomaly observations:
+
+Cloudflare Radar is optional and requires `CLOUDFLARE_API_TOKEN`. It is ingested as raw observations with source lineage, normalized with `category=internet`, and treated as non-critical in the daily build. Initial `anomaly_score` values may be `NULL` until a stable baseline exists.
+
+```sh
+python scripts/ingest_cloudflare_radar.py --dataset outages
+python scripts/ingest_cloudflare_radar.py --dataset outages --database-url "$DATABASE_URL"
 ```
 
 Run Wikipedia Pageviews ingestion for daily top articles:
@@ -175,6 +184,8 @@ Automation operation:
 ```text
 docs/automation_operation.md
 ```
+
+GitHub Actions requires `DATABASE_URL`. `CLOUDFLARE_API_TOKEN` can also be set as a repository secret for Cloudflare Radar ingestion, but it is optional initially.
 
 Verify raw observation and source lineage counts:
 
