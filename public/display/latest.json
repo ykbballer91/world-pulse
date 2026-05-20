@@ -1,45 +1,45 @@
 {
-  "display_date": "2026-05-20",
+  "display_date": "2026-05-18",
   "page_payload": {
-    "date": "2026-05-20",
+    "date": "2026-05-18",
     "headline": "Today's Weirdness Score",
     "top_cards": [
       {
-        "title": "M5.9 earthquake near 10 km NNW of China, Japan",
-        "category": "geophysical",
-        "event_time": "2026-05-20T02:46:25Z",
-        "event_type": "earthquake",
+        "title": "Wikipedia attention snapshot for 2026-05-18",
+        "category": "attention",
+        "event_time": "2026-05-18T00:00:00Z",
+        "event_type": "wikipedia_attention_snapshot",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.0338255045745763,
+        "anomaly_score": -0.133630333672037,
         "signal_status": "context_only",
-        "magnitude_value": 5.9,
+        "magnitude_value": 27549842.0,
         "effective_anomaly": 0,
         "score_contribution": 0
       },
       {
-        "title": "M5.9 earthquake near 10 km NNW of China, Japan",
+        "title": "M5.4 earthquake near West Chile Rise",
         "category": "geophysical",
-        "event_time": "2026-05-20T02:46:25Z",
+        "event_time": "2026-05-18T02:10:41Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.0338255045745763,
+        "anomaly_score": -1.21771816468512,
         "signal_status": "context_only",
-        "magnitude_value": 5.9,
+        "magnitude_value": 5.4,
         "effective_anomaly": 0,
         "score_contribution": 0
       },
       {
-        "title": "M4.3 earthquake near 75 km SSW of Hualien City, Taiwan",
+        "title": "M5.3 earthquake near Bouvet Island region",
         "category": "geophysical",
-        "event_time": "2026-05-20T01:11:57Z",
+        "event_time": "2026-05-18T18:50:00Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -3.82228201692831,
+        "anomaly_score": -1.45449669670723,
         "signal_status": "context_only",
-        "magnitude_value": 4.3,
+        "magnitude_value": 5.3,
         "effective_anomaly": 0,
         "score_contribution": 0
       }
@@ -49,7 +49,7 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-05-20T03:26:33Z",
+    "updated_at": "2026-05-20T04:56:53Z",
     "score_version": "weirdness_v0_1",
     "summary_lines": [
       "Observed public signals were near or below the recent baseline.",
