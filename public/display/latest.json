@@ -2,7 +2,8 @@
   "display_date": "2026-05-18",
   "page_payload": {
     "date": "2026-05-18",
-    "headline": "Today's Weirdness Score",
+    "headline": "Latest Weirdness Score",
+    "data_date": "2026-05-18",
     "top_cards": [
       {
         "title": "Wikipedia attention snapshot for 2026-05-18",
@@ -49,14 +50,15 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-05-20T05:47:35Z",
-    "score_version": "weirdness_v0_1",
+    "updated_at": "2026-05-20T06:07:26Z",
+    "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "Observed public signals were near or below the recent baseline.",
+      "This data date is in the 20th percentile of the last 30 observed days.",
       "The score is based on public earthquake and Wikipedia attention data.",
       "This is not a forecast, alert, or recommendation."
     ],
-    "weirdness_score": 0,
+    "percentile_line": "This data date is in the 20th percentile of the last 30 observed days.",
+    "weirdness_score": 20,
     "underreacted_watch": null
   }
 }
