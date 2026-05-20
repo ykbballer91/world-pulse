@@ -1,0 +1,62 @@
+{
+  "display_date": "2026-05-17",
+  "page_payload": {
+    "date": "2026-05-17",
+    "headline": "Today's Weirdness Score",
+    "top_cards": [
+      {
+        "title": "Wikipedia attention snapshot for 2026-05-17",
+        "category": "attention",
+        "event_time": "2026-05-17T00:00:00Z",
+        "event_type": "wikipedia_attention_snapshot",
+        "source_note": "Public observation data",
+        "display_note": "Above the recent baseline.",
+        "anomaly_score": 2.08437325524123,
+        "signal_status": "score_contributor",
+        "magnitude_value": 31677828.0,
+        "effective_anomaly": 2.08437325524123,
+        "score_contribution": 41.687465104824604
+      },
+      {
+        "title": "M5.4 earthquake near 84 km ENE of Severo-Kuril’sk, Russia",
+        "category": "geophysical",
+        "event_time": "2026-05-17T08:04:17Z",
+        "event_type": "earthquake",
+        "source_note": "Public observation data",
+        "display_note": "Observed signal, but not above the recent baseline.",
+        "anomaly_score": -0.404722329258183,
+        "signal_status": "context_only",
+        "magnitude_value": 5.4,
+        "effective_anomaly": 0,
+        "score_contribution": 0
+      },
+      {
+        "title": "M5.1 earthquake near 109 km SSE of Lorengau, Papua New Guinea",
+        "category": "geophysical",
+        "event_time": "2026-05-17T07:51:56Z",
+        "event_type": "earthquake",
+        "source_note": "Public observation data",
+        "display_note": "Observed signal, but not above the recent baseline.",
+        "anomaly_score": -0.829680774979269,
+        "signal_status": "context_only",
+        "magnitude_value": 5.1,
+        "effective_anomaly": 0,
+        "score_contribution": 0
+      }
+    ],
+    "principles": {
+      "no_prediction": true,
+      "no_fear_amplification": true,
+      "no_trading_or_investment_advice": true
+    },
+    "updated_at": "2026-05-20T02:22:59Z",
+    "score_version": "weirdness_v0_1",
+    "summary_lines": [
+      "Observed public signals were moderately above the recent baseline.",
+      "The score is based on public earthquake and Wikipedia attention data.",
+      "This is not a forecast, alert, or recommendation."
+    ],
+    "weirdness_score": 42,
+    "underreacted_watch": null
+  }
+}

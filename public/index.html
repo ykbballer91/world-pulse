@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>World Pulse</title>
+    <style>
+      :root {
+        color: #171717;
+        background: #ffffff;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: #ffffff;
+        color: #171717;
+      }
+
+      main {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 48px 0 32px;
+      }
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        gap: 24px;
+        align-items: flex-start;
+        border-bottom: 1px solid #e5e5e5;
+        padding-bottom: 24px;
+      }
+
+      .brand {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: 0;
+      }
+
+      .date {
+        margin: 2px 0 0;
+        color: #666666;
+        font-size: 14px;
+      }
+
+      .score-section {
+        padding: 56px 0 40px;
+        display: grid;
+        grid-template-columns: minmax(220px, 340px) 1fr;
+        gap: 48px;
+        align-items: center;
+      }
+
+      h1 {
+        margin: 0 0 14px;
+        font-size: 40px;
+        line-height: 1.05;
+        letter-spacing: 0;
+      }
+
+      .score {
+        font-size: 112px;
+        line-height: 0.95;
+        font-weight: 800;
+        letter-spacing: 0;
+      }
+
+      .summary {
+        display: grid;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        color: #333333;
+        font-size: 17px;
+        line-height: 1.45;
+      }
+
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        padding-top: 8px;
+      }
+
+      .card {
+        border: 1px solid #dddddd;
+        border-radius: 8px;
+        padding: 18px;
+        min-height: 260px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        background: #ffffff;
+      }
+
+      .status {
+        width: fit-content;
+        border: 1px solid #d4d4d4;
+        border-radius: 999px;
+        padding: 4px 10px;
+        font-size: 12px;
+        color: #404040;
+        background: #fafafa;
+      }
+
+      .card h2 {
+        margin: 0;
+        font-size: 18px;
+        line-height: 1.25;
+        letter-spacing: 0;
+      }
+
+      .meta {
+        display: grid;
+        gap: 8px;
+        margin: 0;
+        color: #4d4d4d;
+        font-size: 14px;
+      }
+
+      .meta div {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        border-top: 1px solid #eeeeee;
+        padding-top: 8px;
+      }
+
+      .meta span:first-child {
+        color: #777777;
+      }
+
+      .note {
+        margin-top: auto;
+        color: #555555;
+        font-size: 14px;
+        line-height: 1.4;
+      }
+
+      footer {
+        margin-top: 40px;
+        border-top: 1px solid #e5e5e5;
+        padding-top: 22px;
+        color: #555555;
+        display: grid;
+        gap: 8px;
+        font-size: 14px;
+        line-height: 1.45;
+      }
+
+      .updated {
+        color: #777777;
+      }
+
+      .error {
+        margin-top: 48px;
+        padding: 18px;
+        border: 1px solid #dddddd;
+        border-radius: 8px;
+        color: #333333;
+      }
+
+      @media (max-width: 860px) {
+        main {
+          width: min(100% - 24px, 680px);
+          padding-top: 28px;
+        }
+
+        header,
+        .score-section {
+          display: block;
+        }
+
+        .score-section {
+          padding: 40px 0 28px;
+        }
+
+        h1 {
+          font-size: 32px;
+        }
+
+        .score {
+          font-size: 88px;
+          margin-bottom: 28px;
+        }
+
+        .cards {
+          grid-template-columns: 1fr;
+        }
+
+        .card {
+          min-height: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <div>
+          <p class="brand">World Pulse</p>
+          <p class="date" id="display-date">Loading</p>
+        </div>
+        <p class="updated" id="updated-at"></p>
+      </header>
+
+      <section class="score-section" aria-labelledby="headline">
+        <div>
+          <h1 id="headline">Today's Weirdness Score</h1>
+          <div class="score" id="score">--</div>
+        </div>
+        <ul class="summary" id="summary-lines"></ul>
+      </section>
+
+      <section class="cards" id="top-cards" aria-label="Top signals"></section>
+
+      <footer>
+        <div>This is not a forecast, alert, or recommendation.</div>
+        <div>No trading, medical, political, or personal safety advice.</div>
+        <div>Sources: public observation and public attention data.</div>
+      </footer>
+    </main>
+
+    <script>
+      const statusLabels = {
+        score_contributor: "Above baseline",
+        context_only: "Context only"
+      };
+
+      function formatNumber(value) {
+        if (value === null || value === undefined || Number.isNaN(Number(value))) {
+          return "n/a";
+        }
+        return Number(value).toFixed(2);
+      }
+
+      function text(value) {
+        return value === null || value === undefined || value === "" ? "n/a" : String(value);
+      }
+
+      function renderSummary(lines) {
+        const list = document.getElementById("summary-lines");
+        list.replaceChildren(...lines.slice(0, 3).map((line) => {
+          const item = document.createElement("li");
+          item.textContent = line;
+          return item;
+        }));
+      }
+
+      function renderCards(cards) {
+        const container = document.getElementById("top-cards");
+        const nodes = cards.slice(0, 3).map((card) => {
+          const article = document.createElement("article");
+          article.className = "card";
+
+          const status = document.createElement("div");
+          status.className = "status";
+          status.textContent = statusLabels[card.signal_status] || text(card.signal_status);
+
+          const title = document.createElement("h2");
+          title.textContent = text(card.title);
+
+          const meta = document.createElement("div");
+          meta.className = "meta";
+          const rows = [
+            ["Category", card.category],
+            ["Type", card.event_type],
+            ["Anomaly", formatNumber(card.anomaly_score)],
+            ["Contribution", formatNumber(card.score_contribution)]
+          ];
+          meta.replaceChildren(...rows.map(([label, value]) => {
+            const row = document.createElement("div");
+            const key = document.createElement("span");
+            const val = document.createElement("span");
+            key.textContent = label;
+            val.textContent = text(value);
+            row.append(key, val);
+            return row;
+          }));
+
+          const note = document.createElement("p");
+          note.className = "note";
+          note.textContent = text(card.display_note);
+
+          article.append(status, title, meta, note);
+          return article;
+        });
+        container.replaceChildren(...nodes);
+      }
+
+      async function loadPayload() {
+        const response = await fetch("./display/latest.json", { cache: "no-store" });
+        if (!response.ok) {
+          throw new Error("Unable to load display payload");
+        }
+        return response.json();
+      }
+
+      loadPayload()
+        .then(({ display_date, page_payload }) => {
+          document.title = "World Pulse";
+          document.getElementById("display-date").textContent = display_date || page_payload.date;
+          document.getElementById("headline").textContent = page_payload.headline || "Today's Weirdness Score";
+          document.getElementById("score").textContent = text(page_payload.weirdness_score);
+          document.getElementById("updated-at").textContent = page_payload.updated_at
+            ? `Updated ${page_payload.updated_at}`
+            : "";
+          renderSummary(page_payload.summary_lines || []);
+          renderCards(page_payload.top_cards || []);
+        })
+        .catch((error) => {
+          const main = document.querySelector("main");
+          const message = document.createElement("div");
+          message.className = "error";
+          message.textContent = error.message;
+          main.append(message);
+        });
+    </script>
+  </body>
+</html>
