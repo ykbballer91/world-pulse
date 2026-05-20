@@ -4,6 +4,7 @@ import os
 import re
 import subprocess
 import sys
+import time
 from datetime import datetime, timedelta, timezone
 
 from dotenv import load_dotenv
@@ -72,17 +73,28 @@ def run_usgs_backfill(days, min_magnitude, database_url):
 
 def run_wikipedia_for_date(target_date, database_url):
     date_text = target_date.isoformat()
-    result = run_command(
-        [
-            sys.executable,
-            WIKIPEDIA_SCRIPT,
-            "--date",
-            date_text,
-            "--database-url",
-            database_url,
-        ]
-    )
+    command = [
+        sys.executable,
+        WIKIPEDIA_SCRIPT,
+        "--date",
+        date_text,
+        "--database-url",
+        database_url,
+    ]
+    result = run_command(command)
     output = f"{result.stdout}\n{result.stderr}"
+    if result.returncode != 0 and "429" in output:
+        print(
+            "Day 2 backfill retry: "
+            "source=wikipedia "
+            f"target_date={date_text} "
+            "reason=429",
+            file=sys.stderr,
+        )
+        time.sleep(5)
+        result = run_command(command)
+        output = f"{result.stdout}\n{result.stderr}"
+
     inserted = parse_int(r"inserted=(\d+)", output)
     skipped_duplicates = parse_int(r"skipped_duplicates=(\d+)", output)
     errors = 0 if result.returncode == 0 else 1

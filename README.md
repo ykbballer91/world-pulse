@@ -161,6 +161,7 @@ python scripts/generate_x_post_text.py --date 2026-05-17
 Run the daily World Pulse build:
 
 World Pulse beta uses a 30-day baseline for initial operation. Wikipedia sample counts may be lower than 30 when daily top pageviews are not yet available for every date in the lookback window.
+Wikipedia 30-day backfill is intended for initial setup and manual correction. The daily build keeps the 30-day baseline calculation, but uses a short, non-critical Wikipedia backfill window to reduce API rate-limit pressure. If Wikimedia returns `429 Too Many Requests`, existing data is used and the daily build continues with a warning.
 
 ```sh
 python scripts/run_daily_world_pulse.py

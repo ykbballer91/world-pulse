@@ -12,6 +12,7 @@ from dotenv import load_dotenv
 
 
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DAILY_WIKIPEDIA_BACKFILL_DAYS = 3
 
 
 def parse_date(value):
@@ -223,9 +224,11 @@ def main():
                     "--source",
                     "wikipedia",
                     "--days",
-                    str(args.days),
+                    str(min(args.days, DAILY_WIKIPEDIA_BACKFILL_DAYS)),
                     *db_args,
                 ],
+                critical=False,
+                warnings=warnings,
             )
             run_step(
                 "USGS backfill",
@@ -327,7 +330,8 @@ def main():
         return 1
 
     print(
-        "\nWorld Pulse daily build completed.\n\n"
+        "\nWorld Pulse daily build completed"
+        f"{' with warnings' if warnings else ''}.\n\n"
         f"target_date: {target_date_text}\n"
         "display_json: public/display/latest.json\n"
         "share_image_png: public/share/world-pulse-latest.png\n"

@@ -13,6 +13,8 @@ World Pulse can run as a daily GitHub Actions workflow. The workflow generates t
 7. If generated files changed, GitHub Actions commits and pushes them.
 8. If Cloudflare Pages is connected to the GitHub repository, that commit is expected to trigger deployment.
 
+The beta uses a 30-day baseline calculation. Wikipedia 30-day backfill is reserved for initial setup and manual correction. The scheduled daily build uses a short, non-critical Wikipedia backfill window to avoid Wikimedia API rate limits; if a `429 Too Many Requests` response occurs, the build continues using existing data and records a warning.
+
 ## Schedule
 
 The workflow runs every day at 7:00 JST.
