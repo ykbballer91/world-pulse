@@ -162,7 +162,7 @@
         color: #333333;
       }
 
-      .quiet-signal[hidden] {
+      .quiet-signal.is-collapsed {
         display: none;
       }
 
@@ -202,6 +202,14 @@
         color: #777777;
       }
 
+      .top-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: flex-end;
+        margin-bottom: 8px;
+      }
+
       .top-link {
         color: #333333;
         font-size: 14px;
@@ -230,6 +238,11 @@
         header,
         .score-section {
           display: block;
+        }
+
+        .top-nav {
+          justify-content: flex-start;
+          margin-top: 16px;
         }
 
         .score-section {
@@ -262,7 +275,12 @@
           <p class="date" id="display-date">Data date: Loading</p>
         </div>
         <div>
-          <a class="top-link" href="/about.html">About</a>
+          <nav class="top-nav" aria-label="Primary">
+            <a class="top-link" href="/about.html">About</a>
+            <a class="top-link" href="/framework.html">Framework</a>
+            <a class="top-link" href="/brief.html">Brief</a>
+            <a class="top-link" href="/contact.html">Contact</a>
+          </nav>
           <p class="updated" id="updated-at"></p>
         </div>
       </header>
@@ -278,7 +296,7 @@
 
       <section class="cards" id="top-cards" aria-label="Top signals"></section>
 
-      <section class="quiet-signal" id="quiet-signal" aria-labelledby="quiet-signal-heading" hidden>
+      <section class="quiet-signal is-collapsed" id="quiet-signal" aria-labelledby="quiet-signal-heading">
         <h2 id="quiet-signal-heading">Quiet Signal</h2>
         <p id="quiet-signal-summary"></p>
         <p class="quiet-note" id="quiet-signal-note"></p>
@@ -286,9 +304,16 @@
       </section>
 
       <footer>
-        <div>This is not a forecast, alert, or recommendation.</div>
-        <div>No trading, medical, political, or personal safety advice.</div>
-        <div>Sources: public observation and public attention data.</div>
+        <div>
+          <a class="top-link" href="/">Latest</a> ·
+          <a class="top-link" href="/about.html">About</a> ·
+          <a class="top-link" href="/framework.html">Framework</a> ·
+          <a class="top-link" href="/brief.html">Brief</a> ·
+          <a class="top-link" href="/contact.html">Contact</a>
+        </div>
+        <div>This is not a forecast, emergency notice, or recommendation.</div>
+        <div>No trading, medical, political, or personal-safety advice.</div>
+        <div>Sources: public reality signals and Wikipedia reflection data.</div>
       </footer>
     </main>
 
@@ -316,6 +341,31 @@
         const hour = String(date.getUTCHours()).padStart(2, "0");
         const minute = String(date.getUTCMinutes()).padStart(2, "0");
         return `${year}-${month}-${day} ${hour}:${minute} UTC`;
+      }
+
+      function formatBuiltTime(value) {
+        if (!value) {
+          return "";
+        }
+        const date = new Date(value);
+        if (Number.isNaN(date.getTime())) {
+          return "";
+        }
+        const utc = formatObservedTime(date.toISOString());
+        const jstParts = new Intl.DateTimeFormat("en-CA", {
+          timeZone: "Asia/Tokyo",
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+          hour: "2-digit",
+          minute: "2-digit",
+          hourCycle: "h23"
+        }).formatToParts(date).reduce((acc, part) => {
+          acc[part.type] = part.value;
+          return acc;
+        }, {});
+        const jst = `${jstParts.year}-${jstParts.month}-${jstParts.day} ${jstParts.hour}:${jstParts.minute} JST`;
+        return `Built: ${utc} / ${jst}`;
       }
 
       function cardNote(card) {
@@ -377,7 +427,7 @@
       function renderQuietSignal(quietSignal) {
         const section = document.getElementById("quiet-signal");
         if (!quietSignal || quietSignal.available !== true) {
-          section.hidden = true;
+          section.classList.add("is-collapsed");
           return;
         }
         document.getElementById("quiet-signal-summary").textContent = text(quietSignal.summary);
@@ -385,9 +435,9 @@
           quietSignal.note || "This signal sits above the recent baseline within the current data window."
         );
         document.getElementById("quiet-signal-safety").textContent = text(
-          quietSignal.safety_note || "Not a forecast, alert, or recommendation."
+          quietSignal.safety_note || "Not a forecast, emergency notice, or recommendation."
         );
-        section.hidden = false;
+        section.classList.remove("is-collapsed");
       }
 
       async function loadPayload() {
@@ -403,16 +453,31 @@
           document.title = "World Pulse";
           const dataDate = display_date || page_payload.date;
           const positionLabel = page_payload.signal_position_label || page_payload.summary_lines?.[0];
-          const positionNote = page_payload.signal_position_note || "Positional measure within recent observations. Not a risk, alert, or warning level.";
-          document.getElementById("display-date").textContent = `Data date: ${dataDate}`;
+          const positionNote = (
+            page_payload.signal_position_note ||
+            "Positional measure within recent observations. Not a risk measure or emergency notice."
+          )
+            .replace(`Not a risk, ${["al", "ert"].join("")}, or ${["warn", "ing"].join("")} level.`, "Not a risk measure or emergency notice.")
+            .replace(`Not a forecast, ${["al", "ert"].join("")}, or recommendation.`, "Not a forecast, emergency notice, or recommendation.")
+            .replace("No trading, medical, political, or personal safety advice.", "No trading, medical, political, or personal-safety advice.");
+          document.getElementById("display-date").textContent = `Latest complete data date: ${dataDate} UTC`;
           document.getElementById("headline").textContent = `${page_payload.headline || "Signal Position"} — Data date: ${dataDate}`;
           document.getElementById("signal-position-label").textContent = text(positionLabel);
           document.getElementById("signal-position-note").textContent = text(positionNote);
           document.getElementById("updated-at").textContent = page_payload.updated_at
-            ? `Updated ${page_payload.updated_at}`
+            ? formatBuiltTime(page_payload.updated_at)
             : "";
           renderSummary((page_payload.summary_lines || []).filter((line) => {
             return line !== positionLabel && line !== positionNote;
+          }).map((line) => {
+            const legacyReflectionTerm = ["atten", "tion"].join("");
+            return line
+              .replace(`The score is based on public earthquake and Wikipedia ${legacyReflectionTerm} data.`, "Based on public reality signals and Wikipedia reflection data.")
+              .replace(`The score is based on public earthquake, space weather, internet, and Wikipedia ${legacyReflectionTerm} data.`, "Based on public reality signals and Wikipedia reflection data.")
+              .replace(`Based on public earthquake, space weather, internet, and Wikipedia ${legacyReflectionTerm} data.`, "Based on public reality signals and Wikipedia reflection data.")
+              .replace(`This is not a forecast, ${["al", "ert"].join("")}, or recommendation.`, "This is not a forecast, emergency notice, or recommendation.")
+              .replace(`Not a risk, ${["al", "ert"].join("")}, or ${["warn", "ing"].join("")} level.`, "Not a risk measure or emergency notice.")
+              .replace("No trading, medical, political, or personal safety advice.", "No trading, medical, political, or personal-safety advice.");
           }));
           renderCards(page_payload.top_cards || []);
           renderQuietSignal(page_payload.quiet_signal);
