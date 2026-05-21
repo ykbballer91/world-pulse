@@ -15,6 +15,8 @@ World Pulse can run as a daily GitHub Actions workflow. The workflow generates t
 
 The beta uses a 30-day baseline calculation. Wikipedia 30-day backfill is reserved for initial setup and manual correction. The scheduled daily build uses a short, non-critical Wikipedia backfill window to avoid Wikimedia API rate limits; if a `429 Too Many Requests` response occurs, the build continues using existing data and records a warning.
 
+Normal daily builds normalize only the recent scoring window, with a small buffer beyond the 30-day baseline. Full normalization across all raw observations should be run manually after major backfills or validation work. Long-range validation jobs such as 90-day or 1-year reviews should stay outside the scheduled daily workflow.
+
 90-day backfill is a manual validation workflow for Reality-Reflection examples and is not scheduled in GitHub Actions. USGS can be requested as a 90-day M4+ window. NOAA SWPC is constrained by the provider's current Kp and X-ray response windows, so the helper verifies those current responses rather than replaying a full 90-day history. Wikipedia 90-day backfill should be run in stages to reduce Wikimedia API rate-limit pressure; failed dates are logged for later retry.
 
 Sources are also classified internally into `reality`, `attention`, and `context` layers for future Reality-Reflection Gap analysis. These layers are not exposed in the public UI; the public label remains Signal Position, and gap scores are not published. The stored database label `attention` is retained for backward compatibility: Wikipedia Pageviews is treated as a delayed reflection / interpretation proxy, not immediate human attention. An immediate human-attention stream is not implemented yet.

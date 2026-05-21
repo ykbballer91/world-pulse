@@ -3,7 +3,8 @@ import argparse
 import json
 import os
 import sys
-from datetime import datetime, timezone
+import time
+from datetime import datetime, timedelta, timezone
 
 import psycopg
 from dotenv import load_dotenv
@@ -98,21 +99,6 @@ def is_excluded_wikipedia_title(article):
     return article.get("article") in {"Main_Page", "Special:Search"}
 
 
-def existing_event_exists(conn, raw_observation_id, event_type):
-    with conn.cursor() as cur:
-        cur.execute(
-            """
-            SELECT 1
-            FROM normalized_events
-            WHERE raw_observation_id = %s
-              AND event_type = %s
-            LIMIT 1
-            """,
-            (raw_observation_id, event_type),
-        )
-        return cur.fetchone() is not None
-
-
 def assign_if_column(values, columns, column, value):
     if column in columns:
         values[column] = value
@@ -152,54 +138,56 @@ def save_normalized_event(conn, columns, event):
         raise ValueError("normalized_events must include raw_observation_id and event_type")
 
     values = build_event_values(columns, event)
-    exists = existing_event_exists(conn, event["raw_observation_id"], event["event_type"])
 
     with conn.cursor() as cur:
-        if exists:
-            update_values = {
-                column: value for column, value in values.items() if column != "created_at"
-            }
-            assignments = ", ".join(f"{column} = %s" for column in update_values)
-            if not assignments:
-                return "skipped"
-            cur.execute(
-                f"""
-                UPDATE normalized_events
-                SET {assignments}
-                WHERE raw_observation_id = %s
-                  AND event_type = %s
-                """,
-                [
-                    *update_values.values(),
-                    event["raw_observation_id"],
-                    event["event_type"],
-                ],
-            )
-            return "updated"
-
         insert_columns = list(values)
         placeholders = ", ".join(["%s"] * len(insert_columns))
         column_sql = ", ".join(insert_columns)
+        update_columns = [
+            column
+            for column in insert_columns
+            if column not in {"raw_observation_id", "event_type", "created_at"}
+        ]
+        if update_columns:
+            conflict_sql = "DO UPDATE SET " + ", ".join(
+                f"{column} = EXCLUDED.{column}" for column in update_columns
+            )
+            returning_sql = "RETURNING (xmax = 0) AS inserted"
+        else:
+            conflict_sql = "DO NOTHING"
+            returning_sql = "RETURNING TRUE AS inserted"
         cur.execute(
             f"""
             INSERT INTO normalized_events ({column_sql})
             VALUES ({placeholders})
+            ON CONFLICT (raw_observation_id, event_type)
+            {conflict_sql}
+            {returning_sql}
             """,
             [values[column] for column in insert_columns],
         )
-        return "inserted"
+        row = cur.fetchone()
+        if row is None:
+            return "skipped"
+        return "inserted" if row[0] else "updated"
 
 
-def fetch_usgs_raw_observations(conn, source_id):
+def fetch_usgs_raw_observations(conn, source_id, since_datetime=None):
     with conn.cursor() as cur:
+        params = [source_id]
+        window_sql = ""
+        if since_datetime is not None:
+            window_sql = "AND observed_at >= %s"
+            params.append(since_datetime)
         cur.execute(
-            """
+            f"""
             SELECT id, observed_at, raw_payload
             FROM raw_observations
             WHERE source_id = %s
+              {window_sql}
             ORDER BY observed_at
             """,
-            (source_id,),
+            params,
         )
         return cur.fetchall()
 
@@ -247,32 +235,44 @@ def build_usgs_event(source_id, row, baseline):
     }
 
 
-def fetch_wikipedia_raw_observations(conn, source_id):
+def fetch_wikipedia_raw_observations(conn, source_id, since_datetime=None):
     with conn.cursor() as cur:
+        params = [source_id]
+        window_sql = ""
+        if since_datetime is not None:
+            window_sql = "AND observed_at >= %s"
+            params.append(since_datetime)
         cur.execute(
-            """
+            f"""
             SELECT id, observed_at, raw_payload
             FROM raw_observations
             WHERE source_id = %s
               AND raw_payload->>'dataset' = 'top_pageviews'
+              {window_sql}
             ORDER BY observed_at
             """,
-            (source_id,),
+            params,
         )
         return cur.fetchall()
 
 
-def fetch_cloudflare_raw_observations(conn, source_id):
+def fetch_cloudflare_raw_observations(conn, source_id, since_datetime=None):
     with conn.cursor() as cur:
+        params = [source_id]
+        window_sql = ""
+        if since_datetime is not None:
+            window_sql = "AND observed_at >= %s"
+            params.append(since_datetime)
         cur.execute(
-            """
+            f"""
             SELECT id, observed_at, raw_payload
             FROM raw_observations
             WHERE source_id = %s
               AND raw_payload->>'dataset' = 'cloudflare_radar_outages'
+              {window_sql}
             ORDER BY observed_at
             """,
-            (source_id,),
+            params,
         )
         return cur.fetchall()
 
@@ -454,26 +454,54 @@ def build_cloudflare_event(source_id, row):
     }
 
 
-def generate_for_source(conn, columns, source):
+def isoformat_z(value):
+    if value is None:
+        return "all"
+    return value.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
+
+
+def parse_since_date(value):
+    try:
+        return datetime.strptime(value, "%Y-%m-%d").date()
+    except ValueError as exc:
+        raise argparse.ArgumentTypeError("--since-date must use YYYY-MM-DD format") from exc
+
+
+def resolve_since_datetime(args):
+    if args.since_date is not None:
+        return datetime.combine(args.since_date, datetime.min.time(), tzinfo=timezone.utc)
+    if args.days is not None:
+        if args.days <= 0:
+            raise ValueError("--days must be greater than zero")
+        since_date = datetime.now(timezone.utc).date() - timedelta(days=args.days)
+        return datetime.combine(since_date, datetime.min.time(), tzinfo=timezone.utc)
+    return None
+
+
+def generate_for_source(conn, columns, source, since_datetime=None):
+    started = time.monotonic()
+    window_start = isoformat_z(since_datetime)
     if source == "usgs":
         source_id = get_source_id(conn, USGS_SOURCE_NAME)
-        rows = fetch_usgs_raw_observations(conn, source_id)
+        rows = fetch_usgs_raw_observations(conn, source_id, since_datetime)
         baseline = fetch_baseline(conn, source_id, "usgs_daily_max_magnitude")
         events = [build_usgs_event(source_id, row, baseline) for row in rows]
     elif source == "wikipedia":
         source_id = get_source_id(conn, WIKIPEDIA_SOURCE_NAME)
-        rows = fetch_wikipedia_raw_observations(conn, source_id)
+        rows = fetch_wikipedia_raw_observations(conn, source_id, since_datetime)
         baseline = fetch_baseline(conn, source_id, "wikipedia_daily_top1000_total_views")
         events = [build_wikipedia_event(source_id, row, baseline) for row in rows]
     elif source == "cloudflare":
         source_id = find_source_id(conn, CLOUDFLARE_SOURCE_NAME)
         if source_id is None:
+            elapsed = time.monotonic() - started
             print(
-                "Normalized events generation: source=cloudflare seen=0 inserted=0 "
-                "updated=0 skipped=0 errors=0"
+                "Normalized events generation: source=cloudflare "
+                f"window_start={window_start} seen=0 inserted=0 updated=0 skipped=0 "
+                f"errors=0 elapsed_seconds={elapsed:.2f}"
             )
             return {"seen": 0, "inserted": 0, "updated": 0, "skipped": 0, "errors": 0}
-        rows = fetch_cloudflare_raw_observations(conn, source_id)
+        rows = fetch_cloudflare_raw_observations(conn, source_id, since_datetime)
         events = [build_cloudflare_event(source_id, row) for row in rows]
     else:
         raise ValueError(f"unsupported source: {source}")
@@ -491,14 +519,17 @@ def generate_for_source(conn, columns, source):
                 file=sys.stderr,
             )
 
+    elapsed = time.monotonic() - started
     print(
         "Normalized events generation: "
         f"source={source} "
+        f"window_start={window_start} "
         f"seen={totals['seen']} "
         f"inserted={totals['inserted']} "
         f"updated={totals['updated']} "
         f"skipped={totals['skipped']} "
-        f"errors={totals['errors']}"
+        f"errors={totals['errors']} "
+        f"elapsed_seconds={elapsed:.2f}"
     )
     return totals
 
@@ -518,14 +549,34 @@ def main():
         default=os.environ.get("DATABASE_URL"),
         help="PostgreSQL connection URL. Defaults to DATABASE_URL.",
     )
+    window_group = parser.add_mutually_exclusive_group()
+    window_group.add_argument(
+        "--since-date",
+        type=parse_since_date,
+        default=None,
+        help="Only process raw observations observed on or after this UTC date.",
+    )
+    window_group.add_argument(
+        "--days",
+        type=int,
+        default=None,
+        help="Only process raw observations since UTC today minus this many days.",
+    )
     args = parser.parse_args()
 
     if not args.database_url:
         print("DATABASE_URL is required.", file=sys.stderr)
         return 2
 
+    try:
+        since_datetime = resolve_since_datetime(args)
+    except ValueError as exc:
+        print(str(exc), file=sys.stderr)
+        return 2
+
     sources = ["usgs", "wikipedia", "cloudflare"] if args.source == "all" else [args.source]
     totals = {"seen": 0, "inserted": 0, "updated": 0, "skipped": 0, "errors": 0}
+    started = time.monotonic()
 
     with psycopg.connect(args.database_url) as conn:
         columns = table_columns(conn, "normalized_events")
@@ -534,20 +585,23 @@ def main():
             return 1
 
         for source in sources:
-            source_totals = generate_for_source(conn, columns, source)
+            source_totals = generate_for_source(conn, columns, source, since_datetime)
             for key in totals:
                 totals[key] += source_totals[key]
 
         conn.commit()
 
+    elapsed = time.monotonic() - started
     print(
         "Normalized events generation completed: "
         f"source={args.source} "
+        f"window_start={isoformat_z(since_datetime)} "
         f"seen={totals['seen']} "
         f"inserted={totals['inserted']} "
         f"updated={totals['updated']} "
         f"skipped={totals['skipped']} "
-        f"errors={totals['errors']}"
+        f"errors={totals['errors']} "
+        f"elapsed_seconds={elapsed:.2f}"
     )
     return 1 if totals["errors"] else 0
 

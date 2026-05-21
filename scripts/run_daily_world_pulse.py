@@ -13,6 +13,8 @@ from dotenv import load_dotenv
 
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DAILY_WIKIPEDIA_BACKFILL_DAYS = 3
+NORMALIZATION_WINDOW_BUFFER_DAYS = 5
+STEP_TIMINGS = []
 
 
 def parse_date(value):
@@ -77,6 +79,7 @@ def run_step(name, command, critical=True, warnings=None):
     )
     elapsed = time.monotonic() - started
     status = "success" if result.returncode == 0 else ("failed" if critical else "warning")
+    STEP_TIMINGS.append({"name": name, "elapsed": elapsed, "status": status})
     print(f"Step finished: name={name} status={status} elapsed_seconds={elapsed:.2f}")
     if result.returncode != 0:
         if not critical:
@@ -114,6 +117,7 @@ def default_target_date():
 
 def main():
     load_dotenv()
+    STEP_TIMINGS.clear()
 
     parser = argparse.ArgumentParser(description="Run the World Pulse daily build.")
     parser.add_argument(
@@ -131,6 +135,11 @@ def main():
         "--use-latest-anomaly-date",
         action="store_true",
         help="Use the latest normalized event date with anomaly_score instead of UTC yesterday.",
+    )
+    parser.add_argument(
+        "--normalize-all",
+        action="store_true",
+        help="Regenerate normalized events for all raw observations instead of the recent scoring window.",
     )
     parser.add_argument(
         "--database-url",
@@ -264,16 +273,6 @@ def main():
                 *db_args,
             ],
         )
-        run_step(
-            "Normalized events",
-            [
-                sys.executable,
-                script_path("generate_normalized_events.py"),
-                "--source",
-                "all",
-                *db_args,
-            ],
-        )
 
         if args.date:
             target_date = args.date
@@ -286,6 +285,29 @@ def main():
             target_date_source = "utc_yesterday"
         target_date_text = target_date.isoformat()
         print(f"Daily build target_date={target_date_text} source={target_date_source}")
+
+        normalized_command = [
+            sys.executable,
+            script_path("generate_normalized_events.py"),
+            "--source",
+            "all",
+            *db_args,
+        ]
+        if args.normalize_all:
+            print("Normalized events window: all raw observations")
+        else:
+            normalization_days = args.days + NORMALIZATION_WINDOW_BUFFER_DAYS
+            normalize_since_date = target_date - timedelta(days=normalization_days)
+            normalized_command.extend(["--since-date", normalize_since_date.isoformat()])
+            print(
+                "Normalized events window: "
+                f"since_date={normalize_since_date.isoformat()} "
+                f"(target_date minus {normalization_days} days)"
+            )
+        run_step(
+            "Normalized events",
+            normalized_command,
+        )
 
         run_step(
             "Signal position score",
@@ -360,6 +382,16 @@ def main():
         print("\nwarnings:")
         for warning in warnings:
             print(f"- {warning}")
+    if STEP_TIMINGS:
+        print("\nSlowest steps:")
+        for index, step in enumerate(
+            sorted(STEP_TIMINGS, key=lambda item: item["elapsed"], reverse=True),
+            start=1,
+        ):
+            print(
+                f"{index}. {step['name']}: {step['elapsed']:.2f}s "
+                f"({step['status']})"
+            )
     return 0
 
 
