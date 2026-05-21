@@ -47,7 +47,7 @@ Future measurement windows:
 - event time + 48h
 - event time + 7d
 
-No measurement is performed in this task.
+Phase 2.1 dry-runs these windows with existing event candidates and Wikipedia daily pageviews. Results remain file-only and are not written to the database.
 
 ## What Can Be Claimed
 
@@ -69,3 +69,7 @@ No measurement is performed in this task.
 - Wikipedia page titles may not exist.
 - English Wikipedia is not globally representative.
 - Reference activity may occur outside Wikipedia.
+
+## Candidate Quality Review
+
+Phase 2.2 adds a file-only candidate quality review before any storage design. The review checks candidate page existence, applies small title-cleanup rules, and keeps low-confidence location candidates separate from stronger event-type or feature candidates.

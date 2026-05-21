@@ -1,6 +1,6 @@
 # Event-Level Entity Linking Dry Run
 
-Generated at: 2026-05-21T07:10:16Z
+Generated at: 2026-05-21T23:37:41Z
 
 ## Purpose
 
@@ -30,7 +30,6 @@ For each selected data date, the script reads up to 3 geophysical earthquake eve
 - East_Pacific_Rise (medium: regional geological feature in location phrase)
 - Pacific_Ocean (medium: regional geological feature in location phrase)
 - Mid-ocean_ridge (medium: regional geological feature in location phrase)
-- southern_East_Pacific_Rise (low: location phrase candidate)
 
 ### Candidate Historical/Context Pages
 - None generated in this dry run.
@@ -167,8 +166,8 @@ For each selected data date, the script reads up to 3 geophysical earthquake eve
 - Seismic_wave (high: direct earthquake event type)
 
 ### Candidate Context Pages
+- Colombia (medium: country or broad region in location phrase)
 - Darien (low: location phrase candidate)
-- Colombia (low: location phrase candidate)
 
 ### Candidate Historical/Context Pages
 - None generated in this dry run.
@@ -203,7 +202,6 @@ For each selected data date, the script reads up to 3 geophysical earthquake eve
 ### Candidate Context Pages
 - Japan (medium: country or broad region in location phrase)
 - Volcano_Islands (low: location phrase candidate)
-- Japan_region (low: location phrase candidate)
 
 ### Candidate Historical/Context Pages
 - None generated in this dry run.
@@ -308,7 +306,6 @@ For each selected data date, the script reads up to 3 geophysical earthquake eve
 
 ### Candidate Context Pages
 - Peru (medium: country or broad region in location phrase)
-- Palca (low: location phrase candidate)
 
 ### Candidate Historical/Context Pages
 - None generated in this dry run.

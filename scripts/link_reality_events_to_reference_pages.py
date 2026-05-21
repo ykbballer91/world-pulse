@@ -11,6 +11,33 @@ from dotenv import load_dotenv
 CORE_EARTHQUAKE_PAGES = ["Earthquake", "Seismology", "Seismic_wave"]
 TSUNAMI_PAGE = "Tsunami"
 
+KNOWN_PAGE_REPLACEMENTS = {
+    "southern_East_Pacific_Rise": "East_Pacific_Rise",
+    "Japan_region": "Japan",
+    "Volcano_Islands_Japan_region": "Volcano_Islands",
+    "Papua_New_Guinea_region": "Papua_New_Guinea",
+}
+
+KNOWN_LOW_CONFIDENCE_PAGE_TITLES = {
+    "Darien",
+    "Lorengau",
+    "Tual",
+    "Volcano_Islands",
+    "Wadomari",
+}
+
+KNOWN_REGION_PAGE_TITLES = {
+    "Tōhoku_region",
+}
+
+DIRECTIONAL_ADJECTIVES = [
+    "central",
+    "eastern",
+    "northern",
+    "southern",
+    "western",
+]
+
 GEOLOGIC_CONTEXT_RULES = [
     (
         "east pacific rise",
@@ -44,6 +71,7 @@ COUNTRY_RULES = {
     "New Zealand": ["New_Zealand"],
     "United States": ["United_States"],
     "China": ["China"],
+    "Colombia": ["Colombia"],
 }
 
 REGION_RULES = {
@@ -190,12 +218,45 @@ def normalize_page_title(value):
     return value
 
 
+def cleanup_candidate_title(title):
+    title = normalize_page_title(title)
+    if not title:
+        return None, False
+
+    if title in KNOWN_PAGE_REPLACEMENTS:
+        return KNOWN_PAGE_REPLACEMENTS[title], True
+
+    for adjective in DIRECTIONAL_ADJECTIVES:
+        prefix = f"{adjective}_"
+        if title.lower().startswith(prefix):
+            trimmed = title[len(prefix) :]
+            if trimmed in KNOWN_PAGE_REPLACEMENTS:
+                return KNOWN_PAGE_REPLACEMENTS[trimmed], True
+            if trimmed in {"East_Pacific_Rise", "Mid-Atlantic_Ridge"}:
+                return trimmed, True
+
+    if title.endswith("_region") and title not in KNOWN_REGION_PAGE_TITLES:
+        base = title[: -len("_region")]
+        if base in COUNTRY_RULES or base in KNOWN_PAGE_REPLACEMENTS.values():
+            return base, True
+        return None, False
+
+    return title, False
+
+
 def add_unique(items, title, confidence, reason):
     if not title:
         return
-    title = normalize_page_title(title)
+    original_title = normalize_page_title(title)
+    title, cleaned = cleanup_candidate_title(title)
     if not title:
         return
+    if confidence == "low" and reason == "location phrase candidate":
+        if title not in KNOWN_LOW_CONFIDENCE_PAGE_TITLES and not cleaned:
+            return
+    if cleaned:
+        confidence = "high"
+        reason = f"known cleanup replacement for {original_title}"
     if title.lower() in {item["title"].lower() for item in items}:
         return
     items.append({"title": title, "confidence": confidence, "reason": reason})
