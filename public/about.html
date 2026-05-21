@@ -71,6 +71,14 @@
         letter-spacing: 0;
       }
 
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: flex-end;
+        font-size: 14px;
+      }
+
       .intro {
         margin: 0 0 38px;
         color: #333333;
@@ -163,7 +171,11 @@
           <p class="subtle">Beta version. Observation only.</p>
         </div>
         <nav aria-label="Primary">
-          <a href="/">Back to latest position</a>
+          <a href="/">Latest</a>
+          <a href="/about.html">About</a>
+          <a href="/framework.html">Framework</a>
+          <a href="/brief.html">Brief</a>
+          <a href="/contact.html">Contact</a>
         </nav>
       </header>
 
@@ -297,8 +309,27 @@
         </div>
       </section>
 
+      <section>
+        <h2>Who Uses This</h2>
+        <p>
+          World Pulse is designed as an observation layer for teams that need source-linked public signal records, not operational instructions.
+        </p>
+        <ul>
+          <li>Data journalism teams: background signal tracking and source review.</li>
+          <li>AI training data teams: structured examples of public observation records.</li>
+          <li>Insurance and risk R&amp;D: exploratory research on public signal baselines.</li>
+          <li>Academic researchers: reproducible public-source observation workflows.</li>
+        </ul>
+      </section>
+
       <footer>
-        <div><a href="/">Back to World Pulse</a></div>
+        <div>
+          <a href="/">Latest</a> ·
+          <a href="/about.html">About</a> ·
+          <a href="/framework.html">Framework</a> ·
+          <a href="/brief.html">Brief</a> ·
+          <a href="/contact.html">Contact</a>
+        </div>
         <div>worldpulse.today</div>
         <div>Beta version. Observation only.</div>
       </footer>
