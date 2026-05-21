@@ -204,10 +204,10 @@ def generate_image(display_date, page_payload):
     # Keep the share image intentionally low-detail to avoid risk-level misinterpretation.
     position_line = signal_position_label(page_payload, score)
 
-    draw.text((72, 58), f"World Pulse — {display_date.isoformat()}", font=font_brand, fill=ink)
+    draw.text((72, 58), f"World Pulse — Data date: {display_date.isoformat()} UTC", font=font_brand, fill=ink)
     draw.text((72, 150), "Signal Position", font=font_headline, fill=ink)
     draw_wrapped(draw, (72, 228), position_line, font_hero, ink, 840, line_spacing=10, max_lines=2)
-    draw.text((72, 398), "Positional measure. Not a risk, alert, or forecast.", font=font_body, fill=muted)
+    draw.text((72, 398), "Positional measure. Not a forecast or emergency notice.", font=font_body, fill=muted)
     draw.text((72, 445), score_band_label(score), font=font_body, fill=ink)
 
     card_left = 744

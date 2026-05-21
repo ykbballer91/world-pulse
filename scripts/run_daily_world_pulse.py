@@ -4,7 +4,7 @@ import os
 import subprocess
 import sys
 import time
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from urllib.parse import urlparse
 
 import psycopg
@@ -108,6 +108,10 @@ def latest_anomaly_date(database_url):
             return row[0]
 
 
+def default_target_date():
+    return datetime.now(timezone.utc).date() - timedelta(days=1)
+
+
 def main():
     load_dotenv()
 
@@ -123,6 +127,11 @@ def main():
     parser.add_argument("--skip-backfill", action="store_true", help="Skip backfill steps.")
     parser.add_argument("--skip-image", action="store_true", help="Skip share image generation.")
     parser.add_argument("--skip-x-text", action="store_true", help="Skip X post text generation.")
+    parser.add_argument(
+        "--use-latest-anomaly-date",
+        action="store_true",
+        help="Use the latest normalized event date with anomaly_score instead of UTC yesterday.",
+    )
     parser.add_argument(
         "--database-url",
         default=None,
@@ -266,9 +275,17 @@ def main():
             ],
         )
 
-        target_date = args.date or latest_anomaly_date(resolved_database_url)
+        if args.date:
+            target_date = args.date
+            target_date_source = "cli"
+        elif args.use_latest_anomaly_date:
+            target_date = latest_anomaly_date(resolved_database_url)
+            target_date_source = "latest_anomaly_date"
+        else:
+            target_date = default_target_date()
+            target_date_source = "utc_yesterday"
         target_date_text = target_date.isoformat()
-        print(f"Daily build target_date={target_date_text}")
+        print(f"Daily build target_date={target_date_text} source={target_date_source}")
 
         run_step(
             "Signal position score",

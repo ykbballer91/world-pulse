@@ -103,11 +103,11 @@ def build_post_text(display_date, page_payload, url=None):
     post_url = url if url is not None else DEFAULT_POST_URL
 
     lines = [
-        f"World Pulse — {display_date.isoformat()}",
+        f"World Pulse — Data date: {display_date.isoformat()} UTC",
         "",
-        f"Today's public signals sit higher than {position}% of",
+        f"Public signals sit higher than {position}% of",
         f"the last {window_days} observed days.",
-        "Positional measure. Not a forecast or alert.",
+        "Positional measure. Not a forecast or emergency notice.",
         "",
         "#WorldPulse" + (f" {post_url}" if post_url else ""),
     ]

@@ -19,14 +19,33 @@ The beta uses a 30-day baseline calculation. Wikipedia 30-day backfill is reserv
 
 Sources are also classified internally into `reality`, `attention`, and `context` layers for future Reality-Reflection Gap analysis. These layers are not exposed in the public UI; the public label remains Signal Position, and gap scores are not published. The stored database label `attention` is retained for backward compatibility: Wikipedia Pageviews is treated as a delayed reflection / interpretation proxy, not immediate human attention. An immediate human-attention stream is not implemented yet.
 
+## Public Snapshot Policy
+
+Daily public snapshots use UTC yesterday by default. The data date is not the posting date.
+
+Dated share files are intended to be the public archive for that data date:
+
+- `public/share/world-pulse-YYYY-MM-DD.txt`
+- `public/share/world-pulse-YYYY-MM-DD.png`
+- `public/share/world-pulse-YYYY-MM-DD.jpg`
+
+Latest files are moving pointers to the latest generated snapshot:
+
+- `public/display/latest.json`
+- `public/share/world-pulse-latest.txt`
+- `public/share/world-pulse-latest.png`
+- `public/share/world-pulse-latest.jpg`
+
+Backfill or recalculation may change internal scores, but public snapshots should not be casually overwritten after posting. If a published snapshot must be corrected, document the correction explicitly.
+
 ## Schedule
 
-The workflow runs every day at 7:00 JST.
+The workflow runs every day at 09:30 JST.
 
 GitHub Actions cron uses UTC, so the workflow uses:
 
 ```yaml
-cron: "0 22 * * *"
+cron: "30 0 * * *"
 ```
 
 ## GitHub Secret
@@ -69,7 +88,11 @@ GitHub Actions -> Daily World Pulse -> Run workflow
 
 - `public/display/latest.json`
 - `public/share/world-pulse-latest.png`
+- `public/share/world-pulse-latest.jpg`
 - `public/share/world-pulse-latest.txt`
+- `public/share/world-pulse-YYYY-MM-DD.png`
+- `public/share/world-pulse-YYYY-MM-DD.jpg`
+- `public/share/world-pulse-YYYY-MM-DD.txt`
 
 ## Deployment
 
