@@ -1,7 +1,7 @@
-World Pulse — 2026-05-20
+World Pulse — Data date: 2026-05-20 UTC
 
-Today's public signals sit higher than 72% of
+Public signals sit higher than 95% of
 the last 30 observed days.
-Positional measure. Not a forecast or alert.
+Positional measure. Not a forecast or emergency notice.
 
 #WorldPulse https://worldpulse.today/
