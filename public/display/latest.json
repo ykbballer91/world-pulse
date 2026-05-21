@@ -12,11 +12,11 @@
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Above the recent baseline.",
-        "anomaly_score": 2.29553631767914,
+        "anomaly_score": 2.25905092241371,
         "signal_status": "score_contributor",
         "magnitude_value": 6.6,
-        "effective_anomaly": 2.29553631767914,
-        "score_contribution": 45.9107263535828
+        "effective_anomaly": 2.25905092241371,
+        "score_contribution": 45.1810184482742
       },
       {
         "title": "M5.9 earthquake near 10 km NNW of China, Japan",
@@ -25,11 +25,11 @@
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Above the recent baseline.",
-        "anomaly_score": 0.555238026297837,
+        "anomaly_score": 0.547904141630187,
         "signal_status": "score_contributor",
         "magnitude_value": 5.9,
-        "effective_anomaly": 0.555238026297837,
-        "score_contribution": 5.55238026297837
+        "effective_anomaly": 0.547904141630187,
+        "score_contribution": 5.47904141630187
       },
       {
         "title": "M5.9 earthquake near 8 km E of Wadomari, Japan",
@@ -38,11 +38,11 @@
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Above the recent baseline.",
-        "anomaly_score": 0.555238026297837,
+        "anomaly_score": 0.547904141630187,
         "signal_status": "score_contributor",
         "magnitude_value": 5.9,
-        "effective_anomaly": 0.555238026297837,
-        "score_contribution": 2.776190131489185
+        "effective_anomaly": 0.547904141630187,
+        "score_contribution": 2.739520708150935
       }
     ],
     "principles": {
@@ -50,7 +50,7 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-05-20T23:17:28Z",
+    "updated_at": "2026-05-21T01:32:16Z",
     "quiet_signal": {
       "id": "82dcb86e-4517-4138-a9ba-5a3416342953",
       "note": "This signal sits above the recent baseline within the current data window.",
@@ -61,7 +61,7 @@
       "event_time": "2026-05-20T17:43:02Z",
       "event_type": "earthquake",
       "safety_note": "Not a forecast, alert, or recommendation.",
-      "anomaly_score": 2.29553631767914,
+      "anomaly_score": 2.25905092241371,
       "magnitude_value": 6.6,
       "hours_ago_from_data_end": 6.3
     },
