@@ -92,6 +92,7 @@ def main():
     seen = 0
     succeeded = 0
     errors = 0
+    failed_dates = []
 
     for target_date in date_range(start_date, end_date):
         seen += 1
@@ -101,6 +102,7 @@ def main():
             status = "success"
         else:
             errors += 1
+            failed_dates.append(target_date.isoformat())
             status = "failed"
         print(
             "Layer score backfill step: "
@@ -121,6 +123,8 @@ def main():
         f"succeeded={succeeded} "
         f"errors={errors}"
     )
+    if failed_dates:
+        print("Layer score backfill failed_dates: " + ", ".join(failed_dates))
     return 0 if errors == 0 else 1
 
 

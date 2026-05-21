@@ -13,6 +13,7 @@ from dotenv import load_dotenv
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 USGS_SCRIPT = os.path.join(ROOT_DIR, "scripts", "ingest_usgs_earthquakes.py")
 WIKIPEDIA_SCRIPT = os.path.join(ROOT_DIR, "scripts", "ingest_wikipedia_pageviews.py")
+NOAA_SCRIPT = os.path.join(ROOT_DIR, "scripts", "ingest_noaa_swpc.py")
 
 
 def run_command(args):
@@ -66,9 +67,62 @@ def run_usgs_backfill(days, min_magnitude, database_url):
         f"skipped_duplicates={skipped_duplicates} "
         f"errors={errors}"
     )
+    failed_targets = []
     if result.returncode != 0:
+        failed_targets.append(target_window)
         print(output.strip(), file=sys.stderr)
-    return inserted, skipped_duplicates, errors
+    return inserted, skipped_duplicates, errors, failed_targets
+
+
+def run_noaa_dataset(dataset, database_url):
+    result = run_command(
+        [
+            sys.executable,
+            NOAA_SCRIPT,
+            "--dataset",
+            dataset,
+            "--database-url",
+            database_url,
+        ]
+    )
+    output = f"{result.stdout}\n{result.stderr}"
+    inserted = parse_int(r"inserted=(\d+)", output)
+    skipped_duplicates = parse_int(r"skipped_duplicates=(\d+)", output)
+    total_records = parse_int(r"total_records=(\d+)", output)
+    errors = 0 if result.returncode == 0 else 1
+
+    print(
+        "Day 2 backfill: "
+        "source=noaa_swpc "
+        f"dataset={dataset} "
+        "target_window=provider_current_window "
+        f"inserted={inserted} "
+        f"skipped_duplicates={skipped_duplicates} "
+        f"total_records={total_records} "
+        f"errors={errors}"
+    )
+    failed_targets = []
+    if result.returncode != 0:
+        failed_targets.append(dataset)
+        print(output.strip(), file=sys.stderr)
+    return inserted, skipped_duplicates, errors, failed_targets
+
+
+def run_noaa_backfill(database_url):
+    inserted = 0
+    skipped_duplicates = 0
+    errors = 0
+    failed_targets = []
+    for dataset in ("kp", "xray"):
+        day_inserted, day_skipped, day_errors, day_failed = run_noaa_dataset(
+            dataset,
+            database_url,
+        )
+        inserted += day_inserted
+        skipped_duplicates += day_skipped
+        errors += day_errors
+        failed_targets.extend(day_failed)
+    return inserted, skipped_duplicates, errors, failed_targets
 
 
 def run_wikipedia_for_date(target_date, database_url):
@@ -107,25 +161,32 @@ def run_wikipedia_for_date(target_date, database_url):
         f"skipped_duplicates={skipped_duplicates} "
         f"errors={errors}"
     )
+    failed_targets = []
     if result.returncode != 0:
+        failed_targets.append(date_text)
         print(output.strip(), file=sys.stderr)
-    return inserted, skipped_duplicates, errors
+    return inserted, skipped_duplicates, errors, failed_targets
 
 
 def run_wikipedia_backfill(days, database_url):
     inserted = 0
     skipped_duplicates = 0
     errors = 0
+    failed_targets = []
     start_date = default_wikipedia_start_date()
 
     for offset in range(days):
         target_date = start_date - timedelta(days=offset)
-        day_inserted, day_skipped, day_errors = run_wikipedia_for_date(target_date, database_url)
+        day_inserted, day_skipped, day_errors, day_failed = run_wikipedia_for_date(
+            target_date,
+            database_url,
+        )
         inserted += day_inserted
         skipped_duplicates += day_skipped
         errors += day_errors
+        failed_targets.extend(day_failed)
 
-    return inserted, skipped_duplicates, errors
+    return inserted, skipped_duplicates, errors, failed_targets
 
 
 def main():
@@ -134,7 +195,7 @@ def main():
     parser = argparse.ArgumentParser(description="Backfill Day 2 World Pulse sources.")
     parser.add_argument(
         "--source",
-        choices=["usgs", "wikipedia", "all"],
+        choices=["usgs", "wikipedia", "noaa", "all"],
         default="all",
         help="Source to backfill.",
     )
@@ -165,9 +226,10 @@ def main():
     total_inserted = 0
     total_skipped_duplicates = 0
     total_errors = 0
+    failed_targets = []
 
     if args.source in {"usgs", "all"}:
-        inserted, skipped_duplicates, errors = run_usgs_backfill(
+        inserted, skipped_duplicates, errors, failed = run_usgs_backfill(
             args.days,
             args.min_magnitude,
             args.database_url,
@@ -175,12 +237,24 @@ def main():
         total_inserted += inserted
         total_skipped_duplicates += skipped_duplicates
         total_errors += errors
+        failed_targets.extend(f"usgs:{target}" for target in failed)
 
-    if args.source in {"wikipedia", "all"}:
-        inserted, skipped_duplicates, errors = run_wikipedia_backfill(args.days, args.database_url)
+    if args.source in {"noaa", "all"}:
+        inserted, skipped_duplicates, errors, failed = run_noaa_backfill(args.database_url)
         total_inserted += inserted
         total_skipped_duplicates += skipped_duplicates
         total_errors += errors
+        failed_targets.extend(f"noaa:{target}" for target in failed)
+
+    if args.source in {"wikipedia", "all"}:
+        inserted, skipped_duplicates, errors, failed = run_wikipedia_backfill(
+            args.days,
+            args.database_url,
+        )
+        total_inserted += inserted
+        total_skipped_duplicates += skipped_duplicates
+        total_errors += errors
+        failed_targets.extend(f"wikipedia:{target}" for target in failed)
 
     print(
         "Day 2 backfill completed: "
@@ -190,6 +264,8 @@ def main():
         f"skipped_duplicates={total_skipped_duplicates} "
         f"errors={total_errors}"
     )
+    if failed_targets:
+        print("Day 2 backfill failed_targets: " + ", ".join(failed_targets))
     return 1 if total_errors else 0
 
 

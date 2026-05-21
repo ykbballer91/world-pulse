@@ -404,11 +404,11 @@ def targeted_attention_details(record, event):
         f"{format_number((record.get('layer_raw_scores_targeted_core') or {}).get('attention'))}"
     )
     details.append(
-        "- Core Targeted Attention Position: "
+        "- Core Targeted Reflection Position: "
         f"{format_number((record.get('layer_positions_targeted_core') or {}).get('attention'))}"
     )
     details.append(
-        "- Reality-Core Targeted Attention difference: "
+        "- Reality-Core Targeted Reflection difference: "
         f"{format_number((record.get('layer_gaps_targeted_core') or {}).get('reality_attention_gap'))}"
     )
     details.append(
@@ -416,11 +416,11 @@ def targeted_attention_details(record, event):
         f"{format_number((record.get('layer_raw_scores_targeted_context') or {}).get('attention'))}"
     )
     details.append(
-        "- Context Targeted Attention Position: "
+        "- Context Targeted Reflection Position: "
         f"{format_number((record.get('layer_positions_targeted_context') or {}).get('attention'))}"
     )
     details.append(
-        "- Reality-Context Targeted Attention difference: "
+        "- Reality-Context Targeted Reflection difference: "
         f"{format_number((record.get('layer_gaps_targeted_context') or {}).get('reality_attention_gap'))}"
     )
     return details
@@ -466,56 +466,56 @@ def append_record(lines, record):
             "",
             f"- Signal Position: {format_number(record['score_value'])}",
             f"- Reality Position: {format_number(record['reality_position'])}",
-            f"- Attention Position: {format_number(record['attention_position'])}",
-            f"- Reality-Attention difference: {format_number(record['difference'])}",
+            f"- Reflection Position: {format_number(record['attention_position'])}",
+            f"- Reality-Reflection difference: {format_number(record['difference'])}",
             f"- Reality raw score: {format_number(raw_scores.get('reality'))}",
-            f"- Attention raw score: {format_number(raw_scores.get('attention'))}",
+            f"- Reflection raw score: {format_number(raw_scores.get('attention'))}",
             (
-                "- Attention raw score excluding Main Page: "
+                "- Reflection raw score excluding Main Page: "
                 f"{format_number(raw_scores_excluding_main.get('attention'))}"
             ),
             (
-                "- Attention Position excluding Main Page: "
+                "- Reflection Position excluding Main Page: "
                 f"{format_number(positions_excluding_main.get('attention'))}"
             ),
             (
-                "- Reality-Attention difference excluding Main Page: "
+                "- Reality-Reflection difference excluding Main Page: "
                 f"{format_number(gaps_excluding_main.get('reality_attention_gap'))}"
             ),
             (
-                "- Attention raw score topic pages: "
+                "- Reflection raw score topic pages: "
                 f"{format_number(raw_scores_topic_pages.get('attention'))}"
             ),
             (
-                "- Attention Position topic pages: "
+                "- Reflection Position topic pages: "
                 f"{format_number(positions_topic_pages.get('attention'))}"
             ),
             (
-                "- Reality-Attention difference topic pages: "
+                "- Reality-Reflection difference topic pages: "
                 f"{format_number(gaps_topic_pages.get('reality_attention_gap'))}"
             ),
             (
-                "- Attention raw score targeted core: "
+                "- Reflection raw score targeted core: "
                 f"{format_number(raw_scores_targeted_core.get('attention'))}"
             ),
             (
-                "- Attention Position targeted core: "
+                "- Reflection Position targeted core: "
                 f"{format_number(positions_targeted_core.get('attention'))}"
             ),
             (
-                "- Reality-Attention difference targeted core: "
+                "- Reality-Reflection difference targeted core: "
                 f"{format_number(gaps_targeted_core.get('reality_attention_gap'))}"
             ),
             (
-                "- Attention raw score targeted context: "
+                "- Reflection raw score targeted context: "
                 f"{format_number(raw_scores_targeted_context.get('attention'))}"
             ),
             (
-                "- Attention Position targeted context: "
+                "- Reflection Position targeted context: "
                 f"{format_number(positions_targeted_context.get('attention'))}"
             ),
             (
-                "- Reality-Attention difference targeted context: "
+                "- Reality-Reflection difference targeted context: "
                 f"{format_number(gaps_targeted_context.get('reality_attention_gap'))}"
             ),
             (

@@ -121,10 +121,14 @@ Run Day 2 backfill helpers:
 ```sh
 python scripts/backfill_day2_sources.py --source usgs --days 7
 python scripts/backfill_day2_sources.py --source wikipedia --days 7
+python scripts/backfill_day2_sources.py --source noaa --days 90
 python scripts/backfill_day2_sources.py --source all --days 7
 python scripts/backfill_day2_sources.py --source all --days 30
 python scripts/backfill_day2_sources.py --source all --days 30 --database-url "$DATABASE_URL"
+python scripts/backfill_day2_sources.py --source all --days 90 --database-url "$DATABASE_URL"
 ```
+
+90-day backfill is a manual validation workflow for Reality-Reflection examples. It is not part of the scheduled daily build. USGS can be requested as a 90-day M4+ window through the existing ingestion path. NOAA SWPC is limited to the provider's current published Kp and X-ray response windows, so the helper verifies and stores those current API responses rather than a true 90-day historical replay. Wikipedia 90-day backfill should be run gradually because Wikimedia may return `429 Too Many Requests`; failed dates are logged and existing stored data remains usable.
 
 Calculate initial Day 3 baseline distributions:
 
@@ -162,6 +166,8 @@ Quiet Signal is an optional display-only field. It highlights one individual obs
 ```sh
 python scripts/calculate_weirdness_score.py
 python scripts/calculate_weirdness_score.py --date 2026-05-18
+python scripts/backfill_layer_scores.py --days 90 --database-url "$DATABASE_URL"
+python scripts/export_gap_examples.py --days 90 --database-url "$DATABASE_URL" --output examples_90d.md
 ```
 
 Generate one-day display payload:
