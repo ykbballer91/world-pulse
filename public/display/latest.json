@@ -1,48 +1,35 @@
 {
-  "display_date": "2026-05-20",
+  "display_date": "2026-05-21",
   "page_payload": {
-    "date": "2026-05-20",
+    "date": "2026-05-21",
     "headline": "Signal Position",
-    "data_date": "2026-05-20",
+    "data_date": "2026-05-21",
     "top_cards": [
       {
-        "title": "M6.6 earthquake near southern East Pacific Rise",
+        "title": "M4.1 earthquake near 1 km SSW of Bacoli, Italy",
         "category": "geophysical",
-        "event_time": "2026-05-20T17:43:02Z",
+        "event_time": "2026-05-21T03:50:51Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
-        "display_note": "Above the recent baseline.",
-        "anomaly_score": 1.98622386559127,
-        "signal_status": "score_contributor",
-        "magnitude_value": 6.6,
-        "effective_anomaly": 1.98622386559127,
-        "score_contribution": 39.7244773118254
+        "display_note": "Observed signal, but not above the recent baseline.",
+        "anomaly_score": -3.07224137230433,
+        "signal_status": "context_only",
+        "magnitude_value": 4.1,
+        "effective_anomaly": 0,
+        "score_contribution": 0
       },
       {
-        "title": "M5.9 earthquake near 10 km NNW of China, Japan",
+        "title": "M4.1 earthquake near 58 km ESE of Shima, Japan",
         "category": "geophysical",
-        "event_time": "2026-05-20T02:46:25Z",
+        "event_time": "2026-05-21T01:06:33Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
-        "display_note": "Above the recent baseline.",
-        "anomaly_score": 0.562650446566815,
-        "signal_status": "score_contributor",
-        "magnitude_value": 5.9,
-        "effective_anomaly": 0.562650446566815,
-        "score_contribution": 5.62650446566815
-      },
-      {
-        "title": "M5.9 earthquake near 8 km E of Wadomari, Japan",
-        "category": "geophysical",
-        "event_time": "2026-05-20T02:46:24Z",
-        "event_type": "earthquake",
-        "source_note": "Public observation data",
-        "display_note": "Above the recent baseline.",
-        "anomaly_score": 0.562650446566815,
-        "signal_status": "score_contributor",
-        "magnitude_value": 5.9,
-        "effective_anomaly": 0.562650446566815,
-        "score_contribution": 2.813252232834075
+        "display_note": "Observed signal, but not above the recent baseline.",
+        "anomaly_score": -3.07224137230433,
+        "signal_status": "context_only",
+        "magnitude_value": 4.1,
+        "effective_anomaly": 0,
+        "score_contribution": 0
       }
     ],
     "principles": {
@@ -50,32 +37,32 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-05-21T06:36:12Z",
+    "updated_at": "2026-05-22T04:36:31Z",
     "quiet_signal": {
       "id": "82dcb86e-4517-4138-a9ba-5a3416342953",
       "note": "This signal sits above the recent baseline within the current data window.",
       "title": "M6.6 earthquake near southern East Pacific Rise",
-      "summary": "M6.6 earthquake near southern East Pacific Rise, observed about 6 hours before the end of the data date.",
+      "summary": "M6.6 earthquake near southern East Pacific Rise, observed about 30 hours before the end of the data date.",
       "category": "geophysical",
       "available": true,
       "event_time": "2026-05-20T17:43:02Z",
       "event_type": "earthquake",
       "safety_note": "Not a forecast, alert, or recommendation.",
-      "anomaly_score": 1.98622386559127,
+      "anomaly_score": 1.94436897661603,
       "magnitude_value": 6.6,
-      "hours_ago_from_data_end": 6.3
+      "hours_ago_from_data_end": 30.3
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "Higher than 95% of the last 30 observed days.",
+      "Higher than 18% of the last 30 observed days.",
       "Positional measure within recent observations. Not a risk, alert, or warning level.",
       "Based on public earthquake, space weather, internet, and Wikipedia attention data."
     ],
-    "percentile_line": "This data date is in the 95th percentile of the last 30 observed days.",
-    "signal_position": 95,
+    "percentile_line": "This data date is in the 18th percentile of the last 30 observed days.",
+    "signal_position": 18,
     "top_signal_note": null,
-    "weirdness_score": 95,
+    "weirdness_score": 18,
     "signal_position_note": "Positional measure within recent observations. Not a risk, alert, or warning level.",
-    "signal_position_label": "Higher than 95% of the last 30 observed days."
+    "signal_position_label": "Higher than 18% of the last 30 observed days."
   }
 }
