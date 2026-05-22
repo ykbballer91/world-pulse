@@ -21,6 +21,10 @@ Normal daily builds normalize only the recent scoring window, with a small buffe
 
 Sources are also classified internally into `reality`, `attention`, and `context` layers for future Reality-Reflection Gap analysis. These layers are not exposed in the public UI; the public label remains Signal Position, and gap scores are not published. The stored database label `attention` is retained for backward compatibility: Wikipedia Pageviews is treated as a delayed reflection / interpretation proxy, not immediate human attention. An immediate human-attention stream is not implemented yet.
 
+## NOAA Snapshot Accumulation
+
+NOAA SWPC Kp and X-ray ingestion stores provider current-window snapshots each day. These captures are expected to accumulate into World Pulse's own local history over time. Space Weather Reality-Reflection dry-runs should be rerun after 30, 60, and 90 days of accumulated snapshots rather than treating the current provider window as historical coverage.
+
 ## Public Snapshot Policy
 
 Daily public snapshots use UTC yesterday by default. The data date is not the posting date.
