@@ -160,6 +160,11 @@ This sample shows that existence checks alone are not enough. The event can be l
 
 The dry-run now proves that event-level candidate generation, page existence checks, and pageview-window measurement are technically feasible. The southern East Pacific Rise case is the strongest sample because it has a specific context page with measurable movement. The Japan and Indonesia cases are more useful for calibration than for buyer-facing demonstration.
 
+
+## Phase 2.4 Resolver Note
+
+A reviewed candidate registry now covers core earthquake pages and selected context pages for the initial samples. Registry-derived candidates reduce reliance on location parsing for reviewed pages, while heuristic fallback remains visible for non-reviewed location candidates. Database persistence should wait until registry coverage and confidence policy are stable.
+
 ## Next Step
 
 - Build a page title resolver with reviewed replacements and confidence policy.

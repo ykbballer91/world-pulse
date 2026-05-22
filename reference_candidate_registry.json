@@ -1,0 +1,123 @@
+[
+  {
+    "event_type": "earthquake",
+    "match_pattern": "*",
+    "candidate_page": "Earthquake",
+    "candidate_group": "core",
+    "confidence": "high",
+    "review_status": "reviewed",
+    "reason": "Core page for earthquake events."
+  },
+  {
+    "event_type": "earthquake",
+    "match_pattern": "*",
+    "candidate_page": "Seismology",
+    "candidate_group": "core",
+    "confidence": "high",
+    "review_status": "reviewed",
+    "reason": "Core page for earthquake domain context."
+  },
+  {
+    "event_type": "earthquake",
+    "match_pattern": "*",
+    "candidate_page": "Seismic_wave",
+    "candidate_group": "core",
+    "confidence": "high",
+    "review_status": "reviewed",
+    "reason": "Core page for earthquake mechanics context."
+  },
+  {
+    "event_type": "earthquake",
+    "match_pattern": "*",
+    "candidate_page": "Tsunami",
+    "candidate_group": "core",
+    "confidence": "medium",
+    "review_status": "provisional",
+    "reason": "Conditional ocean-region earthquake context.",
+    "conditions": {
+      "min_magnitude": 6.0,
+      "sea_like_location": true
+    }
+  },
+  {
+    "event_type": "earthquake",
+    "match_pattern": "east pacific rise",
+    "candidate_page": "East_Pacific_Rise",
+    "candidate_group": "context",
+    "confidence": "high",
+    "review_status": "reviewed",
+    "reason": "Reviewed geologic feature for East Pacific Rise events."
+  },
+  {
+    "event_type": "earthquake",
+    "match_pattern": "east pacific rise|pacific",
+    "candidate_page": "Pacific_Ocean",
+    "candidate_group": "context",
+    "confidence": "medium",
+    "review_status": "reviewed",
+    "reason": "Broad ocean context for Pacific-region events."
+  },
+  {
+    "event_type": "earthquake",
+    "match_pattern": "japan|japan region|ofunato|ōfunato|tohoku|tōhoku|wadomari",
+    "candidate_page": "Japan",
+    "candidate_group": "context",
+    "confidence": "medium",
+    "review_status": "reviewed",
+    "reason": "Country context for Japan-region earthquake events."
+  },
+  {
+    "event_type": "earthquake",
+    "match_pattern": "ofunato|ōfunato",
+    "candidate_page": "Ōfunato",
+    "candidate_group": "context",
+    "confidence": "low",
+    "review_status": "reviewed",
+    "reason": "Reviewed local context for the 2026-05-15 sample."
+  },
+  {
+    "event_type": "earthquake",
+    "match_pattern": "ofunato|ōfunato|tohoku|tōhoku",
+    "candidate_page": "Tōhoku_region",
+    "candidate_group": "context",
+    "confidence": "low",
+    "review_status": "reviewed",
+    "reason": "Reviewed regional context for northeast Japan sample events."
+  },
+  {
+    "event_type": "earthquake",
+    "match_pattern": "indonesia|tual",
+    "candidate_page": "Indonesia",
+    "candidate_group": "context",
+    "confidence": "medium",
+    "review_status": "reviewed",
+    "reason": "Country context for Indonesia-region earthquake events."
+  },
+  {
+    "event_type": "earthquake",
+    "match_pattern": "papua new guinea|papua_new_guinea|lorengau",
+    "candidate_page": "Papua_New_Guinea",
+    "candidate_group": "context",
+    "confidence": "medium",
+    "review_status": "reviewed",
+    "reason": "Country context for Papua New Guinea-region earthquake events."
+  },
+  {
+    "event_type": "earthquake",
+    "match_pattern": "peru|palca",
+    "candidate_page": "Peru",
+    "candidate_group": "context",
+    "confidence": "medium",
+    "review_status": "reviewed",
+    "reason": "Country context for Peru-region earthquake events."
+  },
+  {
+    "event_type": "earthquake",
+    "match_pattern": "turkey",
+    "candidate_page": "Turkey",
+    "candidate_group": "context",
+    "confidence": "medium",
+    "review_status": "reviewed",
+    "reason": "Country context for Turkey-region earthquake events."
+  }
+]

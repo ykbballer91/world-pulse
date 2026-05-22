@@ -1,6 +1,6 @@
 # Event-Level Entity Linking Dry Run
 
-Generated at: 2026-05-21T23:37:41Z
+Generated at: 2026-05-22T00:23:46Z
 
 ## Purpose
 
@@ -8,7 +8,7 @@ Test whether selected reality events can produce plausible candidate reference p
 
 ## Method
 
-For each selected data date, the script reads up to 3 geophysical earthquake events from `normalized_events`, then generates heuristic candidate reference pages. It does not call external APIs and does not measure page activity.
+For each selected data date, the script reads up to 3 geophysical earthquake events from `normalized_events`, then generates registry-prioritized candidate reference pages with heuristic fallback. It does not call external APIs and does not measure page activity.
 
 ## 2026-05-20
 
@@ -21,14 +21,14 @@ For each selected data date, the script reads up to 3 geophysical earthquake eve
 - Location phrase: southern East Pacific Rise
 
 ### Candidate Core Pages
-- Earthquake (high: direct earthquake event type)
-- Seismology (high: direct earthquake event type)
-- Seismic_wave (high: direct earthquake event type)
-- Tsunami (medium: magnitude and location suggest ocean-region context)
+- Earthquake (high: registry reviewed: Core page for earthquake events.)
+- Seismology (high: registry reviewed: Core page for earthquake domain context.)
+- Seismic_wave (high: registry reviewed: Core page for earthquake mechanics context.)
+- Tsunami (medium: registry provisional: Conditional ocean-region earthquake context.)
 
 ### Candidate Context Pages
-- East_Pacific_Rise (medium: regional geological feature in location phrase)
-- Pacific_Ocean (medium: regional geological feature in location phrase)
+- East_Pacific_Rise (high: registry reviewed: Reviewed geologic feature for East Pacific Rise events.)
+- Pacific_Ocean (medium: registry reviewed: Broad ocean context for Pacific-region events.)
 - Mid-ocean_ridge (medium: regional geological feature in location phrase)
 
 ### Candidate Historical/Context Pages
@@ -57,12 +57,12 @@ For each selected data date, the script reads up to 3 geophysical earthquake eve
 - Location phrase: 10 km NNW of China, Japan
 
 ### Candidate Core Pages
-- Earthquake (high: direct earthquake event type)
-- Seismology (high: direct earthquake event type)
-- Seismic_wave (high: direct earthquake event type)
+- Earthquake (high: registry reviewed: Core page for earthquake events.)
+- Seismology (high: registry reviewed: Core page for earthquake domain context.)
+- Seismic_wave (high: registry reviewed: Core page for earthquake mechanics context.)
 
 ### Candidate Context Pages
-- Japan (medium: country or broad region in location phrase)
+- Japan (medium: registry reviewed: Country context for Japan-region earthquake events.)
 - China (medium: country or broad region in location phrase)
 
 ### Candidate Historical/Context Pages
@@ -91,12 +91,12 @@ For each selected data date, the script reads up to 3 geophysical earthquake eve
 - Location phrase: 8 km E of Wadomari, Japan
 
 ### Candidate Core Pages
-- Earthquake (high: direct earthquake event type)
-- Seismology (high: direct earthquake event type)
-- Seismic_wave (high: direct earthquake event type)
+- Earthquake (high: registry reviewed: Core page for earthquake events.)
+- Seismology (high: registry reviewed: Core page for earthquake domain context.)
+- Seismic_wave (high: registry reviewed: Core page for earthquake mechanics context.)
 
 ### Candidate Context Pages
-- Japan (medium: country or broad region in location phrase)
+- Japan (medium: registry reviewed: Country context for Japan-region earthquake events.)
 - Wadomari (low: location phrase candidate)
 
 ### Candidate Historical/Context Pages
@@ -127,12 +127,12 @@ For each selected data date, the script reads up to 3 geophysical earthquake eve
 - Location phrase: 271 km WSW of Tual, Indonesia
 
 ### Candidate Core Pages
-- Earthquake (high: direct earthquake event type)
-- Seismology (high: direct earthquake event type)
-- Seismic_wave (high: direct earthquake event type)
+- Earthquake (high: registry reviewed: Core page for earthquake events.)
+- Seismology (high: registry reviewed: Core page for earthquake domain context.)
+- Seismic_wave (high: registry reviewed: Core page for earthquake mechanics context.)
 
 ### Candidate Context Pages
-- Indonesia (medium: country or broad region in location phrase)
+- Indonesia (medium: registry reviewed: Country context for Indonesia-region earthquake events.)
 - Tual (low: location phrase candidate)
 
 ### Candidate Historical/Context Pages
@@ -161,9 +161,9 @@ For each selected data date, the script reads up to 3 geophysical earthquake eve
 - Location phrase: 32 km WNW of Darien, Colombia
 
 ### Candidate Core Pages
-- Earthquake (high: direct earthquake event type)
-- Seismology (high: direct earthquake event type)
-- Seismic_wave (high: direct earthquake event type)
+- Earthquake (high: registry reviewed: Core page for earthquake events.)
+- Seismology (high: registry reviewed: Core page for earthquake domain context.)
+- Seismic_wave (high: registry reviewed: Core page for earthquake mechanics context.)
 
 ### Candidate Context Pages
 - Colombia (medium: country or broad region in location phrase)
@@ -195,12 +195,12 @@ For each selected data date, the script reads up to 3 geophysical earthquake eve
 - Location phrase: Volcano Islands, Japan region
 
 ### Candidate Core Pages
-- Earthquake (high: direct earthquake event type)
-- Seismology (high: direct earthquake event type)
-- Seismic_wave (high: direct earthquake event type)
+- Earthquake (high: registry reviewed: Core page for earthquake events.)
+- Seismology (high: registry reviewed: Core page for earthquake domain context.)
+- Seismic_wave (high: registry reviewed: Core page for earthquake mechanics context.)
 
 ### Candidate Context Pages
-- Japan (medium: country or broad region in location phrase)
+- Japan (medium: registry reviewed: Country context for Japan-region earthquake events.)
 - Volcano_Islands (low: location phrase candidate)
 
 ### Candidate Historical/Context Pages
@@ -231,14 +231,14 @@ For each selected data date, the script reads up to 3 geophysical earthquake eve
 - Location phrase: 49 km ESE of Ōfunato, Japan
 
 ### Candidate Core Pages
-- Earthquake (high: direct earthquake event type)
-- Seismology (high: direct earthquake event type)
-- Seismic_wave (high: direct earthquake event type)
+- Earthquake (high: registry reviewed: Core page for earthquake events.)
+- Seismology (high: registry reviewed: Core page for earthquake domain context.)
+- Seismic_wave (high: registry reviewed: Core page for earthquake mechanics context.)
 
 ### Candidate Context Pages
-- Japan (medium: country or broad region in location phrase)
-- Ōfunato (low: specific place or regional context in location phrase)
-- Tōhoku_region (low: specific place or regional context in location phrase)
+- Japan (medium: registry reviewed: Country context for Japan-region earthquake events.)
+- Ōfunato (low: registry reviewed: Reviewed local context for the 2026-05-15 sample.)
+- Tōhoku_region (low: registry reviewed: Reviewed regional context for northeast Japan sample events.)
 
 ### Candidate Historical/Context Pages
 - None generated in this dry run.
@@ -266,12 +266,12 @@ For each selected data date, the script reads up to 3 geophysical earthquake eve
 - Location phrase: 119 km SSE of Lorengau, Papua New Guinea
 
 ### Candidate Core Pages
-- Earthquake (high: direct earthquake event type)
-- Seismology (high: direct earthquake event type)
-- Seismic_wave (high: direct earthquake event type)
+- Earthquake (high: registry reviewed: Core page for earthquake events.)
+- Seismology (high: registry reviewed: Core page for earthquake domain context.)
+- Seismic_wave (high: registry reviewed: Core page for earthquake mechanics context.)
 
 ### Candidate Context Pages
-- Papua_New_Guinea (medium: country or broad region in location phrase)
+- Papua_New_Guinea (medium: registry reviewed: Country context for Papua New Guinea-region earthquake events.)
 - Lorengau (low: location phrase candidate)
 
 ### Candidate Historical/Context Pages
@@ -300,12 +300,12 @@ For each selected data date, the script reads up to 3 geophysical earthquake eve
 - Location phrase: 11 km WNW of Palca, Peru
 
 ### Candidate Core Pages
-- Earthquake (high: direct earthquake event type)
-- Seismology (high: direct earthquake event type)
-- Seismic_wave (high: direct earthquake event type)
+- Earthquake (high: registry reviewed: Core page for earthquake events.)
+- Seismology (high: registry reviewed: Core page for earthquake domain context.)
+- Seismic_wave (high: registry reviewed: Core page for earthquake mechanics context.)
 
 ### Candidate Context Pages
-- Peru (medium: country or broad region in location phrase)
+- Peru (medium: registry reviewed: Country context for Peru-region earthquake events.)
 
 ### Candidate Historical/Context Pages
 - None generated in this dry run.

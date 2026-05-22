@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import argparse
+import json
 import os
 import re
 from datetime import datetime, timedelta, timezone
@@ -10,6 +11,8 @@ from dotenv import load_dotenv
 
 CORE_EARTHQUAKE_PAGES = ["Earthquake", "Seismology", "Seismic_wave"]
 TSUNAMI_PAGE = "Tsunami"
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DEFAULT_REGISTRY_PATH = os.path.join(ROOT_DIR, "reference_candidate_registry.json")
 
 KNOWN_PAGE_REPLACEMENTS = {
     "southern_East_Pacific_Rise": "East_Pacific_Rise",
@@ -262,6 +265,77 @@ def add_unique(items, title, confidence, reason):
     items.append({"title": title, "confidence": confidence, "reason": reason})
 
 
+def load_registry(path=DEFAULT_REGISTRY_PATH):
+    try:
+        with open(path, "r", encoding="utf-8") as file:
+            data = json.load(file)
+    except FileNotFoundError:
+        return []
+    if not isinstance(data, list):
+        return []
+    return [entry for entry in data if isinstance(entry, dict)]
+
+
+def event_match_text(event, location):
+    text = " ".join(
+        [
+            str(event.get("title") or ""),
+            str(location or ""),
+            str(event.get("event_type") or ""),
+            str(event.get("category") or ""),
+        ]
+    )
+    return text.replace("_", " ").lower()
+
+
+def registry_conditions_match(entry, event, location):
+    conditions = entry.get("conditions") or {}
+    min_magnitude = conditions.get("min_magnitude")
+    if min_magnitude is not None:
+        try:
+            magnitude = float(event.get("magnitude_value"))
+        except (TypeError, ValueError):
+            return False
+        if magnitude < float(min_magnitude):
+            return False
+    if conditions.get("sea_like_location") and not is_sea_like(location):
+        return False
+    return True
+
+
+def registry_entry_matches(entry, event, location):
+    if entry.get("event_type") != event.get("event_type"):
+        return False
+    if not registry_conditions_match(entry, event, location):
+        return False
+    pattern = str(entry.get("match_pattern") or "").strip()
+    if pattern == "*":
+        return True
+    if not pattern:
+        return False
+    match_text = event_match_text(event, location)
+    try:
+        return re.search(pattern, match_text, flags=re.IGNORECASE) is not None
+    except re.error:
+        return pattern.lower() in match_text
+
+
+def registry_candidates(event, location, group):
+    pages = []
+    for entry in load_registry():
+        if entry.get("candidate_group") != group:
+            continue
+        if not registry_entry_matches(entry, event, location):
+            continue
+        add_unique(
+            pages,
+            entry.get("candidate_page"),
+            entry.get("confidence") or "low",
+            f"registry {entry.get('review_status', 'provisional')}: {entry.get('reason', 'candidate rule')}",
+        )
+    return pages
+
+
 def is_sea_like(location):
     text = (location or "").lower()
     return any(term in text for term in SEA_TERMS)
@@ -277,20 +351,16 @@ def should_include_tsunami(event, location):
 
 
 def candidate_core_pages(event, location):
-    pages = [{"title": title, "confidence": "high", "reason": "direct earthquake event type"} for title in CORE_EARTHQUAKE_PAGES]
+    pages = registry_candidates(event, location, "core")
+    for title in CORE_EARTHQUAKE_PAGES:
+        add_unique(pages, title, "high", "direct earthquake event type")
     if should_include_tsunami(event, location):
-        pages.append(
-            {
-                "title": TSUNAMI_PAGE,
-                "confidence": "medium",
-                "reason": "magnitude and location suggest ocean-region context",
-            }
-        )
+        add_unique(pages, TSUNAMI_PAGE, "medium", "magnitude and location suggest ocean-region context")
     return pages
 
 
-def candidate_context_pages(location):
-    pages = []
+def candidate_context_pages(event, location):
+    pages = registry_candidates(event, location, "context")
     cleaned = strip_distance_prefix(location)
     lower_location = cleaned.lower()
 
@@ -319,7 +389,7 @@ def candidate_context_pages(location):
 
 
 def candidate_historical_pages(_event, _location):
-    return []
+    return registry_candidates(_event, _location, "historical")
 
 
 def confidence_summary(core_pages, context_pages, historical_pages):
@@ -335,7 +405,7 @@ def confidence_summary(core_pages, context_pages, historical_pages):
 def candidate_pages_for_event(event):
     location = event.get("location_label") or ""
     core = candidate_core_pages(event, location)
-    context = candidate_context_pages(location)
+    context = candidate_context_pages(event, location)
     historical = candidate_historical_pages(event, location)
     confidence, reason = confidence_summary(core, context, historical)
     return {
@@ -411,7 +481,7 @@ def build_markdown(events_by_date, limit):
         "",
         "## Method",
         "",
-        f"For each selected data date, the script reads up to {limit} geophysical earthquake events from `normalized_events`, then generates heuristic candidate reference pages. It does not call external APIs and does not measure page activity.",
+        f"For each selected data date, the script reads up to {limit} geophysical earthquake events from `normalized_events`, then generates registry-prioritized candidate reference pages with heuristic fallback. It does not call external APIs and does not measure page activity.",
         "",
     ]
 

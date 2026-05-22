@@ -1,6 +1,6 @@
 # Reference Pageview Window Dry Run
 
-Generated at: 2026-05-21T23:38:33Z
+Generated at: 2026-05-22T00:23:59Z
 
 ## Purpose
 
@@ -27,7 +27,7 @@ Candidate pages are heuristic. Pageviews are daily aggregated. This does not mea
 - Seismology (core, exists=true, confidence=high)
 - Seismic_wave (core, exists=true, confidence=high)
 - Tsunami (core, exists=true, confidence=medium)
-- East_Pacific_Rise (context, exists=true, confidence=medium)
+- East_Pacific_Rise (context, exists=true, confidence=high)
 - Pacific_Ocean (context, exists=true, confidence=medium)
 - Mid-ocean_ridge (context, exists=true, confidence=medium)
 
@@ -35,13 +35,13 @@ Candidate pages are heuristic. Pageviews are daily aggregated. This does not mea
 
 | Page | Group | Exists | Normalized title | Confidence | Baseline before event | Day 0 | Day 1 | Day 2 | Day 7 | Simple delta ratio | Note |
 | --- | --- | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| Earthquake | core | true | Earthquake | high | 1081.57 | 1491 | not available | not available | not available | 1.38 | daily aggregation only |
-| Seismology | core | true | Seismology | high | 111.29 | 131 | not available | not available | not available | 1.18 | daily aggregation only |
-| Seismic_wave | core | true | Seismic_wave | high | 142.00 | 162 | not available | not available | not available | 1.14 | daily aggregation only |
-| Tsunami | core | true | Tsunami | medium | 1201.71 | 1334 | not available | not available | not available | 1.11 | daily aggregation only |
-| East_Pacific_Rise | context | true | East_Pacific_Rise | medium | 39.14 | 131 | not available | not available | not available | 3.35 | daily aggregation only |
-| Pacific_Ocean | context | true | Pacific_Ocean | medium | 2706.71 | 2583 | not available | not available | not available | 0.95 | daily aggregation only |
-| Mid-ocean_ridge | context | true | Mid-ocean_ridge | medium | 218.71 | 300 | not available | not available | not available | 1.37 | daily aggregation only |
+| Earthquake | core | true | Earthquake | high | 1081.57 | 1491 | 0 | not available | not available | 0.69 | daily aggregation only |
+| Seismology | core | true | Seismology | high | 111.29 | 131 | 0 | not available | not available | 0.59 | daily aggregation only |
+| Seismic_wave | core | true | Seismic_wave | high | 142.00 | 162 | 0 | not available | not available | 0.57 | daily aggregation only |
+| Tsunami | core | true | Tsunami | medium | 1201.71 | 1334 | 0 | not available | not available | 0.56 | daily aggregation only |
+| East_Pacific_Rise | context | true | East_Pacific_Rise | high | 39.14 | 131 | 0 | not available | not available | 1.67 | daily aggregation only |
+| Pacific_Ocean | context | true | Pacific_Ocean | medium | 2706.71 | 2583 | 0 | not available | not available | 0.48 | daily aggregation only |
+| Mid-ocean_ridge | context | true | Mid-ocean_ridge | medium | 218.71 | 300 | 0 | not available | not available | 0.69 | daily aggregation only |
 
 ### Initial read
 
@@ -75,11 +75,11 @@ Daily pageview movement is measurable for pages with available data. This dry ru
 
 | Page | Group | Exists | Normalized title | Confidence | Baseline before event | Day 0 | Day 1 | Day 2 | Day 7 | Simple delta ratio | Note |
 | --- | --- | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| Earthquake | core | true | Earthquake | high | 1081.57 | 1491 | not available | not available | not available | 1.38 | daily aggregation only |
-| Seismology | core | true | Seismology | high | 111.29 | 131 | not available | not available | not available | 1.18 | daily aggregation only |
-| Seismic_wave | core | true | Seismic_wave | high | 142.00 | 162 | not available | not available | not available | 1.14 | daily aggregation only |
-| Japan | context | true | Japan | medium | 11815.86 | 11829 | not available | not available | not available | 1.00 | daily aggregation only |
-| China | context | true | China | medium | 17133.29 | 14497 | not available | not available | not available | 0.85 | daily aggregation only |
+| Earthquake | core | true | Earthquake | high | 1081.57 | 1491 | 0 | not available | not available | 0.69 | daily aggregation only |
+| Seismology | core | true | Seismology | high | 111.29 | 131 | 0 | not available | not available | 0.59 | daily aggregation only |
+| Seismic_wave | core | true | Seismic_wave | high | 142.00 | 162 | 0 | not available | not available | 0.57 | daily aggregation only |
+| Japan | context | true | Japan | medium | 11815.86 | 11829 | 0 | not available | not available | 0.50 | daily aggregation only |
+| China | context | true | China | medium | 17133.29 | 14497 | 0 | not available | not available | 0.42 | daily aggregation only |
 
 ### Initial read
 
@@ -113,11 +113,11 @@ Daily pageview movement is measurable for pages with available data. This dry ru
 
 | Page | Group | Exists | Normalized title | Confidence | Baseline before event | Day 0 | Day 1 | Day 2 | Day 7 | Simple delta ratio | Note |
 | --- | --- | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| Earthquake | core | true | Earthquake | high | 1081.57 | 1491 | not available | not available | not available | 1.38 | daily aggregation only |
-| Seismology | core | true | Seismology | high | 111.29 | 131 | not available | not available | not available | 1.18 | daily aggregation only |
-| Seismic_wave | core | true | Seismic_wave | high | 142.00 | 162 | not available | not available | not available | 1.14 | daily aggregation only |
-| Japan | context | true | Japan | medium | 11815.86 | 11829 | not available | not available | not available | 1.00 | daily aggregation only |
-| Wadomari | context | true | Wadomari,_Kagoshima | low | 2.14 | 53 | not available | not available | not available | 24.73 | daily aggregation only |
+| Earthquake | core | true | Earthquake | high | 1081.57 | 1491 | 0 | not available | not available | 0.69 | daily aggregation only |
+| Seismology | core | true | Seismology | high | 111.29 | 131 | 0 | not available | not available | 0.59 | daily aggregation only |
+| Seismic_wave | core | true | Seismic_wave | high | 142.00 | 162 | 0 | not available | not available | 0.57 | daily aggregation only |
+| Japan | context | true | Japan | medium | 11815.86 | 11829 | 0 | not available | not available | 0.50 | daily aggregation only |
+| Wadomari | context | true | Wadomari,_Kagoshima | low | 2.14 | 53 | 0 | not available | not available | 12.37 | daily aggregation only |
 
 ### Initial read
 
@@ -153,11 +153,11 @@ Daily pageview movement is measurable for pages with available data. This dry ru
 
 | Page | Group | Exists | Normalized title | Confidence | Baseline before event | Day 0 | Day 1 | Day 2 | Day 7 | Simple delta ratio | Note |
 | --- | --- | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| Earthquake | core | true | Earthquake | high | 1087.57 | 997 | 1010 | 811 | not available | 0.86 | daily aggregation only |
-| Seismology | core | true | Seismology | high | 106.14 | 100 | 88 | 94 | not available | 0.89 | daily aggregation only |
-| Seismic_wave | core | true | Seismic_wave | high | 150.86 | 163 | 132 | 84 | not available | 0.84 | daily aggregation only |
-| Indonesia | context | true | Indonesia | medium | 0.00 | 0 | 0 | 0 | not available | not available | daily aggregation only |
-| Tual | context | true | Tual | low | 0.00 | 0 | 0 | 0 | not available | not available | daily aggregation only |
+| Earthquake | core | true | Earthquake | high | 1087.57 | 997 | 1010 | 811 | 0 | 0.86 | daily aggregation only |
+| Seismology | core | true | Seismology | high | 106.14 | 100 | 88 | 94 | 0 | 0.89 | daily aggregation only |
+| Seismic_wave | core | true | Seismic_wave | high | 150.86 | 163 | 132 | 84 | 0 | 0.84 | daily aggregation only |
+| Indonesia | context | true | Indonesia | medium | 7838.71 | 7740 | 7389 | 7202 | 0 | 0.95 | daily aggregation only |
+| Tual | context | true | Tual | low | 11.14 | 33 | 22 | 12 | 0 | 2.00 | daily aggregation only |
 
 ### Initial read
 
@@ -191,11 +191,11 @@ Daily pageview movement is measurable for pages with available data. This dry ru
 
 | Page | Group | Exists | Normalized title | Confidence | Baseline before event | Day 0 | Day 1 | Day 2 | Day 7 | Simple delta ratio | Note |
 | --- | --- | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| Earthquake | core | true | Earthquake | high | 1087.57 | 997 | 1010 | 811 | not available | 0.86 | daily aggregation only |
-| Seismology | core | true | Seismology | high | 106.14 | 100 | 88 | 94 | not available | 0.89 | daily aggregation only |
-| Seismic_wave | core | true | Seismic_wave | high | 150.86 | 163 | 132 | 84 | not available | 0.84 | daily aggregation only |
-| Colombia | context | true | Colombia | medium | 0.00 | 0 | 0 | 0 | not available | not available | daily aggregation only |
-| Darien | context | true | Darien | low | 0.00 | 0 | 0 | 0 | not available | not available | daily aggregation only |
+| Earthquake | core | true | Earthquake | high | 1087.57 | 997 | 1010 | 811 | 0 | 0.86 | daily aggregation only |
+| Seismology | core | true | Seismology | high | 106.14 | 100 | 88 | 94 | 0 | 0.89 | daily aggregation only |
+| Seismic_wave | core | true | Seismic_wave | high | 150.86 | 163 | 132 | 84 | 0 | 0.84 | daily aggregation only |
+| Colombia | context | true | Colombia | medium | 0.00 | 0 | 0 | 0 | 0 | not available | daily aggregation only |
+| Darien | context | true | Darien | low | 0.00 | 0 | 0 | 0 | 0 | not available | daily aggregation only |
 
 ### Initial read
 
@@ -229,11 +229,11 @@ Daily pageview movement is measurable for pages with available data. This dry ru
 
 | Page | Group | Exists | Normalized title | Confidence | Baseline before event | Day 0 | Day 1 | Day 2 | Day 7 | Simple delta ratio | Note |
 | --- | --- | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| Earthquake | core | true | Earthquake | high | 1087.57 | 997 | 1010 | 811 | not available | 0.86 | daily aggregation only |
-| Seismology | core | true | Seismology | high | 106.14 | 100 | 88 | 94 | not available | 0.89 | daily aggregation only |
-| Seismic_wave | core | true | Seismic_wave | high | 150.86 | 163 | 132 | 84 | not available | 0.84 | daily aggregation only |
-| Japan | context | true | Japan | medium | 11699.57 | 12454 | 12394 | 9936 | not available | 0.99 | daily aggregation only |
-| Volcano_Islands | context | true | Volcano_Islands | low | 0.00 | 0 | 0 | 0 | not available | not available | daily aggregation only |
+| Earthquake | core | true | Earthquake | high | 1087.57 | 997 | 1010 | 811 | 0 | 0.86 | daily aggregation only |
+| Seismology | core | true | Seismology | high | 106.14 | 100 | 88 | 94 | 0 | 0.89 | daily aggregation only |
+| Seismic_wave | core | true | Seismic_wave | high | 150.86 | 163 | 132 | 84 | 0 | 0.84 | daily aggregation only |
+| Japan | context | true | Japan | medium | 11699.57 | 12454 | 12394 | 9936 | 0 | 0.99 | daily aggregation only |
+| Volcano_Islands | context | true | Volcano_Islands | low | 0.00 | 0 | 0 | 0 | 0 | not available | daily aggregation only |
 
 ### Initial read
 
