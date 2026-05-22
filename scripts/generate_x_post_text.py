@@ -86,28 +86,17 @@ def fetch_display_payload(conn, display_date):
         return row
 
 
-def window_days_for_payload(page_payload):
-    line = page_payload.get("signal_position_label") or ""
-    marker = "of the last "
-    if marker in line:
-        try:
-            return int(line.split(marker, 1)[1].split(" observed days", 1)[0])
-        except (ValueError, IndexError):
-            pass
-    return 30
-
-
 def build_post_text(display_date, page_payload, url=None):
     position = int(page_payload.get("signal_position", page_payload.get("weirdness_score", 0)))
-    window_days = window_days_for_payload(page_payload)
     post_url = url if url is not None else DEFAULT_POST_URL
 
     lines = [
         f"World Pulse — Data date: {display_date.isoformat()} UTC",
         "",
-        f"Public signals sit higher than {position}% of",
-        f"the last {window_days} observed days.",
-        "Positional measure. Not a forecast or emergency notice.",
+        f"30-day Signal Position: {position}/100",
+        "",
+        "Position within the last 30 observed days.",
+        "Not a forecast or emergency notice.",
         "",
         "#WorldPulse" + (f" {post_url}" if post_url else ""),
     ]

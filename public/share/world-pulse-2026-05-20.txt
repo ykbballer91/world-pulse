@@ -1,7 +1,8 @@
 World Pulse — Data date: 2026-05-20 UTC
 
-Public signals sit higher than 95% of
-the last 30 observed days.
-Positional measure. Not a forecast or emergency notice.
+30-day Signal Position: 95/100
+
+Position within the last 30 observed days.
+Not a forecast or emergency notice.
 
 #WorldPulse https://worldpulse.today/

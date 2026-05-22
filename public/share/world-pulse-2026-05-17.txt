@@ -1,6 +1,8 @@
-World Pulse | 2026-05-17
-Today's Weirdness Score: 42
-Top signal: Wikipedia attention snapshot for 2026-05-17
-Observed public signals were moderately above the recent baseline.
+World Pulse — Data date: 2026-05-17 UTC
+
+30-day Signal Position: 42/100
+
+Position within the last 30 observed days.
 Not a forecast or emergency notice.
-#WorldPulse
+
+#WorldPulse https://worldpulse.today/
