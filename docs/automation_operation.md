@@ -13,7 +13,7 @@ World Pulse can run as a daily GitHub Actions workflow. The workflow generates t
 7. If generated files changed, GitHub Actions commits and pushes them.
 8. If Cloudflare Pages is connected to the GitHub repository, that commit is expected to trigger deployment.
 
-The beta uses a 30-day baseline calculation. Wikipedia 30-day backfill is reserved for initial setup and manual correction. The scheduled daily build uses a short, non-critical Wikipedia backfill window to avoid Wikimedia API rate limits; if a `429 Too Many Requests` response occurs, the build continues using existing data and records a warning.
+The beta uses a 30-day baseline calculation. Wikipedia 30-day backfill is reserved for initial setup and manual correction. The scheduled daily build uses a short, non-critical Wikipedia backfill window to avoid Wikimedia API rate limits; if a `429 Too Many Requests` response occurs, the build continues using existing data and records a non-critical note.
 
 Normal daily builds normalize only the recent scoring window, with a small buffer beyond the 30-day baseline. Full normalization across all raw observations should be run manually after major backfills or validation work. Long-range validation jobs such as 90-day or 1-year reviews should stay outside the scheduled daily workflow.
 
@@ -108,6 +108,12 @@ Start with:
 - Supabase `raw_observations`
 - Supabase `weirdness_scores`
 - Supabase `display_log`
+
+## X Posting Dry Run
+
+X posting is currently manual. `scripts/post_to_x.py` validates the current generated text and image without making X API calls. Live X API posting is not enabled yet.
+
+Do not add credentials to the repository. Do not enable live posting until API access, cost, and duplicate prevention are confirmed.
 
 ## Not Yet Automated
 
