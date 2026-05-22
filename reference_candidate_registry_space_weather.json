@@ -1,0 +1,155 @@
+[
+  {
+    "event_type": "solar_flare",
+    "match_pattern": "*",
+    "candidate_page": "Solar_flare",
+    "candidate_group": "core",
+    "confidence": "high",
+    "review_status": "reviewed",
+    "reason": "Core page for solar flare events."
+  },
+  {
+    "event_type": "solar_flare",
+    "match_pattern": "*",
+    "candidate_page": "Space_weather",
+    "candidate_group": "core",
+    "confidence": "high",
+    "review_status": "reviewed",
+    "reason": "Core page for space weather context."
+  },
+  {
+    "event_type": "solar_flare",
+    "match_pattern": "*",
+    "candidate_page": "Solar_storm",
+    "candidate_group": "core",
+    "confidence": "medium",
+    "review_status": "reviewed",
+    "reason": "Broad page for solar activity context."
+  },
+  {
+    "event_type": "solar_flare",
+    "match_pattern": "*",
+    "candidate_page": "Coronal_mass_ejection",
+    "candidate_group": "extended",
+    "confidence": "medium",
+    "review_status": "provisional",
+    "reason": "Related solar activity page; event-specific relation is not inferred."
+  },
+  {
+    "event_type": "solar_flare",
+    "match_pattern": "*",
+    "candidate_page": "Solar_wind",
+    "candidate_group": "extended",
+    "confidence": "medium",
+    "review_status": "provisional",
+    "reason": "Related space plasma context; event-specific relation is not inferred."
+  },
+  {
+    "event_type": "solar_flare",
+    "match_pattern": "*",
+    "candidate_page": "Sun",
+    "candidate_group": "context",
+    "confidence": "medium",
+    "review_status": "reviewed",
+    "reason": "Primary solar context page."
+  },
+  {
+    "event_type": "solar_flare",
+    "match_pattern": "*",
+    "candidate_page": "Space_Weather_Prediction_Center",
+    "candidate_group": "context",
+    "confidence": "medium",
+    "review_status": "reviewed",
+    "reason": "Provider and domain context page."
+  },
+  {
+    "event_type": "solar_flare",
+    "match_pattern": "*",
+    "candidate_page": "Carrington_Event",
+    "candidate_group": "historical_reference",
+    "confidence": "low",
+    "review_status": "provisional",
+    "reason": "Historical reference context only."
+  },
+  {
+    "event_type": "solar_flare",
+    "match_pattern": "*",
+    "candidate_page": "Solar_cycle_25",
+    "candidate_group": "historical_reference",
+    "confidence": "low",
+    "review_status": "provisional",
+    "reason": "Current solar-cycle context only."
+  },
+  {
+    "event_type": "geomagnetic_storm",
+    "match_pattern": "*",
+    "candidate_page": "Geomagnetic_storm",
+    "candidate_group": "core",
+    "confidence": "high",
+    "review_status": "reviewed",
+    "reason": "Core page for geomagnetic storm candidates."
+  },
+  {
+    "event_type": "geomagnetic_storm",
+    "match_pattern": "*",
+    "candidate_page": "Aurora",
+    "candidate_group": "core",
+    "confidence": "medium",
+    "review_status": "reviewed",
+    "reason": "Visible geomagnetic context page."
+  },
+  {
+    "event_type": "geomagnetic_storm",
+    "match_pattern": "*",
+    "candidate_page": "Space_weather",
+    "candidate_group": "core",
+    "confidence": "high",
+    "review_status": "reviewed",
+    "reason": "Core page for space weather context."
+  },
+  {
+    "event_type": "geomagnetic_storm",
+    "match_pattern": "*",
+    "candidate_page": "Magnetosphere",
+    "candidate_group": "extended",
+    "confidence": "medium",
+    "review_status": "provisional",
+    "reason": "Related geospace context."
+  },
+  {
+    "event_type": "geomagnetic_storm",
+    "match_pattern": "*",
+    "candidate_page": "Solar_wind",
+    "candidate_group": "extended",
+    "confidence": "medium",
+    "review_status": "provisional",
+    "reason": "Related solar wind context."
+  },
+  {
+    "event_type": "geomagnetic_storm",
+    "match_pattern": "*",
+    "candidate_page": "Earth%27s_magnetic_field",
+    "candidate_group": "context",
+    "confidence": "medium",
+    "review_status": "reviewed",
+    "reason": "Earth magnetic-field context page."
+  },
+  {
+    "event_type": "geomagnetic_storm",
+    "match_pattern": "*",
+    "candidate_page": "Space_Weather_Prediction_Center",
+    "candidate_group": "context",
+    "confidence": "medium",
+    "review_status": "reviewed",
+    "reason": "Provider and domain context page."
+  },
+  {
+    "event_type": "geomagnetic_storm",
+    "match_pattern": "*",
+    "candidate_page": "Carrington_Event",
+    "candidate_group": "historical_reference",
+    "confidence": "low",
+    "review_status": "provisional",
+    "reason": "Historical reference context only."
+  }
+]
