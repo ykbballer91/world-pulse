@@ -1,35 +1,48 @@
 {
-  "display_date": "2026-05-21",
+  "display_date": "2026-05-22",
   "page_payload": {
-    "date": "2026-05-21",
+    "date": "2026-05-22",
     "headline": "Signal Position",
-    "data_date": "2026-05-21",
+    "data_date": "2026-05-22",
     "top_cards": [
       {
-        "title": "M4.1 earthquake near 1 km SSW of Bacoli, Italy",
+        "title": "M5.9 earthquake near 113 km ESE of Bitung, Indonesia",
         "category": "geophysical",
-        "event_time": "2026-05-21T03:50:51Z",
+        "event_time": "2026-05-22T01:05:08Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
-        "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -3.07224137230433,
-        "signal_status": "context_only",
-        "magnitude_value": 4.1,
-        "effective_anomaly": 0,
-        "score_contribution": 0
+        "display_note": "Above the recent baseline.",
+        "anomaly_score": 0.539605220840676,
+        "signal_status": "score_contributor",
+        "magnitude_value": 5.9,
+        "effective_anomaly": 0.539605220840676,
+        "score_contribution": 10.792104416813519
       },
       {
-        "title": "M4.1 earthquake near 58 km ESE of Shima, Japan",
+        "title": "M5.8 earthquake near 116 km ESE of Bitung, Indonesia",
         "category": "geophysical",
-        "event_time": "2026-05-21T01:06:33Z",
+        "event_time": "2026-05-22T01:05:09Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
-        "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -3.07224137230433,
-        "signal_status": "context_only",
-        "magnitude_value": 4.1,
-        "effective_anomaly": 0,
-        "score_contribution": 0
+        "display_note": "Above the recent baseline.",
+        "anomaly_score": 0.337253263025424,
+        "signal_status": "score_contributor",
+        "magnitude_value": 5.8,
+        "effective_anomaly": 0.337253263025424,
+        "score_contribution": 3.3725326302542404
+      },
+      {
+        "title": "M5.7 earthquake near 103 km SSE of Lorengau, Papua New Guinea",
+        "category": "geophysical",
+        "event_time": "2026-05-22T10:08:19Z",
+        "event_type": "earthquake",
+        "source_note": "Public observation data",
+        "display_note": "Above the recent baseline.",
+        "anomaly_score": 0.134901305210174,
+        "signal_status": "score_contributor",
+        "magnitude_value": 5.7,
+        "effective_anomaly": 0.134901305210174,
+        "score_contribution": 0.6745065260508699
       }
     ],
     "principles": {
@@ -37,32 +50,32 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-05-22T04:36:31Z",
+    "updated_at": "2026-05-23T04:32:28Z",
     "quiet_signal": {
       "id": "82dcb86e-4517-4138-a9ba-5a3416342953",
       "note": "This signal sits above the recent baseline within the current data window.",
       "title": "M6.6 earthquake near southern East Pacific Rise",
-      "summary": "M6.6 earthquake near southern East Pacific Rise, observed about 30 hours before the end of the data date.",
+      "summary": "M6.6 earthquake near southern East Pacific Rise, observed about 54 hours before the end of the data date.",
       "category": "geophysical",
       "available": true,
       "event_time": "2026-05-20T17:43:02Z",
       "event_type": "earthquake",
       "safety_note": "Not a forecast, alert, or recommendation.",
-      "anomaly_score": 1.94436897661603,
+      "anomaly_score": 1.95606892554743,
       "magnitude_value": 6.6,
-      "hours_ago_from_data_end": 30.3
+      "hours_ago_from_data_end": 54.3
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "Higher than 18% of the last 30 observed days.",
+      "Higher than 62% of the last 30 observed days.",
       "Positional measure within recent observations. Not a risk, alert, or warning level.",
       "Based on public earthquake, space weather, internet, and Wikipedia attention data."
     ],
-    "percentile_line": "This data date is in the 18th percentile of the last 30 observed days.",
-    "signal_position": 18,
+    "percentile_line": "This data date is in the 62nd percentile of the last 30 observed days.",
+    "signal_position": 62,
     "top_signal_note": null,
-    "weirdness_score": 18,
+    "weirdness_score": 62,
     "signal_position_note": "Positional measure within recent observations. Not a risk, alert, or warning level.",
-    "signal_position_label": "Higher than 18% of the last 30 observed days."
+    "signal_position_label": "Higher than 62% of the last 30 observed days."
   }
 }
