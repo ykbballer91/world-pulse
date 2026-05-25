@@ -12,7 +12,7 @@
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.310249027544791,
+        "anomaly_score": -0.38565952959059,
         "signal_status": "context_only",
         "magnitude_value": 5.5,
         "effective_anomaly": 0,
@@ -25,7 +25,7 @@
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.35368746099137,
+        "anomaly_score": -1.52891900466148,
         "signal_status": "context_only",
         "magnitude_value": 5.0,
         "effective_anomaly": 0,
@@ -38,7 +38,7 @@
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.56237514768069,
+        "anomaly_score": -1.75757089967566,
         "signal_status": "context_only",
         "magnitude_value": 4.9,
         "effective_anomaly": 0,
@@ -50,7 +50,7 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-05-25T02:07:23Z",
+    "updated_at": "2026-05-25T03:02:26Z",
     "quiet_signal": {
       "note": "No quiet signal available for this data date.",
       "available": false
