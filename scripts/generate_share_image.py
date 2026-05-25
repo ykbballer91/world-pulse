@@ -87,23 +87,62 @@ def fetch_display_payload(conn, display_date):
         return row
 
 
-def load_font(size, bold=False):
+FONT_SELECTION = {
+    "regular": None,
+    "bold": None,
+    "fallback_used": False,
+}
+
+
+def font_candidates(bold=False):
     regular_candidates = [
         "/System/Library/Fonts/Supplemental/Arial.ttf",
         "/System/Library/Fonts/Supplemental/Helvetica.ttf",
         "/System/Library/Fonts/Helvetica.ttc",
         "/Library/Fonts/Arial.ttf",
+        "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+        "/usr/share/fonts/truetype/liberation2/LiberationSans-Regular.ttf",
     ]
     bold_candidates = [
         "/System/Library/Fonts/Supplemental/Arial Bold.ttf",
         "/System/Library/Fonts/Supplemental/Helvetica Bold.ttf",
         "/System/Library/Fonts/Helvetica.ttc",
         "/Library/Fonts/Arial Bold.ttf",
+        "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+        "/usr/share/fonts/truetype/liberation2/LiberationSans-Bold.ttf",
     ]
-    for path in bold_candidates if bold else regular_candidates:
+    return bold_candidates if bold else regular_candidates
+
+
+def load_font(size, bold=False):
+    key = "bold" if bold else "regular"
+    selected_path = FONT_SELECTION[key]
+    if selected_path:
+        return ImageFont.truetype(selected_path, size)
+
+    for path in font_candidates(bold):
         if os.path.exists(path):
+            FONT_SELECTION[key] = path
             return ImageFont.truetype(path, size)
+
+    FONT_SELECTION["fallback_used"] = True
     return ImageFont.load_default()
+
+
+def validate_font_selection():
+    if FONT_SELECTION["fallback_used"] or not FONT_SELECTION["regular"] or not FONT_SELECTION["bold"]:
+        raise RuntimeError(
+            "Share image font fallback used; install DejaVuSans or LiberationSans on the runner."
+        )
+
+
+def font_log_line():
+    return (
+        "Share image font selection: "
+        f"regular={FONT_SELECTION['regular']} "
+        f"bold={FONT_SELECTION['bold']} "
+        f"fallback_used={str(FONT_SELECTION['fallback_used']).lower()}"
+    )
 
 
 def wrap_text(draw, text, font, max_width):
@@ -228,6 +267,7 @@ def generate_image(display_date, page_payload):
         draw.text((pill_left + 16, pill_top + 7), "Observed signal", font=font_small, fill=ink)
 
     draw.text((72, 568), "worldpulse.today", font=font_footer, fill=footer)
+    validate_font_selection()
     return image
 
 
@@ -274,6 +314,7 @@ def main():
             display_date = args.date or latest_display_date(conn)
             display_date, page_payload = fetch_display_payload(conn, display_date)
         image = generate_image(display_date, page_payload)
+        print(font_log_line())
         dated_png_path, latest_png_path, dated_jpg_path, latest_jpg_path = save_images(image, display_date)
     except Exception as exc:
         print(f"Share image generation failed: {exc}", file=sys.stderr)
