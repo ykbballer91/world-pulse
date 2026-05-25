@@ -23,6 +23,28 @@
     ]
   },
   {
+    "event_id": "2024_may_x87_solar_flare",
+    "event_date": "2024-05-14",
+    "event_time_utc": "16:51",
+    "event_type": "solar_flare",
+    "event_label": "May 2024 X8.7 solar flare sample",
+    "source_note": "NASA SVS describes the May 14, 2024 X8.7 flare as the largest flare of Solar Cycle 25 at that time.",
+    "source_url": "https://svs.gsfc.nasa.gov/14592",
+    "needs_source_verification": false,
+    "reason_for_selection": "Source-recorded X-class flare with likely reference-page movement.",
+    "candidate_pages": [
+      "Solar_flare",
+      "Space_weather",
+      "Solar_storm",
+      "Coronal_mass_ejection",
+      "Solar_wind",
+      "Sun",
+      "Space_Weather_Prediction_Center",
+      "Solar_cycle_25",
+      "May_2024_solar_storms"
+    ]
+  },
+  {
     "event_id": "2024_oct_x90_solar_flare",
     "event_date": "2024-10-03",
     "event_time_utc": null,
@@ -42,6 +64,27 @@
       "Space_Weather_Prediction_Center",
       "Solar_cycle_25",
       "2024_solar_storms"
+    ]
+  },
+  {
+    "event_id": "2024_feb_x63_solar_flare",
+    "event_date": "2024-02-22",
+    "event_time_utc": null,
+    "event_type": "solar_flare",
+    "event_label": "February 2024 X6.3 solar flare sample",
+    "source_note": "NASA SVS describes an X6.3 flare at Active Region 13590 on February 22, 2024.",
+    "source_url": "https://svs.gsfc.nasa.gov/5233/",
+    "needs_source_verification": false,
+    "reason_for_selection": "Large Solar Cycle 25 flare with source-recorded date and type.",
+    "candidate_pages": [
+      "Solar_flare",
+      "Space_weather",
+      "Solar_storm",
+      "Coronal_mass_ejection",
+      "Solar_wind",
+      "Sun",
+      "Space_Weather_Prediction_Center",
+      "Solar_cycle_25"
     ]
   },
   {
@@ -66,6 +109,48 @@
     ]
   },
   {
+    "event_id": "2022_apr_x22_solar_flare",
+    "event_date": "2022-04-20",
+    "event_time_utc": null,
+    "event_type": "solar_flare",
+    "event_label": "April 2022 X2.2 solar flare sample",
+    "source_note": "NASA SVS describes an X2.2 class solar flare on April 20, 2022.",
+    "source_url": "https://svs.gsfc.nasa.gov/4999/",
+    "needs_source_verification": false,
+    "reason_for_selection": "Solar Cycle 25 flare sample before the 2024 cluster.",
+    "candidate_pages": [
+      "Solar_flare",
+      "Space_weather",
+      "Solar_storm",
+      "Coronal_mass_ejection",
+      "Solar_wind",
+      "Sun",
+      "Space_Weather_Prediction_Center",
+      "Solar_cycle_25"
+    ]
+  },
+  {
+    "event_id": "2021_oct_x10_solar_flare",
+    "event_date": "2021-10-28",
+    "event_time_utc": "15:35",
+    "event_type": "solar_flare",
+    "event_label": "October 2021 X1.0 solar flare sample",
+    "source_note": "NASA image article describes an X1 solar flare on October 28, 2021.",
+    "source_url": "https://www.nasa.gov/image-article/sun-rings-new-month-with-strong-flare/",
+    "needs_source_verification": false,
+    "reason_for_selection": "Earlier Solar Cycle 25 X-class flare with a clear NASA source.",
+    "candidate_pages": [
+      "Solar_flare",
+      "Space_weather",
+      "Solar_storm",
+      "Coronal_mass_ejection",
+      "Solar_wind",
+      "Sun",
+      "Space_Weather_Prediction_Center",
+      "Solar_cycle_25"
+    ]
+  },
+  {
     "event_id": "2017_sep_x93_solar_flare",
     "event_date": "2017-09-06",
     "event_time_utc": null,
@@ -75,6 +160,27 @@
     "source_url": "https://svs.gsfc.nasa.gov/12706",
     "needs_source_verification": false,
     "reason_for_selection": "Large Solar Cycle 24 flare with likely reference-system movement.",
+    "candidate_pages": [
+      "Solar_flare",
+      "Space_weather",
+      "Solar_storm",
+      "Coronal_mass_ejection",
+      "Solar_wind",
+      "Sun",
+      "Space_Weather_Prediction_Center",
+      "Solar_cycle_24"
+    ]
+  },
+  {
+    "event_id": "2017_sep_x82_solar_flare",
+    "event_date": "2017-09-10",
+    "event_time_utc": null,
+    "event_type": "solar_flare",
+    "event_label": "September 2017 X8.2 solar flare sample",
+    "source_note": "NASA SVS describes the September 10, 2017 X8.2 flare as seen by Solar Dynamics Observatory.",
+    "source_url": "https://svs.gsfc.nasa.gov/4491",
+    "needs_source_verification": false,
+    "reason_for_selection": "Second large September 2017 flare for comparison with the September 6 sample.",
     "candidate_pages": [
       "Solar_flare",
       "Space_weather",
