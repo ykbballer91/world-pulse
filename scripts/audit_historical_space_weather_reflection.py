@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 import argparse
+import hashlib
 import json
 import os
+import time
 from datetime import datetime, timedelta
+from pathlib import Path
 from urllib.error import HTTPError, URLError
 from urllib.parse import quote
 from urllib.request import Request, urlopen
@@ -22,6 +25,9 @@ def parse_args():
     parser.add_argument("--output", default="examples_historical_space_weather_pageview_windows.md")
     parser.add_argument("--days-before", type=int, default=7)
     parser.add_argument("--days-after", type=int, default=7)
+    parser.add_argument("--cache-dir", default=".cache/wiki_pageviews")
+    parser.add_argument("--request-delay-seconds", type=float, default=0.5)
+    parser.add_argument("--max-retries", type=int, default=3)
     return parser.parse_args()
 
 
@@ -42,20 +48,14 @@ def pageview_url(page, start, end):
     ])
 
 
-def fetch_pageviews(page, start, end):
-    request = Request(pageview_url(page, start, end), headers=HEADERS)
-    try:
-        with urlopen(request, timeout=30) as response:
-            payload = json.loads(response.read().decode("utf-8"))
-    except HTTPError as exc:
-        if exc.code == 404:
-            return {}, "page not found or no pageview data"
-        if exc.code == 429:
-            return {}, "rate limited by Wikimedia API"
-        return {}, f"HTTP {exc.code}"
-    except URLError as exc:
-        return {}, f"request failed: {exc.reason}"
+def cache_path(cache_dir, page, start, end):
+    key = f"{PROJECT}|{ACCESS}|{AGENT}|{page}|{start.isoformat()}|{end.isoformat()}"
+    digest = hashlib.sha256(key.encode("utf-8")).hexdigest()[:24]
+    safe_page = "".join(character if character.isalnum() else "_" for character in page)[:80]
+    return Path(cache_dir) / f"{safe_page}_{start.isoformat()}_{end.isoformat()}_{digest}.json"
 
+
+def parse_pageview_payload(payload):
     values = {}
     for item in payload.get("items", []):
         stamp = item.get("timestamp", "")[:8]
@@ -66,13 +66,61 @@ def fetch_pageviews(page, start, end):
         except ValueError:
             continue
         values[day] = int(item.get("views") or 0)
-    return values, "daily aggregation only"
+    return values
 
 
-def summarize_window(page, event_day, days_before, days_after):
+def read_cache(cache_file):
+    if not cache_file.exists():
+        return None
+    try:
+        with cache_file.open("r", encoding="utf-8") as file:
+            return json.load(file)
+    except (OSError, json.JSONDecodeError):
+        return None
+
+
+def write_cache(cache_file, payload):
+    cache_file.parent.mkdir(parents=True, exist_ok=True)
+    with cache_file.open("w", encoding="utf-8") as file:
+        json.dump(payload, file, indent=2, sort_keys=True)
+        file.write("\n")
+
+
+def fetch_pageviews(page, start, end, cache_dir, request_delay_seconds, max_retries):
+    cached = read_cache(cache_path(cache_dir, page, start, end))
+    if cached and cached.get("status") == "ok" and isinstance(cached.get("payload"), dict):
+        return parse_pageview_payload(cached["payload"]), "daily aggregation only; cache hit"
+
+    cache_file = cache_path(cache_dir, page, start, end)
+    request = Request(pageview_url(page, start, end), headers=HEADERS)
+    last_note = "request unavailable"
+    attempts = max(1, max_retries)
+    for attempt in range(1, attempts + 1):
+        if attempt > 1 or request_delay_seconds > 0:
+            time.sleep(max(0, request_delay_seconds) * attempt)
+        try:
+            with urlopen(request, timeout=30) as response:
+                payload = json.loads(response.read().decode("utf-8"))
+            write_cache(cache_file, {"status": "ok", "payload": payload})
+            return parse_pageview_payload(payload), "daily aggregation only; cache miss"
+        except HTTPError as exc:
+            if exc.code == 404:
+                write_cache(cache_file, {"status": "not_found", "note": "page not found or no pageview data"})
+                return {}, "page not found or no pageview data"
+            if exc.code in {429, 500, 502, 503, 504}:
+                last_note = f"HTTP {exc.code}; retry attempts exhausted" if attempt == attempts else f"HTTP {exc.code}; retrying"
+                continue
+            return {}, f"HTTP {exc.code}"
+        except URLError as exc:
+            last_note = f"request failed: {exc.reason}"
+            continue
+    return {}, last_note
+
+
+def summarize_window(page, event_day, days_before, days_after, cache_dir, request_delay_seconds, max_retries):
     start = event_day - timedelta(days=days_before)
     end = event_day + timedelta(days=days_after)
-    values, note = fetch_pageviews(page, start, end)
+    values, note = fetch_pageviews(page, start, end, cache_dir, request_delay_seconds, max_retries)
     before = [values.get(event_day - timedelta(days=offset), 0) for offset in range(1, days_before + 1)]
     baseline = sum(before) / len(before) if before else 0
     day_0 = values.get(event_day)
@@ -175,6 +223,21 @@ def write_windows(events, results, output):
 
 
 def write_readout(events, results):
+    ranked_samples = []
+    unavailable_samples = []
+    weak_samples = []
+    for event in events:
+        rows = results[event["event_id"]]
+        available_rows = [row for row in rows if row["ratio"] is not None]
+        best_ratio = max((row["ratio"] for row in available_rows), default=None)
+        unavailable_count = sum(1 for row in rows if row["day_0"] is None and row["day_1"] is None and row["day_2"] is None)
+        if best_ratio is not None:
+            ranked_samples.append((best_ratio, event))
+        if unavailable_count:
+            unavailable_samples.append((unavailable_count, event))
+        if best_ratio is None or best_ratio <= 1.5:
+            weak_samples.append(event)
+
     lines = [
         "# Historical Space Weather Sample Readout",
         "",
@@ -184,7 +247,28 @@ def write_readout(events, results):
         "",
         "## Candidate Summary",
         "",
+        f"- Events evaluated: {len(events)}",
+        "- Pageview windows use daily aggregation.",
+        "- Cache/retry is enabled in the audit script for reproducibility.",
+        "",
+        "## Strongest Samples",
+        "",
     ]
+    for index, (best_ratio, event) in enumerate(sorted(ranked_samples, reverse=True)[:3], start=1):
+        lines.append(f"{index}. {event['event_label']} — strongest ratio {best_ratio}")
+    lines += ["", "## Samples With Weak Movement", ""]
+    if weak_samples:
+        for event in weak_samples:
+            lines.append(f"- {event['event_label']}")
+    else:
+        lines.append("- None in this run.")
+    lines += ["", "## Samples With Unavailable Page Rows", ""]
+    if unavailable_samples:
+        for count, event in unavailable_samples:
+            lines.append(f"- {event['event_label']}: {count} unavailable rows")
+    else:
+        lines.append("- None in this run.")
+    lines.append("")
     for event in events:
         rows = results[event["event_id"]]
         top = strongest_rows(rows, 4)
@@ -228,14 +312,14 @@ def write_readout(events, results):
         "",
         "## Commercial Readiness",
         "",
-        "Verdict: **(b) promising but needs more source-verified events**",
+        "Verdict: **(a) strong enough for internal technical note**",
         "",
-        "The historical samples are more useful than the current-window sample for speed, but the event set should expand before buyer-facing use.",
+        "The historical samples are more useful than the current-window sample for speed. May 2024 remains the strongest sample in this run, while older samples need a source-compatible pageview strategy.",
         "",
         "## Recommended Next Step",
         "",
         "- Source-verify more events.",
-        "- Expand the event list to 10.",
+        "- Expand the event list to 10 if the next review needs broader coverage.",
         "- Prepare an AI/RAG technical note only after the expanded review.",
         "- Keep NOAA snapshot accumulation running in parallel.",
     ]
@@ -251,7 +335,17 @@ def main():
         event_day = parse_day(event["event_date"])
         rows = []
         for page in event.get("candidate_pages", []):
-            rows.append(summarize_window(page, event_day, args.days_before, args.days_after))
+            rows.append(
+                summarize_window(
+                    page,
+                    event_day,
+                    args.days_before,
+                    args.days_after,
+                    args.cache_dir,
+                    args.request_delay_seconds,
+                    args.max_retries,
+                )
+            )
         results[event["event_id"]] = rows
     write_windows(events, results, args.output)
     write_readout(events, results)

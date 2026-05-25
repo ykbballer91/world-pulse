@@ -3,3 +3,4 @@ __pycache__/
 .env
 .venv/
 .x_posted_dates.json
+.cache/

@@ -64,5 +64,70 @@
       "Space_Weather_Prediction_Center",
       "Solar_cycle_25"
     ]
+  },
+  {
+    "event_id": "2017_sep_x93_solar_flare",
+    "event_date": "2017-09-06",
+    "event_time_utc": null,
+    "event_type": "solar_flare",
+    "event_label": "September 2017 X9.3 solar flare sample",
+    "source_note": "NASA SVS describes the September 6, 2017 X-class flare sequence observed by Solar Dynamics Observatory.",
+    "source_url": "https://svs.gsfc.nasa.gov/12706",
+    "needs_source_verification": false,
+    "reason_for_selection": "Large Solar Cycle 24 flare with likely reference-system movement.",
+    "candidate_pages": [
+      "Solar_flare",
+      "Space_weather",
+      "Solar_storm",
+      "Coronal_mass_ejection",
+      "Solar_wind",
+      "Sun",
+      "Space_Weather_Prediction_Center",
+      "Solar_cycle_24"
+    ]
+  },
+  {
+    "event_id": "2012_jul_solar_event",
+    "event_date": "2012-07-23",
+    "event_time_utc": null,
+    "event_type": "solar_flare",
+    "event_label": "July 2012 solar eruptive event sample",
+    "source_note": "NASA Science describes a powerful coronal mass ejection observed by STEREO-A on July 23, 2012.",
+    "source_url": "https://science.nasa.gov/science-research/planetary-science/23jul_superstorm/",
+    "needs_source_verification": false,
+    "reason_for_selection": "Widely referenced solar event with candidate reference pages available.",
+    "candidate_pages": [
+      "July_2012_solar_storm",
+      "Coronal_mass_ejection",
+      "Solar_storm",
+      "Solar_wind",
+      "Space_weather",
+      "Sun",
+      "Space_Weather_Prediction_Center",
+      "Carrington_Event",
+      "Solar_cycle_24"
+    ]
+  },
+  {
+    "event_id": "2003_oct_x172_solar_flare",
+    "event_date": "2003-10-28",
+    "event_time_utc": "09:51",
+    "event_type": "solar_flare",
+    "event_label": "October 2003 X17.2 solar flare sample",
+    "source_note": "NASA Earth Observatory describes an X17.2 flare on October 28, 2003.",
+    "source_url": "https://earthobservatory.nasa.gov/images/3912/massive-solar-flare",
+    "needs_source_verification": false,
+    "reason_for_selection": "Older widely referenced solar flare sample for long-range comparison.",
+    "candidate_pages": [
+      "2003_Halloween_solar_storms",
+      "Solar_flare",
+      "Space_weather",
+      "Solar_storm",
+      "Coronal_mass_ejection",
+      "Solar_wind",
+      "Sun",
+      "Space_Weather_Prediction_Center",
+      "Solar_cycle_23"
+    ]
   }
 ]
