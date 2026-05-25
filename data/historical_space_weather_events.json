@@ -1,0 +1,68 @@
+[
+  {
+    "event_id": "2024_may_g5_geomagnetic",
+    "event_date": "2024-05-10",
+    "event_time_utc": null,
+    "event_type": "geomagnetic_storm",
+    "event_label": "May 2024 G5 geomagnetic storm sample",
+    "source_note": "USGS summary describes the May 10, 2024 magnetic disturbance and G5 classification from NOAA SWPC context.",
+    "source_url": "https://www.usgs.gov/index.php/programs/geomagnetism/science/may-10-2024-magnetic-disturbance-peak-dst-351-nt",
+    "needs_source_verification": false,
+    "reason_for_selection": "Large public Space Weather event with likely reference-system movement.",
+    "candidate_pages": [
+      "Geomagnetic_storm",
+      "Aurora",
+      "Space_weather",
+      "Magnetosphere",
+      "Solar_wind",
+      "Sun",
+      "Space_Weather_Prediction_Center",
+      "Carrington_Event",
+      "Solar_cycle_25",
+      "May_2024_solar_storms"
+    ]
+  },
+  {
+    "event_id": "2024_oct_x90_solar_flare",
+    "event_date": "2024-10-03",
+    "event_time_utc": null,
+    "event_type": "solar_flare",
+    "event_label": "October 2024 X9.0 solar flare sample",
+    "source_note": "NASA SVS identifies an X9.0 flare from Active Region 13842 on October 3, 2024.",
+    "source_url": "https://svs.gsfc.nasa.gov/5398",
+    "needs_source_verification": false,
+    "reason_for_selection": "Large solar flare sample with a compact candidate page set.",
+    "candidate_pages": [
+      "Solar_flare",
+      "Space_weather",
+      "Solar_storm",
+      "Coronal_mass_ejection",
+      "Solar_wind",
+      "Sun",
+      "Space_Weather_Prediction_Center",
+      "Solar_cycle_25",
+      "2024_solar_storms"
+    ]
+  },
+  {
+    "event_id": "2023_dec_x28_solar_flare",
+    "event_date": "2023-12-14",
+    "event_time_utc": "17:02",
+    "event_type": "solar_flare",
+    "event_label": "December 2023 X2.8 solar flare sample",
+    "source_note": "NASA Science describes an X2.8 flare peaking on December 14, 2023.",
+    "source_url": "https://science.nasa.gov/blogs/solar-cycle-25/2023/12/14/sun-releases-strong-solar-flare-13/",
+    "needs_source_verification": false,
+    "reason_for_selection": "Earlier X-class flare sample for comparison with 2024 solar flare pages.",
+    "candidate_pages": [
+      "Solar_flare",
+      "Space_weather",
+      "Solar_storm",
+      "Coronal_mass_ejection",
+      "Solar_wind",
+      "Sun",
+      "Space_Weather_Prediction_Center",
+      "Solar_cycle_25"
+    ]
+  }
+]
