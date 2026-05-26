@@ -1,46 +1,46 @@
 {
-  "display_date": "2026-05-24",
+  "display_date": "2026-05-25",
   "page_payload": {
-    "date": "2026-05-24",
+    "date": "2026-05-25",
     "headline": "Signal Position",
-    "data_date": "2026-05-24",
+    "data_date": "2026-05-25",
     "top_cards": [
       {
-        "title": "M5.5 earthquake near 13 km E of Cortes, Philippines",
+        "title": "M6.9 earthquake near 29 km ENE of Calama, Chile",
         "category": "geophysical",
-        "event_time": "2026-05-24T16:48:40Z",
+        "event_time": "2026-05-25T21:52:20Z",
+        "event_type": "earthquake",
+        "source_note": "Public observation data",
+        "display_note": "Above the recent baseline.",
+        "anomaly_score": 2.5248052779596,
+        "signal_status": "score_contributor",
+        "magnitude_value": 6.9,
+        "effective_anomaly": 2.5248052779596,
+        "score_contribution": 50.496105559192
+      },
+      {
+        "title": "M5.6 earthquake near 113 km ESE of Bitung, Indonesia",
+        "category": "geophysical",
+        "event_time": "2026-05-25T20:39:20Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.38565952959059,
+        "anomaly_score": -0.222611179641521,
         "signal_status": "context_only",
-        "magnitude_value": 5.5,
+        "magnitude_value": 5.6,
         "effective_anomaly": 0,
         "score_contribution": 0
       },
       {
-        "title": "M5 earthquake near 31 km ENE of La Paz, Philippines",
+        "title": "M5 earthquake near 104 km ESE of Kokopo, Papua New Guinea",
         "category": "geophysical",
-        "event_time": "2026-05-24T13:19:06Z",
+        "event_time": "2026-05-25T15:00:31Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.52891900466148,
+        "anomaly_score": -1.49064954468819,
         "signal_status": "context_only",
         "magnitude_value": 5.0,
-        "effective_anomaly": 0,
-        "score_contribution": 0
-      },
-      {
-        "title": "M4.9 earthquake near 112 km ESE of Bitung, Indonesia",
-        "category": "geophysical",
-        "event_time": "2026-05-24T15:33:13Z",
-        "event_type": "earthquake",
-        "source_note": "Public observation data",
-        "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.75757089967566,
-        "signal_status": "context_only",
-        "magnitude_value": 4.9,
         "effective_anomaly": 0,
         "score_contribution": 0
       }
@@ -50,22 +50,22 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-05-25T05:11:48Z",
+    "updated_at": "2026-05-26T04:52:06Z",
     "quiet_signal": {
       "note": "No quiet signal available for this data date.",
       "available": false
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "Higher than 17% of the last 30 observed days.",
+      "Higher than 92% of the last 30 observed days.",
       "Positional measure within recent observations. Not a risk, alert, or warning level.",
       "Based on public earthquake, space weather, internet, and Wikipedia attention data."
     ],
-    "percentile_line": "This data date is in the 17th percentile of the last 30 observed days.",
-    "signal_position": 17,
+    "percentile_line": "This data date is in the 92nd percentile of the last 30 observed days.",
+    "signal_position": 92,
     "top_signal_note": null,
-    "weirdness_score": 17,
+    "weirdness_score": 92,
     "signal_position_note": "Positional measure within recent observations. Not a risk, alert, or warning level.",
-    "signal_position_label": "Higher than 17% of the last 30 observed days."
+    "signal_position_label": "Higher than 92% of the last 30 observed days."
   }
 }
