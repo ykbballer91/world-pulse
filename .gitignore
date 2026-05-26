@@ -4,3 +4,4 @@ __pycache__/
 .venv/
 .x_posted_dates.json
 .cache/
+private_briefings/
