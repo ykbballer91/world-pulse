@@ -1,46 +1,46 @@
 {
-  "display_date": "2026-05-25",
+  "display_date": "2026-05-26",
   "page_payload": {
-    "date": "2026-05-25",
+    "date": "2026-05-26",
     "headline": "Signal Position",
-    "data_date": "2026-05-25",
+    "data_date": "2026-05-26",
     "top_cards": [
       {
-        "title": "M6.9 earthquake near 29 km ENE of Calama, Chile",
+        "title": "M5.4 earthquake near 180 km NE of Neiafu, Tonga",
         "category": "geophysical",
-        "event_time": "2026-05-25T21:52:20Z",
-        "event_type": "earthquake",
-        "source_note": "Public observation data",
-        "display_note": "Above the recent baseline.",
-        "anomaly_score": 2.5248052779596,
-        "signal_status": "score_contributor",
-        "magnitude_value": 6.9,
-        "effective_anomaly": 2.5248052779596,
-        "score_contribution": 50.496105559192
-      },
-      {
-        "title": "M5.6 earthquake near 113 km ESE of Bitung, Indonesia",
-        "category": "geophysical",
-        "event_time": "2026-05-25T20:39:20Z",
+        "event_time": "2026-05-26T19:12:31Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.222611179641521,
+        "anomaly_score": -0.599239315232724,
         "signal_status": "context_only",
-        "magnitude_value": 5.6,
+        "magnitude_value": 5.4,
         "effective_anomaly": 0,
         "score_contribution": 0
       },
       {
-        "title": "M5 earthquake near 104 km ESE of Kokopo, Papua New Guinea",
+        "title": "M5.3 earthquake near Kermadec Islands region",
         "category": "geophysical",
-        "event_time": "2026-05-25T15:00:31Z",
+        "event_time": "2026-05-26T02:08:03Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.49064954468819,
+        "anomaly_score": -0.802142017907465,
         "signal_status": "context_only",
-        "magnitude_value": 5.0,
+        "magnitude_value": 5.3,
+        "effective_anomaly": 0,
+        "score_contribution": 0
+      },
+      {
+        "title": "M5.1 earthquake near Owen Fracture Zone region",
+        "category": "geophysical",
+        "event_time": "2026-05-26T18:56:36Z",
+        "event_type": "earthquake",
+        "source_note": "Public observation data",
+        "display_note": "Observed signal, but not above the recent baseline.",
+        "anomaly_score": -1.20794742325695,
+        "signal_status": "context_only",
+        "magnitude_value": 5.1,
         "effective_anomaly": 0,
         "score_contribution": 0
       }
@@ -50,22 +50,32 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-05-26T04:52:06Z",
+    "updated_at": "2026-05-27T05:03:38Z",
     "quiet_signal": {
-      "note": "No quiet signal available for this data date.",
-      "available": false
+      "id": "950452ba-b866-409d-9a84-d33dbf60310d",
+      "note": "This signal sits above the recent baseline within the current data window.",
+      "title": "M6.9 earthquake near 29 km ENE of Calama, Chile",
+      "summary": "M6.9 earthquake near 29 km ENE of Calama, Chile, observed about 26 hours before the end of the data date.",
+      "category": "geophysical",
+      "available": true,
+      "event_time": "2026-05-25T21:52:20Z",
+      "event_type": "earthquake",
+      "safety_note": "Not a forecast, alert, or recommendation.",
+      "anomaly_score": 2.44430122488838,
+      "magnitude_value": 6.9,
+      "hours_ago_from_data_end": 26.1
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "Higher than 92% of the last 30 observed days.",
+      "Higher than 17% of the last 30 observed days.",
       "Positional measure within recent observations. Not a risk, alert, or warning level.",
       "Based on public earthquake, space weather, internet, and Wikipedia attention data."
     ],
-    "percentile_line": "This data date is in the 92nd percentile of the last 30 observed days.",
-    "signal_position": 92,
+    "percentile_line": "This data date is in the 17th percentile of the last 30 observed days.",
+    "signal_position": 17,
     "top_signal_note": null,
-    "weirdness_score": 92,
+    "weirdness_score": 17,
     "signal_position_note": "Positional measure within recent observations. Not a risk, alert, or warning level.",
-    "signal_position_label": "Higher than 92% of the last 30 observed days."
+    "signal_position_label": "Higher than 17% of the last 30 observed days."
   }
 }
