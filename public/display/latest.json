@@ -1,44 +1,44 @@
 {
-  "display_date": "2026-05-27",
+  "display_date": "2026-05-28",
   "page_payload": {
-    "date": "2026-05-27",
+    "date": "2026-05-28",
     "headline": "Signal Position",
-    "data_date": "2026-05-27",
+    "data_date": "2026-05-28",
     "top_cards": [
       {
-        "title": "M6 earthquake near western Indian-Antarctic Ridge",
+        "title": "M5.3 earthquake near Revilla Gigedo Islands region",
         "category": "geophysical",
-        "event_time": "2026-05-27T15:01:11Z",
-        "event_type": "earthquake",
-        "source_note": "Public observation data",
-        "display_note": "Above the recent baseline.",
-        "anomaly_score": 0.568799725104673,
-        "signal_status": "score_contributor",
-        "magnitude_value": 6.0,
-        "effective_anomaly": 0.568799725104673,
-        "score_contribution": 11.37599450209346
-      },
-      {
-        "title": "M5.3 earthquake near 280 km WNW of Neiafu, Tonga",
-        "category": "geophysical",
-        "event_time": "2026-05-27T19:09:53Z",
+        "event_time": "2026-05-28T16:18:09Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.954770967140005,
+        "anomaly_score": -0.86665097856059,
         "signal_status": "context_only",
         "magnitude_value": 5.3,
         "effective_anomaly": 0,
         "score_contribution": 0
       },
       {
-        "title": "M5.1 earthquake near 131 km SE of Bitung, Indonesia",
+        "title": "M5.2 earthquake near 49 km ESE of Adak, Alaska",
         "category": "geophysical",
-        "event_time": "2026-05-27T06:24:16Z",
+        "event_time": "2026-05-28T00:25:21Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.39007687920991,
+        "anomaly_score": -1.07201850902518,
+        "signal_status": "context_only",
+        "magnitude_value": 5.2,
+        "effective_anomaly": 0,
+        "score_contribution": 0
+      },
+      {
+        "title": "M5.1 earthquake near 68 km SSE of Soe, Indonesia",
+        "category": "geophysical",
+        "event_time": "2026-05-28T01:46:18Z",
+        "event_type": "earthquake",
+        "source_note": "Public observation data",
+        "display_note": "Observed signal, but not above the recent baseline.",
+        "anomaly_score": -1.27738603948978,
         "signal_status": "context_only",
         "magnitude_value": 5.1,
         "effective_anomaly": 0,
@@ -50,32 +50,22 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-05-28T04:58:12Z",
+    "updated_at": "2026-05-29T05:00:10Z",
     "quiet_signal": {
-      "id": "950452ba-b866-409d-9a84-d33dbf60310d",
-      "note": "This signal sits above the recent baseline within the current data window.",
-      "title": "M6.9 earthquake near 29 km ENE of Calama, Chile",
-      "summary": "M6.9 earthquake near 29 km ENE of Calama, Chile, observed about 50 hours before the end of the data date.",
-      "category": "geophysical",
-      "available": true,
-      "event_time": "2026-05-25T21:52:20Z",
-      "event_type": "earthquake",
-      "safety_note": "Not a forecast, alert, or recommendation.",
-      "anomaly_score": 2.52767632941926,
-      "magnitude_value": 6.9,
-      "hours_ago_from_data_end": 50.1
+      "note": "No quiet signal available for this data date.",
+      "available": false
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "Higher than 68% of the last 30 observed days.",
+      "Higher than 20% of the last 30 observed days.",
       "Positional measure within recent observations. Not a risk, alert, or warning level.",
       "Based on public earthquake, space weather, internet, and Wikipedia attention data."
     ],
-    "percentile_line": "This data date is in the 68th percentile of the last 30 observed days.",
-    "signal_position": 68,
+    "percentile_line": "This data date is in the 20th percentile of the last 30 observed days.",
+    "signal_position": 20,
     "top_signal_note": null,
-    "weirdness_score": 68,
+    "weirdness_score": 20,
     "signal_position_note": "Positional measure within recent observations. Not a risk, alert, or warning level.",
-    "signal_position_label": "Higher than 68% of the last 30 observed days."
+    "signal_position_label": "Higher than 20% of the last 30 observed days."
   }
 }
