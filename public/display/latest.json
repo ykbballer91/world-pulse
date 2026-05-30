@@ -1,46 +1,46 @@
 {
-  "display_date": "2026-05-28",
+  "display_date": "2026-05-29",
   "page_payload": {
-    "date": "2026-05-28",
+    "date": "2026-05-29",
     "headline": "Signal Position",
-    "data_date": "2026-05-28",
+    "data_date": "2026-05-29",
     "top_cards": [
       {
-        "title": "M5.3 earthquake near Revilla Gigedo Islands region",
+        "title": "M5.3 earthquake near 106 km SW of Turpan, China",
         "category": "geophysical",
-        "event_time": "2026-05-28T16:18:09Z",
+        "event_time": "2026-05-29T06:55:52Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.86665097856059,
+        "anomaly_score": -0.881507917616551,
         "signal_status": "context_only",
         "magnitude_value": 5.3,
         "effective_anomaly": 0,
         "score_contribution": 0
       },
       {
-        "title": "M5.2 earthquake near 49 km ESE of Adak, Alaska",
+        "title": "M5.2 earthquake near central Mid-Atlantic Ridge",
         "category": "geophysical",
-        "event_time": "2026-05-28T00:25:21Z",
+        "event_time": "2026-05-29T21:21:44Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.07201850902518,
+        "anomaly_score": -1.09205917182432,
         "signal_status": "context_only",
         "magnitude_value": 5.2,
         "effective_anomaly": 0,
         "score_contribution": 0
       },
       {
-        "title": "M5.1 earthquake near 68 km SSE of Soe, Indonesia",
+        "title": "M5.2 earthquake near 250 km ESE of Severo-Kuril’sk, Russia",
         "category": "geophysical",
-        "event_time": "2026-05-28T01:46:18Z",
+        "event_time": "2026-05-29T16:05:58Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.27738603948978,
+        "anomaly_score": -1.09205917182432,
         "signal_status": "context_only",
-        "magnitude_value": 5.1,
+        "magnitude_value": 5.2,
         "effective_anomaly": 0,
         "score_contribution": 0
       }
@@ -50,7 +50,7 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-05-29T05:00:10Z",
+    "updated_at": "2026-05-30T04:41:25Z",
     "quiet_signal": {
       "note": "No quiet signal available for this data date.",
       "available": false
