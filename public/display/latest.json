@@ -1,44 +1,44 @@
 {
-  "display_date": "2026-05-30",
+  "display_date": "2026-05-31",
   "page_payload": {
-    "date": "2026-05-30",
+    "date": "2026-05-31",
     "headline": "Signal Position",
-    "data_date": "2026-05-30",
+    "data_date": "2026-05-31",
     "top_cards": [
       {
-        "title": "M5.6 earthquake near 137 km SSE of Oistins, Barbados",
+        "title": "M6 earthquake near 33 km NW of Valparaíso, Chile",
         "category": "geophysical",
-        "event_time": "2026-05-30T21:27:25Z",
+        "event_time": "2026-05-31T21:34:18Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
-        "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.235710611968214,
-        "signal_status": "context_only",
-        "magnitude_value": 5.6,
-        "effective_anomaly": 0,
-        "score_contribution": 0
+        "display_note": "Above the recent baseline.",
+        "anomaly_score": 0.555026225194138,
+        "signal_status": "score_contributor",
+        "magnitude_value": 6.0,
+        "effective_anomaly": 0.555026225194138,
+        "score_contribution": 11.10052450388276
       },
       {
-        "title": "M5 earthquake near 81 km SE of Lae, Papua New Guinea",
+        "title": "M5 earthquake near Kermadec Islands region",
         "category": "geophysical",
-        "event_time": "2026-05-30T22:45:51Z",
+        "event_time": "2026-05-31T19:15:39Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.4984460332265,
+        "anomaly_score": -1.6243961250446,
         "signal_status": "context_only",
         "magnitude_value": 5.0,
         "effective_anomaly": 0,
         "score_contribution": 0
       },
       {
-        "title": "M5 earthquake near 195 km NNW of Kilmia, Yemen",
+        "title": "M5 earthquake near south of the Fiji Islands",
         "category": "geophysical",
-        "event_time": "2026-05-30T11:06:52Z",
+        "event_time": "2026-05-31T03:57:05Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.4984460332265,
+        "anomaly_score": -1.6243961250446,
         "signal_status": "context_only",
         "magnitude_value": 5.0,
         "effective_anomaly": 0,
@@ -50,22 +50,22 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-05-31T05:08:37Z",
+    "updated_at": "2026-06-01T05:33:02Z",
     "quiet_signal": {
       "note": "No quiet signal available for this data date.",
       "available": false
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "Higher than 20% of the last 30 observed days.",
+      "Higher than 52% of the last 30 observed days.",
       "Positional measure within recent observations. Not a risk, alert, or warning level.",
       "Based on public earthquake, space weather, internet, and Wikipedia attention data."
     ],
-    "percentile_line": "This data date is in the 20th percentile of the last 30 observed days.",
-    "signal_position": 20,
+    "percentile_line": "This data date is in the 52nd percentile of the last 30 observed days.",
+    "signal_position": 52,
     "top_signal_note": null,
-    "weirdness_score": 20,
+    "weirdness_score": 52,
     "signal_position_note": "Positional measure within recent observations. Not a risk, alert, or warning level.",
-    "signal_position_label": "Higher than 20% of the last 30 observed days."
+    "signal_position_label": "Higher than 52% of the last 30 observed days."
   }
 }
