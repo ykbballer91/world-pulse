@@ -1,46 +1,46 @@
 {
-  "display_date": "2026-05-31",
+  "display_date": "2026-06-01",
   "page_payload": {
-    "date": "2026-05-31",
+    "date": "2026-06-01",
     "headline": "Signal Position",
-    "data_date": "2026-05-31",
+    "data_date": "2026-06-01",
     "top_cards": [
       {
-        "title": "M6 earthquake near 33 km NW of Valparaíso, Chile",
+        "title": "M6.2 earthquake near 22 km WSW of Scarcelli, Italy",
         "category": "geophysical",
-        "event_time": "2026-05-31T21:34:18Z",
+        "event_time": "2026-06-01T22:12:36Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Above the recent baseline.",
-        "anomaly_score": 0.555026225194138,
+        "anomaly_score": 0.932907280359535,
         "signal_status": "score_contributor",
-        "magnitude_value": 6.0,
-        "effective_anomaly": 0.555026225194138,
-        "score_contribution": 11.10052450388276
+        "magnitude_value": 6.2,
+        "effective_anomaly": 0.932907280359535,
+        "score_contribution": 18.6581456071907
       },
       {
-        "title": "M5 earthquake near Kermadec Islands region",
+        "title": "M5.7 earthquake near Izu Islands, Japan region",
         "category": "geophysical",
-        "event_time": "2026-05-31T19:15:39Z",
+        "event_time": "2026-06-01T03:34:30Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.6243961250446,
+        "anomaly_score": -0.11608891194878,
         "signal_status": "context_only",
-        "magnitude_value": 5.0,
+        "magnitude_value": 5.7,
         "effective_anomaly": 0,
         "score_contribution": 0
       },
       {
-        "title": "M5 earthquake near south of the Fiji Islands",
+        "title": "M5.4 earthquake near 207 km WNW of Abepura, Indonesia",
         "category": "geophysical",
-        "event_time": "2026-05-31T03:57:05Z",
+        "event_time": "2026-06-01T23:01:17Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.6243961250446,
+        "anomaly_score": -0.745486627333768,
         "signal_status": "context_only",
-        "magnitude_value": 5.0,
+        "magnitude_value": 5.4,
         "effective_anomaly": 0,
         "score_contribution": 0
       }
@@ -50,22 +50,22 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-06-01T05:33:02Z",
+    "updated_at": "2026-06-02T05:17:51Z",
     "quiet_signal": {
       "note": "No quiet signal available for this data date.",
       "available": false
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "Higher than 52% of the last 30 observed days.",
+      "Higher than 68% of the last 30 observed days.",
       "Positional measure within recent observations. Not a risk, alert, or warning level.",
       "Based on public earthquake, space weather, internet, and Wikipedia attention data."
     ],
-    "percentile_line": "This data date is in the 52nd percentile of the last 30 observed days.",
-    "signal_position": 52,
+    "percentile_line": "This data date is in the 68th percentile of the last 30 observed days.",
+    "signal_position": 68,
     "top_signal_note": null,
-    "weirdness_score": 52,
+    "weirdness_score": 68,
     "signal_position_note": "Positional measure within recent observations. Not a risk, alert, or warning level.",
-    "signal_position_label": "Higher than 52% of the last 30 observed days."
+    "signal_position_label": "Higher than 68% of the last 30 observed days."
   }
 }
