@@ -1,46 +1,46 @@
 {
-  "display_date": "2026-06-01",
+  "display_date": "2026-06-02",
   "page_payload": {
-    "date": "2026-06-01",
+    "date": "2026-06-02",
     "headline": "Signal Position",
-    "data_date": "2026-06-01",
+    "data_date": "2026-06-02",
     "top_cards": [
       {
-        "title": "M6.2 earthquake near 22 km WSW of Scarcelli, Italy",
+        "title": "M4.9 earthquake near 278 km WNW of Houma, Tonga",
         "category": "geophysical",
-        "event_time": "2026-06-01T22:12:36Z",
-        "event_type": "earthquake",
-        "source_note": "Public observation data",
-        "display_note": "Above the recent baseline.",
-        "anomaly_score": 0.932907280359535,
-        "signal_status": "score_contributor",
-        "magnitude_value": 6.2,
-        "effective_anomaly": 0.932907280359535,
-        "score_contribution": 18.6581456071907
-      },
-      {
-        "title": "M5.7 earthquake near Izu Islands, Japan region",
-        "category": "geophysical",
-        "event_time": "2026-06-01T03:34:30Z",
+        "event_time": "2026-06-02T00:49:50Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.11608891194878,
+        "anomaly_score": -1.64313324080642,
         "signal_status": "context_only",
-        "magnitude_value": 5.7,
+        "magnitude_value": 4.9,
         "effective_anomaly": 0,
         "score_contribution": 0
       },
       {
-        "title": "M5.4 earthquake near 207 km WNW of Abepura, Indonesia",
+        "title": "M4.7 earthquake near 48 km E of Farkhār, Afghanistan",
         "category": "geophysical",
-        "event_time": "2026-06-01T23:01:17Z",
+        "event_time": "2026-06-02T04:02:45Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.745486627333768,
+        "anomaly_score": -2.04455015631287,
         "signal_status": "context_only",
-        "magnitude_value": 5.4,
+        "magnitude_value": 4.7,
+        "effective_anomaly": 0,
+        "score_contribution": 0
+      },
+      {
+        "title": "M4.6 earthquake near 232 km E of Levuka, Fiji",
+        "category": "geophysical",
+        "event_time": "2026-06-02T13:57:47Z",
+        "event_type": "earthquake",
+        "source_note": "Public observation data",
+        "display_note": "Observed signal, but not above the recent baseline.",
+        "anomaly_score": -2.2452586140661,
+        "signal_status": "context_only",
+        "magnitude_value": 4.6,
         "effective_anomaly": 0,
         "score_contribution": 0
       }
@@ -50,22 +50,22 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-06-02T05:17:51Z",
+    "updated_at": "2026-06-03T05:33:03Z",
     "quiet_signal": {
       "note": "No quiet signal available for this data date.",
       "available": false
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "Higher than 68% of the last 30 observed days.",
+      "Higher than 18% of the last 30 observed days.",
       "Positional measure within recent observations. Not a risk, alert, or warning level.",
       "Based on public earthquake, space weather, internet, and Wikipedia attention data."
     ],
-    "percentile_line": "This data date is in the 68th percentile of the last 30 observed days.",
-    "signal_position": 68,
+    "percentile_line": "This data date is in the 18th percentile of the last 30 observed days.",
+    "signal_position": 18,
     "top_signal_note": null,
-    "weirdness_score": 68,
+    "weirdness_score": 18,
     "signal_position_note": "Positional measure within recent observations. Not a risk, alert, or warning level.",
-    "signal_position_label": "Higher than 68% of the last 30 observed days."
+    "signal_position_label": "Higher than 18% of the last 30 observed days."
   }
 }
