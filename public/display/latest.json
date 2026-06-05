@@ -1,46 +1,46 @@
 {
-  "display_date": "2026-06-03",
+  "display_date": "2026-06-04",
   "page_payload": {
-    "date": "2026-06-03",
+    "date": "2026-06-04",
     "headline": "Signal Position",
-    "data_date": "2026-06-03",
+    "data_date": "2026-06-04",
     "top_cards": [
       {
-        "title": "M5.7 earthquake near 154 km WSW of Pistol River, Oregon",
+        "title": "M5.2 earthquake near 77 km S of Gorontalo, Indonesia",
         "category": "geophysical",
-        "event_time": "2026-06-03T10:53:54Z",
+        "event_time": "2026-06-04T23:28:32Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.0169909093295439,
-        "signal_status": "context_only",
-        "magnitude_value": 5.7,
-        "effective_anomaly": 0,
-        "score_contribution": 0
-      },
-      {
-        "title": "M5.6 earthquake near Vanuatu region",
-        "category": "geophysical",
-        "event_time": "2026-06-03T10:20:37Z",
-        "event_type": "earthquake",
-        "source_note": "Public observation data",
-        "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.213039863131896,
-        "signal_status": "context_only",
-        "magnitude_value": 5.6,
-        "effective_anomaly": 0,
-        "score_contribution": 0
-      },
-      {
-        "title": "M5.2 earthquake near 202 km SSE of Vilyuchinsk, Russia",
-        "category": "geophysical",
-        "event_time": "2026-06-03T17:23:30Z",
-        "event_type": "earthquake",
-        "source_note": "Public observation data",
-        "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.9972356783413,
+        "anomaly_score": -1.06155593568383,
         "signal_status": "context_only",
         "magnitude_value": 5.2,
+        "effective_anomaly": 0,
+        "score_contribution": 0
+      },
+      {
+        "title": "M4.9 earthquake near 70 km SW of Modisi, Indonesia",
+        "category": "geophysical",
+        "event_time": "2026-06-04T17:34:22Z",
+        "event_type": "earthquake",
+        "source_note": "Public observation data",
+        "display_note": "Observed signal, but not above the recent baseline.",
+        "anomaly_score": -1.67076019956571,
+        "signal_status": "context_only",
+        "magnitude_value": 4.9,
+        "effective_anomaly": 0,
+        "score_contribution": 0
+      },
+      {
+        "title": "M4.9 earthquake near 57 km NNW of Huocheng, China",
+        "category": "geophysical",
+        "event_time": "2026-06-04T16:19:39Z",
+        "event_type": "earthquake",
+        "source_note": "Public observation data",
+        "display_note": "Observed signal, but not above the recent baseline.",
+        "anomaly_score": -1.67076019956571,
+        "signal_status": "context_only",
+        "magnitude_value": 4.9,
         "effective_anomaly": 0,
         "score_contribution": 0
       }
@@ -50,22 +50,22 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-06-04T05:30:47Z",
+    "updated_at": "2026-06-05T05:05:49Z",
     "quiet_signal": {
       "note": "No quiet signal available for this data date.",
       "available": false
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "Higher than 20% of the last 30 observed days.",
+      "Higher than 22% of the last 30 observed days.",
       "Positional measure within recent observations. Not a risk, alert, or warning level.",
       "Based on public earthquake, space weather, internet, and Wikipedia attention data."
     ],
-    "percentile_line": "This data date is in the 20th percentile of the last 30 observed days.",
-    "signal_position": 20,
+    "percentile_line": "This data date is in the 22nd percentile of the last 30 observed days.",
+    "signal_position": 22,
     "top_signal_note": null,
-    "weirdness_score": 20,
+    "weirdness_score": 22,
     "signal_position_note": "Positional measure within recent observations. Not a risk, alert, or warning level.",
-    "signal_position_label": "Higher than 20% of the last 30 observed days."
+    "signal_position_label": "Higher than 22% of the last 30 observed days."
   }
 }
