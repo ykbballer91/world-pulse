@@ -1,46 +1,46 @@
 {
-  "display_date": "2026-06-05",
+  "display_date": "2026-06-06",
   "page_payload": {
-    "date": "2026-06-05",
+    "date": "2026-06-06",
     "headline": "Signal Position",
-    "data_date": "2026-06-05",
+    "data_date": "2026-06-06",
     "top_cards": [
       {
-        "title": "M5.6 earthquake near Balleny Islands region",
+        "title": "M5.3 earthquake near 221 km ENE of Neiafu, Tonga",
         "category": "geophysical",
-        "event_time": "2026-06-05T20:58:09Z",
+        "event_time": "2026-06-06T14:09:45Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.15890680674019,
-        "signal_status": "context_only",
-        "magnitude_value": 5.6,
-        "effective_anomaly": 0,
-        "score_contribution": 0
-      },
-      {
-        "title": "M5.3 earthquake near 97 km NNE of Lospalos, Timor Leste",
-        "category": "geophysical",
-        "event_time": "2026-06-05T15:57:05Z",
-        "event_type": "earthquake",
-        "source_note": "Public observation data",
-        "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.717563549186189,
+        "anomaly_score": -0.815046787263008,
         "signal_status": "context_only",
         "magnitude_value": 5.3,
         "effective_anomaly": 0,
         "score_contribution": 0
       },
       {
-        "title": "M5.3 earthquake near 7 km NNW of Manito, Philippines",
+        "title": "M5.2 earthquake near 22 km E of Venilale, Timor Leste",
         "category": "geophysical",
-        "event_time": "2026-06-05T13:57:59Z",
+        "event_time": "2026-06-06T22:38:35Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.717563549186189,
+        "anomaly_score": -1.01948996132563,
         "signal_status": "context_only",
-        "magnitude_value": 5.3,
+        "magnitude_value": 5.2,
+        "effective_anomaly": 0,
+        "score_contribution": 0
+      },
+      {
+        "title": "M5.2 earthquake near 100 km ESE of Modisi, Indonesia",
+        "category": "geophysical",
+        "event_time": "2026-06-06T18:56:47Z",
+        "event_type": "earthquake",
+        "source_note": "Public observation data",
+        "display_note": "Observed signal, but not above the recent baseline.",
+        "anomaly_score": -1.01948996132563,
+        "signal_status": "context_only",
+        "magnitude_value": 5.2,
         "effective_anomaly": 0,
         "score_contribution": 0
       }
@@ -50,22 +50,22 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-06-06T04:45:53Z",
+    "updated_at": "2026-06-07T05:16:03Z",
     "quiet_signal": {
       "note": "No quiet signal available for this data date.",
       "available": false
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "Higher than 18% of the last 30 observed days.",
+      "Higher than 17% of the last 30 observed days.",
       "Positional measure within recent observations. Not a risk, alert, or warning level.",
       "Based on public earthquake, space weather, internet, and Wikipedia attention data."
     ],
-    "percentile_line": "This data date is in the 18th percentile of the last 30 observed days.",
-    "signal_position": 18,
+    "percentile_line": "This data date is in the 17th percentile of the last 30 observed days.",
+    "signal_position": 17,
     "top_signal_note": null,
-    "weirdness_score": 18,
+    "weirdness_score": 17,
     "signal_position_note": "Positional measure within recent observations. Not a risk, alert, or warning level.",
-    "signal_position_label": "Higher than 18% of the last 30 observed days."
+    "signal_position_label": "Higher than 17% of the last 30 observed days."
   }
 }
