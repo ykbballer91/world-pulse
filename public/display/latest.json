@@ -1,48 +1,48 @@
 {
-  "display_date": "2026-06-06",
+  "display_date": "2026-06-07",
   "page_payload": {
-    "date": "2026-06-06",
+    "date": "2026-06-07",
     "headline": "Signal Position",
-    "data_date": "2026-06-06",
+    "data_date": "2026-06-07",
     "top_cards": [
       {
-        "title": "M5.3 earthquake near 221 km ENE of Neiafu, Tonga",
+        "title": "M7.8 earthquake near 26 km SW of Kablalan, Philippines",
         "category": "geophysical",
-        "event_time": "2026-06-06T14:09:45Z",
+        "event_time": "2026-06-07T23:37:41Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
-        "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.815046787263008,
-        "signal_status": "context_only",
-        "magnitude_value": 5.3,
-        "effective_anomaly": 0,
-        "score_contribution": 0
+        "display_note": "Above the recent baseline.",
+        "anomaly_score": 3.21212441138358,
+        "signal_status": "score_contributor",
+        "magnitude_value": 7.8,
+        "effective_anomaly": 3.21212441138358,
+        "score_contribution": 64.2424882276716
       },
       {
-        "title": "M5.2 earthquake near 22 km E of Venilale, Timor Leste",
+        "title": "M6.1 earthquake near 124 km SE of Severo-Kuril’sk, Russia",
         "category": "geophysical",
-        "event_time": "2026-06-06T22:38:35Z",
+        "event_time": "2026-06-07T10:41:58Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
-        "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.01948996132563,
-        "signal_status": "context_only",
-        "magnitude_value": 5.2,
-        "effective_anomaly": 0,
-        "score_contribution": 0
+        "display_note": "Above the recent baseline.",
+        "anomaly_score": 0.492696373857641,
+        "signal_status": "score_contributor",
+        "magnitude_value": 6.1,
+        "effective_anomaly": 0.492696373857641,
+        "score_contribution": 4.92696373857641
       },
       {
-        "title": "M5.2 earthquake near 100 km ESE of Modisi, Indonesia",
+        "title": "M6 earthquake near 4 km ENE of Pangyan, Philippines",
         "category": "geophysical",
-        "event_time": "2026-06-06T18:56:47Z",
+        "event_time": "2026-06-07T23:49:13Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
-        "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.01948996132563,
-        "signal_status": "context_only",
-        "magnitude_value": 5.2,
-        "effective_anomaly": 0,
-        "score_contribution": 0
+        "display_note": "Above the recent baseline.",
+        "anomaly_score": 0.332730018709056,
+        "signal_status": "score_contributor",
+        "magnitude_value": 6.0,
+        "effective_anomaly": 0.332730018709056,
+        "score_contribution": 1.66365009354528
       }
     ],
     "principles": {
@@ -50,22 +50,22 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-06-07T05:16:03Z",
+    "updated_at": "2026-06-08T05:22:31Z",
     "quiet_signal": {
       "note": "No quiet signal available for this data date.",
       "available": false
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "Higher than 17% of the last 30 observed days.",
+      "Higher than 98% of the last 30 observed days.",
       "Positional measure within recent observations. Not a risk, alert, or warning level.",
       "Based on public earthquake, space weather, internet, and Wikipedia attention data."
     ],
-    "percentile_line": "This data date is in the 17th percentile of the last 30 observed days.",
-    "signal_position": 17,
+    "percentile_line": "This data date is in the 98th percentile of the last 30 observed days.",
+    "signal_position": 98,
     "top_signal_note": null,
-    "weirdness_score": 17,
+    "weirdness_score": 98,
     "signal_position_note": "Positional measure within recent observations. Not a risk, alert, or warning level.",
-    "signal_position_label": "Higher than 17% of the last 30 observed days."
+    "signal_position_label": "Higher than 98% of the last 30 observed days."
   }
 }
