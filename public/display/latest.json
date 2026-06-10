@@ -1,48 +1,48 @@
 {
-  "display_date": "2026-06-08",
+  "display_date": "2026-06-09",
   "page_payload": {
-    "date": "2026-06-08",
+    "date": "2026-06-09",
     "headline": "Signal Position",
-    "data_date": "2026-06-08",
+    "data_date": "2026-06-09",
     "top_cards": [
       {
-        "title": "M6.5 earthquake near 19 km SW of Balangonan, Philippines",
+        "title": "M5.4 earthquake near 21 km SSW of Lumatil, Philippines",
         "category": "geophysical",
-        "event_time": "2026-06-08T00:55:12Z",
+        "event_time": "2026-06-09T10:07:29Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
-        "display_note": "Above the recent baseline.",
-        "anomaly_score": 1.11971317429297,
-        "signal_status": "score_contributor",
-        "magnitude_value": 6.5,
-        "effective_anomaly": 1.11971317429297,
-        "score_contribution": 22.3942634858594
+        "display_note": "Observed signal, but not above the recent baseline.",
+        "anomaly_score": -0.671743112001099,
+        "signal_status": "context_only",
+        "magnitude_value": 5.4,
+        "effective_anomaly": 0,
+        "score_contribution": 0
       },
       {
-        "title": "M6.5 earthquake near 20 km WSW of Balangonan, Philippines",
+        "title": "M5.2 earthquake near 163 km ESE of Petropavlovsk-Kamchatsky, Russia",
         "category": "geophysical",
-        "event_time": "2026-06-08T00:55:11Z",
+        "event_time": "2026-06-09T19:49:03Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
-        "display_note": "Above the recent baseline.",
-        "anomaly_score": 1.11971317429297,
-        "signal_status": "score_contributor",
-        "magnitude_value": 6.5,
-        "effective_anomaly": 1.11971317429297,
-        "score_contribution": 11.1971317429297
+        "display_note": "Observed signal, but not above the recent baseline.",
+        "anomaly_score": -0.995214915532931,
+        "signal_status": "context_only",
+        "magnitude_value": 5.2,
+        "effective_anomaly": 0,
+        "score_contribution": 0
       },
       {
-        "title": "M6.1 earthquake near 104 km WNW of Mantua, Cuba",
+        "title": "M5.2 earthquake near 21 km SW of Sarangani, Philippines",
         "category": "geophysical",
-        "event_time": "2026-06-08T18:00:27Z",
+        "event_time": "2026-06-09T06:15:17Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
-        "display_note": "Above the recent baseline.",
-        "anomaly_score": 0.512822564920087,
-        "signal_status": "score_contributor",
-        "magnitude_value": 6.1,
-        "effective_anomaly": 0.512822564920087,
-        "score_contribution": 2.564112824600435
+        "display_note": "Observed signal, but not above the recent baseline.",
+        "anomaly_score": -0.995214915532931,
+        "signal_status": "context_only",
+        "magnitude_value": 5.2,
+        "effective_anomaly": 0,
+        "score_contribution": 0
       }
     ],
     "principles": {
@@ -50,32 +50,32 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-06-09T04:54:40Z",
+    "updated_at": "2026-06-10T05:07:17Z",
     "quiet_signal": {
       "id": "1438285b-f699-4b18-be62-6747275427eb",
       "note": "This signal sits above the recent baseline within the current data window.",
       "title": "M7.8 earthquake near 26 km SW of Kablalan, Philippines",
-      "summary": "M7.8 earthquake near 26 km SW of Kablalan, Philippines, observed about 24 hours before the end of the data date.",
+      "summary": "M7.8 earthquake near 26 km SW of Kablalan, Philippines, observed about 48 hours before the end of the data date.",
       "category": "geophysical",
       "available": true,
       "event_time": "2026-06-07T23:37:41Z",
       "event_type": "earthquake",
       "safety_note": "Not a forecast, alert, or recommendation.",
-      "anomaly_score": 3.09210765475484,
+      "anomaly_score": 3.20991853038089,
       "magnitude_value": 7.8,
-      "hours_ago_from_data_end": 24.4
+      "hours_ago_from_data_end": 48.4
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "Higher than 78% of the last 30 observed days.",
+      "Higher than 23% of the last 30 observed days.",
       "Positional measure within recent observations. Not a risk, alert, or warning level.",
       "Based on public earthquake, space weather, internet, and Wikipedia attention data."
     ],
-    "percentile_line": "This data date is in the 78th percentile of the last 30 observed days.",
-    "signal_position": 78,
+    "percentile_line": "This data date is in the 23rd percentile of the last 30 observed days.",
+    "signal_position": 23,
     "top_signal_note": null,
-    "weirdness_score": 78,
+    "weirdness_score": 23,
     "signal_position_note": "Positional measure within recent observations. Not a risk, alert, or warning level.",
-    "signal_position_label": "Higher than 78% of the last 30 observed days."
+    "signal_position_label": "Higher than 23% of the last 30 observed days."
   }
 }
