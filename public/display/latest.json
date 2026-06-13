@@ -1,46 +1,46 @@
 {
-  "display_date": "2026-06-11",
+  "display_date": "2026-06-12",
   "page_payload": {
-    "date": "2026-06-11",
+    "date": "2026-06-12",
     "headline": "Signal Position",
-    "data_date": "2026-06-11",
+    "data_date": "2026-06-12",
     "top_cards": [
       {
-        "title": "M5.5 earthquake near 128 km NW of Vallenar, Chile",
+        "title": "M5.2 earthquake near 65 km S of Sarangani, Philippines",
         "category": "geophysical",
-        "event_time": "2026-06-11T12:22:06Z",
+        "event_time": "2026-06-12T19:10:03Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.43786775898926,
+        "anomaly_score": -0.910421826179961,
         "signal_status": "context_only",
-        "magnitude_value": 5.5,
+        "magnitude_value": 5.2,
         "effective_anomaly": 0,
         "score_contribution": 0
       },
       {
-        "title": "M5.5 earthquake near 58 km S of Sarangani, Philippines",
+        "title": "M5 earthquake near 30 km SSW of Daliao, Philippines",
         "category": "geophysical",
-        "event_time": "2026-06-11T01:56:14Z",
+        "event_time": "2026-06-12T17:58:40Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.43786775898926,
+        "anomaly_score": -1.22875113603309,
         "signal_status": "context_only",
-        "magnitude_value": 5.5,
+        "magnitude_value": 5.0,
         "effective_anomaly": 0,
         "score_contribution": 0
       },
       {
-        "title": "M5.4 earthquake near 59 km S of Sarangani, Philippines",
+        "title": "M4.9 earthquake near 137 km N of Tobelo, Indonesia",
         "category": "geophysical",
-        "event_time": "2026-06-11T07:33:23Z",
+        "event_time": "2026-06-12T19:33:49Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.591326085737833,
+        "anomaly_score": -1.38791579095966,
         "signal_status": "context_only",
-        "magnitude_value": 5.4,
+        "magnitude_value": 4.9,
         "effective_anomaly": 0,
         "score_contribution": 0
       }
@@ -50,22 +50,22 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-06-12T05:24:15Z",
+    "updated_at": "2026-06-13T05:14:03Z",
     "quiet_signal": {
       "note": "No quiet signal available for this data date.",
       "available": false
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "Higher than 15% of the last 30 observed days.",
+      "Higher than 18% of the last 30 observed days.",
       "Positional measure within recent observations. Not a risk, alert, or warning level.",
       "Based on public earthquake, space weather, internet, and Wikipedia attention data."
     ],
-    "percentile_line": "This data date is in the 15th percentile of the last 30 observed days.",
-    "signal_position": 15,
+    "percentile_line": "This data date is in the 18th percentile of the last 30 observed days.",
+    "signal_position": 18,
     "top_signal_note": null,
-    "weirdness_score": 15,
+    "weirdness_score": 18,
     "signal_position_note": "Positional measure within recent observations. Not a risk, alert, or warning level.",
-    "signal_position_label": "Higher than 15% of the last 30 observed days."
+    "signal_position_label": "Higher than 18% of the last 30 observed days."
   }
 }
