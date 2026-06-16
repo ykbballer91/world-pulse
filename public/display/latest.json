@@ -1,46 +1,46 @@
 {
-  "display_date": "2026-06-14",
+  "display_date": "2026-06-15",
   "page_payload": {
-    "date": "2026-06-14",
+    "date": "2026-06-15",
     "headline": "Signal Position",
-    "data_date": "2026-06-14",
+    "data_date": "2026-06-15",
     "top_cards": [
       {
-        "title": "M5.2 earthquake near 53 km ENE of Hinatuan, Philippines",
+        "title": "M6.2 earthquake near 67 km ESE of Pondaguitan, Philippines",
         "category": "geophysical",
-        "event_time": "2026-06-14T14:08:52Z",
+        "event_time": "2026-06-15T09:18:38Z",
+        "event_type": "earthquake",
+        "source_note": "Public observation data",
+        "display_note": "Above the recent baseline.",
+        "anomaly_score": 0.672203034217481,
+        "signal_status": "score_contributor",
+        "magnitude_value": 6.2,
+        "effective_anomaly": 0.672203034217481,
+        "score_contribution": 13.444060684349619
+      },
+      {
+        "title": "M5.5 earthquake near 5 km SSW of Pangyan, Philippines",
+        "category": "geophysical",
+        "event_time": "2026-06-15T15:30:24Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.716988310345503,
+        "anomaly_score": -0.427194451652231,
         "signal_status": "context_only",
-        "magnitude_value": 5.2,
+        "magnitude_value": 5.5,
         "effective_anomaly": 0,
         "score_contribution": 0
       },
       {
-        "title": "M5.1 earthquake near 27 km SE of Magdalena, Philippines",
+        "title": "M5 earthquake near southeast of the Loyalty Islands",
         "category": "geophysical",
-        "event_time": "2026-06-14T15:34:42Z",
+        "event_time": "2026-06-15T18:20:45Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.869973013833163,
+        "anomaly_score": -1.2124783701306,
         "signal_status": "context_only",
-        "magnitude_value": 5.1,
-        "effective_anomaly": 0,
-        "score_contribution": 0
-      },
-      {
-        "title": "M4.9 earthquake near 20 km SSW of Methóni, Greece",
-        "category": "geophysical",
-        "event_time": "2026-06-14T18:17:25Z",
-        "event_type": "earthquake",
-        "source_note": "Public observation data",
-        "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.17594242080848,
-        "signal_status": "context_only",
-        "magnitude_value": 4.9,
+        "magnitude_value": 5.0,
         "effective_anomaly": 0,
         "score_contribution": 0
       }
@@ -50,22 +50,22 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-06-15T05:44:15Z",
+    "updated_at": "2026-06-16T06:15:58Z",
     "quiet_signal": {
       "note": "No quiet signal available for this data date.",
       "available": false
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "Higher than 18% of the last 30 observed days.",
+      "Higher than 65% of the last 30 observed days.",
       "Positional measure within recent observations. Not a risk, alert, or warning level.",
       "Based on public earthquake, space weather, internet, and Wikipedia attention data."
     ],
-    "percentile_line": "This data date is in the 18th percentile of the last 30 observed days.",
-    "signal_position": 18,
+    "percentile_line": "This data date is in the 65th percentile of the last 30 observed days.",
+    "signal_position": 65,
     "top_signal_note": null,
-    "weirdness_score": 18,
+    "weirdness_score": 65,
     "signal_position_note": "Positional measure within recent observations. Not a risk, alert, or warning level.",
-    "signal_position_label": "Higher than 18% of the last 30 observed days."
+    "signal_position_label": "Higher than 65% of the last 30 observed days."
   }
 }
