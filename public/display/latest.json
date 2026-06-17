@@ -1,46 +1,46 @@
 {
-  "display_date": "2026-06-15",
+  "display_date": "2026-06-16",
   "page_payload": {
-    "date": "2026-06-15",
+    "date": "2026-06-16",
     "headline": "Signal Position",
-    "data_date": "2026-06-15",
+    "data_date": "2026-06-16",
     "top_cards": [
       {
-        "title": "M6.2 earthquake near 67 km ESE of Pondaguitan, Philippines",
+        "title": "M6.7 earthquake near 43 km ESE of Palu, Indonesia",
         "category": "geophysical",
-        "event_time": "2026-06-15T09:18:38Z",
+        "event_time": "2026-06-16T03:27:44Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Above the recent baseline.",
-        "anomaly_score": 0.672203034217481,
+        "anomaly_score": 1.45475728163037,
         "signal_status": "score_contributor",
-        "magnitude_value": 6.2,
-        "effective_anomaly": 0.672203034217481,
-        "score_contribution": 13.444060684349619
+        "magnitude_value": 6.7,
+        "effective_anomaly": 1.45475728163037,
+        "score_contribution": 29.095145632607398
       },
       {
-        "title": "M5.5 earthquake near 5 km SSW of Pangyan, Philippines",
+        "title": "M6.3 earthquake near 260 km SSE of Dunhuang, China",
         "category": "geophysical",
-        "event_time": "2026-06-15T15:30:24Z",
+        "event_time": "2026-06-16T09:06:55Z",
+        "event_type": "earthquake",
+        "source_note": "Public observation data",
+        "display_note": "Above the recent baseline.",
+        "anomaly_score": 0.834391703109956,
+        "signal_status": "score_contributor",
+        "magnitude_value": 6.3,
+        "effective_anomaly": 0.834391703109956,
+        "score_contribution": 8.34391703109956
+      },
+      {
+        "title": "M5.5 earthquake near 4 km NW of Noda, Japan",
+        "category": "geophysical",
+        "event_time": "2026-06-16T10:46:34Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.427194451652231,
+        "anomaly_score": -0.40633945393087,
         "signal_status": "context_only",
         "magnitude_value": 5.5,
-        "effective_anomaly": 0,
-        "score_contribution": 0
-      },
-      {
-        "title": "M5 earthquake near southeast of the Loyalty Islands",
-        "category": "geophysical",
-        "event_time": "2026-06-15T18:20:45Z",
-        "event_type": "earthquake",
-        "source_note": "Public observation data",
-        "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.2124783701306,
-        "signal_status": "context_only",
-        "magnitude_value": 5.0,
         "effective_anomaly": 0,
         "score_contribution": 0
       }
@@ -50,22 +50,32 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-06-16T06:15:58Z",
+    "updated_at": "2026-06-17T05:33:34Z",
     "quiet_signal": {
-      "note": "No quiet signal available for this data date.",
-      "available": false
+      "id": "78438c56-e093-42a7-a823-0b8659ae5e10",
+      "note": "This signal sits above the recent baseline within the current data window.",
+      "title": "M6.7 earthquake near 43 km ESE of Palu, Indonesia",
+      "summary": "M6.7 earthquake near 43 km ESE of Palu, Indonesia, observed about 20 hours before the end of the data date.",
+      "category": "geophysical",
+      "available": true,
+      "event_time": "2026-06-16T03:27:44Z",
+      "event_type": "earthquake",
+      "safety_note": "Not a forecast, alert, or recommendation.",
+      "anomaly_score": 1.45475728163037,
+      "magnitude_value": 6.7,
+      "hours_ago_from_data_end": 20.5
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "Higher than 65% of the last 30 observed days.",
+      "Higher than 85% of the last 30 observed days.",
       "Positional measure within recent observations. Not a risk, alert, or warning level.",
       "Based on public earthquake, space weather, internet, and Wikipedia attention data."
     ],
-    "percentile_line": "This data date is in the 65th percentile of the last 30 observed days.",
-    "signal_position": 65,
+    "percentile_line": "This data date is in the 85th percentile of the last 30 observed days.",
+    "signal_position": 85,
     "top_signal_note": null,
-    "weirdness_score": 65,
+    "weirdness_score": 85,
     "signal_position_note": "Positional measure within recent observations. Not a risk, alert, or warning level.",
-    "signal_position_label": "Higher than 65% of the last 30 observed days."
+    "signal_position_label": "Higher than 85% of the last 30 observed days."
   }
 }
