@@ -1,46 +1,46 @@
 {
-  "display_date": "2026-06-20",
+  "display_date": "2026-06-21",
   "page_payload": {
-    "date": "2026-06-20",
+    "date": "2026-06-21",
     "headline": "Signal Position",
-    "data_date": "2026-06-20",
+    "data_date": "2026-06-21",
     "top_cards": [
       {
-        "title": "M5.8 earthquake near 140 km ESE of Petropavlovsk-Kamchatsky, Russia",
+        "title": "M5 earthquake near Kermadec Islands, New Zealand",
         "category": "geophysical",
-        "event_time": "2026-06-20T03:49:06Z",
-        "event_type": "earthquake",
-        "source_note": "Public observation data",
-        "display_note": "Above the recent baseline.",
-        "anomaly_score": 0.0170780456814044,
-        "signal_status": "score_contributor",
-        "magnitude_value": 5.8,
-        "effective_anomaly": 0.0170780456814044,
-        "score_contribution": 0.34156091362808805
-      },
-      {
-        "title": "M5.7 earthquake near west of Macquarie Island",
-        "category": "geophysical",
-        "event_time": "2026-06-20T01:46:32Z",
+        "event_time": "2026-06-21T23:14:39Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.13361059268398,
+        "anomaly_score": -1.1299319635551,
         "signal_status": "context_only",
-        "magnitude_value": 5.7,
+        "magnitude_value": 5.0,
         "effective_anomaly": 0,
         "score_contribution": 0
       },
       {
-        "title": "M5.5 earthquake near 160 km NE of Georgetown, Saint Helena",
+        "title": "M5 earthquake near Drake Passage",
         "category": "geophysical",
-        "event_time": "2026-06-20T06:43:17Z",
+        "event_time": "2026-06-21T20:05:26Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.434987869414751,
+        "anomaly_score": -1.1299319635551,
         "signal_status": "context_only",
-        "magnitude_value": 5.5,
+        "magnitude_value": 5.0,
+        "effective_anomaly": 0,
+        "score_contribution": 0
+      },
+      {
+        "title": "M4.9 earthquake near 217 km ESE of Severo-Kuril’sk, Russia",
+        "category": "geophysical",
+        "event_time": "2026-06-21T23:04:25Z",
+        "event_type": "earthquake",
+        "source_note": "Public observation data",
+        "display_note": "Observed signal, but not above the recent baseline.",
+        "anomaly_score": -1.27860722191761,
+        "signal_status": "context_only",
+        "magnitude_value": 4.9,
         "effective_anomaly": 0,
         "score_contribution": 0
       }
@@ -50,32 +50,32 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-06-21T05:32:29Z",
+    "updated_at": "2026-06-22T05:49:09Z",
     "quiet_signal": {
       "id": "f73ae331-5704-4135-8679-ff57ee2a94dd",
       "note": "This signal sits above the recent baseline within the current data window.",
       "title": "M6.6 earthquake near 133 km ESE of Petropavlovsk-Kamchatsky, Russia",
-      "summary": "M6.6 earthquake near 133 km ESE of Petropavlovsk-Kamchatsky, Russia, observed about 41 hours before the end of the data date.",
+      "summary": "M6.6 earthquake near 133 km ESE of Petropavlovsk-Kamchatsky, Russia, observed about 65 hours before the end of the data date.",
       "category": "geophysical",
       "available": true,
       "event_time": "2026-06-19T06:52:31Z",
       "event_type": "earthquake",
       "safety_note": "Not a forecast, alert, or recommendation.",
-      "anomaly_score": 1.22258715260449,
+      "anomaly_score": 1.24887217024511,
       "magnitude_value": 6.6,
-      "hours_ago_from_data_end": 41.1
+      "hours_ago_from_data_end": 65.1
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "Higher than 38% of the last 30 observed days.",
+      "Higher than 20% of the last 30 observed days.",
       "Positional measure within recent observations. Not a risk, alert, or warning level.",
       "Based on public earthquake, space weather, internet, and Wikipedia attention data."
     ],
-    "percentile_line": "This data date is in the 38th percentile of the last 30 observed days.",
-    "signal_position": 38,
+    "percentile_line": "This data date is in the 20th percentile of the last 30 observed days.",
+    "signal_position": 20,
     "top_signal_note": null,
-    "weirdness_score": 38,
+    "weirdness_score": 20,
     "signal_position_note": "Positional measure within recent observations. Not a risk, alert, or warning level.",
-    "signal_position_label": "Higher than 38% of the last 30 observed days."
+    "signal_position_label": "Higher than 20% of the last 30 observed days."
   }
 }
