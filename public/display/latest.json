@@ -1,46 +1,46 @@
 {
-  "display_date": "2026-06-22",
+  "display_date": "2026-06-23",
   "page_payload": {
-    "date": "2026-06-22",
+    "date": "2026-06-23",
     "headline": "Signal Position",
-    "data_date": "2026-06-22",
+    "data_date": "2026-06-23",
     "top_cards": [
       {
-        "title": "M5.2 earthquake near 42 km SSW of Jurm, Afghanistan",
+        "title": "M5.3 earthquake near 120 km S of Isangel, Vanuatu",
         "category": "geophysical",
-        "event_time": "2026-06-22T10:22:23Z",
+        "event_time": "2026-06-23T13:58:34Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.893259600268861,
+        "anomaly_score": -0.662080357491122,
+        "signal_status": "context_only",
+        "magnitude_value": 5.3,
+        "effective_anomaly": 0,
+        "score_contribution": 0
+      },
+      {
+        "title": "M5.3 earthquake near Kermadec Islands region",
+        "category": "geophysical",
+        "event_time": "2026-06-23T02:26:20Z",
+        "event_type": "earthquake",
+        "source_note": "Public observation data",
+        "display_note": "Observed signal, but not above the recent baseline.",
+        "anomaly_score": -0.662080357491122,
+        "signal_status": "context_only",
+        "magnitude_value": 5.3,
+        "effective_anomaly": 0,
+        "score_contribution": 0
+      },
+      {
+        "title": "M5.2 earthquake near 265 km SSE of Dunhuang, China",
+        "category": "geophysical",
+        "event_time": "2026-06-23T15:29:02Z",
+        "event_type": "earthquake",
+        "source_note": "Public observation data",
+        "display_note": "Observed signal, but not above the recent baseline.",
+        "anomaly_score": -0.82097964328899,
         "signal_status": "context_only",
         "magnitude_value": 5.2,
-        "effective_anomaly": 0,
-        "score_contribution": 0
-      },
-      {
-        "title": "M5.1 earthquake near Kermadec Islands region",
-        "category": "geophysical",
-        "event_time": "2026-06-22T19:46:11Z",
-        "event_type": "earthquake",
-        "source_note": "Public observation data",
-        "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.04726987617729,
-        "signal_status": "context_only",
-        "magnitude_value": 5.1,
-        "effective_anomaly": 0,
-        "score_contribution": 0
-      },
-      {
-        "title": "M4.9 earthquake near Mid-Indian Ridge",
-        "category": "geophysical",
-        "event_time": "2026-06-22T18:32:46Z",
-        "event_type": "earthquake",
-        "source_note": "Public observation data",
-        "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.35529042799413,
-        "signal_status": "context_only",
-        "magnitude_value": 4.9,
         "effective_anomaly": 0,
         "score_contribution": 0
       }
@@ -50,22 +50,22 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-06-23T04:50:31Z",
+    "updated_at": "2026-06-24T04:53:49Z",
     "quiet_signal": {
       "note": "No quiet signal available for this data date.",
       "available": false
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "Higher than 20% of the last 30 observed days.",
+      "Higher than 18% of the last 30 observed days.",
       "Positional measure within recent observations. Not a risk, alert, or warning level.",
       "Based on public earthquake, space weather, internet, and Wikipedia attention data."
     ],
-    "percentile_line": "This data date is in the 20th percentile of the last 30 observed days.",
-    "signal_position": 20,
+    "percentile_line": "This data date is in the 18th percentile of the last 30 observed days.",
+    "signal_position": 18,
     "top_signal_note": null,
-    "weirdness_score": 20,
+    "weirdness_score": 18,
     "signal_position_note": "Positional measure within recent observations. Not a risk, alert, or warning level.",
-    "signal_position_label": "Higher than 20% of the last 30 observed days."
+    "signal_position_label": "Higher than 18% of the last 30 observed days."
   }
 }
