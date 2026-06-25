@@ -1,48 +1,48 @@
 {
-  "display_date": "2026-06-23",
+  "display_date": "2026-06-24",
   "page_payload": {
-    "date": "2026-06-23",
+    "date": "2026-06-24",
     "headline": "Signal Position",
-    "data_date": "2026-06-23",
+    "data_date": "2026-06-24",
     "top_cards": [
       {
-        "title": "M5.3 earthquake near 120 km S of Isangel, Vanuatu",
+        "title": "M7.5 earthquake near 28 km SE of Yumare, Venezuela",
         "category": "geophysical",
-        "event_time": "2026-06-23T13:58:34Z",
+        "event_time": "2026-06-24T22:05:11Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
-        "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.662080357491122,
-        "signal_status": "context_only",
-        "magnitude_value": 5.3,
-        "effective_anomaly": 0,
-        "score_contribution": 0
+        "display_note": "Above the recent baseline.",
+        "anomaly_score": 2.44560375062113,
+        "signal_status": "score_contributor",
+        "magnitude_value": 7.5,
+        "effective_anomaly": 2.44560375062113,
+        "score_contribution": 48.9120750124226
       },
       {
-        "title": "M5.3 earthquake near Kermadec Islands region",
+        "title": "M7.2 earthquake near 23 km SE of Yumare, Venezuela",
         "category": "geophysical",
-        "event_time": "2026-06-23T02:26:20Z",
+        "event_time": "2026-06-24T22:04:33Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
-        "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.662080357491122,
-        "signal_status": "context_only",
-        "magnitude_value": 5.3,
-        "effective_anomaly": 0,
-        "score_contribution": 0
+        "display_note": "Above the recent baseline.",
+        "anomaly_score": 2.01655046103848,
+        "signal_status": "score_contributor",
+        "magnitude_value": 7.2,
+        "effective_anomaly": 2.01655046103848,
+        "score_contribution": 20.1655046103848
       },
       {
-        "title": "M5.2 earthquake near 265 km SSE of Dunhuang, China",
+        "title": "M6.9 earthquake near 30 km ENE of Kuji, Japan",
         "category": "geophysical",
-        "event_time": "2026-06-23T15:29:02Z",
+        "event_time": "2026-06-24T22:30:14Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
-        "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.82097964328899,
-        "signal_status": "context_only",
-        "magnitude_value": 5.2,
-        "effective_anomaly": 0,
-        "score_contribution": 0
+        "display_note": "Above the recent baseline.",
+        "anomaly_score": 1.58749717145582,
+        "signal_status": "score_contributor",
+        "magnitude_value": 6.9,
+        "effective_anomaly": 1.58749717145582,
+        "score_contribution": 7.9374858572791
       }
     ],
     "principles": {
@@ -50,22 +50,22 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-06-24T04:53:49Z",
+    "updated_at": "2026-06-25T04:54:46Z",
     "quiet_signal": {
       "note": "No quiet signal available for this data date.",
       "available": false
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "Higher than 18% of the last 30 observed days.",
+      "Higher than 95% of the last 30 observed days.",
       "Positional measure within recent observations. Not a risk, alert, or warning level.",
       "Based on public earthquake, space weather, internet, and Wikipedia attention data."
     ],
-    "percentile_line": "This data date is in the 18th percentile of the last 30 observed days.",
-    "signal_position": 18,
+    "percentile_line": "This data date is in the 95th percentile of the last 30 observed days.",
+    "signal_position": 95,
     "top_signal_note": null,
-    "weirdness_score": 18,
+    "weirdness_score": 95,
     "signal_position_note": "Positional measure within recent observations. Not a risk, alert, or warning level.",
-    "signal_position_label": "Higher than 18% of the last 30 observed days."
+    "signal_position_label": "Higher than 95% of the last 30 observed days."
   }
 }
