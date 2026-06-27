@@ -1,46 +1,46 @@
 {
-  "display_date": "2026-06-25",
+  "display_date": "2026-06-26",
   "page_payload": {
-    "date": "2026-06-25",
+    "date": "2026-06-26",
     "headline": "Signal Position",
-    "data_date": "2026-06-25",
+    "data_date": "2026-06-26",
     "top_cards": [
       {
-        "title": "M5.5 earthquake near 73 km E of Kokopo, Papua New Guinea",
+        "title": "M6.5 earthquake near 34 km WSW of Sarangani, Philippines",
         "category": "geophysical",
-        "event_time": "2026-06-25T06:19:35Z",
+        "event_time": "2026-06-26T11:34:41Z",
+        "event_type": "earthquake",
+        "source_note": "Public observation data",
+        "display_note": "Above the recent baseline.",
+        "anomaly_score": 0.969517855979991,
+        "signal_status": "score_contributor",
+        "magnitude_value": 6.5,
+        "effective_anomaly": 0.969517855979991,
+        "score_contribution": 19.39035711959982
+      },
+      {
+        "title": "M5.8 earthquake near 3 km SE of Yokoshiba, Japan",
+        "category": "geophysical",
+        "event_time": "2026-06-26T03:46:35Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.430756674915914,
+        "anomaly_score": -0.0334316502062014,
         "signal_status": "context_only",
-        "magnitude_value": 5.5,
+        "magnitude_value": 5.8,
         "effective_anomaly": 0,
         "score_contribution": 0
       },
       {
-        "title": "M5.1 earthquake near 152 km N of Caluula, Somalia",
+        "title": "M5.7 earthquake near 7 km N of Oshino, Japan",
         "category": "geophysical",
-        "event_time": "2026-06-25T03:53:24Z",
+        "event_time": "2026-06-26T13:29:01Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.01155219165646,
+        "anomaly_score": -0.176710151089943,
         "signal_status": "context_only",
-        "magnitude_value": 5.1,
-        "effective_anomaly": 0,
-        "score_contribution": 0
-      },
-      {
-        "title": "M5 earthquake near 93 km E of Union, Philippines",
-        "category": "geophysical",
-        "event_time": "2026-06-25T21:17:49Z",
-        "event_type": "earthquake",
-        "source_note": "Public observation data",
-        "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.1567510708416,
-        "signal_status": "context_only",
-        "magnitude_value": 5.0,
+        "magnitude_value": 5.7,
         "effective_anomaly": 0,
         "score_contribution": 0
       }
@@ -50,32 +50,32 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-06-26T04:57:33Z",
+    "updated_at": "2026-06-27T04:45:22Z",
     "quiet_signal": {
       "id": "c76ab6b8-8802-4676-9346-1d27a499b549",
       "note": "This signal sits above the recent baseline within the current data window.",
       "title": "M7.5 earthquake near 28 km SE of Yumare, Venezuela",
-      "summary": "M7.5 earthquake near 28 km SE of Yumare, Venezuela, observed about 26 hours before the end of the data date.",
+      "summary": "M7.5 earthquake near 28 km SE of Yumare, Venezuela, observed about 50 hours before the end of the data date.",
       "category": "geophysical",
       "available": true,
       "event_time": "2026-06-24T22:05:11Z",
       "event_type": "earthquake",
       "safety_note": "Not a forecast, alert, or recommendation.",
-      "anomaly_score": 2.47322090878684,
+      "anomaly_score": 2.40230286481741,
       "magnitude_value": 7.5,
-      "hours_ago_from_data_end": 25.9
+      "hours_ago_from_data_end": 49.9
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "Higher than 17% of the last 30 observed days.",
+      "Higher than 72% of the last 30 observed days.",
       "Positional measure within recent observations. Not a risk, alert, or warning level.",
       "Based on public earthquake, space weather, internet, and Wikipedia attention data."
     ],
-    "percentile_line": "This data date is in the 17th percentile of the last 30 observed days.",
-    "signal_position": 17,
+    "percentile_line": "This data date is in the 72nd percentile of the last 30 observed days.",
+    "signal_position": 72,
     "top_signal_note": null,
-    "weirdness_score": 17,
+    "weirdness_score": 72,
     "signal_position_note": "Positional measure within recent observations. Not a risk, alert, or warning level.",
-    "signal_position_label": "Higher than 17% of the last 30 observed days."
+    "signal_position_label": "Higher than 72% of the last 30 observed days."
   }
 }
