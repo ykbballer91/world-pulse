@@ -1,46 +1,46 @@
 {
-  "display_date": "2026-06-26",
+  "display_date": "2026-06-27",
   "page_payload": {
-    "date": "2026-06-26",
+    "date": "2026-06-27",
     "headline": "Signal Position",
-    "data_date": "2026-06-26",
+    "data_date": "2026-06-27",
     "top_cards": [
       {
-        "title": "M6.5 earthquake near 34 km WSW of Sarangani, Philippines",
+        "title": "M6.1 earthquake near 43 km S of Jurm, Afghanistan",
         "category": "geophysical",
-        "event_time": "2026-06-26T11:34:41Z",
+        "event_time": "2026-06-27T13:34:52Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Above the recent baseline.",
-        "anomaly_score": 0.969517855979991,
+        "anomaly_score": 0.376038846819422,
         "signal_status": "score_contributor",
-        "magnitude_value": 6.5,
-        "effective_anomaly": 0.969517855979991,
-        "score_contribution": 19.39035711959982
+        "magnitude_value": 6.1,
+        "effective_anomaly": 0.376038846819422,
+        "score_contribution": 7.52077693638844
       },
       {
-        "title": "M5.8 earthquake near 3 km SE of Yokoshiba, Japan",
+        "title": "M5.9 earthquake near 192 km N of Metinaro, Timor Leste",
         "category": "geophysical",
-        "event_time": "2026-06-26T03:46:35Z",
+        "event_time": "2026-06-27T10:37:02Z",
+        "event_type": "earthquake",
+        "source_note": "Public observation data",
+        "display_note": "Above the recent baseline.",
+        "anomaly_score": 0.0940097117048593,
+        "signal_status": "score_contributor",
+        "magnitude_value": 5.9,
+        "effective_anomaly": 0.0940097117048593,
+        "score_contribution": 0.940097117048593
+      },
+      {
+        "title": "M5.8 earthquake near 51 km ENE of Noda, Japan",
+        "category": "geophysical",
+        "event_time": "2026-06-27T20:21:50Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.0334316502062014,
+        "anomaly_score": -0.0470048558524234,
         "signal_status": "context_only",
         "magnitude_value": 5.8,
-        "effective_anomaly": 0,
-        "score_contribution": 0
-      },
-      {
-        "title": "M5.7 earthquake near 7 km N of Oshino, Japan",
-        "category": "geophysical",
-        "event_time": "2026-06-26T13:29:01Z",
-        "event_type": "earthquake",
-        "source_note": "Public observation data",
-        "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.176710151089943,
-        "signal_status": "context_only",
-        "magnitude_value": 5.7,
         "effective_anomaly": 0,
         "score_contribution": 0
       }
@@ -50,32 +50,22 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-06-27T04:45:22Z",
+    "updated_at": "2026-06-28T05:13:43Z",
     "quiet_signal": {
-      "id": "c76ab6b8-8802-4676-9346-1d27a499b549",
-      "note": "This signal sits above the recent baseline within the current data window.",
-      "title": "M7.5 earthquake near 28 km SE of Yumare, Venezuela",
-      "summary": "M7.5 earthquake near 28 km SE of Yumare, Venezuela, observed about 50 hours before the end of the data date.",
-      "category": "geophysical",
-      "available": true,
-      "event_time": "2026-06-24T22:05:11Z",
-      "event_type": "earthquake",
-      "safety_note": "Not a forecast, alert, or recommendation.",
-      "anomaly_score": 2.40230286481741,
-      "magnitude_value": 7.5,
-      "hours_ago_from_data_end": 49.9
+      "note": "No quiet signal available for this data date.",
+      "available": false
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "Higher than 72% of the last 30 observed days.",
+      "Higher than 55% of the last 30 observed days.",
       "Positional measure within recent observations. Not a risk, alert, or warning level.",
       "Based on public earthquake, space weather, internet, and Wikipedia attention data."
     ],
-    "percentile_line": "This data date is in the 72nd percentile of the last 30 observed days.",
-    "signal_position": 72,
+    "percentile_line": "This data date is in the 55th percentile of the last 30 observed days.",
+    "signal_position": 55,
     "top_signal_note": null,
-    "weirdness_score": 72,
+    "weirdness_score": 55,
     "signal_position_note": "Positional measure within recent observations. Not a risk, alert, or warning level.",
-    "signal_position_label": "Higher than 72% of the last 30 observed days."
+    "signal_position_label": "Higher than 55% of the last 30 observed days."
   }
 }
