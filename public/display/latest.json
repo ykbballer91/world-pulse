@@ -1,46 +1,46 @@
 {
-  "display_date": "2026-06-28",
+  "display_date": "2026-06-29",
   "page_payload": {
-    "date": "2026-06-28",
+    "date": "2026-06-29",
     "headline": "Signal Position",
-    "data_date": "2026-06-28",
+    "data_date": "2026-06-29",
     "top_cards": [
       {
-        "title": "M5.2 earthquake near 8 km WNW of Changning, China",
+        "title": "M5.5 earthquake near 218 km W of Bandon, Oregon",
         "category": "geophysical",
-        "event_time": "2026-06-28T16:12:08Z",
+        "event_time": "2026-06-29T11:35:33Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.900281849795103,
+        "anomaly_score": -0.435985933744908,
         "signal_status": "context_only",
-        "magnitude_value": 5.2,
+        "magnitude_value": 5.5,
         "effective_anomaly": 0,
         "score_contribution": 0
       },
       {
-        "title": "M5.2 earthquake near 45 km NE of Port-Olry, Vanuatu",
+        "title": "M5.3 earthquake near 35 km SSW of Cordova, Alaska",
         "category": "geophysical",
-        "event_time": "2026-06-28T07:05:45Z",
+        "event_time": "2026-06-29T03:32:39Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.900281849795103,
+        "anomaly_score": -0.717267181322268,
         "signal_status": "context_only",
-        "magnitude_value": 5.2,
+        "magnitude_value": 5.3,
         "effective_anomaly": 0,
         "score_contribution": 0
       },
       {
-        "title": "M5 earthquake near 68 km WNW of Catuday, Philippines",
+        "title": "M5.2 earthquake near 107 km SSW of Sarangani, Philippines",
         "category": "geophysical",
-        "event_time": "2026-06-28T19:09:03Z",
+        "event_time": "2026-06-29T04:23:05Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.18458138130935,
+        "anomaly_score": -0.857907805110948,
         "signal_status": "context_only",
-        "magnitude_value": 5.0,
+        "magnitude_value": 5.2,
         "effective_anomaly": 0,
         "score_contribution": 0
       }
@@ -50,7 +50,7 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-06-29T05:19:42Z",
+    "updated_at": "2026-06-30T04:53:14Z",
     "quiet_signal": {
       "note": "No quiet signal available for this data date.",
       "available": false
