@@ -1,46 +1,46 @@
 {
-  "display_date": "2026-06-29",
+  "display_date": "2026-06-30",
   "page_payload": {
-    "date": "2026-06-29",
+    "date": "2026-06-30",
     "headline": "Signal Position",
-    "data_date": "2026-06-29",
+    "data_date": "2026-06-30",
     "top_cards": [
       {
-        "title": "M5.5 earthquake near 218 km W of Bandon, Oregon",
+        "title": "M6 earthquake near 75 km SSW of El Progreso, Mexico",
         "category": "geophysical",
-        "event_time": "2026-06-29T11:35:33Z",
+        "event_time": "2026-06-30T19:45:40Z",
+        "event_type": "earthquake",
+        "source_note": "Public observation data",
+        "display_note": "Above the recent baseline.",
+        "anomaly_score": 0.272700475911379,
+        "signal_status": "score_contributor",
+        "magnitude_value": 6.0,
+        "effective_anomaly": 0.272700475911379,
+        "score_contribution": 5.454009518227581
+      },
+      {
+        "title": "M5.4 earthquake near 90 km ESE of Kimbe, Papua New Guinea",
+        "category": "geophysical",
+        "event_time": "2026-06-30T14:41:10Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.435985933744908,
+        "anomaly_score": -0.573611345882572,
         "signal_status": "context_only",
-        "magnitude_value": 5.5,
+        "magnitude_value": 5.4,
         "effective_anomaly": 0,
         "score_contribution": 0
       },
       {
-        "title": "M5.3 earthquake near 35 km SSW of Cordova, Alaska",
+        "title": "M5.3 earthquake near 265 km SSE of Dunhuang, China",
         "category": "geophysical",
-        "event_time": "2026-06-29T03:32:39Z",
+        "event_time": "2026-06-30T23:44:54Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.717267181322268,
+        "anomaly_score": -0.714663316181564,
         "signal_status": "context_only",
         "magnitude_value": 5.3,
-        "effective_anomaly": 0,
-        "score_contribution": 0
-      },
-      {
-        "title": "M5.2 earthquake near 107 km SSW of Sarangani, Philippines",
-        "category": "geophysical",
-        "event_time": "2026-06-29T04:23:05Z",
-        "event_type": "earthquake",
-        "source_note": "Public observation data",
-        "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.857907805110948,
-        "signal_status": "context_only",
-        "magnitude_value": 5.2,
         "effective_anomaly": 0,
         "score_contribution": 0
       }
@@ -50,22 +50,22 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-06-30T04:53:14Z",
+    "updated_at": "2026-07-01T05:14:14Z",
     "quiet_signal": {
       "note": "No quiet signal available for this data date.",
       "available": false
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "Higher than 15% of the last 30 observed days.",
+      "Higher than 45% of the last 30 observed days.",
       "Positional measure within recent observations. Not a risk, alert, or warning level.",
       "Based on public earthquake, space weather, internet, and Wikipedia attention data."
     ],
-    "percentile_line": "This data date is in the 15th percentile of the last 30 observed days.",
-    "signal_position": 15,
+    "percentile_line": "This data date is in the 45th percentile of the last 30 observed days.",
+    "signal_position": 45,
     "top_signal_note": null,
-    "weirdness_score": 15,
+    "weirdness_score": 45,
     "signal_position_note": "Positional measure within recent observations. Not a risk, alert, or warning level.",
-    "signal_position_label": "Higher than 15% of the last 30 observed days."
+    "signal_position_label": "Higher than 45% of the last 30 observed days."
   }
 }
