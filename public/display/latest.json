@@ -1,46 +1,46 @@
 {
-  "display_date": "2026-06-30",
+  "display_date": "2026-07-01",
   "page_payload": {
-    "date": "2026-06-30",
+    "date": "2026-07-01",
     "headline": "Signal Position",
-    "data_date": "2026-06-30",
+    "data_date": "2026-07-01",
     "top_cards": [
       {
-        "title": "M6 earthquake near 75 km SSW of El Progreso, Mexico",
+        "title": "M6 earthquake near 49 km E of Noda, Japan",
         "category": "geophysical",
-        "event_time": "2026-06-30T19:45:40Z",
+        "event_time": "2026-07-01T12:08:29Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Above the recent baseline.",
-        "anomaly_score": 0.272700475911379,
+        "anomaly_score": 0.219931261858502,
         "signal_status": "score_contributor",
         "magnitude_value": 6.0,
-        "effective_anomaly": 0.272700475911379,
-        "score_contribution": 5.454009518227581
+        "effective_anomaly": 0.219931261858502,
+        "score_contribution": 4.39862523717004
       },
       {
-        "title": "M5.4 earthquake near 90 km ESE of Kimbe, Papua New Guinea",
+        "title": "M5.7 earthquake near 155 km SW of Hihifo, Tonga",
         "category": "geophysical",
-        "event_time": "2026-06-30T14:41:10Z",
+        "event_time": "2026-07-01T21:13:40Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.573611345882572,
+        "anomaly_score": -0.219931261858501,
         "signal_status": "context_only",
-        "magnitude_value": 5.4,
+        "magnitude_value": 5.7,
         "effective_anomaly": 0,
         "score_contribution": 0
       },
       {
-        "title": "M5.3 earthquake near 265 km SSE of Dunhuang, China",
+        "title": "M5.6 earthquake near 224 km S of Suva, Fiji",
         "category": "geophysical",
-        "event_time": "2026-06-30T23:44:54Z",
+        "event_time": "2026-07-01T10:42:43Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.714663316181564,
+        "anomaly_score": -0.366552103097503,
         "signal_status": "context_only",
-        "magnitude_value": 5.3,
+        "magnitude_value": 5.6,
         "effective_anomaly": 0,
         "score_contribution": 0
       }
@@ -50,7 +50,7 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-07-01T05:14:14Z",
+    "updated_at": "2026-07-02T04:51:36Z",
     "quiet_signal": {
       "note": "No quiet signal available for this data date.",
       "available": false
