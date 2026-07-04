@@ -1,48 +1,48 @@
 {
-  "display_date": "2026-07-02",
+  "display_date": "2026-07-03",
   "page_payload": {
-    "date": "2026-07-02",
+    "date": "2026-07-03",
     "headline": "Signal Position",
-    "data_date": "2026-07-02",
+    "data_date": "2026-07-03",
     "top_cards": [
       {
-        "title": "M5.3 earthquake near South Sandwich Islands region",
+        "title": "M6.2 earthquake near 58 km W of Tobelo, Indonesia",
         "category": "geophysical",
-        "event_time": "2026-07-02T05:23:17Z",
+        "event_time": "2026-07-03T02:31:28Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
-        "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.836698656172646,
-        "signal_status": "context_only",
-        "magnitude_value": 5.3,
-        "effective_anomaly": 0,
-        "score_contribution": 0
+        "display_note": "Above the recent baseline.",
+        "anomaly_score": 0.484404485152585,
+        "signal_status": "score_contributor",
+        "magnitude_value": 6.2,
+        "effective_anomaly": 0.484404485152585,
+        "score_contribution": 9.6880897030517
       },
       {
-        "title": "M5.2 earthquake near 23 km SSE of Karpathos, Greece",
+        "title": "M6.1 earthquake near 136 km NNE of Hirara, Japan",
         "category": "geophysical",
-        "event_time": "2026-07-02T11:06:21Z",
+        "event_time": "2026-07-03T04:04:48Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
-        "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.983487894097671,
-        "signal_status": "context_only",
-        "magnitude_value": 5.2,
-        "effective_anomaly": 0,
-        "score_contribution": 0
+        "display_note": "Above the recent baseline.",
+        "anomaly_score": 0.337615247227558,
+        "signal_status": "score_contributor",
+        "magnitude_value": 6.1,
+        "effective_anomaly": 0.337615247227558,
+        "score_contribution": 3.37615247227558
       },
       {
-        "title": "M5.2 earthquake near east of the South Sandwich Islands",
+        "title": "M5.9 earthquake near 296 km SSW of Severo-Kuril’sk, Russia",
         "category": "geophysical",
-        "event_time": "2026-07-02T05:14:00Z",
+        "event_time": "2026-07-03T08:22:53Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
-        "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.983487894097671,
-        "signal_status": "context_only",
-        "magnitude_value": 5.2,
-        "effective_anomaly": 0,
-        "score_contribution": 0
+        "display_note": "Above the recent baseline.",
+        "anomaly_score": 0.044036771377508,
+        "signal_status": "score_contributor",
+        "magnitude_value": 5.9,
+        "effective_anomaly": 0.044036771377508,
+        "score_contribution": 0.22018385688754
       }
     ],
     "principles": {
@@ -50,22 +50,22 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-07-03T04:36:42Z",
+    "updated_at": "2026-07-04T04:23:36Z",
     "quiet_signal": {
       "note": "No quiet signal available for this data date.",
       "available": false
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "Higher than 18% of the last 30 observed days.",
+      "Higher than 65% of the last 30 observed days.",
       "Positional measure within recent observations. Not a risk, alert, or warning level.",
       "Based on public earthquake, space weather, internet, and Wikipedia attention data."
     ],
-    "percentile_line": "This data date is in the 18th percentile of the last 30 observed days.",
-    "signal_position": 18,
+    "percentile_line": "This data date is in the 65th percentile of the last 30 observed days.",
+    "signal_position": 65,
     "top_signal_note": null,
-    "weirdness_score": 18,
+    "weirdness_score": 65,
     "signal_position_note": "Positional measure within recent observations. Not a risk, alert, or warning level.",
-    "signal_position_label": "Higher than 18% of the last 30 observed days."
+    "signal_position_label": "Higher than 65% of the last 30 observed days."
   }
 }
