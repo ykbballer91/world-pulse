@@ -1,46 +1,46 @@
 {
-  "display_date": "2026-07-04",
+  "display_date": "2026-07-05",
   "page_payload": {
-    "date": "2026-07-04",
+    "date": "2026-07-05",
     "headline": "Signal Position",
-    "data_date": "2026-07-04",
+    "data_date": "2026-07-05",
     "top_cards": [
       {
-        "title": "M5.2 earthquake near 24 km SW of Balangonan, Philippines",
+        "title": "M5.8 earthquake near 274 km SE of Levuka, Fiji",
         "category": "geophysical",
-        "event_time": "2026-07-04T02:21:23Z",
+        "event_time": "2026-07-05T14:22:26Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.983060369268331,
+        "anomaly_score": -0.0804243351097817,
         "signal_status": "context_only",
-        "magnitude_value": 5.2,
+        "magnitude_value": 5.8,
         "effective_anomaly": 0,
         "score_contribution": 0
       },
       {
-        "title": "M5.1 earthquake near southern Mid-Atlantic Ridge",
+        "title": "M5.3 earthquake near 71 km S of Severo-Kuril’sk, Russia",
         "category": "geophysical",
-        "event_time": "2026-07-04T14:12:22Z",
+        "event_time": "2026-07-05T07:37:07Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.12777483987128,
+        "anomaly_score": -0.790050821372517,
         "signal_status": "context_only",
-        "magnitude_value": 5.1,
+        "magnitude_value": 5.3,
         "effective_anomaly": 0,
         "score_contribution": 0
       },
       {
-        "title": "M5.1 earthquake near 264 km W of Abepura, Indonesia",
+        "title": "M5 earthquake near 106 km NW of Coquimbo, Chile",
         "category": "geophysical",
-        "event_time": "2026-07-04T08:55:54Z",
+        "event_time": "2026-07-05T15:53:33Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.12777483987128,
+        "anomaly_score": -1.21582671313016,
         "signal_status": "context_only",
-        "magnitude_value": 5.1,
+        "magnitude_value": 5.0,
         "effective_anomaly": 0,
         "score_contribution": 0
       }
@@ -50,7 +50,7 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-07-05T04:51:22Z",
+    "updated_at": "2026-07-06T05:02:38Z",
     "quiet_signal": {
       "note": "No quiet signal available for this data date.",
       "available": false
