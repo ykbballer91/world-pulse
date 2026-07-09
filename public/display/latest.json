@@ -1,46 +1,46 @@
 {
-  "display_date": "2026-07-07",
+  "display_date": "2026-07-08",
   "page_payload": {
-    "date": "2026-07-07",
+    "date": "2026-07-08",
     "headline": "Signal Position",
-    "data_date": "2026-07-07",
+    "data_date": "2026-07-08",
     "top_cards": [
       {
-        "title": "M5.8 earthquake near 296 km SSE of Ushuaia, Argentina",
+        "title": "M5.8 earthquake near 91 km SSW of Isangel, Vanuatu",
         "category": "geophysical",
-        "event_time": "2026-07-07T01:26:45Z",
+        "event_time": "2026-07-08T09:50:23Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Above the recent baseline.",
-        "anomaly_score": 0.0405901126409849,
+        "anomaly_score": 0.034086507708269,
         "signal_status": "score_contributor",
         "magnitude_value": 5.8,
-        "effective_anomaly": 0.0405901126409849,
-        "score_contribution": 0.811802252819698
+        "effective_anomaly": 0.034086507708269,
+        "score_contribution": 0.68173015416538
       },
       {
-        "title": "M5.4 earthquake near 162 km NNW of Tobelo, Indonesia",
+        "title": "M5.5 earthquake near Balleny Islands region",
         "category": "geophysical",
-        "event_time": "2026-07-07T07:16:26Z",
+        "event_time": "2026-07-08T19:07:10Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.655240389776002,
+        "anomaly_score": -0.477211107915777,
         "signal_status": "context_only",
-        "magnitude_value": 5.4,
+        "magnitude_value": 5.5,
         "effective_anomaly": 0,
         "score_contribution": 0
       },
       {
-        "title": "M5.3 earthquake near 95 km WSW of Labuan, Indonesia",
+        "title": "M5.4 earthquake near 245 km S of ‘Ohonua, Tonga",
         "category": "geophysical",
-        "event_time": "2026-07-07T19:44:52Z",
+        "event_time": "2026-07-08T12:18:59Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.82919801538025,
+        "anomaly_score": -0.647643646457126,
         "signal_status": "context_only",
-        "magnitude_value": 5.3,
+        "magnitude_value": 5.4,
         "effective_anomaly": 0,
         "score_contribution": 0
       }
@@ -50,22 +50,22 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-07-08T04:05:32Z",
+    "updated_at": "2026-07-09T04:41:54Z",
     "quiet_signal": {
       "note": "No quiet signal available for this data date.",
       "available": false
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "Higher than 37% of the last 30 observed days.",
+      "Higher than 35% of the last 30 observed days.",
       "Positional measure within recent observations. Not a risk, alert, or warning level.",
       "Based on public earthquake, space weather, internet, and Wikipedia attention data."
     ],
-    "percentile_line": "This data date is in the 37th percentile of the last 30 observed days.",
-    "signal_position": 37,
+    "percentile_line": "This data date is in the 35th percentile of the last 30 observed days.",
+    "signal_position": 35,
     "top_signal_note": null,
-    "weirdness_score": 37,
+    "weirdness_score": 35,
     "signal_position_note": "Positional measure within recent observations. Not a risk, alert, or warning level.",
-    "signal_position_label": "Higher than 37% of the last 30 observed days."
+    "signal_position_label": "Higher than 35% of the last 30 observed days."
   }
 }
