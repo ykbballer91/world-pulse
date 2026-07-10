@@ -1,46 +1,46 @@
 {
-  "display_date": "2026-07-08",
+  "display_date": "2026-07-09",
   "page_payload": {
-    "date": "2026-07-08",
+    "date": "2026-07-09",
     "headline": "Signal Position",
-    "data_date": "2026-07-08",
+    "data_date": "2026-07-09",
     "top_cards": [
       {
-        "title": "M5.8 earthquake near 91 km SSW of Isangel, Vanuatu",
+        "title": "M5.1 earthquake near 50 km SW of Shirahama, Japan",
         "category": "geophysical",
-        "event_time": "2026-07-08T09:50:23Z",
-        "event_type": "earthquake",
-        "source_note": "Public observation data",
-        "display_note": "Above the recent baseline.",
-        "anomaly_score": 0.034086507708269,
-        "signal_status": "score_contributor",
-        "magnitude_value": 5.8,
-        "effective_anomaly": 0.034086507708269,
-        "score_contribution": 0.68173015416538
-      },
-      {
-        "title": "M5.5 earthquake near Balleny Islands region",
-        "category": "geophysical",
-        "event_time": "2026-07-08T19:07:10Z",
+        "event_time": "2026-07-09T12:58:57Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.477211107915777,
+        "anomaly_score": -1.08762178103915,
         "signal_status": "context_only",
-        "magnitude_value": 5.5,
+        "magnitude_value": 5.1,
         "effective_anomaly": 0,
         "score_contribution": 0
       },
       {
-        "title": "M5.4 earthquake near 245 km S of ‘Ohonua, Tonga",
+        "title": "M5.1 earthquake near 59 km NNE of Port-Olry, Vanuatu",
         "category": "geophysical",
-        "event_time": "2026-07-08T12:18:59Z",
+        "event_time": "2026-07-09T12:52:56Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.647643646457126,
+        "anomaly_score": -1.08762178103915,
         "signal_status": "context_only",
-        "magnitude_value": 5.4,
+        "magnitude_value": 5.1,
+        "effective_anomaly": 0,
+        "score_contribution": 0
+      },
+      {
+        "title": "M5 earthquake near 19 km ENE of Abuyog, Philippines",
+        "category": "geophysical",
+        "event_time": "2026-07-09T16:46:49Z",
+        "event_type": "earthquake",
+        "source_note": "Public observation data",
+        "display_note": "Observed signal, but not above the recent baseline.",
+        "anomaly_score": -1.25494820889132,
+        "signal_status": "context_only",
+        "magnitude_value": 5.0,
         "effective_anomaly": 0,
         "score_contribution": 0
       }
@@ -50,22 +50,22 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-07-09T04:41:54Z",
+    "updated_at": "2026-07-10T04:43:53Z",
     "quiet_signal": {
       "note": "No quiet signal available for this data date.",
       "available": false
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "Higher than 35% of the last 30 observed days.",
+      "Higher than 17% of the last 30 observed days.",
       "Positional measure within recent observations. Not a risk, alert, or warning level.",
       "Based on public earthquake, space weather, internet, and Wikipedia attention data."
     ],
-    "percentile_line": "This data date is in the 35th percentile of the last 30 observed days.",
-    "signal_position": 35,
+    "percentile_line": "This data date is in the 17th percentile of the last 30 observed days.",
+    "signal_position": 17,
     "top_signal_note": null,
-    "weirdness_score": 35,
+    "weirdness_score": 17,
     "signal_position_note": "Positional measure within recent observations. Not a risk, alert, or warning level.",
-    "signal_position_label": "Higher than 35% of the last 30 observed days."
+    "signal_position_label": "Higher than 17% of the last 30 observed days."
   }
 }
