@@ -1,46 +1,46 @@
 {
-  "display_date": "2026-07-09",
+  "display_date": "2026-07-10",
   "page_payload": {
-    "date": "2026-07-09",
+    "date": "2026-07-10",
     "headline": "Signal Position",
-    "data_date": "2026-07-09",
+    "data_date": "2026-07-10",
     "top_cards": [
       {
-        "title": "M5.1 earthquake near 50 km SW of Shirahama, Japan",
+        "title": "M5 earthquake near west of Macquarie Island",
         "category": "geophysical",
-        "event_time": "2026-07-09T12:58:57Z",
+        "event_time": "2026-07-10T18:26:44Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.08762178103915,
-        "signal_status": "context_only",
-        "magnitude_value": 5.1,
-        "effective_anomaly": 0,
-        "score_contribution": 0
-      },
-      {
-        "title": "M5.1 earthquake near 59 km NNE of Port-Olry, Vanuatu",
-        "category": "geophysical",
-        "event_time": "2026-07-09T12:52:56Z",
-        "event_type": "earthquake",
-        "source_note": "Public observation data",
-        "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.08762178103915,
-        "signal_status": "context_only",
-        "magnitude_value": 5.1,
-        "effective_anomaly": 0,
-        "score_contribution": 0
-      },
-      {
-        "title": "M5 earthquake near 19 km ENE of Abuyog, Philippines",
-        "category": "geophysical",
-        "event_time": "2026-07-09T16:46:49Z",
-        "event_type": "earthquake",
-        "source_note": "Public observation data",
-        "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.25494820889132,
+        "anomaly_score": -1.24619905545569,
         "signal_status": "context_only",
         "magnitude_value": 5.0,
+        "effective_anomaly": 0,
+        "score_contribution": 0
+      },
+      {
+        "title": "M4.9 earthquake near 96 km SW of Abepura, Indonesia",
+        "category": "geophysical",
+        "event_time": "2026-07-10T08:33:03Z",
+        "event_type": "earthquake",
+        "source_note": "Public observation data",
+        "display_note": "Observed signal, but not above the recent baseline.",
+        "anomaly_score": -1.4138491526022,
+        "signal_status": "context_only",
+        "magnitude_value": 4.9,
+        "effective_anomaly": 0,
+        "score_contribution": 0
+      },
+      {
+        "title": "M4.8 earthquake near central Mid-Atlantic Ridge",
+        "category": "geophysical",
+        "event_time": "2026-07-10T15:36:55Z",
+        "event_type": "earthquake",
+        "source_note": "Public observation data",
+        "display_note": "Observed signal, but not above the recent baseline.",
+        "anomaly_score": -1.58149924974871,
+        "signal_status": "context_only",
+        "magnitude_value": 4.8,
         "effective_anomaly": 0,
         "score_contribution": 0
       }
@@ -50,22 +50,22 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-07-10T04:43:53Z",
+    "updated_at": "2026-07-11T03:59:13Z",
     "quiet_signal": {
       "note": "No quiet signal available for this data date.",
       "available": false
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "Higher than 17% of the last 30 observed days.",
+      "Higher than 18% of the last 30 observed days.",
       "Positional measure within recent observations. Not a risk, alert, or warning level.",
       "Based on public earthquake, space weather, internet, and Wikipedia attention data."
     ],
-    "percentile_line": "This data date is in the 17th percentile of the last 30 observed days.",
-    "signal_position": 17,
+    "percentile_line": "This data date is in the 18th percentile of the last 30 observed days.",
+    "signal_position": 18,
     "top_signal_note": null,
-    "weirdness_score": 17,
+    "weirdness_score": 18,
     "signal_position_note": "Positional measure within recent observations. Not a risk, alert, or warning level.",
-    "signal_position_label": "Higher than 17% of the last 30 observed days."
+    "signal_position_label": "Higher than 18% of the last 30 observed days."
   }
 }
