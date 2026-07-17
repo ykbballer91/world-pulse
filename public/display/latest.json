@@ -1,46 +1,46 @@
 {
-  "display_date": "2026-07-15",
+  "display_date": "2026-07-16",
   "page_payload": {
-    "date": "2026-07-15",
+    "date": "2026-07-16",
     "headline": "Signal Position",
-    "data_date": "2026-07-15",
+    "data_date": "2026-07-16",
     "top_cards": [
       {
-        "title": "M5.8 earthquake near south of the Fiji Islands",
+        "title": "M5.9 earthquake near 42 km NNW of Te Anau, New Zealand",
         "category": "geophysical",
-        "event_time": "2026-07-15T22:57:11Z",
+        "event_time": "2026-07-16T09:14:54Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
-        "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": 0.0,
-        "signal_status": "context_only",
-        "magnitude_value": 5.8,
-        "effective_anomaly": 0.0,
-        "score_contribution": 0.0
+        "display_note": "Above the recent baseline.",
+        "anomaly_score": 0.204417654924316,
+        "signal_status": "score_contributor",
+        "magnitude_value": 5.9,
+        "effective_anomaly": 0.204417654924316,
+        "score_contribution": 4.08835309848632
       },
       {
-        "title": "M5.7 earthquake near east of the South Sandwich Islands",
+        "title": "M5.5 earthquake near Volcano Islands, Japan region",
         "category": "geophysical",
-        "event_time": "2026-07-15T14:51:37Z",
+        "event_time": "2026-07-16T07:49:09Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.174430397261611,
+        "anomaly_score": -0.538919272073196,
         "signal_status": "context_only",
-        "magnitude_value": 5.7,
+        "magnitude_value": 5.5,
         "effective_anomaly": 0,
         "score_contribution": 0
       },
       {
-        "title": "M5.1 earthquake near 190 km SSE of Vilyuchinsk, Russia",
+        "title": "M5.3 earthquake near southern Mid-Atlantic Ridge",
         "category": "geophysical",
-        "event_time": "2026-07-15T02:42:18Z",
+        "event_time": "2026-07-16T20:21:52Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.22101278083129,
+        "anomaly_score": -0.910587735571952,
         "signal_status": "context_only",
-        "magnitude_value": 5.1,
+        "magnitude_value": 5.3,
         "effective_anomaly": 0,
         "score_contribution": 0
       }
@@ -50,32 +50,22 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-07-16T03:56:25Z",
+    "updated_at": "2026-07-17T03:57:12Z",
     "quiet_signal": {
-      "id": "2b11a311-0837-40de-ba08-75b1e3fbdb4d",
-      "note": "This signal sits above the recent baseline within the current data window.",
-      "title": "M6.4 earthquake near 191 km SE of Lorengau, Papua New Guinea",
-      "summary": "M6.4 earthquake near 191 km SE of Lorengau, Papua New Guinea, observed about 63 hours before the end of the data date.",
-      "category": "geophysical",
-      "available": true,
-      "event_time": "2026-07-13T08:53:27Z",
-      "event_type": "earthquake",
-      "safety_note": "Not a forecast, alert, or recommendation.",
-      "anomaly_score": 1.04658238356967,
-      "magnitude_value": 6.4,
-      "hours_ago_from_data_end": 63.1
+      "note": "No quiet signal available for this data date.",
+      "available": false
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "Higher than 20% of the last 30 observed days.",
+      "Higher than 42% of the last 30 observed days.",
       "Positional measure within recent observations. Not a risk, alert, or warning level.",
       "Based on public earthquake, space weather, internet, and Wikipedia attention data."
     ],
-    "percentile_line": "This data date is in the 20th percentile of the last 30 observed days.",
-    "signal_position": 20,
+    "percentile_line": "This data date is in the 42nd percentile of the last 30 observed days.",
+    "signal_position": 42,
     "top_signal_note": null,
-    "weirdness_score": 20,
+    "weirdness_score": 42,
     "signal_position_note": "Positional measure within recent observations. Not a risk, alert, or warning level.",
-    "signal_position_label": "Higher than 20% of the last 30 observed days."
+    "signal_position_label": "Higher than 42% of the last 30 observed days."
   }
 }
