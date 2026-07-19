@@ -1,44 +1,44 @@
 {
-  "display_date": "2026-07-17",
+  "display_date": "2026-07-18",
   "page_payload": {
-    "date": "2026-07-17",
+    "date": "2026-07-18",
     "headline": "Signal Position",
-    "data_date": "2026-07-17",
+    "data_date": "2026-07-18",
     "top_cards": [
       {
-        "title": "M7.3 earthquake near 58 km WSW of Puerto Madero, Mexico",
+        "title": "M5.7 earthquake near 72 km SW of Puerto Madero, Mexico",
         "category": "geophysical",
-        "event_time": "2026-07-17T14:48:39Z",
-        "event_type": "earthquake",
-        "source_note": "Public observation data",
-        "display_note": "Above the recent baseline.",
-        "anomaly_score": 2.42623320385655,
-        "signal_status": "score_contributor",
-        "magnitude_value": 7.3,
-        "effective_anomaly": 2.42623320385655,
-        "score_contribution": 48.52466407713101
-      },
-      {
-        "title": "M6 earthquake near 90 km SW of Puerto Madero, Mexico",
-        "category": "geophysical",
-        "event_time": "2026-07-17T15:20:06Z",
-        "event_type": "earthquake",
-        "source_note": "Public observation data",
-        "display_note": "Above the recent baseline.",
-        "anomaly_score": 0.250989641778265,
-        "signal_status": "score_contributor",
-        "magnitude_value": 6.0,
-        "effective_anomaly": 0.250989641778265,
-        "score_contribution": 2.5098964177826497
-      },
-      {
-        "title": "M5.3 earthquake near 93 km SW of Puerto Madero, Mexico",
-        "category": "geophysical",
-        "event_time": "2026-07-17T15:14:55Z",
+        "event_time": "2026-07-18T17:26:25Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.920295353186968,
+        "anomaly_score": -0.219627496698969,
+        "signal_status": "context_only",
+        "magnitude_value": 5.7,
+        "effective_anomaly": 0,
+        "score_contribution": 0
+      },
+      {
+        "title": "M5.5 earthquake near Scotia Sea",
+        "category": "geophysical",
+        "event_time": "2026-07-18T19:50:37Z",
+        "event_type": "earthquake",
+        "source_note": "Public observation data",
+        "display_note": "Observed signal, but not above the recent baseline.",
+        "anomaly_score": -0.566407754644701,
+        "signal_status": "context_only",
+        "magnitude_value": 5.5,
+        "effective_anomaly": 0,
+        "score_contribution": 0
+      },
+      {
+        "title": "M5.3 earthquake near 87 km WSW of Puerto Madero, Mexico",
+        "category": "geophysical",
+        "event_time": "2026-07-18T06:51:50Z",
+        "event_type": "earthquake",
+        "source_note": "Public observation data",
+        "display_note": "Observed signal, but not above the recent baseline.",
+        "anomaly_score": -0.913188012590433,
         "signal_status": "context_only",
         "magnitude_value": 5.3,
         "effective_anomaly": 0,
@@ -50,32 +50,32 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-07-18T03:48:26Z",
+    "updated_at": "2026-07-19T04:10:35Z",
     "quiet_signal": {
       "id": "5dc8b54e-c2af-4c43-8569-e96fa81f6a8d",
       "note": "This signal sits above the recent baseline within the current data window.",
       "title": "M7.3 earthquake near 58 km WSW of Puerto Madero, Mexico",
-      "summary": "M7.3 earthquake near 58 km WSW of Puerto Madero, Mexico, observed about 9 hours before the end of the data date.",
+      "summary": "M7.3 earthquake near 58 km WSW of Puerto Madero, Mexico, observed about 33 hours before the end of the data date.",
       "category": "geophysical",
       "available": true,
       "event_time": "2026-07-17T14:48:39Z",
       "event_type": "earthquake",
       "safety_note": "Not a forecast, alert, or recommendation.",
-      "anomaly_score": 2.42623320385655,
+      "anomaly_score": 2.55461456686689,
       "magnitude_value": 7.3,
-      "hours_ago_from_data_end": 9.2
+      "hours_ago_from_data_end": 33.2
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "Higher than 92% of the last 30 observed days.",
+      "Higher than 18% of the last 30 observed days.",
       "Positional measure within recent observations. Not a risk, alert, or warning level.",
       "Based on public earthquake, space weather, internet, and Wikipedia attention data."
     ],
-    "percentile_line": "This data date is in the 92nd percentile of the last 30 observed days.",
-    "signal_position": 92,
+    "percentile_line": "This data date is in the 18th percentile of the last 30 observed days.",
+    "signal_position": 18,
     "top_signal_note": null,
-    "weirdness_score": 92,
+    "weirdness_score": 18,
     "signal_position_note": "Positional measure within recent observations. Not a risk, alert, or warning level.",
-    "signal_position_label": "Higher than 92% of the last 30 observed days."
+    "signal_position_label": "Higher than 18% of the last 30 observed days."
   }
 }
