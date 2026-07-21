@@ -1,46 +1,46 @@
 {
-  "display_date": "2026-07-19",
+  "display_date": "2026-07-20",
   "page_payload": {
-    "date": "2026-07-19",
+    "date": "2026-07-20",
     "headline": "Signal Position",
-    "data_date": "2026-07-19",
+    "data_date": "2026-07-20",
     "top_cards": [
       {
-        "title": "M5.5 earthquake near 81 km SW of Puerto Madero, Mexico",
+        "title": "M5.6 earthquake near northern Mid-Atlantic Ridge",
         "category": "geophysical",
-        "event_time": "2026-07-19T17:45:16Z",
+        "event_time": "2026-07-20T21:28:30Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.521885548448112,
+        "anomaly_score": -0.365243499552837,
         "signal_status": "context_only",
-        "magnitude_value": 5.5,
+        "magnitude_value": 5.6,
         "effective_anomaly": 0,
         "score_contribution": 0
       },
       {
-        "title": "M5.5 earthquake near 2 km WSW of Sicaya, Peru",
+        "title": "M5.6 earthquake near 208 km SW of Port McNeill, Canada",
         "category": "geophysical",
-        "event_time": "2026-07-19T02:24:36Z",
+        "event_time": "2026-07-20T06:41:30Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.521885548448112,
+        "anomaly_score": -0.365243499552837,
         "signal_status": "context_only",
-        "magnitude_value": 5.5,
+        "magnitude_value": 5.6,
         "effective_anomaly": 0,
         "score_contribution": 0
       },
       {
-        "title": "M5.3 earthquake near 59 km SW of Puerto Madero, Mexico",
+        "title": "M5.5 earthquake near Pacific-Antarctic Ridge",
         "category": "geophysical",
-        "event_time": "2026-07-19T02:18:54Z",
+        "event_time": "2026-07-20T05:38:56Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.862245688740355,
+        "anomaly_score": -0.536451389968231,
         "signal_status": "context_only",
-        "magnitude_value": 5.3,
+        "magnitude_value": 5.5,
         "effective_anomaly": 0,
         "score_contribution": 0
       }
@@ -50,32 +50,22 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-07-20T04:28:22Z",
+    "updated_at": "2026-07-21T04:06:17Z",
     "quiet_signal": {
-      "id": "5dc8b54e-c2af-4c43-8569-e96fa81f6a8d",
-      "note": "This signal sits above the recent baseline within the current data window.",
-      "title": "M7.3 earthquake near 58 km WSW of Puerto Madero, Mexico",
-      "summary": "M7.3 earthquake near 58 km WSW of Puerto Madero, Mexico, observed about 57 hours before the end of the data date.",
-      "category": "geophysical",
-      "available": true,
-      "event_time": "2026-07-17T14:48:39Z",
-      "event_type": "earthquake",
-      "safety_note": "Not a forecast, alert, or recommendation.",
-      "anomaly_score": 2.54135571418208,
-      "magnitude_value": 7.3,
-      "hours_ago_from_data_end": 57.2
+      "note": "No quiet signal available for this data date.",
+      "available": false
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "Higher than 18% of the last 30 observed days.",
+      "Higher than 20% of the last 30 observed days.",
       "Positional measure within recent observations. Not a risk, alert, or warning level.",
       "Based on public earthquake, space weather, internet, and Wikipedia attention data."
     ],
-    "percentile_line": "This data date is in the 18th percentile of the last 30 observed days.",
-    "signal_position": 18,
+    "percentile_line": "This data date is in the 20th percentile of the last 30 observed days.",
+    "signal_position": 20,
     "top_signal_note": null,
-    "weirdness_score": 18,
+    "weirdness_score": 20,
     "signal_position_note": "Positional measure within recent observations. Not a risk, alert, or warning level.",
-    "signal_position_label": "Higher than 18% of the last 30 observed days."
+    "signal_position_label": "Higher than 20% of the last 30 observed days."
   }
 }
