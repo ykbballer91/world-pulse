@@ -1,46 +1,46 @@
 {
-  "display_date": "2026-07-20",
+  "display_date": "2026-07-21",
   "page_payload": {
-    "date": "2026-07-20",
+    "date": "2026-07-21",
     "headline": "Signal Position",
-    "data_date": "2026-07-20",
+    "data_date": "2026-07-21",
     "top_cards": [
       {
-        "title": "M5.6 earthquake near northern Mid-Atlantic Ridge",
+        "title": "M5.6 earthquake near Kermadec Islands region",
         "category": "geophysical",
-        "event_time": "2026-07-20T21:28:30Z",
+        "event_time": "2026-07-21T12:14:33Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.365243499552837,
+        "anomaly_score": -0.350535950755925,
         "signal_status": "context_only",
         "magnitude_value": 5.6,
         "effective_anomaly": 0,
         "score_contribution": 0
       },
       {
-        "title": "M5.6 earthquake near 208 km SW of Port McNeill, Canada",
+        "title": "M5.3 earthquake near 132 km ENE of Santa Cruz das Flores, Portugal",
         "category": "geophysical",
-        "event_time": "2026-07-20T06:41:30Z",
+        "event_time": "2026-07-21T13:13:11Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.365243499552837,
+        "anomaly_score": -0.85130159469296,
         "signal_status": "context_only",
-        "magnitude_value": 5.6,
+        "magnitude_value": 5.3,
         "effective_anomaly": 0,
         "score_contribution": 0
       },
       {
-        "title": "M5.5 earthquake near Pacific-Antarctic Ridge",
+        "title": "M5.2 earthquake near northern Mid-Atlantic Ridge",
         "category": "geophysical",
-        "event_time": "2026-07-20T05:38:56Z",
+        "event_time": "2026-07-21T01:03:34Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.536451389968231,
+        "anomaly_score": -1.0182234760053,
         "signal_status": "context_only",
-        "magnitude_value": 5.5,
+        "magnitude_value": 5.2,
         "effective_anomaly": 0,
         "score_contribution": 0
       }
@@ -50,22 +50,22 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-07-21T04:06:17Z",
+    "updated_at": "2026-07-22T04:04:00Z",
     "quiet_signal": {
       "note": "No quiet signal available for this data date.",
       "available": false
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "Higher than 20% of the last 30 observed days.",
+      "Higher than 18% of the last 30 observed days.",
       "Positional measure within recent observations. Not a risk, alert, or warning level.",
       "Based on public earthquake, space weather, internet, and Wikipedia attention data."
     ],
-    "percentile_line": "This data date is in the 20th percentile of the last 30 observed days.",
-    "signal_position": 20,
+    "percentile_line": "This data date is in the 18th percentile of the last 30 observed days.",
+    "signal_position": 18,
     "top_signal_note": null,
-    "weirdness_score": 20,
+    "weirdness_score": 18,
     "signal_position_note": "Positional measure within recent observations. Not a risk, alert, or warning level.",
-    "signal_position_label": "Higher than 20% of the last 30 observed days."
+    "signal_position_label": "Higher than 18% of the last 30 observed days."
   }
 }
