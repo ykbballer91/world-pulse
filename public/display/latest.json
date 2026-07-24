@@ -1,46 +1,46 @@
 {
-  "display_date": "2026-07-22",
+  "display_date": "2026-07-23",
   "page_payload": {
-    "date": "2026-07-22",
+    "date": "2026-07-23",
     "headline": "Signal Position",
-    "data_date": "2026-07-22",
+    "data_date": "2026-07-23",
     "top_cards": [
       {
-        "title": "M5.1 earthquake near 61 km SSW of San Pedro de Atacama, Chile",
+        "title": "M5.8 earthquake near 130 km W of Ternate, Indonesia",
         "category": "geophysical",
-        "event_time": "2026-07-22T17:34:36Z",
+        "event_time": "2026-07-23T22:58:36Z",
+        "event_type": "earthquake",
+        "source_note": "Public observation data",
+        "display_note": "Above the recent baseline.",
+        "anomaly_score": 0.0867032824508808,
+        "signal_status": "score_contributor",
+        "magnitude_value": 5.8,
+        "effective_anomaly": 0.0867032824508808,
+        "score_contribution": 1.7340656490176158
+      },
+      {
+        "title": "M5.1 earthquake near 92 km SE of Atka, Alaska",
+        "category": "geophysical",
+        "event_time": "2026-07-23T09:30:18Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.17785048684214,
+        "anomaly_score": -1.31388820329424,
         "signal_status": "context_only",
         "magnitude_value": 5.1,
         "effective_anomaly": 0,
         "score_contribution": 0
       },
       {
-        "title": "M5.1 earthquake near 121 km NW of Vallenar, Chile",
+        "title": "M5.1 earthquake near 85 km SE of Tatsugō, Japan",
         "category": "geophysical",
-        "event_time": "2026-07-22T09:34:22Z",
+        "event_time": "2026-07-23T09:22:22Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.17785048684214,
+        "anomaly_score": -1.31388820329424,
         "signal_status": "context_only",
         "magnitude_value": 5.1,
-        "effective_anomaly": 0,
-        "score_contribution": 0
-      },
-      {
-        "title": "M5 earthquake near Kermadec Islands, New Zealand",
-        "category": "geophysical",
-        "event_time": "2026-07-22T21:03:02Z",
-        "event_type": "earthquake",
-        "source_note": "Public observation data",
-        "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.34452744252734,
-        "signal_status": "context_only",
-        "magnitude_value": 5.0,
         "effective_anomaly": 0,
         "score_contribution": 0
       }
@@ -50,22 +50,22 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-07-23T04:03:33Z",
+    "updated_at": "2026-07-24T04:00:35Z",
     "quiet_signal": {
       "note": "No quiet signal available for this data date.",
       "available": false
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "Higher than 18% of the last 30 observed days.",
+      "Higher than 32% of the last 30 observed days.",
       "Positional measure within recent observations. Not a risk, alert, or warning level.",
       "Based on public earthquake, space weather, internet, and Wikipedia attention data."
     ],
-    "percentile_line": "This data date is in the 18th percentile of the last 30 observed days.",
-    "signal_position": 18,
+    "percentile_line": "This data date is in the 32nd percentile of the last 30 observed days.",
+    "signal_position": 32,
     "top_signal_note": null,
-    "weirdness_score": 18,
+    "weirdness_score": 32,
     "signal_position_note": "Positional measure within recent observations. Not a risk, alert, or warning level.",
-    "signal_position_label": "Higher than 18% of the last 30 observed days."
+    "signal_position_label": "Higher than 32% of the last 30 observed days."
   }
 }
