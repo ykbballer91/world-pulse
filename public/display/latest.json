@@ -1,48 +1,48 @@
 {
-  "display_date": "2026-07-27",
+  "display_date": "2026-07-28",
   "page_payload": {
-    "date": "2026-07-27",
+    "date": "2026-07-28",
     "headline": "Signal Position",
-    "data_date": "2026-07-27",
+    "data_date": "2026-07-28",
     "top_cards": [
       {
-        "title": "M5.4 earthquake near 82 km SSW of San Pedro de Atacama, Chile",
+        "title": "M6.8 earthquake near 2026 Uto, Japan Earthquake ",
         "category": "geophysical",
-        "event_time": "2026-07-27T08:57:43Z",
+        "event_time": "2026-07-28T07:27:15Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
-        "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.761742747944917,
-        "signal_status": "context_only",
-        "magnitude_value": 5.4,
-        "effective_anomaly": 0,
-        "score_contribution": 0
+        "display_note": "Above the recent baseline.",
+        "anomaly_score": 2.022352558359,
+        "signal_status": "score_contributor",
+        "magnitude_value": 6.8,
+        "effective_anomaly": 2.022352558359,
+        "score_contribution": 40.44705116718
       },
       {
-        "title": "M5.3 earthquake near 23 km E of Kinablangan, Philippines",
+        "title": "M5.9 earthquake near 50 km WSW of Brisas Barra de Suchiate, Mexico",
         "category": "geophysical",
-        "event_time": "2026-07-27T23:06:34Z",
+        "event_time": "2026-07-28T05:35:18Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
-        "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.97733031811801,
-        "signal_status": "context_only",
-        "magnitude_value": 5.3,
-        "effective_anomaly": 0,
-        "score_contribution": 0
+        "display_note": "Above the recent baseline.",
+        "anomaly_score": 0.23207324440186,
+        "signal_status": "score_contributor",
+        "magnitude_value": 5.9,
+        "effective_anomaly": 0.23207324440186,
+        "score_contribution": 2.3207324440186
       },
       {
-        "title": "M5.2 earthquake near south of Tonga",
+        "title": "M5.8 earthquake near 160 km E of Ust’-Kamchatsk Staryy, Russia",
         "category": "geophysical",
-        "event_time": "2026-07-27T08:47:18Z",
+        "event_time": "2026-07-28T04:42:18Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
-        "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.1929178882911,
-        "signal_status": "context_only",
-        "magnitude_value": 5.2,
-        "effective_anomaly": 0,
-        "score_contribution": 0
+        "display_note": "Above the recent baseline.",
+        "anomaly_score": 0.0331533206288429,
+        "signal_status": "score_contributor",
+        "magnitude_value": 5.8,
+        "effective_anomaly": 0.0331533206288429,
+        "score_contribution": 0.1657666031442145
       }
     ],
     "principles": {
@@ -50,22 +50,32 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-07-28T03:55:08Z",
+    "updated_at": "2026-07-29T04:00:10Z",
     "quiet_signal": {
-      "note": "No quiet signal available for this data date.",
-      "available": false
+      "id": "f255fa0d-d4a7-45ba-b312-5c487a0e7dcb",
+      "note": "This signal sits above the recent baseline within the current data window.",
+      "title": "M6.8 earthquake near 2026 Uto, Japan Earthquake ",
+      "summary": "M6.8 earthquake near 2026 Uto, Japan Earthquake , observed about 16 hours before the end of the data date.",
+      "category": "geophysical",
+      "available": true,
+      "event_time": "2026-07-28T07:27:15Z",
+      "event_type": "earthquake",
+      "safety_note": "Not a forecast, alert, or recommendation.",
+      "anomaly_score": 2.022352558359,
+      "magnitude_value": 6.8,
+      "hours_ago_from_data_end": 16.5
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "Higher than 17% of the last 30 observed days.",
+      "Higher than 88% of the last 30 observed days.",
       "Positional measure within recent observations. Not a risk, alert, or warning level.",
       "Based on public earthquake, space weather, internet, and Wikipedia attention data."
     ],
-    "percentile_line": "This data date is in the 17th percentile of the last 30 observed days.",
-    "signal_position": 17,
+    "percentile_line": "This data date is in the 88th percentile of the last 30 observed days.",
+    "signal_position": 88,
     "top_signal_note": null,
-    "weirdness_score": 17,
+    "weirdness_score": 88,
     "signal_position_note": "Positional measure within recent observations. Not a risk, alert, or warning level.",
-    "signal_position_label": "Higher than 17% of the last 30 observed days."
+    "signal_position_label": "Higher than 88% of the last 30 observed days."
   }
 }
