@@ -1,44 +1,44 @@
 {
-  "display_date": "2026-07-29",
+  "display_date": "2026-07-30",
   "page_payload": {
-    "date": "2026-07-29",
+    "date": "2026-07-30",
     "headline": "Signal Position",
-    "data_date": "2026-07-29",
+    "data_date": "2026-07-30",
     "top_cards": [
       {
-        "title": "M5.9 earthquake near Kermadec Islands region",
+        "title": "M5.9 earthquake near 247 km NNE of Colonia, Micronesia",
         "category": "geophysical",
-        "event_time": "2026-07-29T22:27:57Z",
+        "event_time": "2026-07-30T17:55:59Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Above the recent baseline.",
-        "anomaly_score": 0.244497543852335,
+        "anomaly_score": 0.22796725710306,
         "signal_status": "score_contributor",
         "magnitude_value": 5.9,
-        "effective_anomaly": 0.244497543852335,
-        "score_contribution": 4.8899508770467
+        "effective_anomaly": 0.22796725710306,
+        "score_contribution": 4.559345142061201
       },
       {
-        "title": "M5.6 earthquake near Pacific-Antarctic Ridge",
+        "title": "M5.8 earthquake near Kermadec Islands region",
         "category": "geophysical",
-        "event_time": "2026-07-29T22:08:07Z",
+        "event_time": "2026-07-30T05:08:31Z",
+        "event_type": "earthquake",
+        "source_note": "Public observation data",
+        "display_note": "Above the recent baseline.",
+        "anomaly_score": 0.0268196773062365,
+        "signal_status": "score_contributor",
+        "magnitude_value": 5.8,
+        "effective_anomaly": 0.0268196773062365,
+        "score_contribution": 0.268196773062365
+      },
+      {
+        "title": "M5.4 earthquake near 201 km W of Abepura, Indonesia",
+        "category": "geophysical",
+        "event_time": "2026-07-30T04:42:12Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.350226211464172,
-        "signal_status": "context_only",
-        "magnitude_value": 5.6,
-        "effective_anomaly": 0,
-        "score_contribution": 0
-      },
-      {
-        "title": "M5.4 earthquake near 53 km E of Rapu-Rapu, Philippines",
-        "category": "geophysical",
-        "event_time": "2026-07-29T15:10:02Z",
-        "event_type": "earthquake",
-        "source_note": "Public observation data",
-        "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.746708715008508,
+        "anomaly_score": -0.777770641881052,
         "signal_status": "context_only",
         "magnitude_value": 5.4,
         "effective_anomaly": 0,
@@ -50,20 +50,20 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-07-30T03:51:49Z",
+    "updated_at": "2026-07-31T04:07:10Z",
     "quiet_signal": {
       "id": "f255fa0d-d4a7-45ba-b312-5c487a0e7dcb",
       "note": "This signal sits above the recent baseline within the current data window.",
       "title": "M6.8 earthquake near 2026 Uto, Japan Earthquake ",
-      "summary": "M6.8 earthquake near 2026 Uto, Japan Earthquake , observed about 40 hours before the end of the data date.",
+      "summary": "M6.8 earthquake near 2026 Uto, Japan Earthquake , observed about 64 hours before the end of the data date.",
       "category": "geophysical",
       "available": true,
       "event_time": "2026-07-28T07:27:15Z",
       "event_type": "earthquake",
       "safety_note": "Not a forecast, alert, or recommendation.",
-      "anomaly_score": 2.02866880980185,
+      "anomaly_score": 2.03829547527446,
       "magnitude_value": 6.8,
-      "hours_ago_from_data_end": 40.5
+      "hours_ago_from_data_end": 64.5
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
