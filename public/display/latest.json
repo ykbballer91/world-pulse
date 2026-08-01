@@ -1,46 +1,46 @@
 {
-  "display_date": "2026-07-30",
+  "display_date": "2026-07-31",
   "page_payload": {
-    "date": "2026-07-30",
+    "date": "2026-07-31",
     "headline": "Signal Position",
-    "data_date": "2026-07-30",
+    "data_date": "2026-07-31",
     "top_cards": [
       {
-        "title": "M5.9 earthquake near 247 km NNE of Colonia, Micronesia",
+        "title": "M5.6 earthquake near 13 km ENE of San Fernando, Peru",
         "category": "geophysical",
-        "event_time": "2026-07-30T17:55:59Z",
-        "event_type": "earthquake",
-        "source_note": "Public observation data",
-        "display_note": "Above the recent baseline.",
-        "anomaly_score": 0.22796725710306,
-        "signal_status": "score_contributor",
-        "magnitude_value": 5.9,
-        "effective_anomaly": 0.22796725710306,
-        "score_contribution": 4.559345142061201
-      },
-      {
-        "title": "M5.8 earthquake near Kermadec Islands region",
-        "category": "geophysical",
-        "event_time": "2026-07-30T05:08:31Z",
-        "event_type": "earthquake",
-        "source_note": "Public observation data",
-        "display_note": "Above the recent baseline.",
-        "anomaly_score": 0.0268196773062365,
-        "signal_status": "score_contributor",
-        "magnitude_value": 5.8,
-        "effective_anomaly": 0.0268196773062365,
-        "score_contribution": 0.268196773062365
-      },
-      {
-        "title": "M5.4 earthquake near 201 km W of Abepura, Indonesia",
-        "category": "geophysical",
-        "event_time": "2026-07-30T04:42:12Z",
+        "event_time": "2026-07-31T00:58:44Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.777770641881052,
+        "anomaly_score": -0.383936329279729,
         "signal_status": "context_only",
-        "magnitude_value": 5.4,
+        "magnitude_value": 5.6,
+        "effective_anomaly": 0,
+        "score_contribution": 0
+      },
+      {
+        "title": "M5.2 earthquake near 141 km ENE of Masohi, Indonesia",
+        "category": "geophysical",
+        "event_time": "2026-07-31T20:19:26Z",
+        "event_type": "earthquake",
+        "source_note": "Public observation data",
+        "display_note": "Observed signal, but not above the recent baseline.",
+        "anomaly_score": -1.19222333828968,
+        "signal_status": "context_only",
+        "magnitude_value": 5.2,
+        "effective_anomaly": 0,
+        "score_contribution": 0
+      },
+      {
+        "title": "M5.2 earthquake near 85 km SW of El Arenal, Mexico",
+        "category": "geophysical",
+        "event_time": "2026-07-31T16:15:58Z",
+        "event_type": "earthquake",
+        "source_note": "Public observation data",
+        "display_note": "Observed signal, but not above the recent baseline.",
+        "anomaly_score": -1.19222333828968,
+        "signal_status": "context_only",
+        "magnitude_value": 5.2,
         "effective_anomaly": 0,
         "score_contribution": 0
       }
@@ -50,32 +50,22 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-07-31T04:07:10Z",
+    "updated_at": "2026-08-01T04:09:04Z",
     "quiet_signal": {
-      "id": "f255fa0d-d4a7-45ba-b312-5c487a0e7dcb",
-      "note": "This signal sits above the recent baseline within the current data window.",
-      "title": "M6.8 earthquake near 2026 Uto, Japan Earthquake ",
-      "summary": "M6.8 earthquake near 2026 Uto, Japan Earthquake , observed about 64 hours before the end of the data date.",
-      "category": "geophysical",
-      "available": true,
-      "event_time": "2026-07-28T07:27:15Z",
-      "event_type": "earthquake",
-      "safety_note": "Not a forecast, alert, or recommendation.",
-      "anomaly_score": 2.03829547527446,
-      "magnitude_value": 6.8,
-      "hours_ago_from_data_end": 64.5
+      "note": "No quiet signal available for this data date.",
+      "available": false
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "Higher than 38% of the last 30 observed days.",
+      "Higher than 13% of the last 30 observed days.",
       "Positional measure within recent observations. Not a risk, alert, or warning level.",
       "Based on public earthquake, space weather, internet, and Wikipedia attention data."
     ],
-    "percentile_line": "This data date is in the 38th percentile of the last 30 observed days.",
-    "signal_position": 38,
+    "percentile_line": "This data date is in the 13th percentile of the last 30 observed days.",
+    "signal_position": 13,
     "top_signal_note": null,
-    "weirdness_score": 38,
+    "weirdness_score": 13,
     "signal_position_note": "Positional measure within recent observations. Not a risk, alert, or warning level.",
-    "signal_position_label": "Higher than 38% of the last 30 observed days."
+    "signal_position_label": "Higher than 13% of the last 30 observed days."
   }
 }
