@@ -1,46 +1,46 @@
 {
-  "display_date": "2026-08-05",
+  "display_date": "2026-08-06",
   "page_payload": {
-    "date": "2026-08-05",
+    "date": "2026-08-06",
     "headline": "Signal Position",
-    "data_date": "2026-08-05",
+    "data_date": "2026-08-06",
     "top_cards": [
       {
-        "title": "M6.3 earthquake near south of the Kermadec Islands",
+        "title": "M5.4 earthquake near 145 km E of Yamada, Japan",
         "category": "geophysical",
-        "event_time": "2026-08-05T07:43:27Z",
-        "event_type": "earthquake",
-        "source_note": "Public observation data",
-        "display_note": "Above the recent baseline.",
-        "anomaly_score": 1.03590196554574,
-        "signal_status": "score_contributor",
-        "magnitude_value": 6.3,
-        "effective_anomaly": 1.03590196554574,
-        "score_contribution": 20.7180393109148
-      },
-      {
-        "title": "M6.3 earthquake near 32 km SW of Sarangani, Philippines",
-        "category": "geophysical",
-        "event_time": "2026-08-05T04:14:06Z",
-        "event_type": "earthquake",
-        "source_note": "Public observation data",
-        "display_note": "Above the recent baseline.",
-        "anomaly_score": 1.03590196554574,
-        "signal_status": "score_contributor",
-        "magnitude_value": 6.3,
-        "effective_anomaly": 1.03590196554574,
-        "score_contribution": 10.3590196554574
-      },
-      {
-        "title": "M5.6 earthquake near 40 km SW of Sarangani, Philippines",
-        "category": "geophysical",
-        "event_time": "2026-08-05T21:41:27Z",
+        "event_time": "2026-08-06T17:43:36Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.290557868384774,
+        "anomaly_score": -0.665737209263589,
         "signal_status": "context_only",
-        "magnitude_value": 5.6,
+        "magnitude_value": 5.4,
+        "effective_anomaly": 0,
+        "score_contribution": 0
+      },
+      {
+        "title": "M5.3 earthquake near 7 km SSW of Huayucachi, Peru",
+        "category": "geophysical",
+        "event_time": "2026-08-06T18:57:21Z",
+        "event_type": "earthquake",
+        "source_note": "Public observation data",
+        "display_note": "Observed signal, but not above the recent baseline.",
+        "anomaly_score": -0.857776788858855,
+        "signal_status": "context_only",
+        "magnitude_value": 5.3,
+        "effective_anomaly": 0,
+        "score_contribution": 0
+      },
+      {
+        "title": "M5.1 earthquake near 110 km W of Buala, Solomon Islands",
+        "category": "geophysical",
+        "event_time": "2026-08-06T13:42:11Z",
+        "event_type": "earthquake",
+        "source_note": "Public observation data",
+        "display_note": "Observed signal, but not above the recent baseline.",
+        "anomaly_score": -1.24185594804938,
+        "signal_status": "context_only",
+        "magnitude_value": 5.1,
         "effective_anomaly": 0,
         "score_contribution": 0
       }
@@ -50,32 +50,32 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-08-06T03:58:01Z",
+    "updated_at": "2026-08-07T03:36:26Z",
     "quiet_signal": {
       "id": "7e007189-7716-49a4-bce6-a082da8970ae",
       "note": "This signal sits above the recent baseline within the current data window.",
       "title": "M6.3 earthquake near south of the Kermadec Islands",
-      "summary": "M6.3 earthquake near south of the Kermadec Islands, observed about 16 hours before the end of the data date.",
+      "summary": "M6.3 earthquake near south of the Kermadec Islands, observed about 40 hours before the end of the data date.",
       "category": "geophysical",
       "available": true,
       "event_time": "2026-08-05T07:43:27Z",
       "event_type": "earthquake",
       "safety_note": "Not a forecast, alert, or recommendation.",
-      "anomaly_score": 1.03590196554574,
+      "anomaly_score": 1.06261900709379,
       "magnitude_value": 6.3,
-      "hours_ago_from_data_end": 16.3
+      "hours_ago_from_data_end": 40.3
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "Higher than 75% of the last 30 observed days.",
+      "Higher than 17% of the last 30 observed days.",
       "Positional measure within recent observations. Not a risk, alert, or warning level.",
       "Based on public earthquake, space weather, internet, and Wikipedia attention data."
     ],
-    "percentile_line": "This data date is in the 75th percentile of the last 30 observed days.",
-    "signal_position": 75,
+    "percentile_line": "This data date is in the 17th percentile of the last 30 observed days.",
+    "signal_position": 17,
     "top_signal_note": null,
-    "weirdness_score": 75,
+    "weirdness_score": 17,
     "signal_position_note": "Positional measure within recent observations. Not a risk, alert, or warning level.",
-    "signal_position_label": "Higher than 75% of the last 30 observed days."
+    "signal_position_label": "Higher than 17% of the last 30 observed days."
   }
 }
