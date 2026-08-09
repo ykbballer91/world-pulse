@@ -1,46 +1,46 @@
 {
-  "display_date": "2026-08-07",
+  "display_date": "2026-08-08",
   "page_payload": {
-    "date": "2026-08-07",
+    "date": "2026-08-08",
     "headline": "Signal Position",
-    "data_date": "2026-08-07",
+    "data_date": "2026-08-08",
     "top_cards": [
       {
-        "title": "M5.1 earthquake near 6 km NNE of Xunchang, China",
+        "title": "M5.6 earthquake near 42 km E of Noda, Japan",
         "category": "geophysical",
-        "event_time": "2026-08-07T05:08:30Z",
+        "event_time": "2026-08-08T17:57:58Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.31714670589113,
+        "anomaly_score": -0.321361570609963,
         "signal_status": "context_only",
-        "magnitude_value": 5.1,
+        "magnitude_value": 5.6,
         "effective_anomaly": 0,
         "score_contribution": 0
       },
       {
-        "title": "M5 earthquake near 49 km SE of Severo-Kuril’sk, Russia",
+        "title": "M5.6 earthquake near southeast of Easter Island",
         "category": "geophysical",
-        "event_time": "2026-08-07T14:21:30Z",
+        "event_time": "2026-08-08T11:41:27Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.51303006215186,
+        "anomaly_score": -0.321361570609963,
         "signal_status": "context_only",
-        "magnitude_value": 5.0,
+        "magnitude_value": 5.6,
         "effective_anomaly": 0,
         "score_contribution": 0
       },
       {
-        "title": "M5 earthquake near 7 km NW of Cabacao, Philippines",
+        "title": "M5.6 earthquake near 57 km WNW of Skwentna, Alaska",
         "category": "geophysical",
-        "event_time": "2026-08-07T02:38:10Z",
+        "event_time": "2026-08-08T04:50:34Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.51303006215186,
+        "anomaly_score": -0.321361570609963,
         "signal_status": "context_only",
-        "magnitude_value": 5.0,
+        "magnitude_value": 5.6,
         "effective_anomaly": 0,
         "score_contribution": 0
       }
@@ -50,32 +50,22 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-08-08T02:39:10Z",
+    "updated_at": "2026-08-09T02:43:19Z",
     "quiet_signal": {
-      "id": "7e007189-7716-49a4-bce6-a082da8970ae",
-      "note": "This signal sits above the recent baseline within the current data window.",
-      "title": "M6.3 earthquake near south of the Kermadec Islands",
-      "summary": "M6.3 earthquake near south of the Kermadec Islands, observed about 64 hours before the end of the data date.",
-      "category": "geophysical",
-      "available": true,
-      "event_time": "2026-08-05T07:43:27Z",
-      "event_type": "earthquake",
-      "safety_note": "Not a forecast, alert, or recommendation.",
-      "anomaly_score": 1.03345356923765,
-      "magnitude_value": 6.3,
-      "hours_ago_from_data_end": 64.3
+      "note": "No quiet signal available for this data date.",
+      "available": false
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "Higher than 18% of the last 30 observed days.",
+      "Higher than 20% of the last 30 observed days.",
       "Positional measure within recent observations. Not a risk, alert, or warning level.",
       "Based on public earthquake, space weather, internet, and Wikipedia attention data."
     ],
-    "percentile_line": "This data date is in the 18th percentile of the last 30 observed days.",
-    "signal_position": 18,
+    "percentile_line": "This data date is in the 20th percentile of the last 30 observed days.",
+    "signal_position": 20,
     "top_signal_note": null,
-    "weirdness_score": 18,
+    "weirdness_score": 20,
     "signal_position_note": "Positional measure within recent observations. Not a risk, alert, or warning level.",
-    "signal_position_label": "Higher than 18% of the last 30 observed days."
+    "signal_position_label": "Higher than 20% of the last 30 observed days."
   }
 }
