@@ -1,46 +1,46 @@
 {
-  "display_date": "2026-08-09",
+  "display_date": "2026-08-10",
   "page_payload": {
-    "date": "2026-08-09",
+    "date": "2026-08-10",
     "headline": "Signal Position",
-    "data_date": "2026-08-09",
+    "data_date": "2026-08-10",
     "top_cards": [
       {
-        "title": "M5.3 earthquake near 197 km SSW of Pagar Alam, Indonesia",
+        "title": "M7.4 earthquake near 5 km S of San José del Palmar, Colombia",
         "category": "geophysical",
-        "event_time": "2026-08-09T15:15:03Z",
+        "event_time": "2026-08-10T12:34:28Z",
+        "event_type": "earthquake",
+        "source_note": "Public observation data",
+        "display_note": "Above the recent baseline.",
+        "anomaly_score": 2.72689663237756,
+        "signal_status": "score_contributor",
+        "magnitude_value": 7.4,
+        "effective_anomaly": 2.72689663237756,
+        "score_contribution": 54.5379326475512
+      },
+      {
+        "title": "M5.5 earthquake near east central Pacific Ocean",
+        "category": "geophysical",
+        "event_time": "2026-08-10T05:41:44Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.852273385566719,
+        "anomaly_score": -0.471315467324517,
         "signal_status": "context_only",
-        "magnitude_value": 5.3,
+        "magnitude_value": 5.5,
         "effective_anomaly": 0,
         "score_contribution": 0
       },
       {
-        "title": "M5.2 earthquake near Galapagos Triple Junction region",
+        "title": "M5.1 earthquake near 232 km SSW of Pagar Alam, Indonesia",
         "category": "geophysical",
-        "event_time": "2026-08-09T11:57:33Z",
+        "event_time": "2026-08-10T17:08:06Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.05202496030892,
+        "anomaly_score": -1.14462327778811,
         "signal_status": "context_only",
-        "magnitude_value": 5.2,
-        "effective_anomaly": 0,
-        "score_contribution": 0
-      },
-      {
-        "title": "M5 earthquake near 198 km SE of Sarangani, Philippines",
-        "category": "geophysical",
-        "event_time": "2026-08-09T22:17:27Z",
-        "event_type": "earthquake",
-        "source_note": "Public observation data",
-        "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.45152810979331,
-        "signal_status": "context_only",
-        "magnitude_value": 5.0,
+        "magnitude_value": 5.1,
         "effective_anomaly": 0,
         "score_contribution": 0
       }
@@ -50,22 +50,32 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-08-10T02:50:44Z",
+    "updated_at": "2026-08-11T02:45:36Z",
     "quiet_signal": {
-      "note": "No quiet signal available for this data date.",
-      "available": false
+      "id": "69a941b5-b04d-43ed-926a-ad16ec17049d",
+      "note": "This signal sits above the recent baseline within the current data window.",
+      "title": "M7.4 earthquake near 5 km S of San José del Palmar, Colombia",
+      "summary": "M7.4 earthquake near 5 km S of San José del Palmar, Colombia, observed about 11 hours before the end of the data date.",
+      "category": "geophysical",
+      "available": true,
+      "event_time": "2026-08-10T12:34:28Z",
+      "event_type": "earthquake",
+      "safety_note": "Not a forecast, alert, or recommendation.",
+      "anomaly_score": 2.72689663237756,
+      "magnitude_value": 7.4,
+      "hours_ago_from_data_end": 11.4
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "Higher than 20% of the last 30 observed days.",
+      "Higher than 88% of the last 30 observed days.",
       "Positional measure within recent observations. Not a risk, alert, or warning level.",
       "Based on public earthquake, space weather, internet, and Wikipedia attention data."
     ],
-    "percentile_line": "This data date is in the 20th percentile of the last 30 observed days.",
-    "signal_position": 20,
+    "percentile_line": "This data date is in the 88th percentile of the last 30 observed days.",
+    "signal_position": 88,
     "top_signal_note": null,
-    "weirdness_score": 20,
+    "weirdness_score": 88,
     "signal_position_note": "Positional measure within recent observations. Not a risk, alert, or warning level.",
-    "signal_position_label": "Higher than 20% of the last 30 observed days."
+    "signal_position_label": "Higher than 88% of the last 30 observed days."
   }
 }
