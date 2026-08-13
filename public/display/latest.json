@@ -1,46 +1,46 @@
 {
-  "display_date": "2026-08-11",
+  "display_date": "2026-08-12",
   "page_payload": {
-    "date": "2026-08-11",
+    "date": "2026-08-12",
     "headline": "Signal Position",
-    "data_date": "2026-08-11",
+    "data_date": "2026-08-12",
     "top_cards": [
       {
-        "title": "M5.1 earthquake near 51 km E of Tobelo, Indonesia",
+        "title": "M6 earthquake near South Sandwich Islands region",
         "category": "geophysical",
-        "event_time": "2026-08-11T20:14:18Z",
+        "event_time": "2026-08-12T11:47:12Z",
+        "event_type": "earthquake",
+        "source_note": "Public observation data",
+        "display_note": "Above the recent baseline.",
+        "anomaly_score": 0.433932291162233,
+        "signal_status": "score_contributor",
+        "magnitude_value": 6.0,
+        "effective_anomaly": 0.433932291162233,
+        "score_contribution": 8.67864582324466
+      },
+      {
+        "title": "M5.2 earthquake near 42 km ESE of Naalehu, Hawaii",
+        "category": "geophysical",
+        "event_time": "2026-08-12T03:48:33Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.17495465581363,
+        "anomaly_score": -0.992694419508143,
+        "signal_status": "context_only",
+        "magnitude_value": 5.2,
+        "effective_anomaly": 0,
+        "score_contribution": 0
+      },
+      {
+        "title": "M5.1 earthquake near 226 km E of Levuka, Fiji",
+        "category": "geophysical",
+        "event_time": "2026-08-12T22:13:33Z",
+        "event_type": "earthquake",
+        "source_note": "Public observation data",
+        "display_note": "Observed signal, but not above the recent baseline.",
+        "anomaly_score": -1.17102275834194,
         "signal_status": "context_only",
         "magnitude_value": 5.1,
-        "effective_anomaly": 0,
-        "score_contribution": 0
-      },
-      {
-        "title": "M5 earthquake near 89 km ESE of Kokopo, Papua New Guinea",
-        "category": "geophysical",
-        "event_time": "2026-08-11T20:31:28Z",
-        "event_type": "earthquake",
-        "source_note": "Public observation data",
-        "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.34969150206284,
-        "signal_status": "context_only",
-        "magnitude_value": 5.0,
-        "effective_anomaly": 0,
-        "score_contribution": 0
-      },
-      {
-        "title": "M5 earthquake near 107 km WNW of Kerema, Papua New Guinea",
-        "category": "geophysical",
-        "event_time": "2026-08-11T17:06:18Z",
-        "event_type": "earthquake",
-        "source_note": "Public observation data",
-        "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.34969150206284,
-        "signal_status": "context_only",
-        "magnitude_value": 5.0,
         "effective_anomaly": 0,
         "score_contribution": 0
       }
@@ -50,32 +50,32 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-08-12T03:11:33Z",
+    "updated_at": "2026-08-13T03:20:02Z",
     "quiet_signal": {
       "id": "69a941b5-b04d-43ed-926a-ad16ec17049d",
       "note": "This signal sits above the recent baseline within the current data window.",
       "title": "M7.4 earthquake near 5 km S of San José del Palmar, Colombia",
-      "summary": "M7.4 earthquake near 5 km S of San José del Palmar, Colombia, observed about 35 hours before the end of the data date.",
+      "summary": "M7.4 earthquake near 5 km S of San José del Palmar, Colombia, observed about 59 hours before the end of the data date.",
       "category": "geophysical",
       "available": true,
       "event_time": "2026-08-10T12:34:28Z",
       "event_type": "earthquake",
       "safety_note": "Not a forecast, alert, or recommendation.",
-      "anomaly_score": 2.84399280791811,
+      "anomaly_score": 2.93052903483539,
       "magnitude_value": 7.4,
-      "hours_ago_from_data_end": 35.4
+      "hours_ago_from_data_end": 59.4
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "Higher than 22% of the last 30 observed days.",
+      "Higher than 58% of the last 30 observed days.",
       "Positional measure within recent observations. Not a risk, alert, or warning level.",
       "Based on public earthquake, space weather, internet, and Wikipedia attention data."
     ],
-    "percentile_line": "This data date is in the 22nd percentile of the last 30 observed days.",
-    "signal_position": 22,
+    "percentile_line": "This data date is in the 58th percentile of the last 30 observed days.",
+    "signal_position": 58,
     "top_signal_note": null,
-    "weirdness_score": 22,
+    "weirdness_score": 58,
     "signal_position_note": "Positional measure within recent observations. Not a risk, alert, or warning level.",
-    "signal_position_label": "Higher than 22% of the last 30 observed days."
+    "signal_position_label": "Higher than 58% of the last 30 observed days."
   }
 }
