@@ -1,46 +1,46 @@
 {
-  "display_date": "2026-08-15",
+  "display_date": "2026-08-16",
   "page_payload": {
-    "date": "2026-08-15",
+    "date": "2026-08-16",
     "headline": "Signal Position",
-    "data_date": "2026-08-15",
+    "data_date": "2026-08-16",
     "top_cards": [
       {
-        "title": "M6.9 earthquake near 15 km NNW of Pematangsiantar, Indonesia",
+        "title": "M6.1 earthquake near 56 km NNE of Port-Olry, Vanuatu",
         "category": "geophysical",
-        "event_time": "2026-08-15T10:54:51Z",
+        "event_time": "2026-08-16T03:20:24Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Above the recent baseline.",
-        "anomaly_score": 1.69939603696348,
+        "anomaly_score": 0.451482448960943,
         "signal_status": "score_contributor",
-        "magnitude_value": 6.9,
-        "effective_anomaly": 1.69939603696348,
-        "score_contribution": 33.9879207392696
+        "magnitude_value": 6.1,
+        "effective_anomaly": 0.451482448960943,
+        "score_contribution": 9.029648979218859
       },
       {
-        "title": "M5.7 earthquake near 125 km NNE of Palu, Indonesia",
+        "title": "M5.5 earthquake near 76 km N of Ruteng, Indonesia",
         "category": "geophysical",
-        "event_time": "2026-08-15T16:25:18Z",
+        "event_time": "2026-08-16T06:51:47Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.166186994151006,
+        "anomaly_score": -0.493480816306137,
         "signal_status": "context_only",
-        "magnitude_value": 5.7,
+        "magnitude_value": 5.5,
         "effective_anomaly": 0,
         "score_contribution": 0
       },
       {
-        "title": "M5.5 earthquake near Volcano Islands, Japan region",
+        "title": "M5.3 earthquake near 75 km NNE of Ruteng, Indonesia",
         "category": "geophysical",
-        "event_time": "2026-08-15T19:32:30Z",
+        "event_time": "2026-08-16T10:14:36Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.477117499336753,
+        "anomaly_score": -0.808468571395164,
         "signal_status": "context_only",
-        "magnitude_value": 5.5,
+        "magnitude_value": 5.3,
         "effective_anomaly": 0,
         "score_contribution": 0
       }
@@ -50,32 +50,32 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-08-16T02:18:23Z",
+    "updated_at": "2026-08-17T02:13:55Z",
     "quiet_signal": {
       "id": "fad82f74-9072-445e-98ae-faaa8c6f5302",
       "note": "This signal sits above the recent baseline within the current data window.",
       "title": "M7.7 earthquake near 68 km NNW of Ende, Indonesia",
-      "summary": "M7.7 earthquake near 68 km NNW of Ende, Indonesia, observed about 26 hours before the end of the data date.",
+      "summary": "M7.7 earthquake near 68 km NNW of Ende, Indonesia, observed about 50 hours before the end of the data date.",
       "category": "geophysical",
       "available": true,
       "event_time": "2026-08-14T21:58:21Z",
       "event_type": "earthquake",
       "safety_note": "Not a forecast, alert, or recommendation.",
-      "anomaly_score": 2.94311805770646,
+      "anomaly_score": 2.97138448967316,
       "magnitude_value": 7.7,
-      "hours_ago_from_data_end": 26.0
+      "hours_ago_from_data_end": 50.0
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "Higher than 78% of the last 30 observed days.",
+      "Higher than 68% of the last 30 observed days.",
       "Positional measure within recent observations. Not a risk, alert, or warning level.",
       "Based on public earthquake, space weather, internet, and Wikipedia attention data."
     ],
-    "percentile_line": "This data date is in the 78th percentile of the last 30 observed days.",
-    "signal_position": 78,
+    "percentile_line": "This data date is in the 68th percentile of the last 30 observed days.",
+    "signal_position": 68,
     "top_signal_note": null,
-    "weirdness_score": 78,
+    "weirdness_score": 68,
     "signal_position_note": "Positional measure within recent observations. Not a risk, alert, or warning level.",
-    "signal_position_label": "Higher than 78% of the last 30 observed days."
+    "signal_position_label": "Higher than 68% of the last 30 observed days."
   }
 }
