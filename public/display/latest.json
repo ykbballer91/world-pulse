@@ -1,46 +1,46 @@
 {
-  "display_date": "2026-08-27",
+  "display_date": "2026-08-28",
   "page_payload": {
-    "date": "2026-08-27",
+    "date": "2026-08-28",
     "headline": "Signal Position",
-    "data_date": "2026-08-27",
+    "data_date": "2026-08-28",
     "top_cards": [
       {
-        "title": "M6 earthquake near 145 km N of Caluula, Somalia",
+        "title": "M5.2 earthquake near southeast Indian Ridge",
         "category": "geophysical",
-        "event_time": "2026-08-27T21:07:38Z",
-        "event_type": "earthquake",
-        "source_note": "Public observation data",
-        "display_note": "Above the recent baseline.",
-        "anomaly_score": 0.191611901079756,
-        "signal_status": "score_contributor",
-        "magnitude_value": 6.0,
-        "effective_anomaly": 0.191611901079756,
-        "score_contribution": 3.83223802159512
-      },
-      {
-        "title": "M5.3 earthquake near 54 km NNE of Labuan Bajo, Indonesia",
-        "category": "geophysical",
-        "event_time": "2026-08-27T10:33:24Z",
+        "event_time": "2026-08-28T04:59:06Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.958059505398752,
+        "anomaly_score": -1.05089461875569,
         "signal_status": "context_only",
-        "magnitude_value": 5.3,
+        "magnitude_value": 5.2,
         "effective_anomaly": 0,
         "score_contribution": 0
       },
       {
-        "title": "M5.3 earthquake near Volcano Islands, Japan region",
+        "title": "M5 earthquake near 191 km ESE of Kimbe, Papua New Guinea",
         "category": "geophysical",
-        "event_time": "2026-08-27T05:44:26Z",
+        "event_time": "2026-08-28T20:19:38Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.958059505398752,
+        "anomaly_score": -1.37096404578788,
         "signal_status": "context_only",
-        "magnitude_value": 5.3,
+        "magnitude_value": 5.0,
+        "effective_anomaly": 0,
+        "score_contribution": 0
+      },
+      {
+        "title": "M5 earthquake near 172 km SE of Petropavlovsk-Kamchatsky, Russia",
+        "category": "geophysical",
+        "event_time": "2026-08-28T09:12:17Z",
+        "event_type": "earthquake",
+        "source_note": "Public observation data",
+        "display_note": "Observed signal, but not above the recent baseline.",
+        "anomaly_score": -1.37096404578788,
+        "signal_status": "context_only",
+        "magnitude_value": 5.0,
         "effective_anomaly": 0,
         "score_contribution": 0
       }
@@ -50,22 +50,22 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-08-28T11:50:40Z",
+    "updated_at": "2026-08-29T07:30:00Z",
     "quiet_signal": {
       "note": "No quiet signal available for this data date.",
       "available": false
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "Higher than 45% of the last 30 observed days.",
+      "Higher than 17% of the last 30 observed days.",
       "Positional measure within recent observations. Not a risk, alert, or warning level.",
       "Based on public earthquake, space weather, internet, and Wikipedia attention data."
     ],
-    "percentile_line": "This data date is in the 45th percentile of the last 30 observed days.",
-    "signal_position": 45,
+    "percentile_line": "This data date is in the 17th percentile of the last 30 observed days.",
+    "signal_position": 17,
     "top_signal_note": null,
-    "weirdness_score": 45,
+    "weirdness_score": 17,
     "signal_position_note": "Positional measure within recent observations. Not a risk, alert, or warning level.",
-    "signal_position_label": "Higher than 45% of the last 30 observed days."
+    "signal_position_label": "Higher than 17% of the last 30 observed days."
   }
 }
