@@ -1,46 +1,46 @@
 {
-  "display_date": "2026-08-28",
+  "display_date": "2026-08-29",
   "page_payload": {
-    "date": "2026-08-28",
+    "date": "2026-08-29",
     "headline": "Signal Position",
-    "data_date": "2026-08-28",
+    "data_date": "2026-08-29",
     "top_cards": [
       {
-        "title": "M5.2 earthquake near southeast Indian Ridge",
+        "title": "M5.1 earthquake near Southwest Indian Ridge",
         "category": "geophysical",
-        "event_time": "2026-08-28T04:59:06Z",
+        "event_time": "2026-08-29T05:40:06Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.05089461875569,
+        "anomaly_score": -1.15984231508982,
         "signal_status": "context_only",
-        "magnitude_value": 5.2,
+        "magnitude_value": 5.1,
         "effective_anomaly": 0,
         "score_contribution": 0
       },
       {
-        "title": "M5 earthquake near 191 km ESE of Kimbe, Papua New Guinea",
+        "title": "M5 earthquake near 64 km W of Labuha, Indonesia",
         "category": "geophysical",
-        "event_time": "2026-08-28T20:19:38Z",
+        "event_time": "2026-08-29T08:08:45Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.37096404578788,
+        "anomaly_score": -1.31657776307493,
         "signal_status": "context_only",
         "magnitude_value": 5.0,
         "effective_anomaly": 0,
         "score_contribution": 0
       },
       {
-        "title": "M5 earthquake near 172 km SE of Petropavlovsk-Kamchatsky, Russia",
+        "title": "M4.9 earthquake near South Sandwich Islands region",
         "category": "geophysical",
-        "event_time": "2026-08-28T09:12:17Z",
+        "event_time": "2026-08-29T07:10:54Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.37096404578788,
+        "anomaly_score": -1.47331321106004,
         "signal_status": "context_only",
-        "magnitude_value": 5.0,
+        "magnitude_value": 4.9,
         "effective_anomaly": 0,
         "score_contribution": 0
       }
@@ -50,7 +50,7 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-08-29T07:30:00Z",
+    "updated_at": "2026-08-30T05:49:56Z",
     "quiet_signal": {
       "note": "No quiet signal available for this data date.",
       "available": false
