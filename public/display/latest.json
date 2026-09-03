@@ -1,46 +1,46 @@
 {
-  "display_date": "2026-09-01",
+  "display_date": "2026-09-02",
   "page_payload": {
-    "date": "2026-09-01",
+    "date": "2026-09-02",
     "headline": "Signal Position",
-    "data_date": "2026-09-01",
+    "data_date": "2026-09-02",
     "top_cards": [
       {
-        "title": "M5.6 earthquake near 82 km SE of Maba, Indonesia",
+        "title": "M6.2 earthquake near South Sandwich Islands region",
         "category": "geophysical",
-        "event_time": "2026-09-01T08:22:20Z",
+        "event_time": "2026-09-02T23:46:57Z",
+        "event_type": "earthquake",
+        "source_note": "Public observation data",
+        "display_note": "Above the recent baseline.",
+        "anomaly_score": 0.505076272276101,
+        "signal_status": "score_contributor",
+        "magnitude_value": 6.2,
+        "effective_anomaly": 0.505076272276101,
+        "score_contribution": 10.10152544552202
+      },
+      {
+        "title": "M5.9 earthquake near southern East Pacific Rise",
+        "category": "geophysical",
+        "event_time": "2026-09-02T12:35:56Z",
+        "event_type": "earthquake",
+        "source_note": "Public observation data",
+        "display_note": "Above the recent baseline.",
+        "anomaly_score": 0.0505076272276063,
+        "signal_status": "score_contributor",
+        "magnitude_value": 5.9,
+        "effective_anomaly": 0.0505076272276063,
+        "score_contribution": 0.505076272276063
+      },
+      {
+        "title": "M5.6 earthquake near 71 km WSW of Puerto Madero, Mexico",
+        "category": "geophysical",
+        "event_time": "2026-09-02T12:28:31Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.458789693127499,
+        "anomaly_score": -0.40406101782089,
         "signal_status": "context_only",
         "magnitude_value": 5.6,
-        "effective_anomaly": 0,
-        "score_contribution": 0
-      },
-      {
-        "title": "M5.3 earthquake near 89 km SSW of Nikolski, Alaska",
-        "category": "geophysical",
-        "event_time": "2026-09-01T06:44:36Z",
-        "event_type": "earthquake",
-        "source_note": "Public observation data",
-        "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.944567015262502,
-        "signal_status": "context_only",
-        "magnitude_value": 5.3,
-        "effective_anomaly": 0,
-        "score_contribution": 0
-      },
-      {
-        "title": "M5.2 earthquake near 35 km SE of Sarangani, Philippines",
-        "category": "geophysical",
-        "event_time": "2026-09-01T13:22:30Z",
-        "event_type": "earthquake",
-        "source_note": "Public observation data",
-        "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.1064927893075,
-        "signal_status": "context_only",
-        "magnitude_value": 5.2,
         "effective_anomaly": 0,
         "score_contribution": 0
       }
@@ -50,22 +50,22 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-09-02T05:05:35Z",
+    "updated_at": "2026-09-03T05:03:37Z",
     "quiet_signal": {
       "note": "No quiet signal available for this data date.",
       "available": false
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "Higher than 22% of the last 30 observed days.",
+      "Higher than 62% of the last 30 observed days.",
       "Positional measure within recent observations. Not a risk, alert, or warning level.",
       "Based on public earthquake, space weather, internet, and Wikipedia attention data."
     ],
-    "percentile_line": "This data date is in the 22nd percentile of the last 30 observed days.",
-    "signal_position": 22,
+    "percentile_line": "This data date is in the 62nd percentile of the last 30 observed days.",
+    "signal_position": 62,
     "top_signal_note": null,
-    "weirdness_score": 22,
+    "weirdness_score": 62,
     "signal_position_note": "Positional measure within recent observations. Not a risk, alert, or warning level.",
-    "signal_position_label": "Higher than 22% of the last 30 observed days."
+    "signal_position_label": "Higher than 62% of the last 30 observed days."
   }
 }
