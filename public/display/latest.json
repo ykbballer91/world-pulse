@@ -1,44 +1,44 @@
 {
-  "display_date": "2026-09-04",
+  "display_date": "2026-09-05",
   "page_payload": {
-    "date": "2026-09-04",
+    "date": "2026-09-05",
     "headline": "Signal Position",
-    "data_date": "2026-09-04",
+    "data_date": "2026-09-05",
     "top_cards": [
       {
-        "title": "M5.5 earthquake near 156 km E of Kuril’sk, Russia",
+        "title": "M5.6 earthquake near 96 km ESE of Isangel, Vanuatu",
         "category": "geophysical",
-        "event_time": "2026-09-04T23:52:30Z",
+        "event_time": "2026-09-05T17:02:11Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.588976245103828,
+        "anomaly_score": -0.520557713691091,
+        "signal_status": "context_only",
+        "magnitude_value": 5.6,
+        "effective_anomaly": 0,
+        "score_contribution": 0
+      },
+      {
+        "title": "M5.5 earthquake near 157 km E of Kokopo, Papua New Guinea",
+        "category": "geophysical",
+        "event_time": "2026-09-05T14:12:07Z",
+        "event_type": "earthquake",
+        "source_note": "Public observation data",
+        "display_note": "Observed signal, but not above the recent baseline.",
+        "anomaly_score": -0.684944360119855,
         "signal_status": "context_only",
         "magnitude_value": 5.5,
         "effective_anomaly": 0,
         "score_contribution": 0
       },
       {
-        "title": "M5.4 earthquake near Kermadec Islands region",
+        "title": "M5.2 earthquake near 77 km SSW of Sibolga, Indonesia",
         "category": "geophysical",
-        "event_time": "2026-09-04T11:59:58Z",
+        "event_time": "2026-09-05T14:06:07Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.743969993815361,
-        "signal_status": "context_only",
-        "magnitude_value": 5.4,
-        "effective_anomaly": 0,
-        "score_contribution": 0
-      },
-      {
-        "title": "M5.2 earthquake near 28 km S of Cilacap, Indonesia",
-        "category": "geophysical",
-        "event_time": "2026-09-04T05:04:54Z",
-        "event_type": "earthquake",
-        "source_note": "Public observation data",
-        "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.05395749123843,
+        "anomaly_score": -1.17810429940615,
         "signal_status": "context_only",
         "magnitude_value": 5.2,
         "effective_anomaly": 0,
@@ -50,7 +50,7 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-09-05T05:01:08Z",
+    "updated_at": "2026-09-06T05:08:30Z",
     "quiet_signal": {
       "note": "No quiet signal available for this data date.",
       "available": false
