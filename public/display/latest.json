@@ -1,46 +1,46 @@
 {
-  "display_date": "2026-09-07",
+  "display_date": "2026-09-08",
   "page_payload": {
-    "date": "2026-09-07",
+    "date": "2026-09-08",
     "headline": "Signal Position",
-    "data_date": "2026-09-07",
+    "data_date": "2026-09-08",
     "top_cards": [
       {
-        "title": "M5.5 earthquake near southeast of the Loyalty Islands",
+        "title": "M5.3 earthquake near 26 km NW of Neiafu, Tonga",
         "category": "geophysical",
-        "event_time": "2026-09-07T05:50:44Z",
+        "event_time": "2026-09-08T11:51:09Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.67724182158689,
-        "signal_status": "context_only",
-        "magnitude_value": 5.5,
-        "effective_anomaly": 0,
-        "score_contribution": 0
-      },
-      {
-        "title": "M5.3 earthquake near off the coast of Oregon",
-        "category": "geophysical",
-        "event_time": "2026-09-07T01:30:24Z",
-        "event_type": "earthquake",
-        "source_note": "Public observation data",
-        "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.00493947719345,
+        "anomaly_score": -0.865867741910691,
         "signal_status": "context_only",
         "magnitude_value": 5.3,
         "effective_anomaly": 0,
         "score_contribution": 0
       },
       {
-        "title": "M5 earthquake near Kermadec Islands region",
+        "title": "M5.3 earthquake near 51 km NNE of Ruteng, Indonesia",
         "category": "geophysical",
-        "event_time": "2026-09-07T02:06:48Z",
+        "event_time": "2026-09-08T04:40:28Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.49648596060329,
+        "anomaly_score": -0.865867741910691,
         "signal_status": "context_only",
-        "magnitude_value": 5.0,
+        "magnitude_value": 5.3,
+        "effective_anomaly": 0,
+        "score_contribution": 0
+      },
+      {
+        "title": "M5.2 earthquake near 123 km NNE of Ruteng, Indonesia",
+        "category": "geophysical",
+        "event_time": "2026-09-08T15:36:35Z",
+        "event_type": "earthquake",
+        "source_note": "Public observation data",
+        "display_note": "Observed signal, but not above the recent baseline.",
+        "anomaly_score": -1.03345504679663,
+        "signal_status": "context_only",
+        "magnitude_value": 5.2,
         "effective_anomaly": 0,
         "score_contribution": 0
       }
@@ -50,22 +50,22 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-09-08T05:11:44Z",
+    "updated_at": "2026-09-09T05:11:50Z",
     "quiet_signal": {
       "note": "No quiet signal available for this data date.",
       "available": false
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "Higher than 20% of the last 30 observed days.",
+      "Higher than 18% of the last 30 observed days.",
       "Positional measure within recent observations. Not a risk, alert, or warning level.",
       "Based on public earthquake, space weather, internet, and Wikipedia attention data."
     ],
-    "percentile_line": "This data date is in the 20th percentile of the last 30 observed days.",
-    "signal_position": 20,
+    "percentile_line": "This data date is in the 18th percentile of the last 30 observed days.",
+    "signal_position": 18,
     "top_signal_note": null,
-    "weirdness_score": 20,
+    "weirdness_score": 18,
     "signal_position_note": "Positional measure within recent observations. Not a risk, alert, or warning level.",
-    "signal_position_label": "Higher than 20% of the last 30 observed days."
+    "signal_position_label": "Higher than 18% of the last 30 observed days."
   }
 }
