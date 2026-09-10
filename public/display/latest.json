@@ -1,46 +1,46 @@
 {
-  "display_date": "2026-09-08",
+  "display_date": "2026-09-09",
   "page_payload": {
-    "date": "2026-09-08",
+    "date": "2026-09-09",
     "headline": "Signal Position",
-    "data_date": "2026-09-08",
+    "data_date": "2026-09-09",
     "top_cards": [
       {
-        "title": "M5.3 earthquake near 26 km NW of Neiafu, Tonga",
+        "title": "M5.2 earthquake near 76 km ESE of Isangel, Vanuatu",
         "category": "geophysical",
-        "event_time": "2026-09-08T11:51:09Z",
+        "event_time": "2026-09-09T17:01:52Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.865867741910691,
-        "signal_status": "context_only",
-        "magnitude_value": 5.3,
-        "effective_anomaly": 0,
-        "score_contribution": 0
-      },
-      {
-        "title": "M5.3 earthquake near 51 km NNE of Ruteng, Indonesia",
-        "category": "geophysical",
-        "event_time": "2026-09-08T04:40:28Z",
-        "event_type": "earthquake",
-        "source_note": "Public observation data",
-        "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.865867741910691,
-        "signal_status": "context_only",
-        "magnitude_value": 5.3,
-        "effective_anomaly": 0,
-        "score_contribution": 0
-      },
-      {
-        "title": "M5.2 earthquake near 123 km NNE of Ruteng, Indonesia",
-        "category": "geophysical",
-        "event_time": "2026-09-08T15:36:35Z",
-        "event_type": "earthquake",
-        "source_note": "Public observation data",
-        "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.03345504679663,
+        "anomaly_score": -1.00764829497814,
         "signal_status": "context_only",
         "magnitude_value": 5.2,
+        "effective_anomaly": 0,
+        "score_contribution": 0
+      },
+      {
+        "title": "M5.1 earthquake near 81 km ESE of Isangel, Vanuatu",
+        "category": "geophysical",
+        "event_time": "2026-09-09T17:18:45Z",
+        "event_type": "earthquake",
+        "source_note": "Public observation data",
+        "display_note": "Observed signal, but not above the recent baseline.",
+        "anomaly_score": -1.17193877785501,
+        "signal_status": "context_only",
+        "magnitude_value": 5.1,
+        "effective_anomaly": 0,
+        "score_contribution": 0
+      },
+      {
+        "title": "M5 earthquake near 53 km W of Cafayate, Argentina",
+        "category": "geophysical",
+        "event_time": "2026-09-09T10:06:57Z",
+        "event_type": "earthquake",
+        "source_note": "Public observation data",
+        "display_note": "Observed signal, but not above the recent baseline.",
+        "anomaly_score": -1.33622926073188,
+        "signal_status": "context_only",
+        "magnitude_value": 5.0,
         "effective_anomaly": 0,
         "score_contribution": 0
       }
@@ -50,22 +50,22 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-09-09T05:11:50Z",
+    "updated_at": "2026-09-10T05:14:49Z",
     "quiet_signal": {
       "note": "No quiet signal available for this data date.",
       "available": false
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "Higher than 18% of the last 30 observed days.",
+      "Higher than 20% of the last 30 observed days.",
       "Positional measure within recent observations. Not a risk, alert, or warning level.",
       "Based on public earthquake, space weather, internet, and Wikipedia attention data."
     ],
-    "percentile_line": "This data date is in the 18th percentile of the last 30 observed days.",
-    "signal_position": 18,
+    "percentile_line": "This data date is in the 20th percentile of the last 30 observed days.",
+    "signal_position": 20,
     "top_signal_note": null,
-    "weirdness_score": 18,
+    "weirdness_score": 20,
     "signal_position_note": "Positional measure within recent observations. Not a risk, alert, or warning level.",
-    "signal_position_label": "Higher than 18% of the last 30 observed days."
+    "signal_position_label": "Higher than 20% of the last 30 observed days."
   }
 }
