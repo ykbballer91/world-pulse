@@ -1,44 +1,44 @@
 {
-  "display_date": "2026-09-10",
+  "display_date": "2026-09-11",
   "page_payload": {
-    "date": "2026-09-10",
+    "date": "2026-09-11",
     "headline": "Signal Position",
-    "data_date": "2026-09-10",
+    "data_date": "2026-09-11",
     "top_cards": [
       {
-        "title": "M5.4 earthquake near southern East Pacific Rise",
+        "title": "M6.6 earthquake near 115 km NNE of Teluknaga, Indonesia",
         "category": "geophysical",
-        "event_time": "2026-09-10T18:21:18Z",
+        "event_time": "2026-09-11T21:23:55Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
-        "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.723379550725504,
-        "signal_status": "context_only",
-        "magnitude_value": 5.4,
-        "effective_anomaly": 0,
-        "score_contribution": 0
+        "display_note": "Above the recent baseline.",
+        "anomaly_score": 1.29360961155513,
+        "signal_status": "score_contributor",
+        "magnitude_value": 6.6,
+        "effective_anomaly": 1.29360961155513,
+        "score_contribution": 25.872192231102602
       },
       {
-        "title": "M5.3 earthquake near 83 km E of Lospalos, Timor Leste",
+        "title": "M5.9 earthquake near 253 km ENE of Lospalos, Timor Leste",
         "category": "geophysical",
-        "event_time": "2026-09-10T18:44:40Z",
+        "event_time": "2026-09-11T11:56:23Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
-        "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.898390732352644,
-        "signal_status": "context_only",
-        "magnitude_value": 5.3,
-        "effective_anomaly": 0,
-        "score_contribution": 0
+        "display_note": "Above the recent baseline.",
+        "anomaly_score": 0.0808506007222016,
+        "signal_status": "score_contributor",
+        "magnitude_value": 5.9,
+        "effective_anomaly": 0.0808506007222016,
+        "score_contribution": 0.808506007222016
       },
       {
-        "title": "M5.3 earthquake near 126 km WSW of Alianza Cristiana, Peru",
+        "title": "M5.3 earthquake near 151 km WSW of Adak, Alaska",
         "category": "geophysical",
-        "event_time": "2026-09-10T06:42:40Z",
+        "event_time": "2026-09-11T10:47:12Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.898390732352644,
+        "anomaly_score": -0.958657122848879,
         "signal_status": "context_only",
         "magnitude_value": 5.3,
         "effective_anomaly": 0,
@@ -50,22 +50,22 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-09-11T05:11:22Z",
+    "updated_at": "2026-09-12T05:01:57Z",
     "quiet_signal": {
       "note": "No quiet signal available for this data date.",
       "available": false
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "Higher than 20% of the last 30 observed days.",
+      "Higher than 78% of the last 30 observed days.",
       "Positional measure within recent observations. Not a risk, alert, or warning level.",
       "Based on public earthquake, space weather, internet, and Wikipedia attention data."
     ],
-    "percentile_line": "This data date is in the 20th percentile of the last 30 observed days.",
-    "signal_position": 20,
+    "percentile_line": "This data date is in the 78th percentile of the last 30 observed days.",
+    "signal_position": 78,
     "top_signal_note": null,
-    "weirdness_score": 20,
+    "weirdness_score": 78,
     "signal_position_note": "Positional measure within recent observations. Not a risk, alert, or warning level.",
-    "signal_position_label": "Higher than 20% of the last 30 observed days."
+    "signal_position_label": "Higher than 78% of the last 30 observed days."
   }
 }
