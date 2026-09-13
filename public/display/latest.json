@@ -1,46 +1,46 @@
 {
-  "display_date": "2026-09-11",
+  "display_date": "2026-09-12",
   "page_payload": {
-    "date": "2026-09-11",
+    "date": "2026-09-12",
     "headline": "Signal Position",
-    "data_date": "2026-09-11",
+    "data_date": "2026-09-12",
     "top_cards": [
       {
-        "title": "M6.6 earthquake near 115 km NNE of Teluknaga, Indonesia",
+        "title": "M5.1 earthquake near 101 km S of Yudomari, Japan",
         "category": "geophysical",
-        "event_time": "2026-09-11T21:23:55Z",
-        "event_type": "earthquake",
-        "source_note": "Public observation data",
-        "display_note": "Above the recent baseline.",
-        "anomaly_score": 1.29360961155513,
-        "signal_status": "score_contributor",
-        "magnitude_value": 6.6,
-        "effective_anomaly": 1.29360961155513,
-        "score_contribution": 25.872192231102602
-      },
-      {
-        "title": "M5.9 earthquake near 253 km ENE of Lospalos, Timor Leste",
-        "category": "geophysical",
-        "event_time": "2026-09-11T11:56:23Z",
-        "event_type": "earthquake",
-        "source_note": "Public observation data",
-        "display_note": "Above the recent baseline.",
-        "anomaly_score": 0.0808506007222016,
-        "signal_status": "score_contributor",
-        "magnitude_value": 5.9,
-        "effective_anomaly": 0.0808506007222016,
-        "score_contribution": 0.808506007222016
-      },
-      {
-        "title": "M5.3 earthquake near 151 km WSW of Adak, Alaska",
-        "category": "geophysical",
-        "event_time": "2026-09-11T10:47:12Z",
+        "event_time": "2026-09-12T20:32:58Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.958657122848879,
+        "anomaly_score": -1.37587412516982,
         "signal_status": "context_only",
-        "magnitude_value": 5.3,
+        "magnitude_value": 5.1,
+        "effective_anomaly": 0,
+        "score_contribution": 0
+      },
+      {
+        "title": "M5.1 earthquake near South Sandwich Islands region",
+        "category": "geophysical",
+        "event_time": "2026-09-12T00:55:08Z",
+        "event_type": "earthquake",
+        "source_note": "Public observation data",
+        "display_note": "Observed signal, but not above the recent baseline.",
+        "anomaly_score": -1.37587412516982,
+        "signal_status": "context_only",
+        "magnitude_value": 5.1,
+        "effective_anomaly": 0,
+        "score_contribution": 0
+      },
+      {
+        "title": "M4.9 earthquake near South Sandwich Islands region",
+        "category": "geophysical",
+        "event_time": "2026-09-12T11:05:46Z",
+        "event_type": "earthquake",
+        "source_note": "Public observation data",
+        "display_note": "Observed signal, but not above the recent baseline.",
+        "anomaly_score": -1.79492208207433,
+        "signal_status": "context_only",
+        "magnitude_value": 4.9,
         "effective_anomaly": 0,
         "score_contribution": 0
       }
@@ -50,22 +50,32 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-09-12T05:01:57Z",
+    "updated_at": "2026-09-13T05:20:10Z",
     "quiet_signal": {
-      "note": "No quiet signal available for this data date.",
-      "available": false
+      "id": "f56f01b8-a396-4f9c-9806-1adf01a55403",
+      "note": "This signal sits above the recent baseline within the current data window.",
+      "title": "M6.6 earthquake near 115 km NNE of Teluknaga, Indonesia",
+      "summary": "M6.6 earthquake near 115 km NNE of Teluknaga, Indonesia, observed about 27 hours before the end of the data date.",
+      "category": "geophysical",
+      "available": true,
+      "event_time": "2026-09-11T21:23:55Z",
+      "event_type": "earthquake",
+      "safety_note": "Not a forecast, alert, or recommendation.",
+      "anomaly_score": 1.76698555161401,
+      "magnitude_value": 6.6,
+      "hours_ago_from_data_end": 26.6
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "Higher than 78% of the last 30 observed days.",
+      "Higher than 15% of the last 30 observed days.",
       "Positional measure within recent observations. Not a risk, alert, or warning level.",
       "Based on public earthquake, space weather, internet, and Wikipedia attention data."
     ],
-    "percentile_line": "This data date is in the 78th percentile of the last 30 observed days.",
-    "signal_position": 78,
+    "percentile_line": "This data date is in the 15th percentile of the last 30 observed days.",
+    "signal_position": 15,
     "top_signal_note": null,
-    "weirdness_score": 78,
+    "weirdness_score": 15,
     "signal_position_note": "Positional measure within recent observations. Not a risk, alert, or warning level.",
-    "signal_position_label": "Higher than 78% of the last 30 observed days."
+    "signal_position_label": "Higher than 15% of the last 30 observed days."
   }
 }
