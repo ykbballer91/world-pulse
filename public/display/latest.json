@@ -1,46 +1,46 @@
 {
-  "display_date": "2026-09-15",
+  "display_date": "2026-09-16",
   "page_payload": {
-    "date": "2026-09-15",
+    "date": "2026-09-16",
     "headline": "Signal Position",
-    "data_date": "2026-09-15",
+    "data_date": "2026-09-16",
     "top_cards": [
       {
-        "title": "M4.8 earthquake near 289 km WSW of Tual, Indonesia",
+        "title": "M5.1 earthquake near 77 km SSW of San Jose Village, Northern Mariana Islands",
         "category": "geophysical",
-        "event_time": "2026-09-15T06:07:52Z",
+        "event_time": "2026-09-16T18:06:40Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.88092976544908,
+        "anomaly_score": -1.18920435349881,
         "signal_status": "context_only",
-        "magnitude_value": 4.8,
+        "magnitude_value": 5.1,
         "effective_anomaly": 0,
         "score_contribution": 0
       },
       {
-        "title": "M4.8 earthquake near 229 km E of Tadine, New Caledonia",
+        "title": "M5.1 earthquake near 172 km ESE of Saipan, Northern Mariana Islands",
         "category": "geophysical",
-        "event_time": "2026-09-15T04:52:26Z",
+        "event_time": "2026-09-16T08:37:00Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.88092976544908,
+        "anomaly_score": -1.18920435349881,
         "signal_status": "context_only",
-        "magnitude_value": 4.8,
+        "magnitude_value": 5.1,
         "effective_anomaly": 0,
         "score_contribution": 0
       },
       {
-        "title": "M4.7 earthquake near 161 km N of Caluula, Somalia",
+        "title": "M5 earthquake near 29 km WSW of Sipí, Colombia",
         "category": "geophysical",
-        "event_time": "2026-09-15T23:46:59Z",
+        "event_time": "2026-09-16T20:12:52Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -2.10135122233765,
+        "anomaly_score": -1.41079522682156,
         "signal_status": "context_only",
-        "magnitude_value": 4.7,
+        "magnitude_value": 5.0,
         "effective_anomaly": 0,
         "score_contribution": 0
       }
@@ -50,7 +50,7 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-09-16T05:13:57Z",
+    "updated_at": "2026-09-17T05:17:12Z",
     "quiet_signal": {
       "note": "No quiet signal available for this data date.",
       "available": false
