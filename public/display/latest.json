@@ -1,46 +1,46 @@
 {
-  "display_date": "2026-09-17",
+  "display_date": "2026-09-18",
   "page_payload": {
-    "date": "2026-09-17",
+    "date": "2026-09-18",
     "headline": "Signal Position",
-    "data_date": "2026-09-17",
+    "data_date": "2026-09-18",
     "top_cards": [
       {
-        "title": "M6.5 earthquake near 165 km W of Nikolski, Alaska",
+        "title": "M5.5 earthquake near Kermadec Islands region",
         "category": "geophysical",
-        "event_time": "2026-09-17T14:19:53Z",
-        "event_type": "earthquake",
-        "source_note": "Public observation data",
-        "display_note": "Above the recent baseline.",
-        "anomaly_score": 1.69425860394441,
-        "signal_status": "score_contributor",
-        "magnitude_value": 6.5,
-        "effective_anomaly": 1.69425860394441,
-        "score_contribution": 33.8851720788882
-      },
-      {
-        "title": "M5.3 earthquake near 191 km SE of Mata-Utu, Wallis and Futuna",
-        "category": "geophysical",
-        "event_time": "2026-09-17T06:42:41Z",
+        "event_time": "2026-09-18T23:18:28Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.660695440148215,
+        "anomaly_score": -0.265754662238669,
         "signal_status": "context_only",
-        "magnitude_value": 5.3,
+        "magnitude_value": 5.5,
         "effective_anomaly": 0,
         "score_contribution": 0
       },
       {
-        "title": "M5.3 earthquake near 155 km SSE of Hihifo, Tonga",
+        "title": "M5.2 earthquake near 28 km NE of Villa Presidente Frei, Chile",
         "category": "geophysical",
-        "event_time": "2026-09-17T04:06:53Z",
+        "event_time": "2026-09-18T16:52:07Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.660695440148215,
+        "anomaly_score": -0.949123793709515,
         "signal_status": "context_only",
-        "magnitude_value": 5.3,
+        "magnitude_value": 5.2,
+        "effective_anomaly": 0,
+        "score_contribution": 0
+      },
+      {
+        "title": "M5.2 earthquake near 189 km SSW of Pelabuhanratu, Indonesia",
+        "category": "geophysical",
+        "event_time": "2026-09-18T14:36:17Z",
+        "event_type": "earthquake",
+        "source_note": "Public observation data",
+        "display_note": "Observed signal, but not above the recent baseline.",
+        "anomaly_score": -0.949123793709515,
+        "signal_status": "context_only",
+        "magnitude_value": 5.2,
         "effective_anomaly": 0,
         "score_contribution": 0
       }
@@ -50,32 +50,32 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-09-18T05:08:47Z",
+    "updated_at": "2026-09-19T05:00:55Z",
     "quiet_signal": {
       "id": "c1ea76f2-6ba6-4641-b4a9-d6f1068684f9",
       "note": "This signal sits above the recent baseline within the current data window.",
       "title": "M6.5 earthquake near 165 km W of Nikolski, Alaska",
-      "summary": "M6.5 earthquake near 165 km W of Nikolski, Alaska, observed about 10 hours before the end of the data date.",
+      "summary": "M6.5 earthquake near 165 km W of Nikolski, Alaska, observed about 34 hours before the end of the data date.",
       "category": "geophysical",
       "available": true,
       "event_time": "2026-09-17T14:19:53Z",
       "event_type": "earthquake",
       "safety_note": "Not a forecast, alert, or recommendation.",
-      "anomaly_score": 1.69425860394441,
+      "anomaly_score": 2.01214244266415,
       "magnitude_value": 6.5,
-      "hours_ago_from_data_end": 9.7
+      "hours_ago_from_data_end": 33.7
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "Higher than 75% of the last 30 observed days.",
+      "Higher than 17% of the last 30 observed days.",
       "Positional measure within recent observations. Not a risk, alert, or warning level.",
       "Based on public earthquake, space weather, internet, and Wikipedia attention data."
     ],
-    "percentile_line": "This data date is in the 75th percentile of the last 30 observed days.",
-    "signal_position": 75,
+    "percentile_line": "This data date is in the 17th percentile of the last 30 observed days.",
+    "signal_position": 17,
     "top_signal_note": null,
-    "weirdness_score": 75,
+    "weirdness_score": 17,
     "signal_position_note": "Positional measure within recent observations. Not a risk, alert, or warning level.",
-    "signal_position_label": "Higher than 75% of the last 30 observed days."
+    "signal_position_label": "Higher than 17% of the last 30 observed days."
   }
 }
