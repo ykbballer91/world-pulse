@@ -1,46 +1,46 @@
 {
-  "display_date": "2026-09-20",
+  "display_date": "2026-09-21",
   "page_payload": {
-    "date": "2026-09-20",
+    "date": "2026-09-21",
     "headline": "Signal Position",
-    "data_date": "2026-09-20",
+    "data_date": "2026-09-21",
     "top_cards": [
       {
-        "title": "M6.4 earthquake near 49 km NNE of Kainantu, Papua New Guinea",
+        "title": "M5.5 earthquake near 35 km NNE of Ruteng, Indonesia",
         "category": "geophysical",
-        "event_time": "2026-09-20T09:17:35Z",
-        "event_type": "earthquake",
-        "source_note": "Public observation data",
-        "display_note": "Above the recent baseline.",
-        "anomaly_score": 1.75398038586248,
-        "signal_status": "score_contributor",
-        "magnitude_value": 6.4,
-        "effective_anomaly": 1.75398038586248,
-        "score_contribution": 35.0796077172496
-      },
-      {
-        "title": "M5.7 earthquake near south of Africa",
-        "category": "geophysical",
-        "event_time": "2026-09-20T20:54:37Z",
-        "event_type": "earthquake",
-        "source_note": "Public observation data",
-        "display_note": "Above the recent baseline.",
-        "anomaly_score": 0.193235127256044,
-        "signal_status": "score_contributor",
-        "magnitude_value": 5.7,
-        "effective_anomaly": 0.193235127256044,
-        "score_contribution": 1.93235127256044
-      },
-      {
-        "title": "M5.4 earthquake near 68 km NNE of Kainantu, Papua New Guinea",
-        "category": "geophysical",
-        "event_time": "2026-09-20T12:45:53Z",
+        "event_time": "2026-09-21T01:41:36Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.475655697861001,
+        "anomaly_score": -0.157561433264479,
         "signal_status": "context_only",
-        "magnitude_value": 5.4,
+        "magnitude_value": 5.5,
+        "effective_anomaly": 0,
+        "score_contribution": 0
+      },
+      {
+        "title": "M5.3 earthquake near 97 km S of Sarangani, Philippines",
+        "category": "geophysical",
+        "event_time": "2026-09-21T23:48:13Z",
+        "event_type": "earthquake",
+        "source_note": "Public observation data",
+        "display_note": "Observed signal, but not above the recent baseline.",
+        "anomaly_score": -0.587274433076717,
+        "signal_status": "context_only",
+        "magnitude_value": 5.3,
+        "effective_anomaly": 0,
+        "score_contribution": 0
+      },
+      {
+        "title": "M5.2 earthquake near 167 km WNW of Mejillones, Chile",
+        "category": "geophysical",
+        "event_time": "2026-09-21T11:48:28Z",
+        "event_type": "earthquake",
+        "source_note": "Public observation data",
+        "display_note": "Observed signal, but not above the recent baseline.",
+        "anomaly_score": -0.802130932982835,
+        "signal_status": "context_only",
+        "magnitude_value": 5.2,
         "effective_anomaly": 0,
         "score_contribution": 0
       }
@@ -50,32 +50,32 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-09-21T05:25:04Z",
+    "updated_at": "2026-09-22T05:25:36Z",
     "quiet_signal": {
       "id": "98ef2c78-808b-4477-a749-024e36f6a477",
       "note": "This signal sits above the recent baseline within the current data window.",
       "title": "M6.4 earthquake near 49 km NNE of Kainantu, Papua New Guinea",
-      "summary": "M6.4 earthquake near 49 km NNE of Kainantu, Papua New Guinea, observed about 15 hours before the end of the data date.",
+      "summary": "M6.4 earthquake near 49 km NNE of Kainantu, Papua New Guinea, observed about 39 hours before the end of the data date.",
       "category": "geophysical",
       "available": true,
       "event_time": "2026-09-20T09:17:35Z",
       "event_type": "earthquake",
       "safety_note": "Not a forecast, alert, or recommendation.",
-      "anomaly_score": 1.75398038586248,
+      "anomaly_score": 1.77614706589059,
       "magnitude_value": 6.4,
-      "hours_ago_from_data_end": 14.7
+      "hours_ago_from_data_end": 38.7
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "Higher than 75% of the last 30 observed days.",
+      "Higher than 17% of the last 30 observed days.",
       "Positional measure within recent observations. Not a risk, alert, or warning level.",
       "Based on public earthquake, space weather, internet, and Wikipedia attention data."
     ],
-    "percentile_line": "This data date is in the 75th percentile of the last 30 observed days.",
-    "signal_position": 75,
+    "percentile_line": "This data date is in the 17th percentile of the last 30 observed days.",
+    "signal_position": 17,
     "top_signal_note": null,
-    "weirdness_score": 75,
+    "weirdness_score": 17,
     "signal_position_note": "Positional measure within recent observations. Not a risk, alert, or warning level.",
-    "signal_position_label": "Higher than 75% of the last 30 observed days."
+    "signal_position_label": "Higher than 17% of the last 30 observed days."
   }
 }
