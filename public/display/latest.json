@@ -1,46 +1,46 @@
 {
-  "display_date": "2026-09-22",
+  "display_date": "2026-09-23",
   "page_payload": {
-    "date": "2026-09-22",
+    "date": "2026-09-23",
     "headline": "Signal Position",
-    "data_date": "2026-09-22",
+    "data_date": "2026-09-23",
     "top_cards": [
       {
-        "title": "M5.1 earthquake near 88 km NNW of Uken, Japan",
+        "title": "M5.7 earthquake near 180 km NW of Hihifo, Tonga",
         "category": "geophysical",
-        "event_time": "2026-09-22T10:46:22Z",
+        "event_time": "2026-09-23T14:41:02Z",
+        "event_type": "earthquake",
+        "source_note": "Public observation data",
+        "display_note": "Above the recent baseline.",
+        "anomaly_score": 0.327297732697637,
+        "signal_status": "score_contributor",
+        "magnitude_value": 5.7,
+        "effective_anomaly": 0.327297732697637,
+        "score_contribution": 6.54595465395274
+      },
+      {
+        "title": "M5.3 earthquake near 51 km WSW of Arauco, Argentina",
+        "category": "geophysical",
+        "event_time": "2026-09-23T09:21:14Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.894109811893222,
+        "anomaly_score": -0.508356052913334,
         "signal_status": "context_only",
-        "magnitude_value": 5.1,
+        "magnitude_value": 5.3,
         "effective_anomaly": 0,
         "score_contribution": 0
       },
       {
-        "title": "M5 earthquake near Volcano Islands, Japan region",
+        "title": "M5 earthquake near 140 km NNE of Ba, Fiji",
         "category": "geophysical",
-        "event_time": "2026-09-22T05:18:24Z",
+        "event_time": "2026-09-23T17:46:06Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.10044284540704,
+        "anomaly_score": -1.13509639212156,
         "signal_status": "context_only",
         "magnitude_value": 5.0,
-        "effective_anomaly": 0,
-        "score_contribution": 0
-      },
-      {
-        "title": "M4.9 earthquake near Volcano Islands, Japan region",
-        "category": "geophysical",
-        "event_time": "2026-09-22T06:11:10Z",
-        "event_type": "earthquake",
-        "source_note": "Public observation data",
-        "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.30677587892087,
-        "signal_status": "context_only",
-        "magnitude_value": 4.9,
         "effective_anomaly": 0,
         "score_contribution": 0
       }
@@ -50,32 +50,22 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-09-23T05:07:57Z",
+    "updated_at": "2026-09-24T05:21:34Z",
     "quiet_signal": {
-      "id": "98ef2c78-808b-4477-a749-024e36f6a477",
-      "note": "This signal sits above the recent baseline within the current data window.",
-      "title": "M6.4 earthquake near 49 km NNE of Kainantu, Papua New Guinea",
-      "summary": "M6.4 earthquake near 49 km NNE of Kainantu, Papua New Guinea, observed about 63 hours before the end of the data date.",
-      "category": "geophysical",
-      "available": true,
-      "event_time": "2026-09-20T09:17:35Z",
-      "event_type": "earthquake",
-      "safety_note": "Not a forecast, alert, or recommendation.",
-      "anomaly_score": 1.78821962378647,
-      "magnitude_value": 6.4,
-      "hours_ago_from_data_end": 62.7
+      "note": "No quiet signal available for this data date.",
+      "available": false
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "Higher than 18% of the last 30 observed days.",
+      "Higher than 52% of the last 30 observed days.",
       "Positional measure within recent observations. Not a risk, alert, or warning level.",
       "Based on public earthquake, space weather, internet, and Wikipedia attention data."
     ],
-    "percentile_line": "This data date is in the 18th percentile of the last 30 observed days.",
-    "signal_position": 18,
+    "percentile_line": "This data date is in the 52nd percentile of the last 30 observed days.",
+    "signal_position": 52,
     "top_signal_note": null,
-    "weirdness_score": 18,
+    "weirdness_score": 52,
     "signal_position_note": "Positional measure within recent observations. Not a risk, alert, or warning level.",
-    "signal_position_label": "Higher than 18% of the last 30 observed days."
+    "signal_position_label": "Higher than 52% of the last 30 observed days."
   }
 }
