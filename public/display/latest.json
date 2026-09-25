@@ -1,46 +1,46 @@
 {
-  "display_date": "2026-09-23",
+  "display_date": "2026-09-24",
   "page_payload": {
-    "date": "2026-09-23",
+    "date": "2026-09-24",
     "headline": "Signal Position",
-    "data_date": "2026-09-23",
+    "data_date": "2026-09-24",
     "top_cards": [
       {
-        "title": "M5.7 earthquake near 180 km NW of Hihifo, Tonga",
+        "title": "M5.3 earthquake near 72 km NW of Finschhafen, Papua New Guinea",
         "category": "geophysical",
-        "event_time": "2026-09-23T14:41:02Z",
-        "event_type": "earthquake",
-        "source_note": "Public observation data",
-        "display_note": "Above the recent baseline.",
-        "anomaly_score": 0.327297732697637,
-        "signal_status": "score_contributor",
-        "magnitude_value": 5.7,
-        "effective_anomaly": 0.327297732697637,
-        "score_contribution": 6.54595465395274
-      },
-      {
-        "title": "M5.3 earthquake near 51 km WSW of Arauco, Argentina",
-        "category": "geophysical",
-        "event_time": "2026-09-23T09:21:14Z",
+        "event_time": "2026-09-24T23:30:28Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.508356052913334,
+        "anomaly_score": -0.536795923221019,
         "signal_status": "context_only",
         "magnitude_value": 5.3,
         "effective_anomaly": 0,
         "score_contribution": 0
       },
       {
-        "title": "M5 earthquake near 140 km NNE of Ba, Fiji",
+        "title": "M5.3 earthquake near 15 km SSW of Hilvan, Turkey",
         "category": "geophysical",
-        "event_time": "2026-09-23T17:46:06Z",
+        "event_time": "2026-09-24T07:40:58Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.13509639212156,
+        "anomaly_score": -0.536795923221019,
         "signal_status": "context_only",
-        "magnitude_value": 5.0,
+        "magnitude_value": 5.3,
+        "effective_anomaly": 0,
+        "score_contribution": 0
+      },
+      {
+        "title": "M5.2 earthquake near 139 km SW of Kokopo, Papua New Guinea",
+        "category": "geophysical",
+        "event_time": "2026-09-24T12:29:58Z",
+        "event_type": "earthquake",
+        "source_note": "Public observation data",
+        "display_note": "Observed signal, but not above the recent baseline.",
+        "anomaly_score": -0.754415892094401,
+        "signal_status": "context_only",
+        "magnitude_value": 5.2,
         "effective_anomaly": 0,
         "score_contribution": 0
       }
@@ -50,22 +50,22 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-09-24T05:21:34Z",
+    "updated_at": "2026-09-25T05:20:36Z",
     "quiet_signal": {
       "note": "No quiet signal available for this data date.",
       "available": false
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "Higher than 52% of the last 30 observed days.",
+      "Higher than 20% of the last 30 observed days.",
       "Positional measure within recent observations. Not a risk, alert, or warning level.",
       "Based on public earthquake, space weather, internet, and Wikipedia attention data."
     ],
-    "percentile_line": "This data date is in the 52nd percentile of the last 30 observed days.",
-    "signal_position": 52,
+    "percentile_line": "This data date is in the 20th percentile of the last 30 observed days.",
+    "signal_position": 20,
     "top_signal_note": null,
-    "weirdness_score": 52,
+    "weirdness_score": 20,
     "signal_position_note": "Positional measure within recent observations. Not a risk, alert, or warning level.",
-    "signal_position_label": "Higher than 52% of the last 30 observed days."
+    "signal_position_label": "Higher than 20% of the last 30 observed days."
   }
 }
