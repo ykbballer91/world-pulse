@@ -1,46 +1,46 @@
 {
-  "display_date": "2026-09-27",
+  "display_date": "2026-09-28",
   "page_payload": {
-    "date": "2026-09-27",
+    "date": "2026-09-28",
     "headline": "Signal Position",
-    "data_date": "2026-09-27",
+    "data_date": "2026-09-28",
     "top_cards": [
       {
-        "title": "M5.1 earthquake near 90 km ENE of Tadine, New Caledonia",
+        "title": "M5.4 earthquake near north of Svalbard",
         "category": "geophysical",
-        "event_time": "2026-09-27T02:22:10Z",
+        "event_time": "2026-09-28T13:22:39Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.05020762823241,
+        "anomaly_score": -0.379529549985753,
         "signal_status": "context_only",
-        "magnitude_value": 5.1,
+        "magnitude_value": 5.4,
         "effective_anomaly": 0,
         "score_contribution": 0
       },
       {
-        "title": "M5 earthquake near South Sandwich Islands region",
+        "title": "M5.4 earthquake near 231 km WSW of Port McNeill, Canada",
         "category": "geophysical",
-        "event_time": "2026-09-27T21:13:33Z",
+        "event_time": "2026-09-28T04:41:21Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.26165882854766,
+        "anomaly_score": -0.379529549985753,
         "signal_status": "context_only",
-        "magnitude_value": 5.0,
+        "magnitude_value": 5.4,
         "effective_anomaly": 0,
         "score_contribution": 0
       },
       {
-        "title": "M5 earthquake near 191 km NW of Oula Xiuma, China",
+        "title": "M5.3 earthquake near 60 km NE of Tadine, New Caledonia",
         "category": "geophysical",
-        "event_time": "2026-09-27T16:43:10Z",
+        "event_time": "2026-09-28T03:25:06Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.26165882854766,
+        "anomaly_score": -0.590379299977839,
         "signal_status": "context_only",
-        "magnitude_value": 5.0,
+        "magnitude_value": 5.3,
         "effective_anomaly": 0,
         "score_contribution": 0
       }
@@ -50,32 +50,22 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-09-28T05:49:47Z",
+    "updated_at": "2026-09-29T06:07:02Z",
     "quiet_signal": {
-      "id": "79917e6c-a670-4a62-bdda-7846dfe580f5",
-      "note": "This signal sits above the recent baseline within the current data window.",
-      "title": "M6.6 earthquake near 80 km ENE of Tadine, New Caledonia",
-      "summary": "M6.6 earthquake near 80 km ENE of Tadine, New Caledonia, observed about 51 hours before the end of the data date.",
-      "category": "geophysical",
-      "available": true,
-      "event_time": "2026-09-25T21:23:03Z",
-      "event_type": "earthquake",
-      "safety_note": "Not a forecast, alert, or recommendation.",
-      "anomaly_score": 2.12156037649633,
-      "magnitude_value": 6.6,
-      "hours_ago_from_data_end": 50.6
+      "note": "No quiet signal available for this data date.",
+      "available": false
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "Higher than 20% of the last 30 observed days.",
+      "Higher than 18% of the last 30 observed days.",
       "Positional measure within recent observations. Not a risk, alert, or warning level.",
       "Based on public earthquake, space weather, internet, and Wikipedia attention data."
     ],
-    "percentile_line": "This data date is in the 20th percentile of the last 30 observed days.",
-    "signal_position": 20,
+    "percentile_line": "This data date is in the 18th percentile of the last 30 observed days.",
+    "signal_position": 18,
     "top_signal_note": null,
-    "weirdness_score": 20,
+    "weirdness_score": 18,
     "signal_position_note": "Positional measure within recent observations. Not a risk, alert, or warning level.",
-    "signal_position_label": "Higher than 20% of the last 30 observed days."
+    "signal_position_label": "Higher than 18% of the last 30 observed days."
   }
 }
