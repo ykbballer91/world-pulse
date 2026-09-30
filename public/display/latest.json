@@ -1,44 +1,44 @@
 {
-  "display_date": "2026-09-28",
+  "display_date": "2026-09-29",
   "page_payload": {
-    "date": "2026-09-28",
+    "date": "2026-09-29",
     "headline": "Signal Position",
-    "data_date": "2026-09-28",
+    "data_date": "2026-09-29",
     "top_cards": [
       {
-        "title": "M5.4 earthquake near north of Svalbard",
+        "title": "M5.6 earthquake near southern Mid-Atlantic Ridge",
         "category": "geophysical",
-        "event_time": "2026-09-28T13:22:39Z",
+        "event_time": "2026-09-29T13:06:10Z",
+        "event_type": "earthquake",
+        "source_note": "Public observation data",
+        "display_note": "Above the recent baseline.",
+        "anomaly_score": 0.0141506285495092,
+        "signal_status": "score_contributor",
+        "magnitude_value": 5.6,
+        "effective_anomaly": 0.0141506285495092,
+        "score_contribution": 0.283012570990184
+      },
+      {
+        "title": "M5.4 earthquake near 99 km SSE of Pangai, Tonga",
+        "category": "geophysical",
+        "event_time": "2026-09-29T12:40:35Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.379529549985753,
+        "anomaly_score": -0.410368227935586,
         "signal_status": "context_only",
         "magnitude_value": 5.4,
         "effective_anomaly": 0,
         "score_contribution": 0
       },
       {
-        "title": "M5.4 earthquake near 231 km WSW of Port McNeill, Canada",
+        "title": "M5.3 earthquake near 76 km NE of Tadine, New Caledonia",
         "category": "geophysical",
-        "event_time": "2026-09-28T04:41:21Z",
+        "event_time": "2026-09-29T03:23:54Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.379529549985753,
-        "signal_status": "context_only",
-        "magnitude_value": 5.4,
-        "effective_anomaly": 0,
-        "score_contribution": 0
-      },
-      {
-        "title": "M5.3 earthquake near 60 km NE of Tadine, New Caledonia",
-        "category": "geophysical",
-        "event_time": "2026-09-28T03:25:06Z",
-        "event_type": "earthquake",
-        "source_note": "Public observation data",
-        "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.590379299977839,
+        "anomaly_score": -0.622627656178135,
         "signal_status": "context_only",
         "magnitude_value": 5.3,
         "effective_anomaly": 0,
@@ -50,22 +50,22 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-09-29T06:07:02Z",
+    "updated_at": "2026-09-30T05:56:48Z",
     "quiet_signal": {
       "note": "No quiet signal available for this data date.",
       "available": false
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "Higher than 18% of the last 30 observed days.",
+      "Higher than 35% of the last 30 observed days.",
       "Positional measure within recent observations. Not a risk, alert, or warning level.",
       "Based on public earthquake, space weather, internet, and Wikipedia attention data."
     ],
-    "percentile_line": "This data date is in the 18th percentile of the last 30 observed days.",
-    "signal_position": 18,
+    "percentile_line": "This data date is in the 35th percentile of the last 30 observed days.",
+    "signal_position": 35,
     "top_signal_note": null,
-    "weirdness_score": 18,
+    "weirdness_score": 35,
     "signal_position_note": "Positional measure within recent observations. Not a risk, alert, or warning level.",
-    "signal_position_label": "Higher than 18% of the last 30 observed days."
+    "signal_position_label": "Higher than 35% of the last 30 observed days."
   }
 }
