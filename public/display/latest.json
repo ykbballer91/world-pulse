@@ -1,46 +1,46 @@
 {
-  "display_date": "2026-09-29",
+  "display_date": "2026-09-30",
   "page_payload": {
-    "date": "2026-09-29",
+    "date": "2026-09-30",
     "headline": "Signal Position",
-    "data_date": "2026-09-29",
+    "data_date": "2026-09-30",
     "top_cards": [
       {
-        "title": "M5.6 earthquake near southern Mid-Atlantic Ridge",
+        "title": "M5.6 earthquake near 94 km SW of Tamarindo, Costa Rica",
         "category": "geophysical",
-        "event_time": "2026-09-29T13:06:10Z",
+        "event_time": "2026-09-30T21:55:26Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Above the recent baseline.",
-        "anomaly_score": 0.0141506285495092,
+        "anomaly_score": 0.0419837134781421,
         "signal_status": "score_contributor",
         "magnitude_value": 5.6,
-        "effective_anomaly": 0.0141506285495092,
-        "score_contribution": 0.283012570990184
+        "effective_anomaly": 0.0419837134781421,
+        "score_contribution": 0.8396742695628421
       },
       {
-        "title": "M5.4 earthquake near 99 km SSE of Pangai, Tonga",
+        "title": "M5.6 earthquake near 74 km S of Yonakuni, Japan",
         "category": "geophysical",
-        "event_time": "2026-09-29T12:40:35Z",
+        "event_time": "2026-09-30T05:00:24Z",
+        "event_type": "earthquake",
+        "source_note": "Public observation data",
+        "display_note": "Above the recent baseline.",
+        "anomaly_score": 0.0419837134781421,
+        "signal_status": "score_contributor",
+        "magnitude_value": 5.6,
+        "effective_anomaly": 0.0419837134781421,
+        "score_contribution": 0.41983713478142104
+      },
+      {
+        "title": "M5.4 earthquake near Balleny Islands region",
+        "category": "geophysical",
+        "event_time": "2026-09-30T04:48:06Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.410368227935586,
+        "anomaly_score": -0.377853421303287,
         "signal_status": "context_only",
         "magnitude_value": 5.4,
-        "effective_anomaly": 0,
-        "score_contribution": 0
-      },
-      {
-        "title": "M5.3 earthquake near 76 km NE of Tadine, New Caledonia",
-        "category": "geophysical",
-        "event_time": "2026-09-29T03:23:54Z",
-        "event_type": "earthquake",
-        "source_note": "Public observation data",
-        "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.622627656178135,
-        "signal_status": "context_only",
-        "magnitude_value": 5.3,
         "effective_anomaly": 0,
         "score_contribution": 0
       }
@@ -50,22 +50,22 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-09-30T05:56:48Z",
+    "updated_at": "2026-10-01T06:30:02Z",
     "quiet_signal": {
       "note": "No quiet signal available for this data date.",
       "available": false
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "Higher than 35% of the last 30 observed days.",
+      "Higher than 43% of the last 30 observed days.",
       "Positional measure within recent observations. Not a risk, alert, or warning level.",
       "Based on public earthquake, space weather, internet, and Wikipedia attention data."
     ],
-    "percentile_line": "This data date is in the 35th percentile of the last 30 observed days.",
-    "signal_position": 35,
+    "percentile_line": "This data date is in the 43rd percentile of the last 30 observed days.",
+    "signal_position": 43,
     "top_signal_note": null,
-    "weirdness_score": 35,
+    "weirdness_score": 43,
     "signal_position_note": "Positional measure within recent observations. Not a risk, alert, or warning level.",
-    "signal_position_label": "Higher than 35% of the last 30 observed days."
+    "signal_position_label": "Higher than 43% of the last 30 observed days."
   }
 }
