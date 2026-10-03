@@ -1,44 +1,44 @@
 {
-  "display_date": "2026-10-01",
+  "display_date": "2026-10-02",
   "page_payload": {
-    "date": "2026-10-01",
+    "date": "2026-10-02",
     "headline": "Signal Position",
-    "data_date": "2026-10-01",
+    "data_date": "2026-10-02",
     "top_cards": [
       {
-        "title": "M5.3 earthquake near 0 km NNE of Yōkaichiba, Japan",
+        "title": "M5.8 earthquake near 165 km SSE of Vilyuchinsk, Russia",
         "category": "geophysical",
-        "event_time": "2026-10-01T12:27:11Z",
+        "event_time": "2026-10-02T16:34:41Z",
+        "event_type": "earthquake",
+        "source_note": "Public observation data",
+        "display_note": "Above the recent baseline.",
+        "anomaly_score": 0.595953800472366,
+        "signal_status": "score_contributor",
+        "magnitude_value": 5.8,
+        "effective_anomaly": 0.595953800472366,
+        "score_contribution": 11.91907600944732
+      },
+      {
+        "title": "M5.1 earthquake near 199 km SSE of Vilyuchinsk, Russia",
+        "category": "geophysical",
+        "event_time": "2026-10-02T20:27:27Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.547855364029654,
+        "anomaly_score": -0.968424925767574,
         "signal_status": "context_only",
-        "magnitude_value": 5.3,
+        "magnitude_value": 5.1,
         "effective_anomaly": 0,
         "score_contribution": 0
       },
       {
-        "title": "M5.2 earthquake near 7 km ESE of Baghlān, Afghanistan",
+        "title": "M5.1 earthquake near 159 km SE of Gizo, Solomon Islands",
         "category": "geophysical",
-        "event_time": "2026-10-01T01:29:20Z",
+        "event_time": "2026-10-02T04:44:53Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.764114060357151,
-        "signal_status": "context_only",
-        "magnitude_value": 5.2,
-        "effective_anomaly": 0,
-        "score_contribution": 0
-      },
-      {
-        "title": "M5.1 earthquake near 176 km SE of Lata, Solomon Islands",
-        "category": "geophysical",
-        "event_time": "2026-10-01T20:00:34Z",
-        "event_type": "earthquake",
-        "source_note": "Public observation data",
-        "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.98037275668465,
+        "anomaly_score": -0.968424925767574,
         "signal_status": "context_only",
         "magnitude_value": 5.1,
         "effective_anomaly": 0,
@@ -50,22 +50,22 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-10-02T06:10:01Z",
+    "updated_at": "2026-10-03T05:43:29Z",
     "quiet_signal": {
       "note": "No quiet signal available for this data date.",
       "available": false
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "Higher than 17% of the last 30 observed days.",
+      "Higher than 58% of the last 30 observed days.",
       "Positional measure within recent observations. Not a risk, alert, or warning level.",
       "Based on public earthquake, space weather, internet, and Wikipedia attention data."
     ],
-    "percentile_line": "This data date is in the 17th percentile of the last 30 observed days.",
-    "signal_position": 17,
+    "percentile_line": "This data date is in the 58th percentile of the last 30 observed days.",
+    "signal_position": 58,
     "top_signal_note": null,
-    "weirdness_score": 17,
+    "weirdness_score": 58,
     "signal_position_note": "Positional measure within recent observations. Not a risk, alert, or warning level.",
-    "signal_position_label": "Higher than 17% of the last 30 observed days."
+    "signal_position_label": "Higher than 58% of the last 30 observed days."
   }
 }
