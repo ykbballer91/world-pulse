@@ -1,44 +1,44 @@
 {
-  "display_date": "2026-10-02",
+  "display_date": "2026-10-03",
   "page_payload": {
-    "date": "2026-10-02",
+    "date": "2026-10-03",
     "headline": "Signal Position",
-    "data_date": "2026-10-02",
+    "data_date": "2026-10-03",
     "top_cards": [
       {
-        "title": "M5.8 earthquake near 165 km SSE of Vilyuchinsk, Russia",
+        "title": "M5.9 earthquake near 39 km WSW of Tambolaka, Indonesia",
         "category": "geophysical",
-        "event_time": "2026-10-02T16:34:41Z",
+        "event_time": "2026-10-03T22:55:55Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Above the recent baseline.",
-        "anomaly_score": 0.595953800472366,
+        "anomaly_score": 0.781188400375206,
         "signal_status": "score_contributor",
-        "magnitude_value": 5.8,
-        "effective_anomaly": 0.595953800472366,
-        "score_contribution": 11.91907600944732
+        "magnitude_value": 5.9,
+        "effective_anomaly": 0.781188400375206,
+        "score_contribution": 15.62376800750412
       },
       {
-        "title": "M5.1 earthquake near 199 km SSE of Vilyuchinsk, Russia",
+        "title": "M5.6 earthquake near 80 km S of Banda Aceh, Indonesia",
         "category": "geophysical",
-        "event_time": "2026-10-02T20:27:27Z",
+        "event_time": "2026-10-03T23:37:35Z",
+        "event_type": "earthquake",
+        "source_note": "Public observation data",
+        "display_note": "Above the recent baseline.",
+        "anomaly_score": 0.12411404491943,
+        "signal_status": "score_contributor",
+        "magnitude_value": 5.6,
+        "effective_anomaly": 0.12411404491943,
+        "score_contribution": 1.2411404491942999
+      },
+      {
+        "title": "M5.1 earthquake near 182 km SSE of Vilyuchinsk, Russia",
+        "category": "geophysical",
+        "event_time": "2026-10-03T20:00:44Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.968424925767574,
-        "signal_status": "context_only",
-        "magnitude_value": 5.1,
-        "effective_anomaly": 0,
-        "score_contribution": 0
-      },
-      {
-        "title": "M5.1 earthquake near 159 km SE of Gizo, Solomon Islands",
-        "category": "geophysical",
-        "event_time": "2026-10-02T04:44:53Z",
-        "event_type": "earthquake",
-        "source_note": "Public observation data",
-        "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.968424925767574,
+        "anomaly_score": -0.971009880840195,
         "signal_status": "context_only",
         "magnitude_value": 5.1,
         "effective_anomaly": 0,
@@ -50,22 +50,22 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-10-03T05:43:29Z",
+    "updated_at": "2026-10-04T06:20:00Z",
     "quiet_signal": {
       "note": "No quiet signal available for this data date.",
       "available": false
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "Higher than 58% of the last 30 observed days.",
+      "Higher than 68% of the last 30 observed days.",
       "Positional measure within recent observations. Not a risk, alert, or warning level.",
       "Based on public earthquake, space weather, internet, and Wikipedia attention data."
     ],
-    "percentile_line": "This data date is in the 58th percentile of the last 30 observed days.",
-    "signal_position": 58,
+    "percentile_line": "This data date is in the 68th percentile of the last 30 observed days.",
+    "signal_position": 68,
     "top_signal_note": null,
-    "weirdness_score": 58,
+    "weirdness_score": 68,
     "signal_position_note": "Positional measure within recent observations. Not a risk, alert, or warning level.",
-    "signal_position_label": "Higher than 58% of the last 30 observed days."
+    "signal_position_label": "Higher than 68% of the last 30 observed days."
   }
 }
