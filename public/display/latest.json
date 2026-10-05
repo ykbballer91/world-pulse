@@ -1,46 +1,46 @@
 {
-  "display_date": "2026-10-03",
+  "display_date": "2026-10-04",
   "page_payload": {
-    "date": "2026-10-03",
+    "date": "2026-10-04",
     "headline": "Signal Position",
-    "data_date": "2026-10-03",
+    "data_date": "2026-10-04",
     "top_cards": [
       {
-        "title": "M5.9 earthquake near 39 km WSW of Tambolaka, Indonesia",
+        "title": "M5.5 earthquake near Volcano Islands, Japan region",
         "category": "geophysical",
-        "event_time": "2026-10-03T22:55:55Z",
-        "event_type": "earthquake",
-        "source_note": "Public observation data",
-        "display_note": "Above the recent baseline.",
-        "anomaly_score": 0.781188400375206,
-        "signal_status": "score_contributor",
-        "magnitude_value": 5.9,
-        "effective_anomaly": 0.781188400375206,
-        "score_contribution": 15.62376800750412
-      },
-      {
-        "title": "M5.6 earthquake near 80 km S of Banda Aceh, Indonesia",
-        "category": "geophysical",
-        "event_time": "2026-10-03T23:37:35Z",
-        "event_type": "earthquake",
-        "source_note": "Public observation data",
-        "display_note": "Above the recent baseline.",
-        "anomaly_score": 0.12411404491943,
-        "signal_status": "score_contributor",
-        "magnitude_value": 5.6,
-        "effective_anomaly": 0.12411404491943,
-        "score_contribution": 1.2411404491942999
-      },
-      {
-        "title": "M5.1 earthquake near 182 km SSE of Vilyuchinsk, Russia",
-        "category": "geophysical",
-        "event_time": "2026-10-03T20:00:44Z",
+        "event_time": "2026-10-04T11:12:48Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.971009880840195,
+        "anomaly_score": -0.120317757682901,
         "signal_status": "context_only",
-        "magnitude_value": 5.1,
+        "magnitude_value": 5.5,
+        "effective_anomaly": 0,
+        "score_contribution": 0
+      },
+      {
+        "title": "M5 earthquake near 295 km S of Burica, Panama",
+        "category": "geophysical",
+        "event_time": "2026-10-04T14:06:10Z",
+        "event_type": "earthquake",
+        "source_note": "Public observation data",
+        "display_note": "Observed signal, but not above the recent baseline.",
+        "anomaly_score": -1.24829673596016,
+        "signal_status": "context_only",
+        "magnitude_value": 5.0,
+        "effective_anomaly": 0,
+        "score_contribution": 0
+      },
+      {
+        "title": "M5 earthquake near 21 km ESE of Feke, Turkey",
+        "category": "geophysical",
+        "event_time": "2026-10-04T11:43:23Z",
+        "event_type": "earthquake",
+        "source_note": "Public observation data",
+        "display_note": "Observed signal, but not above the recent baseline.",
+        "anomaly_score": -1.24829673596016,
+        "signal_status": "context_only",
+        "magnitude_value": 5.0,
         "effective_anomaly": 0,
         "score_contribution": 0
       }
@@ -50,22 +50,22 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-10-04T06:20:00Z",
+    "updated_at": "2026-10-05T06:11:42Z",
     "quiet_signal": {
       "note": "No quiet signal available for this data date.",
       "available": false
     },
     "score_version": "weirdness_v0_2",
     "summary_lines": [
-      "Higher than 68% of the last 30 observed days.",
+      "Higher than 18% of the last 30 observed days.",
       "Positional measure within recent observations. Not a risk, alert, or warning level.",
       "Based on public earthquake, space weather, internet, and Wikipedia attention data."
     ],
-    "percentile_line": "This data date is in the 68th percentile of the last 30 observed days.",
-    "signal_position": 68,
+    "percentile_line": "This data date is in the 18th percentile of the last 30 observed days.",
+    "signal_position": 18,
     "top_signal_note": null,
-    "weirdness_score": 68,
+    "weirdness_score": 18,
     "signal_position_note": "Positional measure within recent observations. Not a risk, alert, or warning level.",
-    "signal_position_label": "Higher than 68% of the last 30 observed days."
+    "signal_position_label": "Higher than 18% of the last 30 observed days."
   }
 }
