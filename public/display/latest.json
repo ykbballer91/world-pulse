@@ -1,44 +1,44 @@
 {
-  "display_date": "2026-10-04",
+  "display_date": "2026-10-05",
   "page_payload": {
-    "date": "2026-10-04",
+    "date": "2026-10-05",
     "headline": "Signal Position",
-    "data_date": "2026-10-04",
+    "data_date": "2026-10-05",
     "top_cards": [
       {
-        "title": "M5.5 earthquake near Volcano Islands, Japan region",
+        "title": "M5.3 earthquake near central Mid-Atlantic Ridge",
         "category": "geophysical",
-        "event_time": "2026-10-04T11:12:48Z",
+        "event_time": "2026-10-05T01:18:50Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -0.120317757682901,
+        "anomaly_score": -0.501781689931299,
         "signal_status": "context_only",
-        "magnitude_value": 5.5,
+        "magnitude_value": 5.3,
         "effective_anomaly": 0,
         "score_contribution": 0
       },
       {
-        "title": "M5 earthquake near 295 km S of Burica, Panama",
+        "title": "M5 earthquake near south of the Fiji Islands",
         "category": "geophysical",
-        "event_time": "2026-10-04T14:06:10Z",
+        "event_time": "2026-10-05T20:22:59Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.24829673596016,
+        "anomaly_score": -1.15627954636343,
         "signal_status": "context_only",
         "magnitude_value": 5.0,
         "effective_anomaly": 0,
         "score_contribution": 0
       },
       {
-        "title": "M5 earthquake near 21 km ESE of Feke, Turkey",
+        "title": "M5 earthquake near 187 km ENE of Saipan, Northern Mariana Islands",
         "category": "geophysical",
-        "event_time": "2026-10-04T11:43:23Z",
+        "event_time": "2026-10-05T10:52:09Z",
         "event_type": "earthquake",
         "source_note": "Public observation data",
         "display_note": "Observed signal, but not above the recent baseline.",
-        "anomaly_score": -1.24829673596016,
+        "anomaly_score": -1.15627954636343,
         "signal_status": "context_only",
         "magnitude_value": 5.0,
         "effective_anomaly": 0,
@@ -50,7 +50,7 @@
       "no_fear_amplification": true,
       "no_trading_or_investment_advice": true
     },
-    "updated_at": "2026-10-05T06:11:42Z",
+    "updated_at": "2026-10-06T06:52:02Z",
     "quiet_signal": {
       "note": "No quiet signal available for this data date.",
       "available": false
